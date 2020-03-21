@@ -1,3 +1,7 @@
 .cache
+<<<<<<< HEAD
+=======
+package.json
+>>>>>>> fcb5e70bd29487f54fe2789cb5ec9a3333a67eaf
 package-lock.json
 public
