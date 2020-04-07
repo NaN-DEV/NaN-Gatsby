@@ -6,22 +6,23 @@ import PropTypes from 'prop-types';
 import Footer from './style/style';
 
 // IMPORT SETTINGS STYLE
-import { theme } from '../../../layouts/theme/settings';
+import theme from '../../../layouts/theme/settings2';
 
 // IMPORT COMPONENT
+import Row from '../../atoms/row/row';
 import Logo from '../../atoms/logo/logo';
-import List from '../../atoms/list/list';
+import List from '../../molecules/list/list';
 
 // CREATE NEW COMPONENT
 const FooterComponent = props => {
   const { links, copyright } = props;
   return (
     <Footer theme={theme}>
-      <div className="row">
+      <Row className="row">
         <Logo className="logo" height="30px" link="/" />
         <p>{copyright}</p>
-        <List level items={links} />
-      </div>
+        <List listType="level" items={links} />
+      </Row>
     </Footer>
   );
 };
@@ -32,9 +33,9 @@ FooterComponent.propTypes = {
   copyright: PropTypes.string,
   links: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
+      id: PropTypes.string,
+      link: PropTypes.string,
+      title: PropTypes.string,
     }),
   ).isRequired,
 };

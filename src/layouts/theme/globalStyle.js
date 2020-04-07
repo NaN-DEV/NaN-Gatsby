@@ -22,9 +22,9 @@ body {
    font-style: normal;
    font-weight: 400;
    font-size: 2.4rem;
-   line-height: 1;
-   color: ${({ theme }) => theme.primary};
-   background-color:${({ theme }) => theme.secondary};
+   line-height: 1.3;
+   color: ${props => props.theme.primary};
+   background-color:${props => props.theme.secondary};
 }
 
 p,
@@ -57,17 +57,23 @@ span{
 a {
    font-weight: 600;
    text-decoration: none;
-   color: ${({ theme }) => theme.primary};
-   transition: all 0.3s;
+   color: ${props => props.theme.primary};
+   transition: ${props => props.theme.primary};
    &:hover{
-         color:  ${({ theme }) => theme.primary_hover};
+         color:  ${props => props.theme.primary_hover};
    }
 }
 
 button{
-   padding: 0;
    margin:0;
+   padding: 0;
    border: none;
+   display: block;
+   cursor: pointer !important;
+   position: relative;
+   background-color: transparent;
+   transition: ${props => props.theme.animation_time};
+
      &:focus{
        outline:none;
      }
@@ -75,27 +81,12 @@ button{
 
 ol,
 ul{
-   padding:0;
    margin:0;
+   padding:0;
 }
-
-.row{
-   display: flex;
-   max-width: ${({ theme }) => theme.max_width};
-   padding: ${({ theme }) => theme.break_mobile};
-   margin: 0 auto;
-   flex-wrap: wrap;
-}
-
 section{
     overflow: hidden;
     position: relative;
-}
-
-@media (min-width: ${({ theme }) => theme.breakpoint}) {
-   .row{
-       padding: ${({ theme }) => theme.break_desctop};
-   }
 }
 `;
 

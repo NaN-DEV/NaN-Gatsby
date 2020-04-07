@@ -7,16 +7,23 @@ import PropTypes from 'prop-types';
 import Brand from './style/style';
 
 // IMPORT SETTINGS STYLE
-import { theme } from '../../../layouts/theme/settings';
+import theme from '../../../layouts/theme/settings2';
 
 // IMPORT IMAGES
 import LogoSvg from '../../../assets/logo/logo.svg';
 
 // CREATE NEW COMPONENT
-const Logo = props => {
-  const { link } = props;
+const LogoComponent = props => {
+  const { link, secondary, width, height, widthMobile, heightMobile } = props;
   return (
-    <Brand theme={theme}>
+    <Brand
+      theme={theme}
+      secondary={secondary ? 1 : 0}
+      width={width}
+      height={height}
+      widthMobile={widthMobile}
+      heightMobile={heightMobile}
+    >
       <Link to={link} title="NaN JavaScript Developer" alt="Logo NaN">
         <LogoSvg />
       </Link>
@@ -24,12 +31,22 @@ const Logo = props => {
   );
 };
 
-export default Logo;
+export default LogoComponent;
 
-Logo.propTypes = {
+LogoComponent.propTypes = {
   link: PropTypes.string,
+  secondary: PropTypes.bool,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  widthMobile: PropTypes.string,
+  heightMobile: PropTypes.string,
 };
 
-Logo.defaultProps = {
+LogoComponent.defaultProps = {
   link: '/',
+  secondary: false,
+  width: null,
+  height: null,
+  widthMobile: null,
+  heightMobile: null,
 };

@@ -31,7 +31,7 @@ const Footer = styled.footer`
     }
   }
 
-  @media (min-width: ${({ theme }) => theme.breakpoint}) {
+  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
     .row {
       justify-content: flex-start;
     }
