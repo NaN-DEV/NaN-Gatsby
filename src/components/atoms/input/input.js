@@ -18,17 +18,26 @@ import Password from './password/password';
 
 // CREATE NEW COMPONENT
 const InputComponent = props => {
-  const { item, secondary } = props;
+  const { items, secondary, classNameRadio } = props;
   return (
     <>
       <Input theme={theme} secondary={secondary ? 1 : 0}>
-        {item.label && <Label secondary={secondary}>{item.label}</Label>}
-        {item.type === 'Mail' && <Mail item={item} secondary={secondary} />}
-        {item.type === 'Radio' && <Radio item={item} secondary={secondary} />}
-        {item.type === 'Search' && <Search item={item} secondary={secondary} />}
-        {item.type === 'Classic' && <Classic item={item} secondary={secondary} />}
-        {item.type === 'Password' && <Password item={item} secondary={secondary} />}
-        {item.type === 'Checkbox' && <Checkbox item={item} secondary={secondary} />}
+        {items.label && <Label secondary={secondary}>{items.label}</Label>}
+        {items.mail && <Mail items={items} secondary={secondary} />}
+        {items.radio && (
+          <Radio
+            page={items.page}
+            items={items.radio}
+            secondary={secondary}
+            classNameRadio={classNameRadio}
+          />
+        )}
+        {items.search && <Search items={items.search} secondary={secondary} />}
+        {items.type === 'Classic' && <Classic items={items} secondary={secondary} />}
+        {items.password && <Password items={items} secondary={secondary} />}
+        {items.type === 'Checkbox' && (
+          <Checkbox items={items} page={items.page} secondary={secondary} />
+        )}
       </Input>
     </>
   );
@@ -37,7 +46,7 @@ const InputComponent = props => {
 export default InputComponent;
 
 InputComponent.propTypes = {
-  item: PropTypes.shape({
+  items: PropTypes.shape({
     label: PropTypes.string,
     placeholder: PropTypes.string,
     type: PropTypes.string.isRequired,
@@ -46,7 +55,7 @@ InputComponent.propTypes = {
 };
 
 InputComponent.defaultProps = {
-  item: PropTypes.shape({
+  items: PropTypes.shape({
     label: null,
     placeholder: 'Add Placeholder',
   }),

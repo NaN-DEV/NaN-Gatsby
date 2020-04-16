@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 // IMPORT COMPONENT
 
 import LevelList from './level/level';
+import MenuList from './menu/menu';
 
 // CREATE NEW COMPONENT
 
-const ListComponent = ({ items, listType }) => {
-  if (listType === 'level') {
-    return (
-      <>
-        <LevelList items={items} />
-      </>
-    );
-  }
-  return null;
+const ListComponent = props => {
+  const { level, items, menu, secondary } = props;
+  return (
+    <>
+      {level && <LevelList items={items} secondary={secondary} />}
+      {menu && <MenuList items={items} secondary={secondary} />}
+    </>
+  );
 };
 
 export default ListComponent;
@@ -28,9 +28,4 @@ ListComponent.propTypes = {
       title: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  listType: PropTypes.oneOf(['level', 'vertical']),
-};
-
-ListComponent.defaultProps = {
-  listType: 'vertical',
 };

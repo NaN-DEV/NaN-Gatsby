@@ -6,7 +6,7 @@ import Search from '../../../../assets/icon/search.svg';
 
 // CREATE NEW COMPONENT
 
-const SearchComponent = () => {
+const IconSearchComponent = () => {
   return (
     <>
       <Search />
@@ -14,4 +14,4 @@ const SearchComponent = () => {
   );
 };
 
-export default SearchComponent;
+export default IconSearchComponent;

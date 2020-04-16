@@ -9,75 +9,82 @@ import Icon from './style/style';
 // IMPORT SETTINGS STYLE
 import theme from '../../../layouts/theme/settings2';
 
-// IMPORT COMPONENT
+// IMPORT COMPONENT ICON
+import Js from './js/js';
+import Cogs from './cogs/cogs';
+import Users from './users/users';
+import Brand from './brand/brand';
 import Search from './search/search';
+import Envelope from './envelope/envelope';
 import Triangle from './triangle/triangle';
+import Newspaper from './newspaper/newspaper';
 
 // CREATE NEW COMPONENT
 
 const IconComponent = props => {
   const {
-    search,
+    js,
+    cogs,
     link,
-    triangle,
-    secondary,
+    brand,
+    users,
     width,
     height,
+    search,
+    triangle,
+    envelope,
+    newspaper,
+    secondary,
+    className,
     widthMobile,
     heightMobile,
-    className,
   } = props;
-  if (search) {
-    if (link) {
-      return (
-        <Icon
-          secondary={secondary ? 1 : 0}
-          width={width}
-          height={height}
-          width_mobile={widthMobile}
-          height_mobile={heightMobile}
-          theme={theme}
-          className={className}
-        >
-          <Link to={link}>
-            <Search />
-          </Link>
-        </Icon>
-      );
-    }
-    return (
-      <Icon
-        secondary={secondary ? 1 : 0}
-        width={width}
-        height={height}
-        width_mobile={widthMobile}
-        height_mmobile={heightMobile}
-        theme={theme}
-        className={className}
-      >
-        <Search />
-      </Icon>
-    );
-  }
-  if (triangle) {
-    return (
-      <Icon
-        secondary={secondary ? 1 : 0}
-        triangle={triangle ? 1 : 0}
-        width={width}
-        height={height}
-        width_mobile={widthMobile}
-        height_mmobile={heightMobile}
-        theme={theme}
-        className={className}
-      >
-        <Triangle secondary={secondary} className={className} />
-      </Icon>
-    );
-  }
+
   return (
     <>
-      <p>problem icon</p>
+      {link ? (
+        <Icon
+          theme={theme}
+          new_width={width}
+          new_height={height}
+          className={className}
+          width_mobile={widthMobile}
+          triangle={triangle ? 1 : 0}
+          height_mobile={heightMobile}
+          secondary={secondary ? 1 : 0}
+        >
+          <Link to={link}>
+            {js && <Js />}
+            {cogs && <Cogs />}
+            {users && <Users />}
+            {brand && <Brand />}
+            {search && <Search />}
+            {envelope && <Envelope />}
+            {newspaper && <Newspaper />}
+            {triangle && <Triangle secondary={secondary} className={className} />}
+          </Link>
+        </Icon>
+      ) : (
+        <Icon
+          theme={theme}
+          new_width={width}
+          new_height={height}
+          className={className}
+          width_mobile={widthMobile}
+          triangle={triangle ? 1 : 0}
+          height_mmobile={heightMobile}
+          secondary={secondary ? 1 : 0}
+        >
+          {js && <Js />}
+          {cogs && <Cogs />}
+          {users && <Users />}
+          {brand && <Brand />}
+          {search && <Search />}
+          {envelope && <Envelope />}
+          {newspaper && <Newspaper />}
+          {triangle && <Triangle secondary={secondary} className={className} />}
+        </Icon>
+      )}
     </>
   );
 };

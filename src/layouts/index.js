@@ -21,7 +21,6 @@ const Root = props => {
   return (
     <>
       <GlobalStyle theme={theme} />
-
       <Header />
       {children}
       <Footer links={FooterLink} />

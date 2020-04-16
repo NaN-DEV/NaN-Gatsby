@@ -3,19 +3,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // IMPORT COMPONENT
-import ButtonMore from './more/More';
-import ButtonOutLine from './outline/Outline';
+import ButtonMore from './more/more';
+import ButtonText from './text/text';
+import ButtonSubmit from './submit/Submit';
+import ButtonOutLine from './outline/outline';
 import ButtonHamburger from './hamburger/hamburger';
 
 // CREATE NEW COMPONENT
 
 const ButtonComponent = props => {
-  const { hamburger, more, outline, clouse, secondary, onClick, className, title, style } = props;
+  const {
+    text,
+    more,
+    title,
+    style,
+    clouse,
+    submit,
+    onClick,
+    outline,
+    hamburger,
+    secondary,
+    className,
+  } = props;
 
-  if (hamburger) {
+  if (text) {
     return (
-      <ButtonHamburger
-        clouse={clouse}
+      <ButtonText
+        title={title}
         style={style}
         secondary={secondary}
         onClick={onClick}
@@ -28,10 +42,32 @@ const ButtonComponent = props => {
       <ButtonMore style={style} secondary={secondary} onClick={onClick} className={className} />
     );
   }
+  if (submit) {
+    return (
+      <ButtonSubmit
+        title={title}
+        style={style}
+        secondary={secondary}
+        onClick={onClick}
+        className={className}
+      />
+    );
+  }
   if (outline) {
     return (
       <ButtonOutLine
         title={title}
+        style={style}
+        secondary={secondary}
+        onClick={onClick}
+        className={className}
+      />
+    );
+  }
+  if (hamburger) {
+    return (
+      <ButtonHamburger
+        clouse={clouse}
         style={style}
         secondary={secondary}
         onClick={onClick}

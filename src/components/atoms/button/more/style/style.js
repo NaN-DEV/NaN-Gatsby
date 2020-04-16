@@ -20,8 +20,8 @@ export const Button = styled.button`
   }
 
   @media (min-width: ${props => props.theme.breakpoint_desktop}) {
-    padding-right: 30px;
-    font-size: ${props => props.theme.font_size_mobile_button};
+    padding-right: 45px;
+    font-size: ${props => props.theme.font_size_desctop_button};
     svg {
       top: 2px;
       right: 0px;
@@ -29,7 +29,7 @@ export const Button = styled.button`
       position: absolute;
       transform: rotate(-90deg);
       transition: ${props => props.theme.animation_time};
-      width: ${props => props.theme.font_size_mobile_button};
+      width: ${props => props.theme.font_size_desctop_button};
       path {
         transition: ${props => props.theme.animation_time};
         fill: ${props => (props.secondary === 1 ? props.theme.secondary : props.theme.primary)};

@@ -21,7 +21,7 @@ const FooterComponent = props => {
       <Row className="row">
         <Logo className="logo" height="30px" link="/" />
         <p>{copyright}</p>
-        <List listType="level" items={links} />
+        <List level items={links} />
       </Row>
     </Footer>
   );

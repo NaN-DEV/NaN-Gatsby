@@ -34,9 +34,10 @@ class SectionSell extends React.Component {
   }
 
   render() {
+    const { className } = this.props;
     return (
       <>
-        <Alien className="mascot" />
+        <Alien className={`mascot ${className}`} />
       </>
     );
   }

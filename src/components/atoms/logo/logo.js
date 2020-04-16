@@ -14,13 +14,15 @@ import LogoSvg from '../../../assets/logo/logo.svg';
 
 // CREATE NEW COMPONENT
 const LogoComponent = props => {
-  const { link, secondary, width, height, widthMobile, heightMobile } = props;
+  const { link, secondary, width, height, widthMobile, heightMobile, className } = props;
+
   return (
     <Brand
       theme={theme}
       secondary={secondary ? 1 : 0}
       width={width}
       height={height}
+      className={className}
       widthMobile={widthMobile}
       heightMobile={heightMobile}
     >
@@ -35,18 +37,20 @@ export default LogoComponent;
 
 LogoComponent.propTypes = {
   link: PropTypes.string,
-  secondary: PropTypes.bool,
   width: PropTypes.string,
   height: PropTypes.string,
+  secondary: PropTypes.bool,
+  className: PropTypes.string,
   widthMobile: PropTypes.string,
   heightMobile: PropTypes.string,
 };
 
 LogoComponent.defaultProps = {
   link: '/',
-  secondary: false,
   width: null,
   height: null,
+  className: null,
+  secondary: false,
   widthMobile: null,
   heightMobile: null,
 };

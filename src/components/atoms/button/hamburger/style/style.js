@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 // BUTTON
 export const Button = styled.button`
   min-width: 30px;
-  min-height: 30px;
+  height: 30px;
   overflow: hidden;
   span {
     height: 3px;
@@ -21,7 +21,7 @@ export const Button = styled.button`
   }
   @media (min-width: ${props => props.theme.breakpoint_desktop}) {
     min-width: 60px;
-    min-height: 60px;
+    height: 60px;
     ${props =>
       props.clouse === 1 &&
       css`

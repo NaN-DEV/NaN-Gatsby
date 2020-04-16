@@ -14,8 +14,8 @@ const IndexPage = ({ data }) => {
       type: 'HeroFull',
       color: 'primary',
       arrow: 'triangleSection1',
-      textBold: 'Hello',
-      textNormal: 'Word !',
+      textBold: 'Hello ',
+      textNormal: 'wolrd !',
     },
   ];
 

@@ -7,8 +7,8 @@ export const Search = styled.div`
 `;
 
 export const PlaceholderDiv = styled.div`
-  top: 10px;
-  left: 25px;
+  top: 1rem;
+  left: 1.5rem;
   opacity: 1;
   z-index: -100;
   font-size: 3rem;
@@ -18,10 +18,10 @@ export const PlaceholderDiv = styled.div`
   ${props =>
     props.secondary === 1
       ? css`
-          color: ${props.theme.secondary};
+          color: ${props.active ? props.theme.secondary : props.theme.secondary_hover};
         `
       : css`
-          color: ${props.theme.primary};
+          color: ${props.active ? props.theme.primary : props.theme.primary_hover};
         `}
 `;
 

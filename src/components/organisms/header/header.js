@@ -59,8 +59,12 @@ class HeaderComponent extends React.Component {
       {
         id: 'search-main',
         input: {
-          type: 'Search',
-          placeholder: `<b>Javascript</b> Developer`,
+          search: [
+            {
+              type: 'Search',
+              placeholder: `<b>Javascript</b> Developer`,
+            },
+          ],
         },
       },
     ];

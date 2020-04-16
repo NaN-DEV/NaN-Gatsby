@@ -13,10 +13,21 @@ import Item from './item/item';
 
 // CREATE NEW COMPONENT
 const LevelComponent = props => {
-  const { items } = props;
+  const { items, secondary } = props;
+  const ArrayLength = items.length;
+
   return (
-    <List theme={theme}>
-      {items && items.map(item => <Item link={item.link} title={item.title} key={item.id} />)}
+    <List theme={theme} secondary={secondary ? 1 : 0}>
+      {items &&
+        items.map(item => (
+          <Item
+            link={item.link}
+            title={item.title}
+            key={item.id}
+            length={ArrayLength > 1 ? 1 : 0}
+            secondary={secondary}
+          />
+        ))}
     </List>
   );
 };

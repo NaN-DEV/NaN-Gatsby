@@ -182,8 +182,13 @@ ${props =>
                 `}
     }
 
+
+  p {
+    font-size: 2.3rem;
+    }
+
     h1 {
-      font-size: 3rem;
+      font-size: 3.6rem;
 
     }
 

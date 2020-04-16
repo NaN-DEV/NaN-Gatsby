@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Input = styled.div`
   width: ${props => (props.width ? props.width : '100%')};
-  height: 50px;
+  min-height: 60px;
   input {
     &:focus {
       outline: none;
@@ -15,13 +15,15 @@ export const Input = styled.div`
   input[type='search'],
   input[type='password'] {
     width: 100%;
-    height: 60px;
-    font-size: 30px;
-    padding: 0 15px;
+    border-radius: 0;
     border-style: solid;
+    -webkit-appearance: none;
     background-color: transparent;
     border-width: ${props => props.theme.border};
+    padding: 0 ${props => props.theme.break_mobile};
+    min-height: ${props => props.theme.input_height};
     transition: ${props => props.theme.animation_time};
+    font-size: ${props => props.theme.input_font_szize};
     ${props =>
       props.secondary === 1
         ? css`

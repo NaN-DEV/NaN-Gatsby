@@ -41,27 +41,30 @@ class SearchComponent extends React.Component {
 
   render() {
     const { placeholder } = this.state;
-    const { item, secondary } = this.props;
+    const { items, secondary } = this.props;
     return (
       <>
-        <Search theme={theme} secondary={secondary ? 1 : 0}>
-          <Input
-            type="search"
-            onBlur={this.onBlurInput}
-            onFocus={this.onFocusInput}
-            onChange={this.handleChange}
-            secondary={secondary ? 1 : 0}
-          />
-          <PlaceholderDiv
-            theme={theme}
-            active={placeholder}
-            secondary={secondary ? 1 : 0}
-            dangerouslySetInnerHTML={{ __html: item.placeholder }}
-          />
-          <Button theme={theme} active={placeholder} secondary={secondary ? 1 : 0}>
-            <Icon search secondary width="30px" />
-          </Button>
-        </Search>
+        {items.map(item => (
+          <Search theme={theme} secondary={secondary ? 1 : 0}>
+            <Input
+              type="search"
+              onBlur={this.onBlurInput}
+              onFocus={this.onFocusInput}
+              onChange={this.handleChange}
+              secondary={secondary ? 1 : 0}
+            />
+            <PlaceholderDiv
+              theme={theme}
+              active={placeholder}
+              type="search"
+              secondary={secondary ? 1 : 0}
+              dangerouslySetInnerHTML={{ __html: item.placeholder }}
+            />
+            <Button theme={theme} active={placeholder} secondary={secondary ? 1 : 0}>
+              <Icon search secondary width="30px" />
+            </Button>
+          </Search>
+        ))}
       </>
     );
   }

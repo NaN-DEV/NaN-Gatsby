@@ -6,8 +6,8 @@ const GlobalStyle = createGlobalStyle`
 *::before,
 *::after {
    box-sizing: border-box;
-   -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
 }
 
 html{
@@ -17,12 +17,12 @@ html{
 body {
    margin: 0;
    padding: 0;
-   min-height: 100vh;
-   font-family: "Montserrat", sans-serif;
-   font-style: normal;
    font-weight: 400;
-   font-size: 2.4rem;
    line-height: 1.3;
+   font-size: 2.4rem;
+   min-height: 100vh;
+   font-style: normal;
+   font-family: "Montserrat", sans-serif;
    color: ${props => props.theme.primary};
    background-color:${props => props.theme.secondary};
 }
@@ -34,8 +34,8 @@ h3,
 h4,
 h5,
 h6{
-    padding:0;
     margin:0;
+    padding:0;
 }
 
 h1,
@@ -69,8 +69,8 @@ button{
    padding: 0;
    border: none;
    display: block;
-   cursor: pointer !important;
    position: relative;
+   cursor: pointer !important;
    background-color: transparent;
    transition: ${props => props.theme.animation_time};
 
