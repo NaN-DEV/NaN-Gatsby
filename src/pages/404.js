@@ -1,14 +1,19 @@
-import React from "react"
+// IMPORT PLUGIN
+import React from 'react';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+// IMPORT SETTINGS STYLE
+import settings from '../layouts/settings/settings';
 
+// IMPORT COMPONENT
+import Layout from '../layouts/index';
+
+// CREATE NEW COMPONENT
 const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
-)
+  <>
+    <Layout theme={settings}>
+      <h1>NOT FOUND</h1>
+    </Layout>
+  </>
+);
 
-export default NotFoundPage
+export default NotFoundPage;
