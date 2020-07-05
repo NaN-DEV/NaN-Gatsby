@@ -85,7 +85,7 @@ IconComponent.propTypes = {
 IconComponent.defaultProps = {
   icon: 'logo',
   light: false,
-  height: false,
+  height: null,
   newClass: null,
   newStyle: null,
   primary: false,
