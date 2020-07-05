@@ -4,11 +4,13 @@ const settings = {
   font_secondary: `'Roboto Mono', monospace`,
 
   // SETTINGS COLOR START
-  dark: '#64707d',
-  light: '#E8E8E8',
-  muted: '#ffffff',
+
   primary: '#000000',
-  secondary: '#FFCC00',
+  secondary: '#FFFFFF',
+  tertiary_1: '#2e2e2e',
+  tertiary_2: '#5d5d5d',
+  tertiary_3: '#8b8b8b',
+  tertiary_4: '#bababa',
 
   // SETTINGS BREAK START
   break: '1.5rem',

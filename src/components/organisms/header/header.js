@@ -10,15 +10,34 @@ import { Header, HeaderStopBox } from './style/style';
 // IMPORT COMPONENT
 import Row from '../../atoms/row/row';
 import Icon from '../../atoms/icon/icon';
+import Input from '../../atoms/input/input';
+import Form from '../../molecules/form/form';
 
 // CREATE NEW COMPONENT
 const HeaderComponent = () => {
   return (
     <>
       <Header theme={settings}>
-        <Row>
-          <Icon link="/" icon="logo" />
-          dxwdwdwd
+        <Row newClass="row">
+          {/* ############## LOGO ############## */}
+          <Icon
+            link="/"
+            secondary
+            icon="logo"
+            height={4}
+            newClass="logo"
+            title="NAN SOFTWARE HOUSE"
+          />
+
+          {/* ########### FROM SEARCH ########## */}
+          <Form newClass="search">
+            <Input type="search" secondary placeholder="Szukaj..." width={30} />
+          </Form>
+
+          {/* ########## Button icon ########### */}
+
+          <Icon secondary icon="notification" title="OPEN MENU" />
+          <Icon secondary icon="hamburger" onClick={3} title="OPEN MENU" />
         </Row>
       </Header>
       <HeaderStopBox />

@@ -22,9 +22,8 @@ body {
    font-style: normal;
    font-weight: normal;
    color: ${props => props.theme.primary};
-   background-color: ${props => props.theme.light};
    font-family: ${props => props.theme.font_primary}; 
-
+   background-color: ${props => props.theme.secondary};
 }
 
 p,
@@ -66,9 +65,9 @@ a {
    }
 
    &:hover {
-      color: ${props => props.theme.dark};
+      color: ${props => props.theme.tertiary_2};
          svg {
-             fill: ${props => props.theme.dark};
+             fill: ${props => props.theme.tertiary_2};
          }
    }
 }
@@ -101,9 +100,24 @@ section{
 form{
   width: 100%;
   height: auto;
-  display: flex;
-  flex-wrap: wrap;
   position: relative;
+  display: inline-block; 
+  transition: ${props => props.theme.animation};
+}
+input{
+   transition: ${props => props.theme.animation};
+
+   &::placeholder{
+      opacity: 1;
+      transition: ${props => props.theme.animation};
+   }
+
+   &:focus{
+       outline: none;
+          &::placeholder {
+             opacity:0;
+          }
+    }
 }
 `;
 

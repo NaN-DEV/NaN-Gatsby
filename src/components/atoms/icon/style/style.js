@@ -4,10 +4,20 @@ import { Link } from 'gatsby';
 const mainStyleIcon = css`
   display: block;
   position: relative;
+  ${props =>
+    props.secondary &&
+    css`
+      color: ${props.theme.secondary};
+    `}
+
   svg {
     display: block;
-    fill: #fff;
-    height: 30px;
+    height: ${props => (props.height ? `${props.height}rem` : `2.4rem`)};
+    ${props =>
+      props.secondary &&
+      css`
+        fill: ${props.theme.secondary};
+      `}
   }
 `;
 
@@ -17,4 +27,13 @@ export const DivIcon = styled.div`
 
 export const LinkIcon = styled(Link)`
   ${mainStyleIcon}
+  &:hover {
+    svg {
+      ${props =>
+        props.secondary &&
+        css`
+          fill: ${props.theme.tertiary_3};
+        `}
+    }
+  }
 `;

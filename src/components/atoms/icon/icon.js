@@ -10,20 +10,26 @@ import settings from '../../../layouts/settings/settings';
 
 // IMPORT SVG
 import Logo from '../../../assets/brand/logo.svg';
+import Hamburger from '../../../assets/icon/hamburger.svg';
+import Notification from '../../../assets/icon/notification.svg';
 
 // IMPORT COMPONENT
 
 // CREATE NEW COMPONENT
 
 const IconComponent = props => {
-  const { link, icon, height, width, dark, light } = props;
+  const { link, icon, height, primary, secondary, title, newStyle, newClass } = props;
 
   const renderSwitchIcon = name => {
     switch (name) {
       case 'logo':
         return <Logo />;
+      case 'hamburger':
+        return <Hamburger />;
+      case 'notification':
+        return <Notification />;
       default:
-        return console.log('Please name icon :)');
+        return 'Please name icon :)';
     }
   };
 
@@ -33,11 +39,13 @@ const IconComponent = props => {
         return (
           <LinkIcon
             to={link}
-            width={width}
+            title={title}
             height={height}
+            style={newStyle}
             theme={settings}
-            dark={dark ? 1 : 0}
-            light={light ? 1 : 0}
+            className={newClass}
+            primary={primary ? 1 : 0}
+            secondary={secondary ? 1 : 0}
           >
             {renderSwitchIcon(icon)}
           </LinkIcon>
@@ -45,11 +53,13 @@ const IconComponent = props => {
       default:
         return (
           <DivIcon
-            width={width}
+            title={title}
             height={height}
+            style={newStyle}
             theme={settings}
-            dark={dark ? 1 : 0}
-            light={light ? 1 : 0}
+            className={newClass}
+            primary={primary ? 1 : 0}
+            secondary={secondary ? 1 : 0}
           >
             {renderSwitchIcon(icon)}
           </DivIcon>
@@ -62,21 +72,25 @@ const IconComponent = props => {
 
 // PropTpyes
 IconComponent.propTypes = {
-  dark: PropTypes.bool,
-  light: PropTypes.bool,
   icon: PropTypes.string,
   link: PropTypes.string,
-  width: PropTypes.number,
+  primary: PropTypes.bool,
+  title: PropTypes.string,
   height: PropTypes.number,
+  secondary: PropTypes.bool,
+  newClass: PropTypes.string,
+  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 IconComponent.defaultProps = {
-  link: false,
-  width: false,
-  height: false,
-  dark: false,
-  light: false,
   icon: 'logo',
+  light: false,
+  height: false,
+  newClass: null,
+  newStyle: null,
+  primary: false,
+  secondary: false,
+  title: 'Add title icon',
 };
 
 export default IconComponent;
