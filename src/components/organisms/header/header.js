@@ -23,8 +23,9 @@ const HeaderComponent = () => {
           <Icon
             link="/"
             secondary
-            icon="logo"
             height={4}
+            type="link"
+            icon="logo"
             newClass="logo"
             title="NAN SOFTWARE HOUSE"
           />
@@ -35,9 +36,7 @@ const HeaderComponent = () => {
           </Form>
 
           {/* ########## Button icon ########### */}
-
-          <Icon secondary icon="notification" title="OPEN MENU" />
-          <Icon secondary icon="hamburger" onClick={3} title="OPEN MENU" />
+          <Icon secondary type="button" icon="hamburger" title="OPEN MENU" />
         </Row>
       </Header>
       <HeaderStopBox />

@@ -21,12 +21,7 @@ const mainStyleIcon = css`
   }
 `;
 
-export const DivIcon = styled.div`
-  ${mainStyleIcon}
-`;
-
-export const LinkIcon = styled(Link)`
-  ${mainStyleIcon}
+const mainStyleIconHover = css`
   &:hover {
     svg {
       ${props =>
@@ -35,5 +30,33 @@ export const LinkIcon = styled(Link)`
           fill: ${props.theme.tertiary_3};
         `}
     }
+  }
+`;
+
+export const DivIcon = styled.div`
+  ${mainStyleIcon}
+  ${mainStyleIconHover}
+`;
+
+export const LinkIcon = styled(Link)`
+  ${mainStyleIcon}
+`;
+
+export const ButtonIcon = styled.button`
+  ${mainStyleIcon}
+  ${mainStyleIconHover}
+  display: flex;
+  min-width: 4.2rem;
+  min-height: 4.2rem;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    ${props =>
+      props.secondary &&
+      css`
+        background-color: ${props.theme.tertiary_1};
+      `}
   }
 `;
