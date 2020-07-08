@@ -17,6 +17,7 @@ html{
 body {
    margin: 0;
    padding: 0;
+   min-height: 500vh;
    line-height: 1.2;
    font-size: 1.5rem;
    font-style: normal;

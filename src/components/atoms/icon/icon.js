@@ -10,6 +10,7 @@ import settings from '../../../layouts/settings/settings';
 
 // IMPORT SVG
 import Logo from '../../../assets/brand/logo.svg';
+import Down from '../../../assets/icon/down.svg';
 import Hamburger from '../../../assets/icon/hamburger.svg';
 import Notification from '../../../assets/icon/notification.svg';
 
@@ -40,6 +41,8 @@ const IconComponent = props => {
         return <Hamburger />;
       case 'notification':
         return <Notification />;
+      case 'down':
+        return <Down />;
       default:
         return 'Please name icon :)';
     }

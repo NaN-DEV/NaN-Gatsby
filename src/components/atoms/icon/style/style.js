@@ -28,6 +28,7 @@ const mainStyleIconHover = css`
         props.secondary &&
         css`
           fill: ${props.theme.tertiary_3};
+          stroke: ${props.theme.tertiary_3};
         `}
     }
   }

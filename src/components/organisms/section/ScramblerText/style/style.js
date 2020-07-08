@@ -3,12 +3,12 @@ import styled from 'styled-components';
 export const Section = styled.section`
   width: 100%;
   display: flex;
-  font-size: 2.4rem;
   flex-wrap: wrap;
+  font-weight: bold;
+  font-size: 2.4rem;
   position: relative;
   text-align: center;
   align-items: center;
-  font-weight: normal;
   color: #fff !important;
   background-color: #000;
   justify-content: center;
@@ -33,10 +33,11 @@ export const DivChildren = styled.div`
 export const DivArray = styled.div`
   bottom: 0;
   position: absolute;
-  animation-name: moja_animacja;
   animation-duration: 1.2s;
+  animation-name: ArrayAnimation;
   animation-iteration-count: infinite;
-  @keyframes moja_animacja {
+
+  @keyframes ArrayAnimation {
     0% {
       bottom: 1rem;
     }

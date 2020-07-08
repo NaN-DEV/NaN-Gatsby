@@ -19,8 +19,32 @@ class SectionTypingComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      height: 0,
       titleArray: [],
     };
+    this.scrollClickArray = this.scrollClickArray.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ height: window.innerHeight });
+  }
+
+  scrollClickArray() {
+    const { height } = this.state;
+    window.scrollTo({
+      top: height,
+      behavior: 'smooth',
+    });
   }
 
   render() {
@@ -42,7 +66,7 @@ class SectionTypingComponent extends React.Component {
             <Cycler duration={3000} strings={titleArray} />
             <DivChildren>{children}</DivChildren>
             <DivArray>
-              <Icon secondary />
+              <Icon secondary icon="down" type="button" onClick={this.scrollClickArray} />
             </DivArray>
           </Row>
         </Section>
