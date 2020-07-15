@@ -22,7 +22,7 @@ const settings = {
 
   // SETTINGS MAXWIDTH START
   max_width: '198rem',
-  max_width_half: '990px',
+  max_width_half: '99rem',
 
   // SETTINGS TIME ANIMATION
   animation: 'all 0.3s',

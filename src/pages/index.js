@@ -24,6 +24,8 @@ const IndexPage = ({ data }) => {
         </Section>
 
         {/* HERO SECCTION */}
+
+        <Section type="tsriangle" content={data.allDatoCmsHome.nodes[0].selectPortfolio} />
       </Layout>
     </>
   );
@@ -34,9 +36,29 @@ export const query = graphql`
   query {
     allDatoCmsHome {
       nodes {
+        id
         heroSectionTitle {
-          id
           title
+        }
+        selectPortfolio {
+          category {
+            id
+            slug
+            name
+          }
+          title
+          slug
+          imageSubstitute {
+            alt
+            title
+            url
+            fixed {
+              base64
+              tracedSVG
+              aspectRatio
+              sizes
+            }
+          }
         }
       }
     }

@@ -10,10 +10,20 @@ import settings from '../../../layouts/settings/settings';
 
 // CREATE NEW COMPONENT
 const RowComponent = props => {
-  const { children, newStyle, newClass } = props;
+  const { children, newStyle, newClass, half, mobile, tablet, desctop, left, right } = props;
   return (
     <>
-      <Row style={newStyle} className={newClass} theme={settings}>
+      <Row
+        half={half}
+        left={left}
+        right={right}
+        mobile={mobile}
+        tablet={tablet}
+        style={newStyle}
+        theme={settings}
+        desctop={desctop}
+        className={newClass}
+      >
         {children}
       </Row>
     </>
@@ -21,14 +31,26 @@ const RowComponent = props => {
 };
 
 RowComponent.propTypes = {
+  half: PropTypes.bool,
+  left: PropTypes.bool,
+  right: PropTypes.bool,
+  mobile: PropTypes.bool,
+  tablet: PropTypes.bool,
+  desctop: PropTypes.bool,
   newClass: PropTypes.string,
   children: PropTypes.node.isRequired,
   newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 RowComponent.defaultProps = {
+  half: false,
+  left: false,
+  right: false,
+  mobile: false,
+  tablet: false,
   newClass: null,
   newStyle: null,
+  desctop: false,
 };
 
 export default RowComponent;
