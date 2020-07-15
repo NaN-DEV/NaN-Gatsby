@@ -4,13 +4,14 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { Section, Article, Category, Title } from './style/style';
+import { Section, Article, Category, Title, BoxTop, BoxDown } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
 
 // IMPORT COMPONENT
 import Row from '../../../atoms/row/row';
+import Button from '../../../atoms/button/button';
 
 // CREATE NEW COMPONENT
 
@@ -32,42 +33,7 @@ class SectionTriangleComponent extends React.Component {
                 <>
                   <Article full secondary key={item.id} theme={settings}>
                     <Row>
-                      <Category>
-                        {item.category.map((category, i) => {
-                          if (item.category.length === i + 1) {
-                            return (
-                              <>
-                                <Link to={category.slug} key={category.id}>
-                                  {category.name}
-                                </Link>
-                              </>
-                            );
-                          }
-
-                          return (
-                            <>
-                              <Link to={category.slug} key={category.id}>
-                                {category.name} /
-                              </Link>
-                            </>
-                          );
-                        })}
-                      </Category>
-                      <Link to={item.slug} key={item.id}>
-                        <Title theme={settings}>{item.title}</Title>
-                      </Link>
-                    </Row>
-                  </Article>
-                </>
-              );
-            }
-
-            if (index % 2 === 0) {
-              if ((index + 1) % 3 === 0) {
-                return (
-                  <>
-                    <Article half right primary key={item.id} theme={settings}>
-                      <Row half left desctop>
+                      <BoxTop>
                         <Category>
                           {item.category.map((category, i) => {
                             if (item.category.length === i + 1) {
@@ -92,6 +58,63 @@ class SectionTriangleComponent extends React.Component {
                         <Link to={item.slug} key={item.id}>
                           <Title theme={settings}>{item.title}</Title>
                         </Link>
+                      </BoxTop>
+                      <BoxDown>
+                        <Button
+                          type="link"
+                          title="Więcej"
+                          color="primary"
+                          link={item.slug}
+                          newClass="button"
+                        />
+                      </BoxDown>
+                    </Row>
+                  </Article>
+                </>
+              );
+            }
+
+            if (index % 2 === 0) {
+              if ((index + 1) % 3 === 0) {
+                return (
+                  <>
+                    <Article half right primary key={item.id} theme={settings}>
+                      <Row half left desctop>
+                        <BoxTop>
+                          <Category>
+                            {item.category.map((category, i) => {
+                              if (item.category.length === i + 1) {
+                                return (
+                                  <>
+                                    <Link to={category.slug} key={category.id}>
+                                      {category.name}
+                                    </Link>
+                                  </>
+                                );
+                              }
+
+                              return (
+                                <>
+                                  <Link to={category.slug} key={category.id}>
+                                    {category.name} /
+                                  </Link>
+                                </>
+                              );
+                            })}
+                          </Category>
+                          <Link to={item.slug} key={item.id}>
+                            <Title theme={settings}>{item.title}</Title>
+                          </Link>
+                        </BoxTop>
+                        <BoxDown>
+                          <Button
+                            type="link"
+                            title="Więcej"
+                            color="secondary"
+                            link={item.slug}
+                            newClass="button"
+                          />
+                        </BoxDown>
                       </Row>
                     </Article>
                   </>
@@ -101,30 +124,41 @@ class SectionTriangleComponent extends React.Component {
                 <>
                   <Article half left primary key={item.id} theme={settings}>
                     <Row half right desctop>
-                      <Category>
-                        {item.category.map((category, i) => {
-                          if (item.category.length === i + 1) {
+                      <BoxTop>
+                        <Category>
+                          {item.category.map((category, i) => {
+                            if (item.category.length === i + 1) {
+                              return (
+                                <>
+                                  <Link to={category.slug} key={category.id}>
+                                    {category.name}
+                                  </Link>
+                                </>
+                              );
+                            }
+
                             return (
                               <>
                                 <Link to={category.slug} key={category.id}>
-                                  {category.name}
+                                  {category.name} /
                                 </Link>
                               </>
                             );
-                          }
-
-                          return (
-                            <>
-                              <Link to={category.slug} key={category.id}>
-                                {category.name} /
-                              </Link>
-                            </>
-                          );
-                        })}
-                      </Category>
-                      <Link to={item.slug} key={item.id}>
-                        <Title theme={settings}>{item.title}</Title>
-                      </Link>
+                          })}
+                        </Category>
+                        <Link to={item.slug} key={item.id}>
+                          <Title theme={settings}>{item.title}</Title>
+                        </Link>
+                      </BoxTop>
+                      <BoxDown>
+                        <Button
+                          type="link"
+                          title="Więcej"
+                          color="secondary"
+                          link={item.slug}
+                          newClass="button"
+                        />
+                      </BoxDown>
                     </Row>
                   </Article>
                 </>
@@ -136,6 +170,51 @@ class SectionTriangleComponent extends React.Component {
                 <>
                   <Article half left tertiary key={item.id} theme={settings}>
                     <Row half right desctop>
+                      <BoxTop>
+                        <Category>
+                          {item.category.map((category, i) => {
+                            if (item.category.length === i + 1) {
+                              return (
+                                <>
+                                  <Link to={category.slug} key={category.id}>
+                                    {category.name}
+                                  </Link>
+                                </>
+                              );
+                            }
+
+                            return (
+                              <>
+                                <Link to={category.slug} key={category.id}>
+                                  {category.name} /
+                                </Link>
+                              </>
+                            );
+                          })}
+                        </Category>
+                        <Link to={item.slug} key={item.id}>
+                          <Title theme={settings}>{item.title}</Title>
+                        </Link>
+                      </BoxTop>
+                      <BoxDown>
+                        <Button
+                          type="link"
+                          title="Więcej"
+                          color="primary"
+                          link={item.slug}
+                          newClass="button"
+                        />
+                      </BoxDown>
+                    </Row>
+                  </Article>
+                </>
+              );
+            }
+            return (
+              <>
+                <Article half right tertiary key={item.id} theme={settings}>
+                  <Row half left desctop>
+                    <BoxTop>
                       <Category>
                         {item.category.map((category, i) => {
                           if (item.category.length === i + 1) {
@@ -160,18 +239,8 @@ class SectionTriangleComponent extends React.Component {
                       <Link to={item.slug} key={item.id}>
                         <Title theme={settings}>{item.title}</Title>
                       </Link>
-                    </Row>
-                  </Article>
-                </>
-              );
-            }
-            return (
-              <>
-                <Article half right tertiary key={item.id} theme={settings}>
-                  <Row half left desctop>
-                    <Link to={item.slug} key={item.id}>
-                      <Title theme={settings}>{item.title}</Title>
-                    </Link>
+                    </BoxTop>
+                    <BoxDown />
                   </Row>
                 </Article>
               </>

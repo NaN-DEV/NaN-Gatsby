@@ -25,6 +25,7 @@ const Row = styled.div`
       props.left &&
       css`
         @media (min-width: ${props.theme.breakpoint_desktop}) {
+          width: auto;
           margin-left: ${props.theme.break};
           max-width: ${props.theme.max_width_half};
         }
@@ -36,6 +37,7 @@ const Row = styled.div`
         props.right &&
         css`
           @media (min-width: ${props.theme.breakpoint_tablet}) {
+            width: auto;
             margin-right: ${props.theme.break};
             max-width: ${props.theme.max_width_half};
           }
@@ -47,6 +49,7 @@ const Row = styled.div`
           props.left &&
           css`
             @media (min-width: ${props.theme.breakpoint_tablet}) {
+              width: auto;
               margin-left: ${props.theme.break};
               max-width: ${props.theme.max_width_half};
             }
@@ -58,6 +61,7 @@ const Row = styled.div`
             props.right &&
             css`
               @media (min-width: ${props.theme.breakpoint_mobile}) {
+                width: auto;
                 margin-right: ${props.theme.break};
                 max-width: ${props.theme.max_width_half};
               }
@@ -69,6 +73,7 @@ const Row = styled.div`
               props.left &&
               css`
                 @media (min-width: ${props.theme.breakpoint_mobile}) {
+                  width: auto;
                   margin-left: ${props.theme.break};
                   max-width: ${props.theme.max_width_half};
                 }

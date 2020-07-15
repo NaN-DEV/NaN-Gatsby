@@ -11,14 +11,20 @@ import settings from '../../../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const ButtonComponent = props => {
-  const { type, title, color, newClass, newStyle } = props;
+  const { type, title, color, newClass, newStyle, link } = props;
 
   const selectTypeButton = wrap => {
     switch (wrap) {
       case 'link':
         return (
           <>
-            <ButtonLink color={color} theme={settings} style={newStyle} className={newClass}>
+            <ButtonLink
+              color={color}
+              theme={settings}
+              style={newStyle}
+              className={newClass}
+              to={link}
+            >
               {title}
             </ButtonLink>
           </>
@@ -51,6 +57,7 @@ const ButtonComponent = props => {
 };
 // PropTpyes
 ButtonComponent.propTypes = {
+  link: PropTypes.string,
   title: PropTypes.string,
   color: PropTypes.string,
   newClass: PropTypes.string,
@@ -58,6 +65,7 @@ ButtonComponent.propTypes = {
 };
 
 ButtonComponent.defaultProps = {
+  link: null,
   newClass: null,
   newStyle: null,
   color: 'primary',

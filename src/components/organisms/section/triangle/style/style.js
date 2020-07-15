@@ -72,3 +72,26 @@ export const Category = styled.div`
     font-weight: normal;
   }
 `;
+
+const box = css`
+  flex: 100%;
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: calc(50vh - 1.5rem);
+`;
+
+export const BoxTop = styled.div`
+  ${box}
+  align-items:flex-start;
+  justify-content: flex-start;
+`;
+export const BoxDown = styled.div`
+  ${box}
+  align-items:flex-start;
+  justify-content: flex-end;
+  .button {
+    margin-left: auto;
+  }
+`;
