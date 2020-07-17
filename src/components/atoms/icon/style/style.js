@@ -4,15 +4,33 @@ import { Link } from 'gatsby';
 const mainStyleIcon = css`
   display: block;
   position: relative;
-  ${props =>
-    props.secondary &&
-    css`
-      color: ${props.theme.secondary};
-    `}
 
   svg {
     display: block;
-    height: ${props => (props.height ? `${props.height}rem` : `2.4rem`)};
+
+    ${props =>
+      props.height
+        ? css`
+            height: ${props.height}rem;
+          `
+        : css`
+            height: 2.4rem;
+          `}
+
+          ${props =>
+            props.icon === 'triangle' &&
+            css`
+              width: 35vw;
+              height: auto;
+              max-width: 60rem;
+            `}
+
+      ${props =>
+        props.turn &&
+        css`
+          transform: rotate(180deg);
+        `}
+
     ${props =>
       props.secondary &&
       css`
@@ -36,7 +54,6 @@ const mainStyleIconHover = css`
 
 export const DivIcon = styled.div`
   ${mainStyleIcon}
-  ${mainStyleIconHover}
 `;
 
 export const LinkIcon = styled(Link)`

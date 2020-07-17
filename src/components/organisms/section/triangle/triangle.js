@@ -4,13 +4,14 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { Section, Article, Category, Title, BoxTop, BoxDown } from './style/style';
+import { Title, BoxTop, BoxDown, Section, Article, Category } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
 
 // IMPORT COMPONENT
 import Row from '../../../atoms/row/row';
+import Icon from '../../../atoms/icon/icon';
 import Button from '../../../atoms/button/button';
 
 // CREATE NEW COMPONENT
@@ -18,236 +19,122 @@ import Button from '../../../atoms/button/button';
 class SectionTriangleComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.ArticleDisplay = this.ArticleDisplay.bind(this);
+    this.ArticleContent = this.ArticleContent.bind(this);
   }
+
+  ArticleContent = (title, slug, category) => (
+    <>
+      <Category>
+        {category.map((item, i) => {
+          if (category.length === i + 1) {
+            return (
+              <Link to={item.slug} key={item.id}>
+                {item.name}
+              </Link>
+            );
+          }
+
+          return (
+            <Link to={item.slug} key={item.id}>
+              {item.name} /
+            </Link>
+          );
+        })}
+      </Category>
+      <Link to={slug}>
+        <Title theme={settings}>{title}</Title>
+      </Link>
+    </>
+  );
+
+  ArticleDisplay = (type, direction, color, content) => {
+    return (
+      <Article
+        theme={settings}
+        key={content.id}
+        full={type === 'full' ? true : null}
+        half={type === 'half' ? true : null}
+        primary={color === 'primary' ? true : null}
+        tertiary={color === 'tertiary' ? true : null}
+        secondary={color === 'secondary' ? true : null}
+      >
+        <Row
+          half={type === 'half' ? true : null}
+          desctop={type === 'half' ? true : null}
+          left={direction === 'left' ? null : true}
+          right={direction === 'right' ? null : true}
+        >
+          <BoxTop theme={settings}>
+            {direction === 'right' ? (
+              <>
+                <Icon
+                  turn
+                  icon="triangle"
+                  title={content.title}
+                  newClass="top triangle"
+                  tertiary={color === 'primary' ? true : null}
+                  primary={color === 'secondary' ? true : null}
+                  secondary={color === 'primary' ? true : null}
+                />
+              </>
+            ) : (
+              <>{this.ArticleContent(content.title, content.slug, content.category)}</>
+            )}
+          </BoxTop>
+          <BoxDown theme={settings}>
+            {direction === 'right' ? (
+              <>{this.ArticleContent(content.title, content.slug, content.category)}</>
+            ) : (
+              <>
+                <Icon
+                  icon="triangle"
+                  title={content.title}
+                  newClass="botom triangle"
+                  tertiary={color === 'primary' ? true : null}
+                  primary={color === 'secondary' ? true : null}
+                  secondary={color === 'primary' ? true : null}
+                />
+              </>
+            )}
+
+            <Button
+              type="link"
+              title="Więcej"
+              newClass="button"
+              link={content.slug}
+              color={color === 'primary' ? 'secondary' : 'primary'}
+            />
+          </BoxDown>
+        </Row>
+      </Article>
+    );
+  };
 
   render() {
     const { content, newClass, newStyle, color } = this.props;
 
     return (
-      <>
-        <Section color={color} theme={settings} newStyle={newStyle} className={newClass}>
-          {content.map((item, index) => {
-            if (index % 3 === 0 || index === 0) {
-              return (
-                <>
-                  <Article full secondary key={item.id} theme={settings}>
-                    <Row>
-                      <BoxTop>
-                        <Category>
-                          {item.category.map((category, i) => {
-                            if (item.category.length === i + 1) {
-                              return (
-                                <>
-                                  <Link to={category.slug} key={category.id}>
-                                    {category.name}
-                                  </Link>
-                                </>
-                              );
-                            }
+      <Section color={color} theme={settings} newStyle={newStyle} className={newClass}>
+        {content.map((item, index) => {
+          if (index % 3 === 0 || index === 0) {
+            return this.ArticleDisplay('full', null, 'secondary', item);
+          }
 
-                            return (
-                              <>
-                                <Link to={category.slug} key={category.id}>
-                                  {category.name} /
-                                </Link>
-                              </>
-                            );
-                          })}
-                        </Category>
-                        <Link to={item.slug} key={item.id}>
-                          <Title theme={settings}>{item.title}</Title>
-                        </Link>
-                      </BoxTop>
-                      <BoxDown>
-                        <Button
-                          type="link"
-                          title="Więcej"
-                          color="primary"
-                          link={item.slug}
-                          newClass="button"
-                        />
-                      </BoxDown>
-                    </Row>
-                  </Article>
-                </>
-              );
+          if (index % 2 === 0) {
+            if ((index + 1) % 3 === 0) {
+              return this.ArticleDisplay('half', 'right', 'primary', item);
             }
+            return this.ArticleDisplay('half', 'left', 'primary', item);
+          }
 
-            if (index % 2 === 0) {
-              if ((index + 1) % 3 === 0) {
-                return (
-                  <>
-                    <Article half right primary key={item.id} theme={settings}>
-                      <Row half left desctop>
-                        <BoxTop>
-                          <Category>
-                            {item.category.map((category, i) => {
-                              if (item.category.length === i + 1) {
-                                return (
-                                  <>
-                                    <Link to={category.slug} key={category.id}>
-                                      {category.name}
-                                    </Link>
-                                  </>
-                                );
-                              }
+          if ((index - 1) % 3 === 0) {
+            return this.ArticleDisplay('half', 'left', 'tertiary', item);
+          }
 
-                              return (
-                                <>
-                                  <Link to={category.slug} key={category.id}>
-                                    {category.name} /
-                                  </Link>
-                                </>
-                              );
-                            })}
-                          </Category>
-                          <Link to={item.slug} key={item.id}>
-                            <Title theme={settings}>{item.title}</Title>
-                          </Link>
-                        </BoxTop>
-                        <BoxDown>
-                          <Button
-                            type="link"
-                            title="Więcej"
-                            color="secondary"
-                            link={item.slug}
-                            newClass="button"
-                          />
-                        </BoxDown>
-                      </Row>
-                    </Article>
-                  </>
-                );
-              }
-              return (
-                <>
-                  <Article half left primary key={item.id} theme={settings}>
-                    <Row half right desctop>
-                      <BoxTop>
-                        <Category>
-                          {item.category.map((category, i) => {
-                            if (item.category.length === i + 1) {
-                              return (
-                                <>
-                                  <Link to={category.slug} key={category.id}>
-                                    {category.name}
-                                  </Link>
-                                </>
-                              );
-                            }
-
-                            return (
-                              <>
-                                <Link to={category.slug} key={category.id}>
-                                  {category.name} /
-                                </Link>
-                              </>
-                            );
-                          })}
-                        </Category>
-                        <Link to={item.slug} key={item.id}>
-                          <Title theme={settings}>{item.title}</Title>
-                        </Link>
-                      </BoxTop>
-                      <BoxDown>
-                        <Button
-                          type="link"
-                          title="Więcej"
-                          color="secondary"
-                          link={item.slug}
-                          newClass="button"
-                        />
-                      </BoxDown>
-                    </Row>
-                  </Article>
-                </>
-              );
-            }
-
-            if ((index - 1) % 3 === 0) {
-              return (
-                <>
-                  <Article half left tertiary key={item.id} theme={settings}>
-                    <Row half right desctop>
-                      <BoxTop>
-                        <Category>
-                          {item.category.map((category, i) => {
-                            if (item.category.length === i + 1) {
-                              return (
-                                <>
-                                  <Link to={category.slug} key={category.id}>
-                                    {category.name}
-                                  </Link>
-                                </>
-                              );
-                            }
-
-                            return (
-                              <>
-                                <Link to={category.slug} key={category.id}>
-                                  {category.name} /
-                                </Link>
-                              </>
-                            );
-                          })}
-                        </Category>
-                        <Link to={item.slug} key={item.id}>
-                          <Title theme={settings}>{item.title}</Title>
-                        </Link>
-                      </BoxTop>
-                      <BoxDown>
-                        <Button
-                          type="link"
-                          title="Więcej"
-                          color="primary"
-                          link={item.slug}
-                          newClass="button"
-                        />
-                      </BoxDown>
-                    </Row>
-                  </Article>
-                </>
-              );
-            }
-            return (
-              <>
-                <Article half right tertiary key={item.id} theme={settings}>
-                  <Row half left desctop>
-                    <BoxTop>
-                      <Category>
-                        {item.category.map((category, i) => {
-                          if (item.category.length === i + 1) {
-                            return (
-                              <>
-                                <Link to={category.slug} key={category.id}>
-                                  {category.name}
-                                </Link>
-                              </>
-                            );
-                          }
-
-                          return (
-                            <>
-                              <Link to={category.slug} key={category.id}>
-                                {category.name} /
-                              </Link>
-                            </>
-                          );
-                        })}
-                      </Category>
-                      <Link to={item.slug} key={item.id}>
-                        <Title theme={settings}>{item.title}</Title>
-                      </Link>
-                    </BoxTop>
-                    <BoxDown />
-                  </Row>
-                </Article>
-              </>
-            );
-          })}
-        </Section>
-      </>
+          return this.ArticleDisplay('half', 'right', 'tertiary', item);
+        })}
+      </Section>
     );
   }
 }

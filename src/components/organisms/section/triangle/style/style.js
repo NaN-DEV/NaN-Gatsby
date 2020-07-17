@@ -11,49 +11,58 @@ export const Section = styled.section`
 export const Article = styled.article`
 width: 100%;
 min-height:100vh;
-/* COLOR SELECT */
+
+/* COLOR SELECT PRIMARY */
 ${props =>
-  props.primary &&
-  css`
-    a {
-      color: ${props.theme.secondary};
-      &:hover {
-        color: ${props.theme.tertiary_3};
-      }
-    }
-    color: ${props.theme.secondary};
-    background-color: ${props.theme.primary};
-  `}
+  props.primary
+    ? css`
+        color: ${props.theme.secondary};
+        background-color: ${props.theme.primary};
+        a {
+          color: ${props.theme.secondary};
+          &:hover {
+            color: ${props.theme.tertiary_3};
+          }
+        }
+      `
+    : null}
+
+/* COLOR SELECT SECONDARY */
 ${props =>
-  props.tertiary &&
-  css`
-    a {
-      color: ${props.theme.primary};
-      &:hover {
-        color: ${props.theme.tertiary_2};
-      }
-    }
-    color: ${props.theme.primary};
-    background-color: ${props.theme.tertiary_4};
-  `}
+  props.secondary
+    ? css`
+        color: ${props.theme.primary};
+        background-color: ${props.theme.secondary};
+        a {
+          color: ${props.theme.primary};
+          &:hover {
+            color: ${props.theme.tertiary_2};
+          }
+        }
+      `
+    : null}
+
+/* COLOR SELECT TERTIARY */
 ${props =>
-  props.secondary &&
-  css`
-    a {
-      color: ${props.theme.primary};
-      &:hover {
-        color: ${props.theme.tertiary_2};
-      }
-    }
-    color: ${props.theme.primary};
-    background-color: ${props.theme.secondary};
-  `}
+  props.tertiary
+    ? css`
+        color: ${props.theme.primary};
+        background-color: ${props.theme.tertiary_4};
+        a {
+          color: ${props.theme.primary};
+          &:hover {
+            color: ${props.theme.tertiary_2};
+          }
+        }
+      `
+    : null}
+
   @media (min-width: ${props => props.theme.breakpoint_desktop}) {
-${props =>
-  props.half &&
-  css`
-    width: 50%;
-  `}
+     ${props =>
+       props.half &&
+       css`
+         width: 50%;
+       `}
   }
 `;
 
@@ -61,6 +70,7 @@ export const Title = styled.h1`
   display: block;
   font-size: 30px;
   text-align: left;
+  margin-bottom: ${props => props.theme.break};
   max-width: ${props => props.theme.max_width_half};
 `;
 
@@ -77,9 +87,25 @@ const box = css`
   flex: 100%;
   display: flex;
   max-width: 100%;
-  flex-wrap: wrap;
+  min-height: 25rem;
+  flex-wrap: nowrap;
+  position: relative;
   flex-direction: column;
-  min-height: calc(50vh - 1.5rem);
+  height: calc(50vh - 1.5rem);
+
+  .top {
+    top: 0;
+    right: 0;
+  }
+
+  .bottom {
+    left: 0;
+    bottom: 0;
+  }
+
+  .triangle {
+    position: absolute;
+  }
 `;
 
 export const BoxTop = styled.div`
@@ -93,5 +119,7 @@ export const BoxDown = styled.div`
   justify-content: flex-end;
   .button {
     margin-left: auto;
+    margin-right: 2px;
+    margin-bottom: 2px;
   }
 `;

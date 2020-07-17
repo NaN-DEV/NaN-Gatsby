@@ -9,8 +9,9 @@ import { DivIcon, LinkIcon, ButtonIcon } from './style/style';
 import settings from '../../../layouts/settings/settings';
 
 // IMPORT SVG
-import Logo from '../../../assets/brand/logo.svg';
 import Down from '../../../assets/icon/down.svg';
+import Logo from '../../../assets/brand/logo.svg';
+import Triangle from '../../../assets/icon/triangle.svg';
 import Hamburger from '../../../assets/icon/hamburger.svg';
 import Notification from '../../../assets/icon/notification.svg';
 
@@ -20,6 +21,7 @@ import Notification from '../../../assets/icon/notification.svg';
 
 const IconComponent = props => {
   const {
+    turn,
     link,
     icon,
     type,
@@ -36,13 +38,15 @@ const IconComponent = props => {
   const renderSwitchIcon = name => {
     switch (name) {
       case 'logo':
-        return <Logo />;
+        return <Logo height={height} />;
       case 'hamburger':
-        return <Hamburger />;
+        return <Hamburger height={height} />;
       case 'notification':
-        return <Notification />;
+        return <Notification height={height} />;
       case 'down':
-        return <Down />;
+        return <Down height={height} />;
+      case 'triangle':
+        return <Triangle height={height} />;
       default:
         return 'Please name icon :)';
     }
@@ -56,6 +60,7 @@ const IconComponent = props => {
         return (
           <LinkIcon
             to={link}
+            turn={turn}
             title={title}
             height={height}
             style={newStyle}
@@ -71,6 +76,7 @@ const IconComponent = props => {
         return (
           <ButtonIcon
             to={link}
+            turn={turn}
             title={title}
             height={height}
             style={newStyle}
@@ -86,6 +92,8 @@ const IconComponent = props => {
       default:
         return (
           <DivIcon
+            icon={icon}
+            turn={turn}
             title={title}
             height={height}
             style={newStyle}
@@ -105,6 +113,7 @@ const IconComponent = props => {
 
 // PropTpyes
 IconComponent.propTypes = {
+  turn: PropTypes.bool,
   type: PropTypes.string,
   icon: PropTypes.string,
   link: PropTypes.string,
@@ -118,6 +127,7 @@ IconComponent.propTypes = {
 };
 
 IconComponent.defaultProps = {
+  turn: null,
   type: null,
   icon: 'logo',
   light: false,

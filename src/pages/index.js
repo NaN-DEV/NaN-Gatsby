@@ -20,7 +20,7 @@ const IndexPage = ({ data }) => {
           type="scrambler"
           title={data.allDatoCmsHome.nodes[0].heroSectionTitle}
         >
-          <Button color="tertiary_1" title="Wyceń Mój projekt" />
+          <Button color="tertiary_1" title="Wyceń projekt" />
         </Section>
 
         {/* HERO SECCTION */}
@@ -41,6 +41,7 @@ export const query = graphql`
           title
         }
         selectPortfolio {
+          id
           category {
             id
             slug
@@ -53,10 +54,7 @@ export const query = graphql`
             title
             url
             fixed {
-              base64
-              tracedSVG
-              aspectRatio
-              sizes
+              ...GatsbyDatoCmsFixed
             }
           }
         }

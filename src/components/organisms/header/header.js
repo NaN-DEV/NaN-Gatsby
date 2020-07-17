@@ -23,9 +23,9 @@ const HeaderComponent = () => {
           <Icon
             link="/"
             secondary
-            height={4}
             type="link"
             icon="logo"
+            height={4}
             newClass="logo"
             title="NAN SOFTWARE HOUSE"
           />
