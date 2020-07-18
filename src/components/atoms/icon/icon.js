@@ -48,7 +48,7 @@ const IconComponent = props => {
       case 'triangle':
         return <Triangle height={height} />;
       default:
-        return 'Please name icon :)';
+        return 'Please name icon :) ';
     }
   };
 
