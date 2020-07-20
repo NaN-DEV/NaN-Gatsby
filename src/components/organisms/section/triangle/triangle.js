@@ -1,10 +1,11 @@
 // IMPORT PLUGIN
 import React from 'react';
 import { Link } from 'gatsby';
+
 import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { Title, BoxTop, BoxDown, Section, Article, Category } from './style/style';
+import { Title, Image, BoxTop, BoxDown, Section, Article, Category } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
@@ -77,6 +78,8 @@ class SectionTriangleComponent extends React.Component {
                   primary={color === 'secondary' ? true : null}
                   secondary={color === 'primary' ? true : null}
                 />
+
+                <Image fluid={content.imageSubstitute.fixed} top />
               </>
             ) : (
               <>{this.ArticleContent(content.title, content.slug, content.category)}</>
@@ -95,6 +98,7 @@ class SectionTriangleComponent extends React.Component {
                   primary={color === 'secondary' ? true : null}
                   secondary={color === 'primary' ? true : null}
                 />
+                <Image fluid={content.imageSubstitute.fixed} bottom />
               </>
             )}
 

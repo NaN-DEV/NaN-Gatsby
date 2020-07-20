@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import GatsbyImage from 'gatsby-image';
 
 export const Section = styled.section`
   margin: 0;
@@ -104,6 +105,7 @@ const box = css`
   }
 
   .triangle {
+    z-index: 10;
     position: absolute;
   }
 `;
@@ -115,6 +117,7 @@ export const BoxTop = styled.div`
 `;
 export const BoxDown = styled.div`
   ${box}
+
   align-items:flex-start;
   justify-content: flex-end;
   .button {
@@ -122,4 +125,24 @@ export const BoxDown = styled.div`
     margin-right: 2px;
     margin-bottom: 2px;
   }
+`;
+
+export const Image = styled(GatsbyImage)`
+  ${props =>
+    props.top
+      ? css`
+          top: 0;
+          right: 0;
+          transform: rotate(180deg);
+        `
+      : css`
+          left: 0;
+          bottom: 0;
+        `}
+
+  z-index: 0;
+  width: 100%;
+  display: block;
+  max-width: 60rem;
+  position: absolute !important;
 `;
