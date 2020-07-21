@@ -79,7 +79,7 @@ class SectionTriangleComponent extends React.Component {
                   secondary={color === 'primary' ? true : null}
                 />
 
-                <Image fluid={content.imageSubstitute.fixed} top />
+                <Image fixed={content.imageSubstitute.fixed} top />
               </>
             ) : (
               <>{this.ArticleContent(content.title, content.slug, content.category)}</>
@@ -98,7 +98,7 @@ class SectionTriangleComponent extends React.Component {
                   primary={color === 'secondary' ? true : null}
                   secondary={color === 'primary' ? true : null}
                 />
-                <Image fluid={content.imageSubstitute.fixed} bottom />
+                <Image fixed={content.imageSubstitute.fixed} bottom />
               </>
             )}
 
