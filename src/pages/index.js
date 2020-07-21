@@ -23,9 +23,13 @@ const IndexPage = ({ data }) => {
           <Button color="tertiary_1" title="Wyceń projekt" />
         </Section>
 
-        {/* HERO SECCTION */}
+        {/* SECCTION TRIANGLE */}
 
-        <Section type="tsriangle" content={data.allDatoCmsHome.nodes[0].selectPortfolio} />
+        <Section type="triangle" content={data.allDatoCmsHome.nodes[0].selectPortfolio} />
+
+        {/* HERO SELL */}
+
+        <Section type="sell" content={data.allDatoCmsHome.nodes[0].selectPortfolio} />
       </Layout>
     </>
   );
@@ -53,8 +57,8 @@ export const query = graphql`
             alt
             title
             url
-            fixed {
-              ...GatsbyDatoCmsFixed
+            fluid {
+              ...GatsbyDatoCmsFluid
             }
           }
         }

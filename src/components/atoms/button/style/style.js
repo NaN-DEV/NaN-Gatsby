@@ -71,7 +71,7 @@ const styleAllButton = css`
           box-shadow: ${props.theme.tertiary_2} ${props.theme.border} ${props.theme.border} 0 !important;
           &:hover {
             color: ${props.theme.secondary} !important;
-            background-color: ${props.theme.tertiary_1} !important;
+            background-color: ${props.theme.tertiary_3} !important;
           }
         `;
     }

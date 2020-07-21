@@ -8,6 +8,7 @@ const Row = styled.div`
   padding: ${props => props.theme.break};
   max-width: ${props => props.theme.max_width};
 
+
   ${props =>
     props.half &&
     props.desctop &&

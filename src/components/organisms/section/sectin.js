@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // IMPORT COMPONENT
+import Sell from './sell/sell';
 import Triangle from './triangle/triangle';
 import Scrambler from './ScramblerText/ScramblerText';
 import settings from '../../../layouts/settings/settings';
@@ -22,7 +23,6 @@ const SectionComponent = props => {
               size={size}
               color={color}
               title={title}
-              theme={settings}
               newClass={newClass}
               newStyle={newStyle}
             >
@@ -30,18 +30,23 @@ const SectionComponent = props => {
             </Scrambler>
           </>
         );
-      case 'tsriangle':
+      case 'triangle':
         return (
           <>
             <Triangle
               size={size}
               color={color}
               title={title}
-              theme={settings}
               content={content}
               newClass={newClass}
               newStyle={newStyle}
             />
+          </>
+        );
+      case 'sell':
+        return (
+          <>
+            <Sell theme={settings} newClass={newClass} newStyle={newStyle} />
           </>
         );
       default:

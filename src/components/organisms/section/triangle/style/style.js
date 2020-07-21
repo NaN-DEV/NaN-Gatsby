@@ -69,10 +69,13 @@ ${props =>
 
 export const Title = styled.h1`
   display: block;
-  font-size: 30px;
   text-align: left;
+  font-size: 1.5rem;
   margin-bottom: ${props => props.theme.break};
   max-width: ${props => props.theme.max_width_half};
+  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+    font-size: 3rem;
+  }
 `;
 
 export const Category = styled.div`
