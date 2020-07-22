@@ -54,7 +54,6 @@ span{
 }
 
 a {
-   font-weight: bold;
    text-decoration: none;
    color: ${props => props.theme.primary};
    transition: ${props => props.theme.animation};

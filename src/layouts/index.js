@@ -9,6 +9,7 @@ import GlobalStyle from './style/style';
 
 // IMPORT COMPONENT
 import Header from '../components/organisms/header/header';
+import Footer from '../components/organisms/footer/footer';
 
 // CREATE NEW COMPONENT
 const Root = props => {
@@ -16,8 +17,9 @@ const Root = props => {
   return (
     <>
       <GlobalStyle theme={settings} />
-      <Header newStyle={{ height: '300px' }} />
+      <Header />
       {children}
+      <Footer />
     </>
   );
 };
