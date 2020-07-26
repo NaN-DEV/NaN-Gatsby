@@ -15,36 +15,67 @@ import Input from '../../atoms/input/input';
 import Form from '../../molecules/form/form';
 
 // CREATE NEW COMPONENT
-const HeaderComponent = () => {
-  return (
-    <>
-      <Modal key="main-menu" />
-      <Header theme={settings}>
-        <Row newClass="row">
-          {/* ############## LOGO ############## */}
-          <Icon
-            link="/"
-            secondary
-            type="link"
-            icon="logo"
-            height={4}
-            newClass="logo"
-            title="NAN SOFTWARE HOUSE"
-          />
+class HeaderComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isModalOpen: false,
+    };
 
-          {/* ########### FROM SEARCH ########## */}
-          <Form newClass="search">
-            <Input type="search" secondary placeholder="Szukaj..." width={30} />
-          </Form>
+    this.openModal = this.openModal.bind(this);
+    this.clouseModal = this.clouseModal.bind(this);
+  }
 
-          {/* ########## Button icon ########### */}
-          <Icon secondary type="button" icon="hamburger" title="OPEN MENU" />
-        </Row>
-      </Header>
-      <HeaderStopBox />
-    </>
-  );
-};
+  openModal = () => {
+    this.setState({
+      isModalOpen: true,
+    });
+  };
+
+  clouseModal = () => {
+    this.setState({
+      isModalOpen: false,
+    });
+  };
+
+  render() {
+    const { isModalOpen } = this.state;
+    return (
+      <>
+        {isModalOpen && <Modal key="main-menu" closed={this.clouseModal} />}
+        <Header theme={settings}>
+          <Row newClass="row">
+            {/* ############## LOGO ############## */}
+            <Icon
+              link="/"
+              secondary
+              height={4}
+              type="link"
+              icon="logo"
+              newClass="logo"
+              title="NAN SOFTWARE HOUSE"
+            />
+
+            {/* ########### FROM SEARCH ########## */}
+            <Form newClass="search">
+              <Input secondary width={30} type="search" placeholder="Szukaj..." />
+            </Form>
+
+            {/* ########## Button icon ########### */}
+            <Icon
+              secondary
+              type="button"
+              icon="hamburger"
+              title="OPEN MENU"
+              onClick={this.openModal}
+            />
+          </Row>
+        </Header>
+        <HeaderStopBox />
+      </>
+    );
+  }
+}
 
 // EXPORT NEW COMPONENT
 export default HeaderComponent;

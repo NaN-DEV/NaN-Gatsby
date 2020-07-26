@@ -31,6 +31,7 @@ class ModalMenuComponent extends React.Component {
   }
 
   render() {
+    const { closed } = this.props;
     return (
       <StaticQuery
         query={graphql`
@@ -76,8 +77,9 @@ class ModalMenuComponent extends React.Component {
                       secondary
                       type="button"
                       icon="closed"
-                      title="closed menu"
+                      onClick={closed}
                       newClass="closed"
+                      title="closed menu"
                     />
                   </Row>
                 </Header>

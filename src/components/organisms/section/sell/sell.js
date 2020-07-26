@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Cycler } from 'react-text-scrambler';
 
 // IMPORT STYLE
-import { Section, Title } from './style/style';
+import { Section, BoxContent, Title } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
@@ -24,10 +24,18 @@ const SectionSellComponent = props => {
     <>
       <Section theme={settings} newStyle={newStyle} className={newClass}>
         <Row newClass="row" center>
-          <Title theme={settings}>
-            <Cycler duration={3000} strings={strings} />
-          </Title>
-          <Button link="/" type="link" color="secondary" newClass="button" title="Wyceń projekt" />
+          <BoxContent>
+            <Title theme={settings}>
+              <Cycler duration={3000} strings={strings} />
+            </Title>
+            <Button
+              link="/"
+              type="link"
+              color="secondary"
+              newClass="button"
+              title="Wyceń projekt"
+            />
+          </BoxContent>
           <Mascot newClass="mascot" theme={settings} />
           <Icon secondary icon="triangle" newClass="triangle" />
         </Row>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Cycler } from 'react-text-scrambler';
 
 // IMPORT STYLE
-import { Section, DivChildren, DivArray } from './style/style';
+import { Section, DivChildren, DivArray, BoxContent } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
@@ -63,8 +63,10 @@ class SectionTypingComponent extends React.Component {
           className={newClass}
         >
           <Row newClass="row">
-            <Cycler duration={3000} strings={titleArray} />
-            <DivChildren>{children}</DivChildren>
+            <BoxContent>
+              <Cycler duration={3000} strings={titleArray} />
+              <DivChildren>{children}</DivChildren>
+            </BoxContent>
             <DivArray>
               <Icon secondary icon="down" type="button" onClick={this.scrollClickArray} />
             </DivArray>

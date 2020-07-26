@@ -5,6 +5,7 @@ const Row = styled.div`
   display: flex;
   margin: 0 auto;
   flex-wrap: wrap;
+  position: relative;
   padding: ${props => props.theme.break};
   max-width: ${props => props.theme.max_width};
 

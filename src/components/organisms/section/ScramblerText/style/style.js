@@ -2,13 +2,11 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   font-weight: bold;
   font-size: 2.4rem;
   position: relative;
   text-align: center;
-  align-items: center;
   color: #fff !important;
   background-color: #000;
   justify-content: center;
@@ -16,6 +14,8 @@ export const Section = styled.section`
   font-family: ${props => props.theme.font_secondary};
 
   .row {
+    min-height: 100%;
+    align-items: center;
     justify-content: center;
   }
   @media (min-width: ${props => props.theme.breakpoint_mobile}) {
@@ -31,7 +31,7 @@ export const DivChildren = styled.div`
 `;
 
 export const DivArray = styled.div`
-  bottom: 0;
+  bottom: 0rem;
   position: absolute;
   animation-duration: 1.2s;
   animation-name: ArrayAnimation;
@@ -48,4 +48,12 @@ export const DivArray = styled.div`
       bottom: 1rem;
     }
   }
+`;
+
+export const BoxContent = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: center;
 `;
