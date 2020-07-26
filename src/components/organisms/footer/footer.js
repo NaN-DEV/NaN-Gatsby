@@ -30,7 +30,7 @@ const HeaderComponent = () => {
           <Copyright theme={settings}>Copyright 2016-2020</Copyright>
           <Ul theme={settings}>
             <Li theme={settings}>
-              <Link to="/">#Polityka Prywatności</Link>
+              <Link to="/">#Polityka</Link>
             </Li>
             <Li theme={settings}>
               <Link to="/">#Regulamin</Link>

@@ -21,6 +21,7 @@ export const Footer = styled.footer`
     .logo {
       margin: 0;
     }
+
     .row {
       padding: 0 ${props => props.theme.break};
     }

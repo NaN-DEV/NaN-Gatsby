@@ -9,8 +9,9 @@ export const Header = styled.header`
   top: 0;
   left: 0;
   ${cssHeader}
-  z-index: 9999;
+  z-index: 999;
   display: flex;
+
   background: black;
   position: absolute;
   .row {

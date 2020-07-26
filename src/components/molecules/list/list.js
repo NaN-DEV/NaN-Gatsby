@@ -9,15 +9,23 @@ import Vertical from './verical/verical';
 // CREATE NEW COMPONENT
 
 const ListComponent = props => {
-  const { type, color, content, newClass, newStyle } = props;
+  const { type, breakpoint, children, newClass, newStyle } = props;
 
   // SELECT LIST
-  const renderSwitchList = name => {
-    switch (name) {
+  const renderSwitchList = selectType => {
+    switch (selectType) {
       case 'level':
-        return <Level color={color} content={content} newClass={newClass} newStyle={newStyle} />;
+        return (
+          <Level newClass={newClass} newStyle={newStyle} breakpoint={breakpoint}>
+            {children}
+          </Level>
+        );
       case 'vertical':
-        return <Vertical color={color} content={content} newClass={newClass} newStyle={newStyle} />;
+        return (
+          <Vertical newClass={newClass} newStyle={newStyle}>
+            {children}
+          </Vertical>
+        );
       default:
         return 'Please add type list :) ';
     }
@@ -29,16 +37,16 @@ const ListComponent = props => {
 // PropTpyes
 ListComponent.propTypes = {
   type: PropTypes.string,
-  color: PropTypes.string,
   newClass: PropTypes.string,
+  breakpoint: PropTypes.string,
   newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
 };
 
 ListComponent.defaultProps = {
   type: null,
   newClass: null,
   newStyle: null,
+  breakpoint: null,
 };
 
 export default ListComponent;

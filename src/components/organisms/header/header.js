@@ -8,6 +8,7 @@ import settings from '../../../layouts/settings/settings';
 import { Header, HeaderStopBox } from './style/style';
 
 // IMPORT COMPONENT
+import Modal from '../modal/modal';
 import Row from '../../atoms/row/row';
 import Icon from '../../atoms/icon/icon';
 import Input from '../../atoms/input/input';
@@ -17,6 +18,7 @@ import Form from '../../molecules/form/form';
 const HeaderComponent = () => {
   return (
     <>
+      <Modal key="main-menu" />
       <Header theme={settings}>
         <Row newClass="row">
           {/* ############## LOGO ############## */}

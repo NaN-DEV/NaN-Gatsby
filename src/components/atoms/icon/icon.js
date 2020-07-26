@@ -9,9 +9,16 @@ import { DivIcon, LinkIcon, ButtonIcon } from './style/style';
 import settings from '../../../layouts/settings/settings';
 
 // IMPORT SVG
+import Cv from '../../../assets/icon/cv.svg';
+import Mail from '../../../assets/icon/mail.svg';
 import Down from '../../../assets/icon/down.svg';
 import Logo from '../../../assets/brand/logo.svg';
+import Coffe from '../../../assets/icon/coffe.svg';
+import Folder from '../../../assets/icon/folder.svg';
+import Closed from '../../../assets/icon/closed.svg';
+import People from '../../../assets/icon/people.svg';
 import Triangle from '../../../assets/icon/triangle.svg';
+import Settings from '../../../assets/icon/settings.svg';
 import Hamburger from '../../../assets/icon/hamburger.svg';
 import Notification from '../../../assets/icon/notification.svg';
 
@@ -39,6 +46,10 @@ const IconComponent = props => {
     switch (name) {
       case 'logo':
         return <Logo height={height} />;
+      case 'cv':
+        return <Cv height={height} />;
+      case 'mail':
+        return <Mail height={height} />;
       case 'hamburger':
         return <Hamburger height={height} />;
       case 'notification':
@@ -47,6 +58,16 @@ const IconComponent = props => {
         return <Down height={height} />;
       case 'triangle':
         return <Triangle height={height} />;
+      case 'coffe':
+        return <Coffe height={height} />;
+      case 'people':
+        return <People height={height} />;
+      case 'folder':
+        return <Folder height={height} />;
+      case 'settings':
+        return <Settings height={height} />;
+      case 'closed':
+        return <Closed height={height} />;
       default:
         return 'Please name icon :) ';
     }
