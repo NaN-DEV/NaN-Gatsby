@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 // IMPORT COMPONENT
 import Sell from './sell/sell';
 import Triangle from './triangle/triangle';
-import Scrambler from './ScramblerText/ScramblerText';
+import Scrambler from './scramblerText/scramblerText';
+import NotFoundPage from './notFoundPage/notFoundPage';
 import settings from '../../../layouts/settings/settings';
 
 // CREATE NEW COMPONENT
@@ -34,6 +35,12 @@ const SectionComponent = props => {
         return (
           <>
             <Sell theme={settings} newClass={newClass} newStyle={newStyle} />
+          </>
+        );
+      case 'notFoundPage':
+        return (
+          <>
+            <NotFoundPage theme={settings} newClass={newClass} newStyle={newStyle} />
           </>
         );
       default:

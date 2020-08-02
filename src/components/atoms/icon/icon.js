@@ -27,19 +27,7 @@ import Notification from '../../../assets/icon/notification.svg';
 // CREATE NEW COMPONENT
 
 const IconComponent = props => {
-  const {
-    turn,
-    link,
-    icon,
-    type,
-    title,
-    height,
-    primary,
-    onClick,
-    newClass,
-    newStyle,
-    secondary,
-  } = props;
+  const { turn, link, icon, type, title, height, primary, onClick, newClass, newStyle, secondary } = props;
 
   // SELECT ICON
   const renderSwitchIcon = name => {

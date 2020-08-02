@@ -6,12 +6,13 @@ import settings from '../layouts/settings/settings';
 
 // IMPORT COMPONENT
 import Layout from '../layouts/index';
+import Section from '../components/organisms/section/sectin';
 
 // CREATE NEW COMPONENT
 const NotFoundPage = () => (
   <>
     <Layout theme={settings}>
-      <h1>NOT FOUND</h1>
+      <Section type="notFoundPage" />
     </Layout>
   </>
 );
