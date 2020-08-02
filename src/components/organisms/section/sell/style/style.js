@@ -41,7 +41,7 @@ export const Section = styled.section`
   }
   @media (min-width: ${props => props.theme.breakpoint_desktop}) {
     .mascot {
-      left: 10rem;
+      left: 14rem;
       width: 30rem;
     }
   }

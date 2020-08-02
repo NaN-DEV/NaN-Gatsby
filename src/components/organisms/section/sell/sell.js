@@ -22,19 +22,13 @@ const SectionSellComponent = props => {
   const strings = ['Szukasz programisty ?', 'Właśnie go znalazłeś !'];
   return (
     <>
-      <Section theme={settings} newStyle={newStyle} className={newClass}>
+      <Section theme={settings} newStyle={newStyle} className={newClass} id="sell">
         <Row newClass="row" center>
           <BoxContent>
             <Title theme={settings}>
               <Cycler duration={3000} strings={strings} />
             </Title>
-            <Button
-              link="/"
-              type="link"
-              color="secondary"
-              newClass="button"
-              title="Wyceń projekt"
-            />
+            <Button link="/" type="link" color="secondary" newClass="button" title="Wyceń projekt" />
           </BoxContent>
           <Mascot newClass="mascot" theme={settings} />
           <Icon secondary icon="triangle" newClass="triangle" />

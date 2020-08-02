@@ -11,7 +11,7 @@ import settings from '../../../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const SectionComponent = props => {
-  const { type, title, size, color, newClass, newStyle, children, content } = props;
+  const { type, title, size, color, newClass, newStyle, children, content, id } = props;
 
   // SELECT SECTION
   const renderSwitchWrap = wrap => {
@@ -19,13 +19,7 @@ const SectionComponent = props => {
       case 'scrambler':
         return (
           <>
-            <Scrambler
-              size={size}
-              color={color}
-              title={title}
-              newClass={newClass}
-              newStyle={newStyle}
-            >
+            <Scrambler id={id} size={size} color={color} title={title} newClass={newClass} newStyle={newStyle}>
               {children}
             </Scrambler>
           </>
@@ -33,14 +27,7 @@ const SectionComponent = props => {
       case 'triangle':
         return (
           <>
-            <Triangle
-              size={size}
-              color={color}
-              title={title}
-              content={content}
-              newClass={newClass}
-              newStyle={newStyle}
-            />
+            <Triangle id={id} size={size} color={color} title={title} content={content} newClass={newClass} newStyle={newStyle} />
           </>
         );
       case 'sell':
@@ -59,6 +46,7 @@ const SectionComponent = props => {
 
 // PropTpyes
 SectionComponent.propTypes = {
+  id: PropTypes.string,
   type: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
@@ -70,6 +58,7 @@ SectionComponent.propTypes = {
 };
 
 SectionComponent.defaultProps = {
+  id: null,
   type: null,
   title: null,
   size: 'full',

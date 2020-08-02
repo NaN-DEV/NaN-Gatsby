@@ -15,6 +15,7 @@ export const Input = styled.input`
   width: 100%;
   height: 3.7rem;
   font-size: 1.5rem;
+  -webkit-appearance: none;
   padding: ${props => props.theme.break};
   background-color: transparent;
   border: 0.1rem solid;

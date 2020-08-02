@@ -14,12 +14,7 @@ const IndexPage = ({ data }) => {
     <>
       <Layout theme={settings}>
         {/* HERO SECCTION */}
-        <Section
-          size="full"
-          color="primary"
-          type="scrambler"
-          title={data.allDatoCmsHome.nodes[0].heroSectionTitle}
-        >
+        <Section id="hero" size="full" color="primary" type="scrambler" title={data.allDatoCmsHome.nodes[0].heroSectionTitle}>
           <Button color="tertiary_1" title="Wyceń projekt" />
         </Section>
 

@@ -10,18 +10,7 @@ import List from '../../molecules/list/list';
 import settings from '../../../layouts/settings/settings';
 
 // IMPORT STYLE
-import {
-  Url,
-  Modal,
-  Footer,
-  Header,
-  BoxMenu,
-  Content,
-  ModalBox,
-  MainManu,
-  MenuTitle,
-  GlobalStyle,
-} from './style/style';
+import { Url, Modal, Footer, Header, BoxMenu, Content, ModalBox, MainManu, MenuTitle, GlobalStyle } from './style/style';
 
 // CREATE NEW COMPONENT
 class ModalMenuComponent extends React.Component {
@@ -65,22 +54,8 @@ class ModalMenuComponent extends React.Component {
               <Modal theme={settings}>
                 <Header>
                   <Row newClass="row">
-                    <Icon
-                      link="/"
-                      secondary
-                      type="link"
-                      icon="logo"
-                      height={4}
-                      title="NaN software house"
-                    />
-                    <Icon
-                      secondary
-                      type="button"
-                      icon="closed"
-                      onClick={closed}
-                      newClass="closed"
-                      title="closed menu"
-                    />
+                    <Icon link="/" secondary type="link" icon="logo" height={4} title="NaN software house" />
+                    <Icon secondary type="button" icon="closed" onClick={closed} newClass="closed" title="closed menu" />
                   </Row>
                 </Header>
                 <Content>
@@ -90,13 +65,7 @@ class ModalMenuComponent extends React.Component {
                         return (
                           <BoxMenu theme={settings} size={item.size} key={item.id}>
                             <Link to="/" title="usługi">
-                              <Icon
-                                secondary
-                                height={9}
-                                icon={item.icon}
-                                title={item.name}
-                                newClass="icon-menu"
-                              />
+                              <Icon secondary height={9} icon={item.icon} title={item.name} newClass="icon-menu" />
                               <MenuTitle theme={settings}>{item.name}</MenuTitle>
                             </Link>
                           </BoxMenu>
@@ -116,13 +85,7 @@ class ModalMenuComponent extends React.Component {
                     <List type="level" breakpoint="tablet" newClass="link right">
                       {data.allDatoCmsSettingsContact.nodes[0].socialMedia.map(item => {
                         return (
-                          <Url
-                            key={item.id}
-                            target="_blank"
-                            href={item.url}
-                            title={item.name}
-                            rel="noopener noreferrer"
-                          >
+                          <Url key={item.id} target="_blank" href={item.url} title={item.name} rel="noopener noreferrer">
                             #{item.name}
                           </Url>
                         );

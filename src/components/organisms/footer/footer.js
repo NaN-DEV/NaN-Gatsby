@@ -18,22 +18,14 @@ const HeaderComponent = () => {
     <>
       <Footer theme={settings}>
         <Row newClass="row">
-          <Icon
-            link="/"
-            primary
-            height={4}
-            type="link"
-            icon="logo"
-            newClass="logo"
-            title="NAN SOFTWARE HOUSE"
-          />
+          <Icon link="/" primary height={4} type="link" icon="logo" newClass="logo" title="NAN SOFTWARE HOUSE" />
           <Copyright theme={settings}>Copyright 2016-2020</Copyright>
           <Ul theme={settings}>
             <Li theme={settings}>
-              <Link to="/">#Polityka</Link>
+              <Link to="/">#Regulamin</Link>
             </Li>
             <Li theme={settings}>
-              <Link to="/">#Regulamin</Link>
+              <Link to="/">#Polityka</Link>
             </Li>
             <Li theme={settings}>
               <Link to="/">#Kontakt</Link>

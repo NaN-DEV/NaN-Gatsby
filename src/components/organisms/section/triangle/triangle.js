@@ -49,9 +49,10 @@ class SectionTriangleComponent extends React.Component {
     </>
   );
 
-  ArticleDisplay = (type, direction, color, content) => {
+  ArticleDisplay = (type, direction, color, content, index) => {
     return (
       <Article
+        id={`article-triangle-${index}`}
         theme={settings}
         key={content.id}
         full={type === 'full' ? true : null}
@@ -102,13 +103,7 @@ class SectionTriangleComponent extends React.Component {
               </>
             )}
 
-            <Button
-              type="link"
-              title="Więcej"
-              newClass="button"
-              link={content.slug}
-              color={color === 'primary' ? 'secondary' : 'primary'}
-            />
+            <Button type="link" title="Więcej" newClass="button" link={content.slug} color={color === 'primary' ? 'secondary' : 'primary'} />
           </BoxDown>
         </Row>
       </Article>
@@ -122,21 +117,21 @@ class SectionTriangleComponent extends React.Component {
       <Section color={color} theme={settings} newStyle={newStyle} className={newClass}>
         {content.map((item, index) => {
           if (index % 3 === 0 || index === 0) {
-            return this.ArticleDisplay('full', null, 'secondary', item);
+            return this.ArticleDisplay('full', null, 'secondary', item, index);
           }
 
           if (index % 2 === 0) {
             if ((index + 1) % 3 === 0) {
-              return this.ArticleDisplay('half', 'right', 'primary', item);
+              return this.ArticleDisplay('half', 'right', 'primary', item, index);
             }
-            return this.ArticleDisplay('half', 'left', 'primary', item);
+            return this.ArticleDisplay('half', 'left', 'primary', item, index);
           }
 
           if ((index - 1) % 3 === 0) {
-            return this.ArticleDisplay('half', 'left', 'tertiary', item);
+            return this.ArticleDisplay('half', 'left', 'tertiary', item, index);
           }
 
-          return this.ArticleDisplay('half', 'right', 'tertiary', item);
+          return this.ArticleDisplay('half', 'right', 'tertiary', item, index);
         })}
       </Section>
     );

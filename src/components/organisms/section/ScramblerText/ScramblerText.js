@@ -48,20 +48,14 @@ class SectionTypingComponent extends React.Component {
   }
 
   render() {
-    const { children, newClass, newStyle, size, title, color } = this.props;
+    const { children, newClass, newStyle, size, title, color, id } = this.props;
     const { titleArray } = this.state;
     title.forEach(item => {
       titleArray.push(item.title);
     });
     return (
       <>
-        <Section
-          size={size}
-          color={color}
-          theme={settings}
-          newStyle={newStyle}
-          className={newClass}
-        >
+        <Section id={id} size={size} color={color} theme={settings} newStyle={newStyle} className={newClass}>
           <Row newClass="row">
             <BoxContent>
               <Cycler duration={3000} strings={titleArray} />
@@ -79,6 +73,7 @@ class SectionTypingComponent extends React.Component {
 
 // PropTpyes
 SectionTypingComponent.propTypes = {
+  id: PropTypes.string,
   size: PropTypes.string,
   title: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
   color: PropTypes.string,
@@ -88,6 +83,7 @@ SectionTypingComponent.propTypes = {
 };
 
 SectionTypingComponent.defaultProps = {
+  id: null,
   size: 'full',
   newClass: null,
   newStyle: null,
