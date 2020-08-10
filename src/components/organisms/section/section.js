@@ -7,7 +7,7 @@ import Sell from './sell/sell';
 import Hero from './hero/hero';
 import SellAds from './sellAds/sellAds';
 import Triangle from './triangle/triangle';
-import Scrambler from './scramblerText/scramblerText';
+import Scrambler from './sscramblerText/sscramblerText';
 import NotFoundPage from './notFoundPage/notFoundPage';
 
 // CREATE NEW COMPONENT
