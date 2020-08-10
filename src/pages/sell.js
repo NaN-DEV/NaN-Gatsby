@@ -1,35 +1,30 @@
 // IMPORT PLUGIN
 import React from 'react';
+
 import { graphql } from 'gatsby';
-import Button from '../components/atoms/button/button';
+
 import Section from '../components/organisms/section/section';
 
 // IMPORT COMPONENT
 import Layout from '../layouts/index';
-import Animation from '../components/atoms/animation/animation';
 
 // IMPORT SETTINGS STYLE
 import settings from '../layouts/settings/settings';
 
 // CREATE NEW COMPONENT
-const IndexPage = ({ data }) => {
-  const listScrollElement = ['hero', 'article-triangle-0', 'article-triangle-1', 'article-triangle-2', 'article-triangle-3', 'sell'];
+const SellPage = () => {
   return (
     <>
       <Layout theme={settings}>
-        <Animation type="scrollNextElement" allSlide={listScrollElement} />
         {/* HERO SECCTION */}
-        <Section id="hero" size="full" color="primary" type="scrambler" title={data.allDatoCmsHome.nodes[0].heroSectionTitle}>
-          <Button type="link" color="tertiary_1" title="Wyceń projekt" link="/sell" />
-        </Section>
+        <Section
+          type="hero"
+          color="primary"
+          title="Uzyskaj <strong>szybką  wycenę !</strong>"
+          description="Wypełnij ten prosty formularz. Nasz zespół skontaktuje się z Tobą niezwłocznie, aby omówić kolejne kroki."
+        />
 
-        {/* SECCTION TRIANGLE */}
-
-        <Section type="triangle" content={data.allDatoCmsHome.nodes[0].selectPortfolio} />
-
-        {/* HERO SELL */}
-
-        <Section type="sellAds" content={data.allDatoCmsHome.nodes[0].selectPortfolio} />
+        <Section color="primary" type="sell" target="classic" />
       </Layout>
     </>
   );
@@ -67,4 +62,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage;
+export default SellPage;

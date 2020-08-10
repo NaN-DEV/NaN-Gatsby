@@ -7,17 +7,17 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    { resolve: `gatsby-plugin-react-helmet` },
-    { resolve: `gatsby-transformer-sharp` },
     { resolve: `gatsby-plugin-sharp` },
     { resolve: `gatsby-plugin-react-svg` },
-    { resolve: `gatsby-plugin-layout` },
+    { resolve: `gatsby-transformer-sharp` },
+    { resolve: `gatsby-plugin-react-helmet` },
+    { resolve: `gatsby-plugin-transition-link` },
     { resolve: `gatsby-plugin-styled-components` },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/assets/images`,
+        path: `${__dirname}/src/assets/`,
       },
     },
     {
@@ -29,7 +29,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/icon/nan-icon.png`,
+        icon: `src/assets/brand/icon.png`,
       },
     },
     {
@@ -38,28 +38,13 @@ module.exports = {
         fonts: [
           {
             family: `Montserrat`,
-            variants: [`300`, `600`],
+            variants: [`300`, `900`],
+          },
+          {
+            family: `Roboto Mono`,
+            variants: [`700`],
           },
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-react-redux`,
-      options: {
-        // [required] - path to your createStore module
-        pathToCreateStoreModule: './src/state/createStore',
-        // [optional] - options passed to `serialize-javascript`
-        // info: https://github.com/yahoo/serialize-javascript#options
-        // will be merged with these defaults:
-        serialize: {
-          space: 0,
-          isJSON: true,
-          unsafe: false,
-        },
-        // [optional] - if true will clean up after itself on the client, default:
-        cleanupOnClient: true,
-        // [optional] - name of key on `window` where serialized state will be stored, default:
-        windowKey: '__PRELOADED_STATE__',
       },
     },
     {
@@ -84,6 +69,25 @@ module.exports = {
         localeFallbacks: {
           it: ['pl'],
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-react-redux`,
+      options: {
+        // [required] - path to your createStore module
+        pathToCreateStoreModule: './src/state/createStore',
+        // [optional] - options passed to `serialize-javascript`
+        // info: https://github.com/yahoo/serialize-javascript#options
+        // will be merged with these defaults:
+        serialize: {
+          space: 0,
+          isJSON: true,
+          unsafe: false,
+        },
+        // [optional] - if true will clean up after itself on the client, default:
+        cleanupOnClient: true,
+        // [optional] - name of key on `window` where serialized state will be stored, default:
+        windowKey: '__PRELOADED_STATE__',
       },
     },
   ],
