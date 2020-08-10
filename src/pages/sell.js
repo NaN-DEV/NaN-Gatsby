@@ -1,8 +1,6 @@
 // IMPORT PLUGIN
 import React from 'react';
-
 import { graphql } from 'gatsby';
-
 import Section from '../components/organisms/section/section';
 
 // IMPORT COMPONENT

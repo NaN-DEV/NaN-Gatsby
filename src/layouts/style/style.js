@@ -99,6 +99,7 @@ section{
 form{
   width: 100%;
   height: auto;
+<<<<<<< HEAD
   display: flex; 
   flex-wrap: wrap;
   position: relative;
@@ -106,6 +107,13 @@ form{
 }
 input,
 textarea{
+=======
+  position: relative;
+  display: inline-block; 
+  transition: ${props => props.theme.animation};
+}
+input{
+>>>>>>> 507d6ff08386afad334ec64e3f2134163ad24ce4
    transition: ${props => props.theme.animation};
 
    &::placeholder{
