@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Cycler } from 'react-text-scrambler';
 
-// IMPORT STYLE
+// IMPORT STYLE#
 
 // eslint-disable-next-line import/no-unresolved
 import { Section, DivChildren, DivArray, BoxContent } from './style/style';
