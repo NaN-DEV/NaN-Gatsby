@@ -21,7 +21,7 @@ const RadioBoxComponent = props => {
         <>
           <Box theme={settings}>
             <Radio id={id} name={name} type="radio" color={color} value={id} theme={settings} onChange={onChange} defaultChecked={defaultChecked} />
-            <Label for={id} swith={swith} color={color} theme={settings} newClass={newClass} newStyle={newStyle}>
+            <Label htmlFor={id} swith={swith} color={color} theme={settings} newClass={newClass} newStyle={newStyle}>
               <Icon icon={icon} newClass="icon" />
               <Title theme={settings}>{title}</Title>
             </Label>

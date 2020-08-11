@@ -10,19 +10,7 @@ import { Box, CheckBox, Label } from './style/style';
 
 // CREATE NEW COMPONENT
 const CheckClassicComponent = props => {
-  const {
-    id,
-    color,
-
-    title,
-    onBlur,
-    content,
-    checked,
-    newClass,
-    newStyle,
-    onChange,
-    defaultValue,
-  } = props;
+  const { id, color, title, onBlur, content, checked, newClass, newStyle, onChange, defaultValue } = props;
   return (
     <>
       <Box newClass={newClass} newStyle={newStyle}>
@@ -30,7 +18,6 @@ const CheckClassicComponent = props => {
           id={id}
           name={title}
           color={color}
-          value={title}
           type="checkbox"
           onBlur={onBlur}
           theme={settings}
@@ -39,7 +26,7 @@ const CheckClassicComponent = props => {
           defaultChecked={checked}
           defaultValue={defaultValue}
         />
-        <Label for={id} theme={settings} dangerouslySetInnerHTML={{ __html: content }} />
+        <Label htmlFor={id} theme={settings} dangerouslySetInnerHTML={{ __html: content }} />
       </Box>
     </>
   );
@@ -65,8 +52,8 @@ CheckClassicComponent.defaultProps = {
   newClass: null,
   checked: false,
   onChange: null,
+  newStyle: null,
   defaultValue: null,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 // EXPORT NEW COMPONENT

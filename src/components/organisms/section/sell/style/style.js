@@ -52,9 +52,9 @@ export const Step = styled.div`
   flex: 100%;
   padding: 3rem;
   display: flex;
-  min-height: 12rem;
-  line-height: 1.4;
   max-width: 100%;
+  line-height: 1.4;
+  min-height: 12rem;
   font-size: 2.4rem;
   position: relative;
   text-align: center;

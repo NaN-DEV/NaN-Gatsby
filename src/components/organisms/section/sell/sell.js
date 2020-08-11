@@ -393,7 +393,7 @@ const SectionHeroComponent = props => {
                 {formik.touched.checkbox && formik.errors.checkbox ? (
                   <>
                     <CheckBox
-                      id="checkbox"
+                      id="politycy"
                       type="classic"
                       name="checkbox"
                       color="secondary"

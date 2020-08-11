@@ -72,14 +72,13 @@ CheckboxComponent.propTypes = {
 
 CheckboxComponent.defaultProps = {
   title: null,
-  value: null,
   onBlur: null,
   content: null,
   newClass: null,
   checked: false,
   onChange: null,
+  newStyle: null,
   defaultValue: null,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 // EXPORT NEW COMPONENT

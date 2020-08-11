@@ -25,7 +25,6 @@ const CheckBoxComponent = props => {
               id={id}
               name={title}
               color={color}
-              value={title}
               type="checkbox"
               onBlur={onBlur}
               theme={settings}
@@ -35,7 +34,7 @@ const CheckBoxComponent = props => {
               defaultChecked={checked}
               defaultValue={defaultValue}
             />
-            <Label for={id} swith={swith} color={color} theme={settings}>
+            <Label htmlFor={id} swith={swith} color={color} theme={settings}>
               <Icon icon={icon} newClass="icon" />
               <Title theme={settings}>{title}</Title>
             </Label>
@@ -78,8 +77,8 @@ CheckBoxComponent.defaultProps = {
   newClass: null,
   checked: false,
   onChange: null,
+  newStyle: null,
   defaultValue: null,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 // EXPORT NEW COMPONENT

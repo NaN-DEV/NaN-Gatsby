@@ -44,24 +44,19 @@ RadioComponent.propTypes = {
   color: PropTypes.string.isRequired,
   newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 
-  value: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
-
   onBlur: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
 
   onChange: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
-
-  defaultChecked: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
 };
 
 RadioComponent.defaultProps = {
   title: null,
-  value: null,
   onBlur: null,
   newClass: null,
   checked: false,
   onChange: null,
+  newStyle: null,
   defaultChecked: null,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 // EXPORT NEW COMPONENT
