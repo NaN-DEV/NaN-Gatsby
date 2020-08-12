@@ -1,7 +1,25 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
 
-// You can delete this file if you're not using it
+  const queryResults = await graphql(`
+    query gatsbyNode {
+      allDatoCmsPortfolio {
+        nodes {
+          id
+          slug
+          title
+        }
+      }
+    }
+  `);
+
+  // BUILD LIST SERVICE IN CATEGORY
+
+  queryResults.data.allDatoCmsPortfolio.nodes.forEach((content, index) => {
+    createPage({
+      path: `portfolio/projekt/${content.slug}`,
+      component: require.resolve(`./src/templates/portfolio.js`),
+      context: { id: content.id, i: index },
+    });
+  });
+};

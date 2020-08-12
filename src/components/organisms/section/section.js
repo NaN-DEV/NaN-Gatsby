@@ -13,7 +13,7 @@ import NotFoundPage from './notFoundPage/notFoundPage';
 // CREATE NEW COMPONENT
 
 const SectionComponent = props => {
-  const { type, title, description, size, color, newClass, newStyle, children, content, id } = props;
+  const { id, half, size, type, title, color, content, newClass, newStyle, children, description } = props;
 
   // SELECT SECTION
   const renderSwitchWrap = wrap => {
@@ -53,7 +53,7 @@ const SectionComponent = props => {
       case 'hero':
         return (
           <>
-            <Hero id={id} size={size} color={color} title={title} newClass={newClass} newStyle={newStyle} description={description} />
+            <Hero id={id} half={half} size={size} color={color} title={title} newClass={newClass} newStyle={newStyle} description={description} />
           </>
         );
       default:
@@ -67,6 +67,7 @@ const SectionComponent = props => {
 // PropTpyes
 SectionComponent.propTypes = {
   id: PropTypes.string,
+  half: PropTypes.bool,
   type: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
@@ -82,6 +83,7 @@ SectionComponent.defaultProps = {
   id: null,
   type: null,
   title: null,
+  half: false,
   size: 'full',
   content: null,
   newClass: null,

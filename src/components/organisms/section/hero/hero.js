@@ -14,13 +14,15 @@ import Row from '../../../atoms/row/row';
 // CREATE NEW COMPONENT
 
 const SectionHeroComponent = props => {
-  const { id, size, color, newStyle, newClass, title, description } = props;
+  const { id, size, half, color, title, newStyle, newClass, description } = props;
   return (
     <>
       <Section id={id} size={size} color={color} theme={settings} newStyle={newStyle} className={newClass}>
         <Row newClass="row">
-          <Title dangerouslySetInnerHTML={{ __html: title }} theme={settings} />
-          <Description>{description}</Description>
+          <Title dangerouslySetInnerHTML={{ __html: title }} theme={settings} half={half} />
+          <Description theme={settings} half={half}>
+            {description}
+          </Description>
         </Row>
       </Section>
     </>
@@ -30,6 +32,7 @@ const SectionHeroComponent = props => {
 // PropTpyes
 SectionHeroComponent.propTypes = {
   id: PropTypes.string,
+  half: PropTypes.bool,
   size: PropTypes.string,
   title: PropTypes.string,
   color: PropTypes.string,
@@ -40,6 +43,7 @@ SectionHeroComponent.propTypes = {
 
 SectionHeroComponent.defaultProps = {
   id: null,
+  half: false,
   size: 'full',
   newClass: null,
   newStyle: null,

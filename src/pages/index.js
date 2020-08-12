@@ -27,9 +27,9 @@ const IndexPage = ({ data }) => {
 
         <Section type="triangle" content={data.allDatoCmsHome.nodes[0].selectPortfolio} />
 
-        {/* HERO SELL */}
+        {/* SECTION SELL */}
 
-        <Section type="sellAds" content={data.allDatoCmsHome.nodes[0].selectPortfolio} />
+        <Section type="sellAds" />
       </Layout>
     </>
   );
