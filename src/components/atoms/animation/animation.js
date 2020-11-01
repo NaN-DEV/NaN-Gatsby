@@ -7,6 +7,7 @@ import ScrollNextElement from './scrollNextElement/scrollNextElement';
 // CREATE NEW COMPONENT
 const AnimationComponent = props => {
   const { type, allSlide } = props;
+
   switch (type) {
     case 'scrollNextElement':
       return <ScrollNextElement allSlide={allSlide} />;

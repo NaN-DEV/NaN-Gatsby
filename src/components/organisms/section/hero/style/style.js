@@ -28,15 +28,19 @@ export const Title = styled.h1`
   font-weight: normal;
   padding-bottom: ${props => props.theme.break};
   font-family: ${props => props.theme.font_primary};
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+      ${props =>
+        props.half &&
+        css`
+          font-weight: bold;
+        `}
+  @media (min-width: ${props => props.theme.breakpoint_desctop}) {
     ${props =>
       props.half &&
       css`
-        flex: 12rem;
-        max-width: 12rem;
+        flex: 20rem;
+        max-width: 20rem;
         text-align: left;
         font-weight: bold;
-        font-size: 2.4rem;
       `}
   }
 `;
@@ -45,18 +49,18 @@ export const Description = styled.p`
   flex: 100%;
   width: 100%;
   display: block;
+  font-size: 1.8rem;
   text-align: center;
   position: relative;
   font-weight: normal;
+  padding: 0 ${props => props.theme.break};
   font-family: ${props => props.theme.font_primary};
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => props.theme.breakpoint_desctop}) {
     ${props =>
       props.half &&
       css`
         text-align: left;
-        font-size: 2.4rem;
-        padding-left: 1.5rem;
-        flex: calc(12rem - 100vw);
+        flex: calc(20rem - 100%);
       `}
   }
 `;

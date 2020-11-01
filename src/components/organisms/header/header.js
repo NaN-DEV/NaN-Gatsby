@@ -11,8 +11,6 @@ import { Header, HeaderStopBox } from './style/style';
 import Modal from '../modal/modal';
 import Row from '../../atoms/row/row';
 import Icon from '../../atoms/icon/icon';
-import Input from '../../atoms/input/input';
-import Form from '../../molecules/form/form';
 
 // CREATE NEW COMPONENT
 class HeaderComponent extends React.Component {
@@ -49,9 +47,9 @@ class HeaderComponent extends React.Component {
             <Icon link="/" secondary height={4} type="link" icon="logo" newClass="logo" title="NAN SOFTWARE HOUSE" />
 
             {/* ########### FROM SEARCH ########## */}
-            <Form newClass="search">
+            {/* <Form newClass="search">
               <Input width={30} type="search" color="secondary" placeholder="Szukaj..." />
-            </Form>
+            </Form> */}
 
             {/* ########## Button icon ########### */}
             <Icon secondary type="button" icon="hamburger" title="OPEN MENU" onClick={this.openModal} />

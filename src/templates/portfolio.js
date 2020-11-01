@@ -16,6 +16,7 @@ const portfolioProject = ({ data }) => {
     <>
       <Layout theme={settings}>
         <Section half type="hero" color="primary" title="Problem" description={data.datoCmsPortfolio.problem} />
+        <Section type="identificationProject" />
 
         {/* SECTION SELL */}
         <Section type="sellAds" />

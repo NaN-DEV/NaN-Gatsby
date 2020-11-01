@@ -14,6 +14,7 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 const IndexPage = ({ data }) => {
   const listScrollElement = ['hero', 'article-triangle-0', 'article-triangle-1', 'article-triangle-2', 'article-triangle-3', 'sell'];
+
   return (
     <>
       <Layout theme={settings}>

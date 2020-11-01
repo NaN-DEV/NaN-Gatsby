@@ -9,6 +9,7 @@ import SellAds from './sellAds/sellAds';
 import Triangle from './triangle/triangle';
 import Scrambler from './scramblerText/scramblerText';
 import NotFoundPage from './notFoundPage/notFoundPage';
+import IdentificationProject from './identificationProject/identificationProject';
 
 // CREATE NEW COMPONENT
 
@@ -54,6 +55,21 @@ const SectionComponent = props => {
         return (
           <>
             <Hero id={id} half={half} size={size} color={color} title={title} newClass={newClass} newStyle={newStyle} description={description} />
+          </>
+        );
+      case 'identificationProject':
+        return (
+          <>
+            <IdentificationProject
+              id={id}
+              half={half}
+              size={size}
+              color={color}
+              title={title}
+              newClass={newClass}
+              newStyle={newStyle}
+              description={description}
+            />
           </>
         );
       default:

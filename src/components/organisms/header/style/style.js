@@ -23,6 +23,9 @@ export const Header = styled.header`
   .search {
     margin-right: ${props => props.theme.break};
   }
+  button {
+    margin-left: auto;
+  }
 `;
 
 export const HeaderStopBox = styled.div`

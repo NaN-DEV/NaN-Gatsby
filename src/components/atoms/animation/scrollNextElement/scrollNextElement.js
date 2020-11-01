@@ -19,6 +19,7 @@ class ScrollNextElementComponent extends React.Component {
     const { allSlide } = this.props;
 
     let previousOffsetY = window.pageYOffset;
+
     // Sprawdzam czy istnieją jakieś elementy do których ma przesiunąć ekran
     if (allSlide.length > 0) {
       // Wszystkie elementy oraz ich wysokośći
@@ -71,6 +72,7 @@ class ScrollNextElementComponent extends React.Component {
 
       window.addEventListener('scroll', () => {
         previousOffsetY = window.pageYOffset;
+
         const { lastOffsetY, nextDownSlide, nextUpSlide, timeBlock } = this.state;
 
         // Sprawdzam w którym kierunku scroluje dokument w Górę czy w  dół
