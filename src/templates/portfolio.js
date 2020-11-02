@@ -19,6 +19,7 @@ const portfolioProject = ({ data }) => {
       <Layout theme={settings}>
         <Section half type="hero" color="primary" title="Problem" description={problem} />
         <Section type="identificationProject" nameProject={link} image={image} brand={brand} />
+        <Section type="fullText" nameProject={link} image={image} brand={brand} />
 
         {/* SECTION SELL */}
         <Section type="sellAds" />

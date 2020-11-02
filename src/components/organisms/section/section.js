@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Sell from './sell/sell';
 import Hero from './hero/hero';
 import SellAds from './sellAds/sellAds';
+import FullText from './fullText/fullText';
 import Triangle from './triangle/triangle';
 import Scrambler from './scramblerText/scramblerText';
 import NotFoundPage from './notFoundPage/notFoundPage';
@@ -73,6 +74,12 @@ const SectionComponent = props => {
               nameProject={nameProject}
               description={description}
             />
+          </>
+        );
+      case 'fullText':
+        return (
+          <>
+            <FullText id={id} size={size} color={color} title={title} description={description} newClass={newClass} newStyle={newStyle} />
           </>
         );
       default:
