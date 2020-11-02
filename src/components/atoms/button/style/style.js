@@ -89,3 +89,7 @@ export const ButtonLink = styled(Link)`
 export const ButtonSubmit = styled.input`
   ${styleAllButton}
 `;
+
+export const ButtonLinkOut = styled.a`
+  ${styleAllButton}
+`;

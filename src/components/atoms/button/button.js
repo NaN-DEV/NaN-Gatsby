@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { Button, ButtonLink, ButtonSubmit } from './style/style';
+import { ButtonLinkOut, Button, ButtonLink, ButtonSubmit } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../layouts/settings/settings';
@@ -12,13 +12,20 @@ import settings from '../../../layouts/settings/settings';
 
 const ButtonComponent = props => {
   const { type, title, color, newClass, newStyle, link } = props;
-
   const selectTypeButton = wrap => {
     switch (wrap) {
+      case 'linkOut':
+        return (
+          <>
+            <ButtonLinkOut color={color} theme={settings} style={newStyle} className={newClass} href={link} title={title} target="_blank">
+              {title}
+            </ButtonLinkOut>
+          </>
+        );
       case 'link':
         return (
           <>
-            <ButtonLink color={color} theme={settings} style={newStyle} className={newClass} to={link}>
+            <ButtonLink color={color} theme={settings} style={newStyle} className={newClass} to={link} title={title}>
               {title}
             </ButtonLink>
           </>

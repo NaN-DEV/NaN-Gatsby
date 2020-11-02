@@ -1,8 +1,9 @@
 // IMPORT PLUGIN
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { Section, Left, Right, Box, Avatar, ProjectTitle, BigImage } from './style/style';
+import { Section, Left, Right, Brand, ProjectTitle, BigImage, Title } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
@@ -15,21 +16,22 @@ import Button from '../../../atoms/button/button';
 
 // CREATE NEW COMPONENT
 
-const IdentificationProject = () => {
+const IdentificationProject = props => {
+  const { image, brand, nameProject } = props;
+  console.log(nameProject);
+
   return (
     <>
-      <Section>
-        <Row newClass="row">
-          <Left>
-            <Avatar />
+      <Section theme={settings}>
+        <Row theme={settings} newClass="row">
+          <Left theme={settings}>
+            <Brand theme={settings} fluid={brand.fluid} />
+            <Title theme={settings}>Start</Title>
           </Left>
-          <Right>
-            <Box>
-              <ProjectTitle theme={settings}>instacase.pl</ProjectTitle>
-              <Button />
-              <Button />
-            </Box>
-            <BigImage />
+          <Right theme={settings}>
+            <ProjectTitle theme={settings}>{nameProject}</ProjectTitle>
+            <Button theme={settings} title="live" type="linkOut" newClass="button_live" link={`http://${nameProject}`} />
+            <BigImage theme={settings} fluid={image.fluid} />
           </Right>
         </Row>
       </Section>
@@ -38,8 +40,14 @@ const IdentificationProject = () => {
 };
 
 // PropTpyes
-IdentificationProject.propTypes = {};
+IdentificationProject.propTypes = {
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  brand: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+};
 
-IdentificationProject.defaultProps = {};
+IdentificationProject.defaultProps = {
+  image: null,
+  brand: null,
+};
 
 export default IdentificationProject;

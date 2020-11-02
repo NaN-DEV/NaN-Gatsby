@@ -14,7 +14,7 @@ import IdentificationProject from './identificationProject/identificationProject
 // CREATE NEW COMPONENT
 
 const SectionComponent = props => {
-  const { id, half, size, type, title, color, content, newClass, newStyle, children, description } = props;
+  const { id, half, size, type, title, color, content, newClass, newStyle, children, description, image, brand, nameProject } = props;
 
   // SELECT SECTION
   const renderSwitchWrap = wrap => {
@@ -64,10 +64,13 @@ const SectionComponent = props => {
               id={id}
               half={half}
               size={size}
+              image={image}
               color={color}
               title={title}
+              brand={brand}
               newClass={newClass}
               newStyle={newStyle}
+              nameProject={nameProject}
               description={description}
             />
           </>
@@ -88,7 +91,10 @@ SectionComponent.propTypes = {
   size: PropTypes.string,
   color: PropTypes.string,
   newClass: PropTypes.string,
+  nameProject: PropTypes.string,
   description: PropTypes.string,
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  brand: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   title: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
   content: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
@@ -100,6 +106,8 @@ SectionComponent.defaultProps = {
   type: null,
   title: null,
   half: false,
+  image: null,
+  brand: null,
   size: 'full',
   content: null,
   newClass: null,
@@ -107,6 +115,7 @@ SectionComponent.defaultProps = {
   children: null,
   color: 'primary',
   description: null,
+  nameProject: false,
 };
 
 export default SectionComponent;

@@ -12,11 +12,13 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const portfolioProject = ({ data }) => {
+  const { problem, link, image, brand } = data.datoCmsPortfolio;
+
   return (
     <>
       <Layout theme={settings}>
-        <Section half type="hero" color="primary" title="Problem" description={data.datoCmsPortfolio.problem} />
-        <Section type="identificationProject" />
+        <Section half type="hero" color="primary" title="Problem" description={problem} />
+        <Section type="identificationProject" nameProject={link} image={image} brand={brand} />
 
         {/* SECTION SELL */}
         <Section type="sellAds" />
@@ -29,8 +31,18 @@ export const portfolioProjectQuery = graphql`
   query portfolioProjectGraphql($id: String) {
     datoCmsPortfolio(id: { eq: $id }) {
       id
-      title
+      link
       problem
+      image {
+        fluid {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+      brand {
+        fluid {
+          ...GatsbyDatoCmsFluid
+        }
+      }
     }
   }
 `;

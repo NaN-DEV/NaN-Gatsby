@@ -33,12 +33,12 @@ export const Title = styled.h1`
         css`
           font-weight: bold;
         `}
-  @media (min-width: ${props => props.theme.breakpoint_desctop}) {
+  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
     ${props =>
       props.half &&
       css`
-        flex: 20rem;
-        max-width: 20rem;
+        flex: 25rem;
+        max-width: 25rem;
         text-align: left;
         font-weight: bold;
       `}
@@ -53,14 +53,14 @@ export const Description = styled.p`
   text-align: center;
   position: relative;
   font-weight: normal;
-  padding: 0 ${props => props.theme.break};
+  padding-right: ${props => props.theme.break};
   font-family: ${props => props.theme.font_primary};
-  @media (min-width: ${props => props.theme.breakpoint_desctop}) {
+  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
     ${props =>
       props.half &&
       css`
         text-align: left;
-        flex: calc(20rem - 100%);
+        flex: calc(25rem - 100%);
       `}
   }
 `;
