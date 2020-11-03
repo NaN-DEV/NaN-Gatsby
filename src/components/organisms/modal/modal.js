@@ -65,7 +65,7 @@ class ModalMenuComponent extends React.Component {
                         return (
                           <BoxMenu theme={settings} size={item.size} key={item.id}>
                             <Link to="/" title="usługi">
-                              <Icon secondary height={9} icon={item.icon} title={item.name} newClass="icon-menu" />
+                              <Icon primary height={9} icon={item.icon} title={item.name} newClass="icon-menu" />
                               <MenuTitle theme={settings}>{item.name}</MenuTitle>
                             </Link>
                           </BoxMenu>

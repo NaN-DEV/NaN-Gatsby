@@ -18,7 +18,6 @@ import Button from '../../../atoms/button/button';
 
 const IdentificationProject = props => {
   const { image, brand, nameProject } = props;
-  console.log(nameProject);
 
   return (
     <>

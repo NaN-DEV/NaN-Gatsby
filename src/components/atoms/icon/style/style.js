@@ -45,8 +45,8 @@ const mainStyleIconHover = css`
       ${props =>
         props.secondary &&
         css`
-          fill: ${props.theme.tertiary_3};
-          stroke: ${props.theme.tertiary_3};
+          fill: ${props.theme.primary};
+          stroke: ${props.theme.primary};
         `}
     }
   }
@@ -74,7 +74,7 @@ export const ButtonIcon = styled.button`
     ${props =>
       props.secondary &&
       css`
-        background-color: ${props.theme.tertiary_1};
+        background-color: ${props.theme.secondary};
       `}
   }
 `;

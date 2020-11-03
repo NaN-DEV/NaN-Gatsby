@@ -76,19 +76,19 @@ export const BoxMenu = styled.li`
     align-items: center;
     justify-content: center;
     padding: ${props => props.theme.break};
-    background-color: ${props => props.theme.tertiary_1};
+    background-color: ${props => props.theme.secondary};
+    p {
+      color: ${props => props.theme.primary};
+    }
     &:hover {
-      background-color: ${props => props.theme.tertiary_3};
-      p {
-        color: ${props => props.theme.primary};
-      }
-      svg {
-        fill: ${props => props.theme.primary};
-      }
+      background-color: ${props => props.theme.tertiary_1};
     }
   }
   .icon-menu {
     margin-top: auto;
+    svg {
+      fill: ${props => props.theme.primary} !important;
+    }
   }
 
   @media (min-width: ${props => props.theme.breakpoint_tablet}) {

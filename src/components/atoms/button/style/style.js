@@ -20,7 +20,7 @@ const styleAllButton = css`
           background-color: ${props.theme.secondary} !important;
           box-shadow: ${props.theme.tertiary_2} ${props.theme.border} ${props.theme.border} 0 !important;
           &:hover {
-            color: ${props.theme.secondary} !important;
+            color: ${props.theme.primary} !important;
             background-color: ${props.theme.tertiary_1} !important;
           }
         `;
@@ -70,8 +70,8 @@ const styleAllButton = css`
           background-color: ${props.theme.primary}!important;
           box-shadow: ${props.theme.tertiary_2} ${props.theme.border} ${props.theme.border} 0 !important;
           &:hover {
-            color: ${props.theme.secondary} !important;
-            background-color: ${props.theme.tertiary_3} !important;
+            color: ${props.theme.primary} !important;
+            background-color: ${props.theme.tertiary_4} !important;
           }
         `;
     }

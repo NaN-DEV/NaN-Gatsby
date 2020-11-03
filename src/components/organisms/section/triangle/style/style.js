@@ -48,11 +48,11 @@ ${props =>
   props.tertiary
     ? css`
         color: ${props.theme.primary};
-        background-color: ${props.theme.tertiary_4};
+        background-color: ${props.theme.tertiary_2};
         a {
           color: ${props.theme.primary};
           &:hover {
-            color: ${props.theme.tertiary_2};
+            color: ${props.theme.tertiary_4};
           }
         }
       `

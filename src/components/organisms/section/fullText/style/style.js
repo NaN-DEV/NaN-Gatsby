@@ -75,3 +75,71 @@ export const Description = styled.p`
     width: calc(100% - 25rem);
   }
 `;
+
+export const BoxOptions = styled.div`
+  flex: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 9rem;
+  position: relative;
+  &::after {
+    top: 3rem;
+    content: '';
+    width: 30vh;
+    opacity: 0.3;
+    height: 0.1rem;
+    display: block;
+    position: absolute;
+    left: calc(50% - 15vh);
+    background-color: black;
+  }
+  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+    margin-left: 25rem;
+    flex: calc(100% - 25rem);
+    width: calc(100% - 25rem);
+  }
+`;
+
+export const ElementOptions = styled.div`
+  flex: 100%;
+  width: 100%;
+  display: flex;
+  padding: 3rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  .icon {
+    display: flex;
+    justify-content: center;
+    svg {
+      height: 8rem;
+    }
+  }
+  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+    width: 33.3333%;
+    flex: 33.3333%;
+    padding: 0 0;
+    &:nth-child(0n + 1) {
+      justify-content: flex-start;
+    }
+    &:nth-child(0n + 2) {
+      justify-content: center;
+    }
+    &:nth-child(0n + 3) {
+      justify-content: flex-end;
+    }
+  }
+`;
+
+export const BoxElementOptions = styled.div`
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const DescriptionOptions = styled.div`
+  font-size: 3rem;
+  padding: 1.5rem 0;
+  text-align: center;
+  text-transform: uppercase;
+`;

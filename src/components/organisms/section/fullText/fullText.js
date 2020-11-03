@@ -3,32 +3,44 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { Section, Title, Description } from './style/style';
+import { Section, Title, Description, BoxOptions, ElementOptions, DescriptionOptions, BoxElementOptions } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
 
 // IMPORT COMPONENT
 import Row from '../../../atoms/row/row';
+import Icon from '../../../atoms/icon/icon';
 
 // CREATE NEW COMPONENT
 
-const SectionHeroComponent = props => {
-  const { id, size, half, newStyle, newClass } = props;
+const SectionFullText = props => {
+  const { id, color, title, description, options, newStyle, newClass } = props;
+
   return (
     <>
-      <Section id={id} size={size} color="tertiary_4" theme={settings} newStyle={newStyle} className={newClass}>
+      <Section id={id} color={color} theme={settings} newStyle={newStyle} className={newClass}>
         <Row newClass="row">
-          <Title theme={settings}>test</Title>
-          <Description theme={settings} half={half}>
-            jakiś tam test bala bala bla bla bal jakiś tam test bala bala bla bla bal jakiś tam test bala bala bla bla bal jakiś tam test bala bala
-            bla bla bal jakiś tam test bala bala bla bla baljakiś tam test bala bala bla bla bal jakiś tam test bala bala bla bla bal jakiś tam test
-            bala bala bla bla bal jakiś tam test bala bala bla bla bal jakiś tam test bala bala bla bla baljakiś tam test bala bala bla bla bal jakiś
-            tam test bala bala bla bla bal jakiś tam test bala bala bla bla bal jakiś tam test bala bala bla bla bal jakiś tam test bala bala bla bla
-            baljakiś tam test bala bala bla bla bal jakiś tam test bala bala bla bla bal jakiś tam test bala bala bla bla bal jakiś tam test bala bala
-            bla bla bal jakiś tam test bala bala bla bla baljakiś tam test bala bala bla bla bal jakiś tam test bala bala bla bla bal jakiś tam test
-            bala bala bla bla bal jakiś tam test bala bala bla bla bal jakiś tam test bala bala bla bla bal
-          </Description>
+          <Title theme={settings}>{title ? `${title}` : 'Add title'}</Title>
+          <Description theme={settings}>{description ? `${description}` : 'Add Description'}</Description>
+          {options ? (
+            <BoxOptions theme={settings}>
+              {options[0].icon
+                ? options.map(item => {
+                    return (
+                      <>
+                        <ElementOptions theme={settings}>
+                          <BoxElementOptions>
+                            <Icon id={item.id} icon={item.icon} theme={settings} newClass="icon" />
+                            <DescriptionOptions theme={settings}>{item.icon}</DescriptionOptions>
+                          </BoxElementOptions>
+                        </ElementOptions>
+                      </>
+                    );
+                  })
+                : null}
+            </BoxOptions>
+          ) : null}
         </Row>
       </Section>
     </>
@@ -36,22 +48,22 @@ const SectionHeroComponent = props => {
 };
 
 // PropTpyes
-SectionHeroComponent.propTypes = {
+SectionFullText.propTypes = {
   id: PropTypes.string,
-  half: PropTypes.bool,
-  size: PropTypes.string,
-
+  title: PropTypes.string,
+  color: PropTypes.string,
   newClass: PropTypes.string,
-
+  description: PropTypes.string,
   newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
-SectionHeroComponent.defaultProps = {
+SectionFullText.defaultProps = {
   id: null,
-  half: false,
-  size: 'full',
   newClass: null,
   newStyle: null,
+  color: 'primary',
+  title: 'Add title',
+  description: 'Add description',
 };
 
-export default SectionHeroComponent;
+export default SectionFullText;

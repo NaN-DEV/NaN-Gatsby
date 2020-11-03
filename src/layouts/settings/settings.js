@@ -7,10 +7,10 @@ const settings = {
 
   primary: '#000000',
   secondary: '#FFFFFF',
-  tertiary_1: '#2e2e2e',
-  tertiary_2: '#5d5d5d',
-  tertiary_3: '#8b8b8b',
-  tertiary_4: '#bababa',
+  tertiary_1: '#B9B9B9',
+  tertiary_2: '#C8C8C8',
+  tertiary_3: '#D6D6D6',
+  tertiary_4: '#F1F1F1',
 
   danger: '#ffcc00',
   succes: '#055A01',

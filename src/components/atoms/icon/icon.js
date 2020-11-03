@@ -14,7 +14,10 @@ import Cv from '../../../assets/icon/cv.svg';
 import Ask from '../../../assets/icon/ask.svg';
 import Mail from '../../../assets/icon/mail.svg';
 import Down from '../../../assets/icon/down.svg';
+import Back from '../../../assets/icon/back.svg';
+import Ux from '../../../assets/icon/uxui.svg';
 import Logo from '../../../assets/brand/logo.svg';
+import Front from '../../../assets/icon/front.svg';
 import Phone from '../../../assets/icon/phone.svg';
 import Coffe from '../../../assets/icon/coffe.svg';
 import Folder from '../../../assets/icon/folder.svg';
@@ -69,6 +72,12 @@ const IconComponent = props => {
         return <Computer height={height} />;
       case 'ask':
         return <Ask height={height} />;
+      case 'front-end':
+        return <Front height={height} />;
+      case 'back-end':
+        return <Back height={height} />;
+      case 'ui/ux':
+        return <Ux height={height} />;
       default:
         return 'Please name icon :) ';
     }

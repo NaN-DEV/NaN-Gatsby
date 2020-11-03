@@ -15,7 +15,7 @@ import IdentificationProject from './identificationProject/identificationProject
 // CREATE NEW COMPONENT
 
 const SectionComponent = props => {
-  const { id, half, size, type, title, color, content, newClass, newStyle, children, description, image, brand, nameProject } = props;
+  const { id, half, size, type, title, color, content, newClass, newStyle, children, description, image, brand, nameProject, options } = props;
 
   // SELECT SECTION
   const renderSwitchWrap = wrap => {
@@ -79,7 +79,7 @@ const SectionComponent = props => {
       case 'fullText':
         return (
           <>
-            <FullText id={id} size={size} color={color} title={title} description={description} newClass={newClass} newStyle={newStyle} />
+            <FullText id={id} color={color} title={title} description={description} options={options} newClass={newClass} newStyle={newStyle} />
           </>
         );
       default:
@@ -102,6 +102,7 @@ SectionComponent.propTypes = {
   description: PropTypes.string,
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   brand: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  options: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   title: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
   content: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
@@ -120,6 +121,7 @@ SectionComponent.defaultProps = {
   newClass: null,
   newStyle: null,
   children: null,
+  options: false,
   color: 'primary',
   description: null,
   nameProject: false,
