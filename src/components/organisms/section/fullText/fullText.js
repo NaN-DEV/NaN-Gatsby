@@ -3,7 +3,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { Section, Title, Description, BoxOptions, ElementOptions, DescriptionOptions, BoxElementOptions } from './style/style';
+import {
+  Title,
+  Section,
+  TitleUnit,
+  BoxOptions,
+  Description,
+  TitleOptions,
+  ElementOptions,
+  BoxElementOptions,
+  DescriptionOptionsIcon,
+  DescriptionOptionsProgressBar,
+} from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
@@ -11,6 +22,7 @@ import settings from '../../../../layouts/settings/settings';
 // IMPORT COMPONENT
 import Row from '../../../atoms/row/row';
 import Icon from '../../../atoms/icon/icon';
+import ProgressBar from '../../../atoms/progressBar/progressBar';
 
 // CREATE NEW COMPONENT
 
@@ -25,20 +37,36 @@ const SectionFullText = props => {
           <Description theme={settings}>{description ? `${description}` : 'Add Description'}</Description>
           {options ? (
             <BoxOptions theme={settings}>
-              {options[0].icon
-                ? options.map(item => {
-                    return (
-                      <>
-                        <ElementOptions theme={settings}>
-                          <BoxElementOptions>
-                            <Icon id={item.id} icon={item.icon} theme={settings} newClass="icon" />
-                            <DescriptionOptions theme={settings}>{item.icon}</DescriptionOptions>
-                          </BoxElementOptions>
-                        </ElementOptions>
-                      </>
-                    );
-                  })
-                : null}
+              {options[0].icon &&
+                options.map(item => {
+                  return (
+                    <>
+                      <ElementOptions theme={settings}>
+                        <BoxElementOptions>
+                          <Icon id={item.id} icon={item.icon} theme={settings} newClass="icon" />
+                          <DescriptionOptionsIcon theme={settings}>{item.icon}</DescriptionOptionsIcon>
+                        </BoxElementOptions>
+                      </ElementOptions>
+                    </>
+                  );
+                })}
+              {options[0].percent &&
+                options.map(item => {
+                  return (
+                    <>
+                      <ElementOptions theme={settings}>
+                        <BoxElementOptions theme={settings}>
+                          <TitleOptions>
+                            {item.value}
+                            <TitleUnit>{item.unit}.</TitleUnit>
+                          </TitleOptions>
+                          <ProgressBar type="ring" color="primary" size={250} percent={item.percent} />
+                          <DescriptionOptionsProgressBar theme={settings}>{item.description}</DescriptionOptionsProgressBar>
+                        </BoxElementOptions>
+                      </ElementOptions>
+                    </>
+                  );
+                })}
             </BoxOptions>
           ) : null}
         </Row>

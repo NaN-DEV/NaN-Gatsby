@@ -47,7 +47,7 @@ export const Section = styled.section`
 
 export const Title = styled.h1`
   flex: 100%;
-  width: 1005;
+  width: 100%;
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
@@ -113,9 +113,10 @@ export const ElementOptions = styled.div`
     display: flex;
     justify-content: center;
     svg {
-      height: 8rem;
+      height: 25rem;
     }
   }
+
   @media (min-width: ${props => props.theme.breakpoint_desktop}) {
     width: 33.3333%;
     flex: 33.3333%;
@@ -133,13 +134,40 @@ export const ElementOptions = styled.div`
 `;
 
 export const BoxElementOptions = styled.div`
+  position: relative;
   flex-direction: column;
   justify-content: center;
 `;
 
-export const DescriptionOptions = styled.div`
-  font-size: 3rem;
+export const DescriptionOptionsIcon = styled.div`
+  width: 100%;
+  max-width: 250px;
+  font-size: 2.4rem;
   padding: 1.5rem 0;
   text-align: center;
   text-transform: uppercase;
+`;
+
+export const DescriptionOptionsProgressBar = styled.div`
+  width: 100%;
+  max-width: 250px;
+  font-size: 2.4rem;
+  padding: 1.5rem 0;
+  text-align: center;
+`;
+
+export const TitleOptions = styled.p`
+  margin-top: 11rem;
+  width: 100%;
+  display: block;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  text-overflow: ellipsis;
+`;
+
+export const TitleUnit = styled.span`
+  padding: 0 0.3rem;
+  font-size: 1.5rem;
 `;
