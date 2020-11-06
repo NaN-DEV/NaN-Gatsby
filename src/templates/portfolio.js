@@ -5,6 +5,7 @@ import Section from '../components/organisms/section/section';
 
 // IMPORT COMPONENT
 import Layout from '../layouts/index';
+import Carousel from '../components/molecules/carusel/carusel';
 
 // IMPORT SETTINGS STYLE
 import settings from '../layouts/settings/settings';
@@ -13,6 +14,7 @@ import settings from '../layouts/settings/settings';
 
 const portfolioProject = ({ data }) => {
   const { problem, link, image, brand, target, process, score, job, jobTechnology } = data.datoCmsPortfolio;
+  const { nodes } = data.allDatoCmsPortfolio;
 
   const OptionsScore = [
     { value: '10', unit: 'mc.', percent: 20, description: '10 miesięcy ciągłej pracy nad projektem' },
@@ -29,6 +31,7 @@ const portfolioProject = ({ data }) => {
         <Section type="fullText" color="tertiary_3" title="Proces" description={process} />
         <Section type="fullText" color="tertiary_2" title="Wynik" description={score} options={OptionsScore} />
         <Section type="fullText" color="tertiary_1" title="Prace" description={job} options={jobTechnology} />
+        <Carousel content={nodes} />
         {/* SECTION SELL */}
         <Section type="sellAds" />
       </Layout>
@@ -38,6 +41,18 @@ const portfolioProject = ({ data }) => {
 
 export const portfolioProjectQuery = graphql`
   query portfolioProjectGraphql($id: String) {
+    allDatoCmsPortfolio {
+      nodes {
+        id
+        slug
+        title
+        category {
+          slug
+          name
+          id
+        }
+      }
+    }
     datoCmsPortfolio(id: { eq: $id }) {
       id
       job

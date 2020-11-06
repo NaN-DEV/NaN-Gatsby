@@ -64,9 +64,9 @@ a {
    }
 
    &:hover {
-      color: ${props => props.theme.tertiary_2};
+      opacity: 0.6;
          svg {
-             fill: ${props => props.theme.tertiary_2};
+         opacity: 0.9;
          }
    }
 }

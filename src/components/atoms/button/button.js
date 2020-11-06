@@ -3,15 +3,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { ButtonLinkOut, Button, ButtonLink, ButtonSubmit } from './style/style';
+import { ButtonLinkOut, Button, ButtonLink, ButtonSubmit, ButtonTriangle } from './style/style';
 
 // IMPORT SETTINGS STYLE
+import Icon from '../icon/icon';
 import settings from '../../../layouts/settings/settings';
 
 // CREATE NEW COMPONENT
 
 const ButtonComponent = props => {
-  const { type, title, color, newClass, newStyle, link } = props;
+  const { type, title, color, newClass, newStyle, link, onClick, left, right } = props;
   const selectTypeButton = wrap => {
     switch (wrap) {
       case 'linkOut':
@@ -36,11 +37,20 @@ const ButtonComponent = props => {
             <ButtonSubmit color={color} value={title} theme={settings} style={newStyle} className={newClass} />
           </>
         );
+      case 'triangle':
+        return (
+          <>
+            <ButtonTriangle color={color} theme={settings} style={newStyle} className={newClass} onClick={onClick} left={left} right={right}>
+              <Icon width={140} icon="triangle" title="ok" newClass="triangle" secondary />
+              <Icon width={140} icon="down" title="ok" newClass="arrow" secondary />
+            </ButtonTriangle>
+          </>
+        );
 
       default:
         return (
           <>
-            <Button color={color} theme={settings} style={newStyle} className={newClass}>
+            <Button color={color} theme={settings} style={newStyle} className={newClass} onClick={onClick}>
               {title}
             </Button>
           </>

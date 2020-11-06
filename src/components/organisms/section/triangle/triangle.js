@@ -146,10 +146,10 @@ class SectionTriangleComponent extends React.Component {
 
 // PropTpyes
 SectionTriangleComponent.propTypes = {
-  content: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
   color: PropTypes.string,
   newClass: PropTypes.string,
   newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  content: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
 };
 
 SectionTriangleComponent.defaultProps = {
