@@ -13,24 +13,18 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const portfolioProject = ({ data }) => {
-  const { problem, link, image, brand, target, process, score, job, jobTechnology } = data.datoCmsPortfolio;
+  const { problem, link, image, brand, target, process, score, job, jobTechnology, scoreStat } = data.datoCmsPortfolio;
   const { nodes } = data.allDatoCmsPortfolio;
-
-  const OptionsScore = [
-    { value: '10', unit: 'mc.', percent: 20, description: '10 miesięcy ciągłej pracy nad projektem' },
-    { value: '200', unit: 'tyś.', percent: 50, description: 'Po 5 miesiącach od uruchomienia 200 000 nowych użytników' },
-    { value: '120', unit: 'tyś.', percent: 80, description: 'Po 5 miesiącach od uruchomienia 200 000 nowych użytników' },
-  ];
 
   return (
     <>
-      <Layout theme={settings}>
+      <Layout theme={settings} key="portfolio">
         <Section half type="hero" color="primary" title="Problem" description={problem} />
         <Section type="identificationProject" nameProject={link} image={image} brand={brand} />
-        <Section type="fullText" color="tertiary_4" title="Cel" description={target} />
-        <Section type="fullText" color="tertiary_3" title="Proces" description={process} />
-        <Section type="fullText" color="tertiary_2" title="Wynik" description={score} options={OptionsScore} />
-        <Section type="fullText" color="tertiary_1" title="Prace" description={job} options={jobTechnology} />
+        <Section type="fullText" color="tertiary_4" title="Cel" key="cel" description={target} />
+        <Section type="fullText" color="tertiary_3" title="Proces" key="proces" description={process} />
+        <Section type="fullText" color="tertiary_2" title="Wynik" key="wynik" description={score} options={scoreStat} />
+        <Section type="fullText" color="tertiary_1" title="Prace" key="prace" description={job} options={jobTechnology} />
         <Carousel content={nodes} />
         {/* SECTION SELL */}
         <Section type="sellAds" />
@@ -74,6 +68,13 @@ export const portfolioProjectQuery = graphql`
       jobTechnology {
         id
         icon
+      }
+      scoreStat {
+        id
+        unit
+        value
+        percent
+        description
       }
     }
   }

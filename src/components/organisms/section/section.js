@@ -113,18 +113,18 @@ SectionComponent.defaultProps = {
   id: null,
   type: null,
   title: null,
-  half: false,
+  half: null,
   image: null,
   brand: null,
-  size: 'full',
+  size: null,
   content: null,
   newClass: null,
   newStyle: null,
   children: null,
-  options: false,
-  color: 'primary',
+  options: null,
+  color: null,
   description: null,
-  nameProject: false,
+  nameProject: null,
 };
 
 export default SectionComponent;

@@ -25,48 +25,48 @@ import Icon from '../../../atoms/icon/icon';
 import ProgressBar from '../../../atoms/progressBar/progressBar';
 
 // CREATE NEW COMPONENT
-
 const SectionFullText = props => {
   const { id, color, title, description, options, newStyle, newClass } = props;
-
   return (
     <>
-      <Section id={id} color={color} theme={settings} newStyle={newStyle} className={newClass}>
+      <Section key={id} color={color} theme={settings} newStyle={newStyle} className={newClass}>
         <Row newClass="row">
           <Title theme={settings}>{title ? `${title}` : 'Add title'}</Title>
           <Description theme={settings}>{description ? `${description}` : 'Add Description'}</Description>
           {options ? (
             <BoxOptions theme={settings}>
-              {options[0].icon &&
-                options.map(item => {
-                  return (
-                    <>
-                      <ElementOptions theme={settings}>
-                        <BoxElementOptions>
-                          <Icon id={item.id} icon={item.icon} theme={settings} newClass="icon" />
-                          <DescriptionOptionsIcon theme={settings}>{item.icon}</DescriptionOptionsIcon>
-                        </BoxElementOptions>
-                      </ElementOptions>
-                    </>
-                  );
-                })}
-              {options[0].percent &&
-                options.map(item => {
-                  return (
-                    <>
-                      <ElementOptions theme={settings}>
-                        <BoxElementOptions theme={settings}>
-                          <TitleOptions>
-                            {item.value}
-                            <TitleUnit>{item.unit}.</TitleUnit>
-                          </TitleOptions>
-                          <ProgressBar type="ring" color="primary" size={250} percent={item.percent} />
-                          <DescriptionOptionsProgressBar theme={settings}>{item.description}</DescriptionOptionsProgressBar>
-                        </BoxElementOptions>
-                      </ElementOptions>
-                    </>
-                  );
-                })}
+              {options[0].icon
+                ? options.map(itemIcon => {
+                    return (
+                      <>
+                        <ElementOptions theme={settings} key={itemIcon.id}>
+                          <BoxElementOptions>
+                            <Icon id={itemIcon.id} icon={itemIcon.icon} theme={settings} newClass="icon" />
+                            <DescriptionOptionsIcon theme={settings}>{itemIcon.icon}</DescriptionOptionsIcon>
+                          </BoxElementOptions>
+                        </ElementOptions>
+                      </>
+                    );
+                  })
+                : null}
+              {options[0].percent
+                ? options.forEach(percent => {
+                    return (
+                      <>
+                        <ElementOptions theme={settings} key={percent.id}>
+                          <BoxElementOptions theme={settings}>
+                            <TitleOptions>
+                              {percent.value}
+                              <TitleUnit>{percent.unit}.</TitleUnit>
+                            </TitleOptions>
+                            <ProgressBar type="ring" color="primary" size={250} percent={percent.percent} />
+                            <DescriptionOptionsProgressBar theme={settings}>{percent.description}</DescriptionOptionsProgressBar>
+                          </BoxElementOptions>
+                        </ElementOptions>
+                      </>
+                    );
+                  })
+                : null}
             </BoxOptions>
           ) : null}
         </Row>
@@ -87,11 +87,11 @@ SectionFullText.propTypes = {
 
 SectionFullText.defaultProps = {
   id: null,
+  color: null,
+  title: null,
   newClass: null,
   newStyle: null,
-  color: 'primary',
-  title: 'Add title',
-  description: 'Add description',
+  description: null,
 };
 
 export default SectionFullText;

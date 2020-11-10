@@ -108,7 +108,7 @@ const CarouselComponent = props => {
         >
           {caruselDesctopFinal.map(item => {
             return (
-              <Item theme={settings}>
+              <Item theme={settings} key={item[0].id}>
                 <Row>
                   <BoxLeft theme={settings} to={`/portfolio/projekt/${item[0].slug}`} title={item[0].title}>
                     <BoxTop theme={settings}>
@@ -117,7 +117,7 @@ const CarouselComponent = props => {
                     <BoxBottom theme={settings}>
                       {item[0].category.map(category => {
                         return (
-                          <Category to={`/portfolio/${category.slug}`} theme={settings} title={category.name}>
+                          <Category to={`/portfolio/${category.slug}`} theme={settings} title={category.name} key={category.id}>
                             {category.name}
                           </Category>
                         );
@@ -132,7 +132,7 @@ const CarouselComponent = props => {
                     <BoxBottom theme={settings}>
                       {item[1].category.map(category => {
                         return (
-                          <Category to={`/portfolio/${category.slug}`} theme={settings} title={category.name}>
+                          <Category to={`/portfolio/${category.slug}`} theme={settings} title={category.name} key={category.id}>
                             {category.name}
                           </Category>
                         );
@@ -162,7 +162,7 @@ const CarouselComponent = props => {
         >
           {content.map(item => {
             return (
-              <Item id={item.id}>
+              <Item id={item.id} key={item.id}>
                 <Row>
                   <BoxFull theme={settings} to={`/portfolio/projekt/${item.slug}`} title={item.title}>
                     <BoxTop theme={settings}>
@@ -171,7 +171,7 @@ const CarouselComponent = props => {
                     <BoxBottom theme={settings}>
                       {item.category.map(category => {
                         return (
-                          <Category to={`/portfolio/${category.slug}`} theme={settings} title={category.name}>
+                          <Category to={`/portfolio/${category.slug}`} theme={settings} title={category.name} key={category.id}>
                             {category.name}
                           </Category>
                         );

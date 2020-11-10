@@ -50,7 +50,7 @@ class SectionTypingComponent extends React.Component {
   }
 
   render() {
-    const { children, newClass, newStyle, size, title, color, id } = this.props;
+    const { id, size, color, title, children, newClass, newStyle } = this.props;
     const { titleArray } = this.state;
     title.forEach(item => {
       titleArray.push(item.title);
@@ -77,20 +77,21 @@ class SectionTypingComponent extends React.Component {
 SectionTypingComponent.propTypes = {
   id: PropTypes.string,
   size: PropTypes.string,
-  title: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
   color: PropTypes.string,
   newClass: PropTypes.string,
-  children: PropTypes.node.isRequired,
   newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  title: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 };
 
 SectionTypingComponent.defaultProps = {
   id: null,
-  size: 'full',
+  size: null,
+  color: null,
+  title: null,
   newClass: null,
   newStyle: null,
-  color: 'primary',
-  title: ['Add title'],
+  children: null,
 };
 
 export default SectionTypingComponent;
