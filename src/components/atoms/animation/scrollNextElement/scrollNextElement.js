@@ -75,7 +75,7 @@ class ScrollNextElementComponent extends React.Component {
       });
     } else {
       this.setState({
-        stopTimeFor: 1500,
+        stopTimeFor: 2000,
       });
     }
   }

@@ -1,20 +1,10 @@
 // IMPORT PLUGIN
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { StickyContainer, Sticky } from 'react-sticky';
 
 // IMPORT STYLE
-import {
-  Title,
-  Section,
-  TitleUnit,
-  BoxOptions,
-  Description,
-  TitleOptions,
-  ElementOptions,
-  BoxElementOptions,
-  DescriptionOptionsIcon,
-  DescriptionOptionsProgressBar,
-} from './style/style';
+import { Title, Section, BoxOptions, Description, ElementOptions, BoxElementOptions, DescriptionOptionsIcon } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
@@ -27,6 +17,7 @@ import ProgressBar from '../../../atoms/progressBar/progressBar';
 // CREATE NEW COMPONENT
 const SectionFullText = props => {
   const { id, color, title, description, options, newStyle, newClass } = props;
+
   return (
     <>
       <Section key={id} color={color} theme={settings} newStyle={newStyle} className={newClass}>
@@ -50,19 +41,21 @@ const SectionFullText = props => {
                   })
                 : null}
               {options[0].percent
-                ? options.forEach(percent => {
+                ? options.map(percent => {
                     return (
                       <>
-                        <ElementOptions theme={settings} key={percent.id}>
-                          <BoxElementOptions theme={settings}>
-                            <TitleOptions>
-                              {percent.value}
-                              <TitleUnit>{percent.unit}.</TitleUnit>
-                            </TitleOptions>
-                            <ProgressBar type="ring" color="primary" size={250} percent={percent.percent} />
-                            <DescriptionOptionsProgressBar theme={settings}>{percent.description}</DescriptionOptionsProgressBar>
-                          </BoxElementOptions>
-                        </ElementOptions>
+                        <ProgressBar
+                          size={250}
+                          type="ring"
+                          duration={6}
+                          color="primary"
+                          id={percent.id}
+                          key={percent.id}
+                          unit={percent.unit}
+                          value={percent.value}
+                          percent={percent.percent}
+                          description={percent.description}
+                        />
                       </>
                     );
                   })

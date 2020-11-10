@@ -147,27 +147,3 @@ export const DescriptionOptionsIcon = styled.div`
   text-align: center;
   text-transform: uppercase;
 `;
-
-export const DescriptionOptionsProgressBar = styled.div`
-  width: 100%;
-  max-width: 250px;
-  font-size: 2.4rem;
-  padding: 1.5rem 0;
-  text-align: center;
-`;
-
-export const TitleOptions = styled.p`
-  margin-top: 11rem;
-  width: 100%;
-  display: block;
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-  position: absolute;
-  text-overflow: ellipsis;
-`;
-
-export const TitleUnit = styled.span`
-  padding: 0 0.3rem;
-  font-size: 1.5rem;
-`;
