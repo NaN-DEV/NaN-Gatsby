@@ -48,7 +48,7 @@ export const Input = styled.input`
        `;
    }
  }}
- @media (min-width: ${props => props.theme.breakpoint_mobile}) {
+ @media (min-width: ${props => `${props.theme.breakpoint_mobile}px`}) {
  ${props => {
    switch (props.type) {
      case 'search':

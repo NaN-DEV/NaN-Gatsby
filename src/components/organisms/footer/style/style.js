@@ -17,7 +17,7 @@ export const Footer = styled.footer`
     margin: 0 auto;
   }
 
-  @media (min-width: ${props => props.theme.breakpoint_tablet}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
     .logo {
       margin: 0;
     }
@@ -37,7 +37,7 @@ export const Copyright = styled.div`
   justify-content: center;
   padding: ${props => props.theme.break};
 
-  @media (min-width: ${props => props.theme.breakpoint_tablet}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
     flex: none;
     max-width: auto;
     padding: 0 ${props => props.theme.break};
@@ -56,7 +56,7 @@ export const Ul = styled.ul`
     font-weight: bold;
   }
 
-  @media (min-width: ${props => props.theme.breakpoint_tablet}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
     flex: none;
     max-width: auto;
   }
@@ -72,7 +72,7 @@ export const Li = styled.li`
     padding-right: 0;
   }
 
-  @media (min-width: ${props => props.theme.breakpoint_tablet}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
     flex: none;
     padding-top: 0;
     max-width: auto;

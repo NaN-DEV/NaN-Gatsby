@@ -33,7 +33,7 @@ export const Title = styled.h1`
         css`
           font-weight: bold;
         `}
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     ${props =>
       props.half &&
       css`
@@ -55,7 +55,7 @@ export const Description = styled.p`
   font-weight: normal;
   padding-right: ${props => props.theme.break};
   font-family: ${props => props.theme.font_primary};
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     ${props =>
       props.half &&
       css`

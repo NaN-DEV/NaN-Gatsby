@@ -27,19 +27,19 @@ export const Section = styled.section`
     left: ${props => props.theme.break};
     bottom: ${props => props.theme.break};
   }
-  @media (min-width: ${props => props.theme.breakpoint_mobile}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_mobile}px`}) {
     .mascot {
       left: 1.5rem;
       width: 15rem;
     }
   }
-  @media (min-width: ${props => props.theme.breakpoint_tablet}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
     .mascot {
       left: 9rem;
       width: 18rem;
     }
   }
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     .mascot {
       left: 14rem;
       width: 30rem;
@@ -63,7 +63,7 @@ export const Title = styled.h1`
   margin: ${props => props.theme.break} 0;
   color: ${props => props.theme.secondary};
   font-family: ${props => props.theme.font_secondary};
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     font-size: 4.2rem;
   }
 `;

@@ -10,11 +10,12 @@ import settings from '../../../layouts/settings/settings';
 
 // CREATE NEW COMPONENT
 const RowComponent = props => {
-  const { half, left, right, mobile, tablet, desctop, children, newStyle, newClass } = props;
+  const { id, half, left, right, mobile, tablet, desctop, children, newStyle, newClass } = props;
 
   return (
     <>
       <Row
+        id={id}
         half={half}
         left={left}
         right={right}

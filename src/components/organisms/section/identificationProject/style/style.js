@@ -14,7 +14,7 @@ export const Section = styled.section`
 
 export const Left = styled.div`
   display: none;
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     width: 25rem;
     display: flex;
     flex-wrap: wrap;
@@ -26,7 +26,7 @@ export const Left = styled.div`
 `;
 export const Title = styled.p`
   display: none;
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     top: -6rem;
     display: block;
     font-size: 3rem;
@@ -38,7 +38,7 @@ export const Title = styled.p`
 
 export const Brand = styled(BackgroundImage)`
   display: none;
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     top: -9rem;
     z-index: 100;
     height: 30rem;
@@ -63,7 +63,7 @@ export const Right = styled.div`
     margin-left: auto;
     margin-right: 0.3rem;
   }
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     justify-content: left;
     width: calc(100% - 25rem);
   }
@@ -80,7 +80,7 @@ export const BigImage = styled(BackgroundImage)`
   height: 30rem;
   display: block;
   margin-top: ${props => props.theme.break};
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     height: 50rem;
   }
 `;

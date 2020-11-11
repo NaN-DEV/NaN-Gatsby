@@ -148,7 +148,7 @@ export const Step = styled.div`
       }
     }};
   }
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     flex: 25rem;
     max-width: 25rem;
     font-size: 2.4rem;
@@ -175,7 +175,7 @@ export const Box = styled.div`
     display: block;
   }
 
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     flex: calc(100% - 250px);
     max-width: calc(100% - 250px);
   }
@@ -198,7 +198,7 @@ export const Half = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     flex: 50%;
     max-width: 50%;
     padding-right: 3rem;
@@ -208,7 +208,7 @@ export const Half = styled.div`
     props.mascot &&
     css`
       display: none;
-      @media (min-width: ${props.theme.breakpoint_desktop}) {
+      @media (min-width: ${`${props.theme.breakpoint_desktop}px`}) {
         display: flex;
         overflow: hidden;
         position: relative;

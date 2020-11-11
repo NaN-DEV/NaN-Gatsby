@@ -15,7 +15,7 @@ const Row = styled.div`
     props.desctop &&
     props.right &&
     css`
-      @media (min-width: ${props.theme.breakpoint_desktop}) {
+      @media (min-width: ${`${props.theme.breakpoint_desktop}px`}) {
         margin-right: ${props.theme.break};
         max-width: ${props.theme.max_width_half};
       }
@@ -26,7 +26,7 @@ const Row = styled.div`
       props.desctop &&
       props.left &&
       css`
-        @media (min-width: ${props.theme.breakpoint_desktop}) {
+        @media (min-width: ${`${props.theme.breakpoint_desktop}px`}) {
           width: auto;
           padding-left: 0;
           margin-left: ${props.theme.break};
@@ -39,7 +39,7 @@ const Row = styled.div`
         props.tablet &&
         props.right &&
         css`
-          @media (min-width: ${props.theme.breakpoint_tablet}) {
+          @media (min-width: ${`${props.theme.breakpoint_tablet}px`}) {
             width: auto;
             padding-right: 0;
             margin-right: ${props.theme.break};
@@ -52,7 +52,7 @@ const Row = styled.div`
           props.tablet &&
           props.left &&
           css`
-            @media (min-width: ${props.theme.breakpoint_tablet}) {
+            @media (min-width: ${`${props.theme.breakpoint_tablet}px`}) {
               width: auto;
               padding-left: 0;
               margin-left: ${props.theme.break};
@@ -65,7 +65,7 @@ const Row = styled.div`
             props.mobile &&
             props.right &&
             css`
-              @media (min-width: ${props.theme.breakpoint_mobile}) {
+              @media (min-width: ${`${props.theme.breakpoint_mobile}px`}) {
                 width: auto;
                 padding-right: 0;
                 margin-right: ${props.theme.break};
@@ -78,7 +78,7 @@ const Row = styled.div`
               props.mobile &&
               props.left &&
               css`
-                @media (min-width: ${props.theme.breakpoint_mobile}) {
+                @media (min-width: ${`${props.theme.breakpoint_mobile}px`}) {
                   width: auto;
                   padding-left: 0;
                   margin-left: ${props.theme.break};

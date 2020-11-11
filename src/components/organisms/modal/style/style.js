@@ -91,7 +91,7 @@ export const BoxMenu = styled.li`
     }
   }
 
-  @media (min-width: ${props => props.theme.breakpoint_tablet}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
     ${props =>
       props.size
         ? css`
@@ -125,7 +125,7 @@ export const Ul = styled.ul`
     font-weight: bold;
   }
 
-  @media (min-width: ${props => props.theme.breakpoint_tablet}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
     flex: none;
     max-width: auto;
   }
@@ -141,7 +141,7 @@ export const Li = styled.li`
     padding-right: 0;
   }
 
-  @media (min-width: ${props => props.theme.breakpoint_tablet}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
     flex: none;
     padding-top: 0;
     max-width: auto;
@@ -157,12 +157,12 @@ export const Footer = styled.div`
   align-items: center;
   .link {
     margin: 0 auto ${props => props.theme.break} auto;
-    @media (min-width: ${props => props.theme.breakpoint_tablet}) {
+    @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
       margin: 0;
     }
   }
   .right {
-    @media (min-width: ${props => props.theme.breakpoint_tablet}) {
+    @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
       margin-left: auto;
       margin-right: 0.3rem;
     }

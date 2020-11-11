@@ -45,16 +45,35 @@ export const Section = styled.section`
   }}
 `;
 
+export const LeftBox = styled.div`
+  flex: 100%;
+  width: 100%;
+  position: relative;
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    flex: 25rem;
+    width: 25rem;
+    text-align: left;
+  }
+`;
+export const RightBox = styled.div`
+  flex: 100%;
+  width: 100%;
+  position: relative;
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    text-align: left;
+    flex: calc(100% - 25rem);
+    width: calc(100% - 25rem);
+  }
+`;
+
 export const Title = styled.h1`
   flex: 100%;
   width: 100%;
   font-size: 3rem;
-  font-weight: bold;
   text-align: center;
+  font-weight: bold;
   padding-bottom: ${props => props.theme.break};
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
-    flex: 25rem;
-    width: 25rem;
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     text-align: left;
   }
 `;
@@ -65,15 +84,8 @@ export const Description = styled.p`
   text-align: center;
   position: relative;
   font-weight: normal;
-  flex: calc(100% - 25rem);
-  width: calc(100% - 25rem);
   padding-right: ${props => props.theme.break};
   font-family: ${props => props.theme.font_primary};
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
-    text-align: left;
-    flex: calc(100% - 25rem);
-    width: calc(100% - 25rem);
-  }
 `;
 
 export const BoxOptions = styled.div`
@@ -95,7 +107,7 @@ export const BoxOptions = styled.div`
     left: calc(50% - 15vh);
     background-color: black;
   }
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     margin-left: 25rem;
     flex: calc(100% - 25rem);
     width: calc(100% - 25rem);
@@ -117,7 +129,7 @@ export const ElementOptions = styled.div`
     }
   }
 
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     width: 33.3333%;
     flex: 33.3333%;
     padding: 0 0;

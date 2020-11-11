@@ -58,7 +58,7 @@ ${props =>
       `
     : null}
 
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
      ${props =>
        props.half &&
        css`
@@ -73,7 +73,7 @@ export const Title = styled.h1`
   font-size: 1.5rem;
   margin-bottom: ${props => props.theme.break};
   max-width: ${props => props.theme.max_width_half};
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     font-size: 3rem;
   }
 `;

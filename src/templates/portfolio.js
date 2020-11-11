@@ -21,10 +21,10 @@ const portfolioProject = ({ data }) => {
       <Layout theme={settings} key="portfolio">
         <Section half type="hero" color="primary" title="Problem" description={problem} />
         <Section type="identificationProject" nameProject={link} image={image} brand={brand} />
-        <Section type="fullText" color="tertiary_4" title="Cel" key="cel" description={target} />
-        <Section type="fullText" color="tertiary_3" title="Proces" key="proces" description={process} />
-        <Section type="fullText" color="tertiary_2" title="Wynik" key="wynik" description={score} options={scoreStat} />
-        <Section type="fullText" color="tertiary_1" title="Prace" key="prace" description={job} options={jobTechnology} />
+        <Section type="fullText" color="tertiary_4" title="Cel" key="cel" id="cel122" description={target} />
+        <Section type="fullText" color="tertiary_3" title="Proces" key="proces" id="proces122" description={process} />
+        <Section type="fullText" color="tertiary_2" title="Wynik" key="wynik" id="wynik122" description={score} options={scoreStat} />
+        <Section type="fullText" color="tertiary_1" title="Prace" key="prace" id="prace122" description={job} options={jobTechnology} />
         <Carousel content={nodes} />
         {/* SECTION SELL */}
         <Section type="sellAds" />

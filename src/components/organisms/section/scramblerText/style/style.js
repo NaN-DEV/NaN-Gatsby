@@ -18,7 +18,7 @@ export const Section = styled.section`
     align-items: center;
     justify-content: center;
   }
-  @media (min-width: ${props => props.theme.breakpoint_mobile}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_mobile}px`}) {
     font-size: 4.2rem;
   }
 `;

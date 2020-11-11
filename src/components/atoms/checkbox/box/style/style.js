@@ -6,7 +6,7 @@ export const Box = styled.div`
   padding: 1.5rem 0;
   position: relative;
 
-  @media (min-width: ${props => props.theme.breakpoint_mobile}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_mobile}px`} {
     flex: 30%;
     width: 30%;
     padding: 1.5rem;
@@ -205,7 +205,7 @@ export const Label = styled.label`
     transition: ${props => props.theme.animation};
   }
 
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     min-height: 250px;
     .icon {
       width: 12rem !important;
@@ -236,7 +236,7 @@ export const Title = styled.p`
                 color: ${props.theme.dark};
               `}
 
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     height: 2.4rem;
     font-size: 2.4rem;
   }

@@ -13,8 +13,8 @@ export const Ul = styled.ul`
 
   @media (min-width: ${props =>
       props.breakpoint === 'mobile'
-        ? props.theme.breakpoint_mobile
-        : `${props.breakpoint === 'tablet' ? props.theme.breakpoint_tablet : props.theme.breakpoint_desktop}`}) {
+        ? `${props.theme.breakpoint_mobile}px`
+        : `${props.breakpoint === 'tablet' ? `${props.theme.breakpoint_tablet}px` : `${props.theme.breakpoint_desktop}px`}`}) {
     flex: none;
     max-width: auto;
   }
@@ -32,8 +32,8 @@ export const Li = styled.li`
 
   @media (min-width: ${props =>
       props.breakpoint === 'mobile'
-        ? props.theme.breakpoint_mobile
-        : `${props.breakpoint === 'tablet' ? props.theme.breakpoint_tablet : props.theme.breakpoint_desktop}`}) {
+        ? `${props.theme.breakpoint_mobile}px`
+        : `${props.breakpoint === 'tablet' ? `${props.theme.breakpoint_tablet}px` : `${props.theme.breakpoint_desktop}px`}`}) {
     flex: none;
     padding-top: 0;
     max-width: auto;

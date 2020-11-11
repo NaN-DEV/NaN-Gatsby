@@ -52,7 +52,7 @@ export const Item = styled.div`
     position: absolute;
     background-color: black;
   }
-  @media (min-width: ${props => props.theme.breakpoint_tablet}) {
+  @media (min-width: ${`${props => props.theme.breakpoint_tablet}px`}) {
     &:after {
       width: 50%;
     }
@@ -131,7 +131,7 @@ export const Title = styled.h1`
   text-align: left;
   margin-bottom: 9rem;
   max-width: ${props => props.theme.max_width_half};
-  @media (min-width: ${props => props.theme.breakpoint_desktop}) {
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     font-size: 3rem;
   }
 `;
