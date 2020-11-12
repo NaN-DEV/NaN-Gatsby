@@ -10,12 +10,31 @@ import FullText from './fullText/fullText';
 import Triangle from './triangle/triangle';
 import Scrambler from './scramblerText/scramblerText';
 import NotFoundPage from './notFoundPage/notFoundPage';
+import IdentificationExpert from './identificationExpert/identificationExpert';
 import IdentificationProject from './identificationProject/identificationProject';
 
 // CREATE NEW COMPONENT
 
 const SectionComponent = props => {
-  const { id, half, size, type, title, color, content, newClass, newStyle, children, description, joke, image, brand, nameProject, options } = props;
+  const {
+    id,
+    half,
+    size,
+    type,
+    title,
+    color,
+    content,
+    newClass,
+    newStyle,
+    children,
+    description,
+    joke,
+    image,
+    brand,
+    nameProject,
+    nameExpert,
+    options,
+  } = props;
 
   // SELECT SECTION
   const renderSwitchWrap = wrap => {
@@ -86,6 +105,20 @@ const SectionComponent = props => {
             />
           </>
         );
+      case 'identificationExpert':
+        return (
+          <>
+            <IdentificationExpert
+              id={id}
+              image={image}
+              color={color}
+              newClass={newClass}
+              newStyle={newStyle}
+              nameExpert={nameExpert}
+              description={description}
+            />
+          </>
+        );
       case 'fullText':
         return (
           <>
@@ -110,6 +143,7 @@ SectionComponent.propTypes = {
   color: PropTypes.string,
   newClass: PropTypes.string,
   nameProject: PropTypes.string,
+  nameExpert: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   brand: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
@@ -122,19 +156,20 @@ SectionComponent.propTypes = {
 
 SectionComponent.defaultProps = {
   id: null,
+  half: null,
+  size: null,
   joke: null,
   type: null,
   title: null,
-  half: null,
   image: null,
   brand: null,
-  size: null,
+  color: null,
+  options: null,
   content: null,
   newClass: null,
   newStyle: null,
   children: null,
-  options: null,
-  color: null,
+  nameExpert: null,
   description: null,
   nameProject: null,
 };

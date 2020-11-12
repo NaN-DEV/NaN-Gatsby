@@ -20,7 +20,7 @@ const portfolioProject = ({ data }) => {
     <>
       <Layout theme={settings} key="projectPage">
         <Section half type="hero" color="primary" title="Problem" description={problem} />
-        <Section type="identificationProject" nameProject={link} image={image} brand={brand} />
+        <Section type="identificationProject" key="project3333" id="project3333" nameProject={link} image={image} brand={brand} />
         <Section type="fullText" color="tertiary_4" title="Cel" key="cel" id="cel122" description={target} />
         <Section type="fullText" color="tertiary_3" title="Proces" key="proces" id="proces122" description={process} />
         <Section type="fullText" color="tertiary_2" title="Wynik" key="wynik" id="wynik122" description={score} options={scoreStat} />

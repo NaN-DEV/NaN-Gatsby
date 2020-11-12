@@ -80,12 +80,16 @@ export const Title = styled.h1`
 
 export const Description = styled.p`
   display: block;
-  font-size: 1.8rem;
+
   text-align: center;
   position: relative;
   font-weight: normal;
   padding-right: ${props => props.theme.break};
   font-family: ${props => props.theme.font_primary};
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    font-size: 3rem;
+    text-align: left;
+  }
 `;
 
 export const BoxOptions = styled.div`

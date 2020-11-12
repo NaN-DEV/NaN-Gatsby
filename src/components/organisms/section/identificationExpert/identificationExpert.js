@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Sticky from '../../../atoms/sticky/sticky';
 
 // IMPORT STYLE
-import { Section, Left, Right, Brand, ProjectTitle, BigImage, Title } from './style/style';
+import { Section, Left, Right, FaceExpert, NameExpert, Description, Title, BoxData } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
@@ -17,25 +17,27 @@ import Button from '../../../atoms/button/button';
 
 // CREATE NEW COMPONENT
 
-const IdentificationProject = props => {
-  const { id, image, brand, nameProject } = props;
+const identificationExpertComponent = props => {
+  const { id, description, image, nameExpert } = props;
 
   return (
     <>
       <Section theme={settings}>
         <Row theme={settings} newClass="row">
           <Left theme={settings}>
-            <Brand theme={settings} fluid={brand.fluid} />
+            <FaceExpert theme={settings} fluid={image.fluid} />
             <Sticky id={id} offsetTop={30}>
               <Title id={id} theme={settings}>
-                Start
+                Witam
               </Title>
             </Sticky>
           </Left>
           <Right theme={settings}>
-            <ProjectTitle theme={settings}>{nameProject}</ProjectTitle>
-            <Button theme={settings} title="live" type="linkOut" newClass="button_live" link={`http://${nameProject}`} />
-            <BigImage theme={settings} fluid={image.fluid} />
+            <BoxData>
+              <NameExpert theme={settings}>{nameExpert}</NameExpert>
+              <Button theme={settings} title="Portfolio" type="linkOut" newClass="button_live" link="/" />
+            </BoxData>
+            <Description theme={settings}>{description}</Description>
           </Right>
         </Row>
       </Section>
@@ -44,14 +46,16 @@ const IdentificationProject = props => {
 };
 
 // PropTpyes
-IdentificationProject.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+identificationExpertComponent.propTypes = {
+  id: PropTypes.string,
+  description: PropTypes.string,
   brand: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
-IdentificationProject.defaultProps = {
-  image: null,
+identificationExpertComponent.defaultProps = {
+  id: null,
   brand: null,
+  description: null,
 };
 
-export default IdentificationProject;
+export default identificationExpertComponent;

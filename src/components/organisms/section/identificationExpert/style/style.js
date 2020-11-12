@@ -23,7 +23,7 @@ export const Left = styled.div`
 export const Title = styled.p`
   display: none;
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    top: 0;
+    top: 0rem;
     display: block;
     font-size: 3rem;
     font-weight: bold;
@@ -32,10 +32,9 @@ export const Title = styled.p`
   }
 `;
 
-export const Brand = styled(BackgroundImage)`
+export const FaceExpert = styled(BackgroundImage)`
   display: none;
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    top: 0;
     z-index: 100;
     height: 30rem;
     display: block;
@@ -48,6 +47,16 @@ export const Brand = styled(BackgroundImage)`
   }
 `;
 
+export const BoxData = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 15rem;
+  position: relative;
+  align-items: flex-start;
+  justify-content: flex-start;
+`;
+
 export const Right = styled.div`
   width: 100%;
   display: flex;
@@ -55,29 +64,37 @@ export const Right = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
-
   .button_live {
-    margin-left: auto;
-    margin-right: 0.3rem;
+    margin: ${props => props.theme.border} auto 0 auto;
   }
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    justify-content: left;
     width: calc(100% - 25rem);
+    justify-content: flex-start;
+    .button_live {
+      margin: 0 ${props => props.theme.border} auto auto;
+    }
   }
 `;
 
-export const ProjectTitle = styled.p`
+export const NameExpert = styled.p`
+  width: 100%;
   font-size: 3rem;
   font-weight: bold;
+  text-align: center;
   padding-right: ${props => props.theme.break};
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    width: auto;
+    text-align: center;
+  }
 `;
 
-export const BigImage = styled(BackgroundImage)`
+export const Description = styled.p`
   width: 100%;
-  height: 30rem;
   display: block;
-  margin-top: ${props => props.theme.break};
+  text-align: center;
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    height: 50rem;
+    font-size: 3rem;
+    text-align: left;
+    padding-top: 3rem;
   }
 `;
