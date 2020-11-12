@@ -67,6 +67,7 @@ export const Description = styled.p`
   font-family: ${props => props.theme.font_primary};
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     font-size: 3rem;
+    min-height: 15rem;
     ${props =>
       props.half &&
       css`
