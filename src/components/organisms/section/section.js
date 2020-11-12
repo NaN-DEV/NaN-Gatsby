@@ -15,7 +15,7 @@ import IdentificationProject from './identificationProject/identificationProject
 // CREATE NEW COMPONENT
 
 const SectionComponent = props => {
-  const { id, half, size, type, title, color, content, newClass, newStyle, children, description, image, brand, nameProject, options } = props;
+  const { id, half, size, type, title, color, content, newClass, newStyle, children, description, joke, image, brand, nameProject, options } = props;
 
   // SELECT SECTION
   const renderSwitchWrap = wrap => {
@@ -55,7 +55,17 @@ const SectionComponent = props => {
       case 'hero':
         return (
           <>
-            <Hero id={id} half={half} size={size} color={color} title={title} newClass={newClass} newStyle={newStyle} description={description} />
+            <Hero
+              id={id}
+              joke={joke}
+              half={half}
+              size={size}
+              color={color}
+              title={title}
+              newClass={newClass}
+              newStyle={newStyle}
+              description={description}
+            />
           </>
         );
       case 'identificationProject':
@@ -94,6 +104,7 @@ const SectionComponent = props => {
 SectionComponent.propTypes = {
   id: PropTypes.string,
   half: PropTypes.bool,
+  joke: PropTypes.string,
   type: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
@@ -111,6 +122,7 @@ SectionComponent.propTypes = {
 
 SectionComponent.defaultProps = {
   id: null,
+  joke: null,
   type: null,
   title: null,
   half: null,

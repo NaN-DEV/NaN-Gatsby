@@ -3,22 +3,35 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const queryResults = await graphql(`
     query gatsbyNode {
-      allDatoCmsPortfolio {
+      allDatoCmsProject {
         nodes {
           id
           slug
-          title
+        }
+      }
+      allDatoCmsExpert {
+        nodes {
+          id
+          slug
         }
       }
     }
   `);
 
-  // BUILD LIST SERVICE IN CATEGORY
-
-  queryResults.data.allDatoCmsPortfolio.nodes.forEach((content, index) => {
+  // BUILD PAGE PROJECT
+  queryResults.data.allDatoCmsProject.nodes.forEach((content, index) => {
     createPage({
-      path: `portfolio/projekt/${content.slug}`,
-      component: require.resolve(`./src/templates/portfolio.js`),
+      path: `portfolio/project/${content.slug}`,
+      component: require.resolve(`./src/templates/project.js`),
+      context: { id: content.id, i: index },
+    });
+  });
+
+  // BUILD PAGE EXPERT
+  queryResults.data.allDatoCmsExpert.nodes.forEach((content, index) => {
+    createPage({
+      path: `team/expert/${content.slug}`,
+      component: require.resolve(`./src/templates/expert.js`),
       context: { id: content.id, i: index },
     });
   });

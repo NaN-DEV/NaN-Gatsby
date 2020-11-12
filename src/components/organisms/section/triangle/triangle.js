@@ -43,7 +43,7 @@ class SectionTriangleComponent extends React.Component {
           );
         })}
       </Category>
-      <Link to={`/portfolio/projekt/${slug}`}>
+      <Link to={`/portfolio/project/${slug}`}>
         <Title theme={settings}>{title}</Title>
       </Link>
     </>
@@ -107,7 +107,7 @@ class SectionTriangleComponent extends React.Component {
               type="link"
               title="Więcej"
               newClass="button"
-              link={`/portfolio/projekt/${content.slug}`}
+              link={`/portfolio/project/${content.slug}`}
               color={color === 'primary' ? 'secondary' : 'primary'}
             />
           </BoxDown>

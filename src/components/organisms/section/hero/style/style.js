@@ -20,29 +20,40 @@ export const Section = styled.section`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.p`
   flex: 100%;
   width: 100%;
-  font-size: 3rem;
+  font-size: 2.4rem;
   text-align: center;
-  font-weight: normal;
   padding-bottom: ${props => props.theme.break};
   font-family: ${props => props.theme.font_primary};
       ${props =>
-        props.half &&
-        css`
-          font-weight: bold;
-        `}
+        props.joke
+          ? css`
+              font-weight: normal;
+            `
+          : css`
+              font-weight: bold;
+            `}
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    font-size: 3rem;
     ${props =>
-      props.half &&
-      css`
-        flex: 25rem;
-        max-width: 25rem;
-        text-align: left;
-        font-weight: bold;
-      `}
+      props.joke
+        ? css``
+        : css`
+            flex: 25rem;
+            max-width: 25rem;
+            text-align: left;
+          `}
   }
+`;
+
+export const Joke = styled.p`
+  display: block;
+  font-size: 1.8rem;
+  text-align: center;
+  position: relative;
+  font-weight: normal;
 `;
 
 export const Description = styled.p`
