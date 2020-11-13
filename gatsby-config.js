@@ -44,6 +44,10 @@ module.exports = {
             family: `Roboto Mono`,
             variants: [`700`],
           },
+          {
+            family: `Poppins`,
+            variants: [`900`],
+          },
         ],
       },
     },

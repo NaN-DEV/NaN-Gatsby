@@ -17,15 +17,15 @@ import ProgressBar from '../../../atoms/progressBar/progressBar';
 
 // CREATE NEW COMPONENT
 const SectionFullText = props => {
-  const { id, color, title, description, options, newStyle, newClass } = props;
+  const { id, key, color, title, description, options, newStyle, newClass } = props;
 
   return (
     <>
-      <Section key={id} color={color} theme={settings} newStyle={newStyle} className={newClass}>
+      <Section key={key} id={id} color={color} theme={settings} newStyle={newStyle} className={newClass}>
         <Row newClass="row">
           <LeftBox theme={settings}>
-            <Sticky id={id} offsetTop={30}>
-              <Title id={id} theme={settings}>
+            <Sticky id={`${id}-sticky`} offsetTop={60}>
+              <Title id={`${id}-sticky`} theme={settings}>
                 {title ? `${title}` : 'Add title'}
               </Title>
             </Sticky>
@@ -37,34 +37,30 @@ const SectionFullText = props => {
                 {options[0].icon
                   ? options.map(itemIcon => {
                       return (
-                        <>
-                          <ElementOptions theme={settings} key={itemIcon.id}>
-                            <BoxElementOptions>
-                              <Icon id={itemIcon.id} icon={itemIcon.icon} theme={settings} newClass="icon" />
-                              <DescriptionOptionsIcon theme={settings}>{itemIcon.icon}</DescriptionOptionsIcon>
-                            </BoxElementOptions>
-                          </ElementOptions>
-                        </>
+                        <ElementOptions theme={settings} key={itemIcon.id}>
+                          <BoxElementOptions>
+                            <Icon id={itemIcon.id} icon={itemIcon.icon} theme={settings} newClass="icon" />
+                            <DescriptionOptionsIcon theme={settings}>{itemIcon.icon}</DescriptionOptionsIcon>
+                          </BoxElementOptions>
+                        </ElementOptions>
                       );
                     })
                   : null}
                 {options[0].percent
                   ? options.map(percent => {
                       return (
-                        <>
-                          <ProgressBar
-                            size={250}
-                            type="ring"
-                            duration={6}
-                            color="primary"
-                            id={percent.id}
-                            key={percent.id}
-                            unit={percent.unit}
-                            value={percent.value}
-                            percent={percent.percent}
-                            description={percent.description}
-                          />
-                        </>
+                        <ProgressBar
+                          size={250}
+                          type="ring"
+                          duration={6}
+                          color="primary"
+                          unit={percent.unit}
+                          value={percent.value}
+                          id={`${percent.id}-id`}
+                          key={`${percent.id}-key`}
+                          percent={percent.percent}
+                          description={percent.description}
+                        />
                       );
                     })
                   : null}

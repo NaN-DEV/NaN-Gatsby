@@ -1,7 +1,6 @@
 // IMPORT PLUGIN
 import React from 'react';
 import PropTypes from 'prop-types';
-import Sticky from '../../../atoms/sticky/sticky';
 
 // IMPORT STYLE
 import { Section, Left, Right, FaceExpert, NameExpert, Description, Title, BoxData } from './style/style';
@@ -26,11 +25,9 @@ const identificationExpertComponent = props => {
         <Row theme={settings} newClass="row">
           <Left theme={settings}>
             <FaceExpert theme={settings} fluid={image.fluid} />
-            <Sticky id={id} offsetTop={30}>
-              <Title id={id} theme={settings}>
-                Witam
-              </Title>
-            </Sticky>
+            <Title id={id} theme={settings}>
+              Witam
+            </Title>
           </Left>
           <Right theme={settings}>
             <BoxData>

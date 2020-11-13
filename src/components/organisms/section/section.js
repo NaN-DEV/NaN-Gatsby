@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 // IMPORT COMPONENT
 import Sell from './sell/sell';
 import Hero from './hero/hero';
+import Skils from './skils/skils';
 import SellAds from './sellAds/sellAds';
 import FullText from './fullText/fullText';
 import Triangle from './triangle/triangle';
@@ -18,6 +19,7 @@ import IdentificationProject from './identificationProject/identificationProject
 const SectionComponent = props => {
   const {
     id,
+    key,
     half,
     size,
     type,
@@ -122,7 +124,22 @@ const SectionComponent = props => {
       case 'fullText':
         return (
           <>
-            <FullText id={id} color={color} title={title} description={description} options={options} newClass={newClass} newStyle={newStyle} />
+            <FullText
+              id={id}
+              key={key}
+              color={color}
+              title={title}
+              description={description}
+              options={options}
+              newClass={newClass}
+              newStyle={newStyle}
+            />
+          </>
+        );
+      case 'skils':
+        return (
+          <>
+            <Skils content={content} color={color} newClass={newClass} newStyle={newStyle} />
           </>
         );
       default:
@@ -156,6 +173,7 @@ SectionComponent.propTypes = {
 
 SectionComponent.defaultProps = {
   id: null,
+  key: null,
   half: null,
   size: null,
   joke: null,

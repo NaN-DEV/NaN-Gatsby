@@ -1,7 +1,6 @@
 // IMPORT PLUGIN
 import React from 'react';
 import PropTypes from 'prop-types';
-import Sticky from '../../../atoms/sticky/sticky';
 
 // IMPORT STYLE
 import { Section, Left, Right, Brand, ProjectTitle, BigImage, Title } from './style/style';
@@ -26,11 +25,10 @@ const IdentificationProject = props => {
         <Row theme={settings} newClass="row">
           <Left theme={settings}>
             <Brand theme={settings} fluid={brand.fluid} />
-            <Sticky id={id} offsetTop={30}>
-              <Title id={id} theme={settings}>
-                Start
-              </Title>
-            </Sticky>
+
+            <Title id={id} theme={settings}>
+              Start
+            </Title>
           </Left>
           <Right theme={settings}>
             <ProjectTitle theme={settings}>{nameProject}</ProjectTitle>

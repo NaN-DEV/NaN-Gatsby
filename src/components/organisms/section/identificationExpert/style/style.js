@@ -9,6 +9,9 @@ export const Section = styled.section`
   .row {
     padding-bottom: 0;
   }
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    padding-bottom: 6rem;
+  }
 `;
 
 export const Left = styled.div`
