@@ -7,6 +7,7 @@ export const Footer = styled.footer`
   min-height: 6rem;
   align-items: center;
   justify-content: flex-start;
+  background-color: ${props => props.theme.secondary};
 
   .row {
     align-items: center;

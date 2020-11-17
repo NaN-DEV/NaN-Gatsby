@@ -1,7 +1,6 @@
 // IMPORT PLUGIN
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { StickyContainer, Sticky } from 'react-sticky';
 
 // IMPORT STYLE
 import { LeftBox, RightBox, Title, Section, BoxOptions, Description, ElementOptions, BoxElementOptions, DescriptionOptionsIcon } from './style/style';
@@ -17,11 +16,11 @@ import ProgressBar from '../../../atoms/progressBar/progressBar';
 
 // CREATE NEW COMPONENT
 const SectionFullText = props => {
-  const { id, key, color, title, description, options, newStyle, newClass } = props;
+  const { id, key, color, big, title, description, options, newStyle, newClass } = props;
 
   return (
     <>
-      <Section key={key} id={id} color={color} theme={settings} newStyle={newStyle} className={newClass}>
+      <Section key={key} id={id} big={big} color={color} theme={settings} newStyle={newStyle} className={newClass}>
         <Row newClass="row">
           <LeftBox theme={settings}>
             <Sticky id={`${id}-sticky`} offsetTop={60}>

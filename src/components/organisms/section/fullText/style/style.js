@@ -5,7 +5,7 @@ export const Section = styled.section`
   display: flex;
   padding: 6rem 0;
   flex-wrap: wrap;
-  min-height: 50vh;
+  min-height: ${props => (props.big ? '50vh' : 'auto')};
   position: relative;
   flex-direction: column;
   justify-content: center;

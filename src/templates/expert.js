@@ -20,7 +20,7 @@ const expertPage = ({ data }) => {
         <Section half type="hero" color="primary" title="Co robię <strong>na codzień ?</strong>" joke={joke} />
         <Section type="identificationExpert" id={id} image={image} nameExpert={`${name} ${lastName}`} description={hello} />
         <Section half type="skils" content={content} />
-        <Section type="fullText" color="primary" title="Pasje" key="Pasje-end" id="Pasje1-end" description={passions} />
+        <Section type="fullText" big color="primary" title="Pasje" key="Pasje-end" id="Pasje1-end" description={passions} />
       </Layout>
     </>
   );

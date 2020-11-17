@@ -9,8 +9,11 @@ import Skils from './skils/skils';
 import SellAds from './sellAds/sellAds';
 import FullText from './fullText/fullText';
 import Triangle from './triangle/triangle';
+import HeroClassic from './heroClassic/heroClassic';
 import Scrambler from './scramblerText/scramblerText';
 import NotFoundPage from './notFoundPage/notFoundPage';
+import ItemCategory from './itemCategory/itemCategory';
+import ServiceContent from './serviceContent/serviceContent';
 import IdentificationExpert from './identificationExpert/identificationExpert';
 import IdentificationProject from './identificationProject/identificationProject';
 
@@ -20,19 +23,23 @@ const SectionComponent = props => {
   const {
     id,
     key,
+    big,
+    items,
     half,
     size,
     type,
+    joke,
+    image,
+    brand,
     title,
     color,
     content,
     newClass,
     newStyle,
     children,
+    category,
     description,
-    joke,
-    image,
-    brand,
+
     nameProject,
     nameExpert,
     options,
@@ -89,6 +96,12 @@ const SectionComponent = props => {
             />
           </>
         );
+      case 'heroClassic':
+        return (
+          <>
+            <HeroClassic id={id} color={color} newClass={newClass} newStyle={newStyle} title={title} description={description} />
+          </>
+        );
       case 'identificationProject':
         return (
           <>
@@ -126,13 +139,14 @@ const SectionComponent = props => {
           <>
             <FullText
               id={id}
+              big={big}
               key={key}
               color={color}
               title={title}
-              description={description}
               options={options}
               newClass={newClass}
               newStyle={newStyle}
+              description={description}
             />
           </>
         );
@@ -140,6 +154,18 @@ const SectionComponent = props => {
         return (
           <>
             <Skils content={content} color={color} newClass={newClass} newStyle={newStyle} />
+          </>
+        );
+      case 'itemCategory':
+        return (
+          <>
+            <ItemCategory id={id} key={key} items={items} category={category} newClass={newClass} newStyle={newStyle} />
+          </>
+        );
+      case 'serviceContent':
+        return (
+          <>
+            <ServiceContent id={id} newClass={newClass} newStyle={newStyle} content={content} />
           </>
         );
       default:
@@ -162,6 +188,7 @@ SectionComponent.propTypes = {
   nameProject: PropTypes.string,
   nameExpert: PropTypes.string,
   description: PropTypes.string,
+  items: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   brand: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   options: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
@@ -178,6 +205,7 @@ SectionComponent.defaultProps = {
   size: null,
   joke: null,
   type: null,
+  item: null,
   title: null,
   image: null,
   brand: null,

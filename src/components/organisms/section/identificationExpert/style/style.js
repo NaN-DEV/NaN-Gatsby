@@ -95,6 +95,7 @@ export const Description = styled.p`
   width: 100%;
   display: block;
   text-align: center;
+  padding-bottom: 3rem;
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     font-size: 3rem;
     text-align: left;

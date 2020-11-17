@@ -14,10 +14,10 @@ import Footer from '../components/organisms/footer/footer';
 
 // CREATE NEW COMPONENT
 const Root = props => {
-  const { children } = props;
+  const { children, color } = props;
   return (
     <>
-      <GlobalStyle theme={settings} />
+      <GlobalStyle theme={settings} color={color} />
       <Header />
       {children}
       <Footer />

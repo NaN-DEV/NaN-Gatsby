@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -21,9 +21,48 @@ body {
    font-size: 1.5rem;
    font-style: normal;
    font-weight: normal;
-   color: ${props => props.theme.primary};
+
    font-family: ${props => props.theme.font_primary}; 
-   background-color: ${props => props.theme.secondary};
+  
+   ${props => {
+     switch (props.color) {
+       case 'primary':
+         return css`
+           color: ${props.theme.secondary};
+           background-color: ${props.theme.primary};
+         `;
+
+       case 'tertiary_1':
+         return css`
+           color: ${props.theme.primary};
+           background-color: ${props.theme.tertiary_1};
+         `;
+
+       case 'tertiary_2':
+         return css`
+           color: ${props.theme.primary};
+           background-color: ${props.theme.tertiary_2};
+         `;
+
+       case 'tertiary_3':
+         return css`
+           color: ${props.theme.primary};
+           background-color: ${props.theme.tertiary_3};
+         `;
+
+       case 'tertiary_4':
+         return css`
+           color: ${props.theme.primary};
+           background-color: ${props.theme.tertiary_4};
+         `;
+
+       default:
+         return css`
+           color: ${props.theme.primary};
+           background-color: ${props.theme.secondary};
+         `;
+     }
+   }}
 }
 
 p,

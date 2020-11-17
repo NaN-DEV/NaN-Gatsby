@@ -21,7 +21,7 @@ const buttonColor = css`
         return css`
           color: ${props.theme.primary} !important;
           background-color: ${props.theme.secondary} !important;
-          box-shadow: ${props.theme.tertiary_2} ${props.theme.border} ${props.theme.border} 0 !important;
+          box-shadow: rgba(255, 255, 255, 0.3) ${props.theme.border} ${props.theme.border} 0 !important;
           .triangle {
             svg {
               fill: ${props.theme.secondary};

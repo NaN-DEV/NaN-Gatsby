@@ -12,7 +12,7 @@ import settings from '../layouts/settings/settings';
 
 // CREATE NEW COMPONENT
 
-const portfolioProject = ({ data }) => {
+const projectPageComponent = ({ data }) => {
   const { problem, link, image, brand, target, process, score, job, jobTechnology, scoreStat } = data.datoCmsProject;
   const { nodes } = data.allDatoCmsProject;
 
@@ -21,10 +21,10 @@ const portfolioProject = ({ data }) => {
       <Layout theme={settings} key="projectPage">
         <Section half type="hero" color="primary" title="Problem" description={problem} />
         <Section type="identificationProject" key="project3333" id="project3333" nameProject={link} image={image} brand={brand} />
-        <Section type="fullText" color="tertiary_4" title="Cel" key="cel" id="cel122" description={target} />
-        <Section type="fullText" color="tertiary_3" title="Proces" key="proces" id="proces122" description={process} />
-        <Section type="fullText" color="tertiary_2" title="Wynik" key="wynik" id="wynik122" description={score} options={scoreStat} />
-        <Section type="fullText" color="tertiary_1" title="Prace" key="prace" id="prace122" description={job} options={jobTechnology} />
+        <Section type="fullText" big color="tertiary_4" title="Cel" key="cel" id="cel122" description={target} />
+        <Section type="fullText" big color="tertiary_3" title="Proces" key="proces" id="proces122" description={process} />
+        <Section type="fullText" big color="tertiary_2" title="Wynik" key="wynik" id="wynik122" description={score} options={scoreStat} />
+        <Section type="fullText" big color="tertiary_1" title="Prace" key="prace" id="prace122" description={job} options={jobTechnology} />
         <Carousel content={nodes} />
         {/* SECTION SELL */}
         <Section type="sellAds" />
@@ -33,8 +33,10 @@ const portfolioProject = ({ data }) => {
   );
 };
 
-export const portfolioProjectQuery = graphql`
-  query portfolioProjectGraphql($id: String) {
+// QUERY GRAPHQL
+
+export const projectPageQuery = graphql`
+  query projectPageComponentGraphql($id: String) {
     allDatoCmsProject {
       nodes {
         id
@@ -81,4 +83,4 @@ export const portfolioProjectQuery = graphql`
 `;
 
 // EXPORT NEW COMPONENT
-export default portfolioProject;
+export default projectPageComponent;

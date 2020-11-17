@@ -12,10 +12,11 @@ import settings from '../../../layouts/settings/settings';
 
 import Cv from '../../../assets/icon/cv.svg';
 import Ask from '../../../assets/icon/ask.svg';
+import Ux from '../../../assets/icon/uxui.svg';
+import More from '../../../assets/icon/more.svg';
 import Mail from '../../../assets/icon/mail.svg';
 import Down from '../../../assets/icon/down.svg';
 import Back from '../../../assets/icon/back.svg';
-import Ux from '../../../assets/icon/uxui.svg';
 import Logo from '../../../assets/brand/logo.svg';
 import Front from '../../../assets/icon/front.svg';
 import Phone from '../../../assets/icon/phone.svg';
@@ -78,6 +79,8 @@ const IconComponent = props => {
         return <Back height={height} />;
       case 'ui/ux':
         return <Ux height={height} />;
+      case 'more':
+        return <More height={height} />;
       default:
         return 'Please name icon :) ';
     }
