@@ -5,7 +5,7 @@ import Section from '../components/organisms/section/section';
 
 // IMPORT COMPONENT
 import Layout from '../layouts/index';
-import Animation from '../components/atoms/animation/animation';
+// import Animation from '../components/atoms/animation/animation';
 
 // IMPORT SETTINGS STYLE
 import settings from '../layouts/settings/settings';
@@ -16,12 +16,14 @@ const IndexPage = ({ data }) => {
   data.allDatoCmsHome.nodes[0].selectPortfolio.forEach(item => {
     idArticle.push(item.id);
   });
-  const listScrollElement = [`${data.allDatoCmsHome.nodes[0].id}-scrambler-id`, ...idArticle, 'sectionSellAds'];
+  // const listScrollElement = [`${data.allDatoCmsHome.nodes[0].id}-scrambler-id`, ...idArticle, 'sectionSellAds'];
 
   return (
     <>
       <Layout theme={settings}>
-        <Animation type="scrollNextElement" allSlide={listScrollElement} />
+        {/*
+        <Animation type="scrollNextElement" allSlide={listScrollElement} /> 
+        */}
 
         <Section
           type="scrambler"
