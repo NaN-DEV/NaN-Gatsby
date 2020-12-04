@@ -1,22 +1,13 @@
 import styled from 'styled-components';
 
 export const Ul = styled.ul`
-  display: flex;
-  max-width: 100%;
-  flex-wrap: wrap;
+  width: 100%;
+  display: block;
   list-style: none;
-
-  a {
-    color: #fff;
-    font-weight: bold;
-  }
-
-  @media (min-width: ${props =>
-      props.breakpoint === 'mobile'
-        ? `${props.theme.breakpoint_mobile}px`
-        : `${props.breakpoint === 'tablet' ? `${props.theme.breakpoint_tablet}px` : `${props.theme.breakpoint_desktop}px`}`}) {
-    flex: none;
-    max-width: auto;
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
   }
 `;
 
@@ -24,19 +15,13 @@ export const Li = styled.li`
   flex: 100%;
   max-width: 100%;
   text-align: center;
-  padding-top: ${props => props.theme.break};
-
-  &:last-of-type {
-    padding-right: 0;
-  }
-
-  @media (min-width: ${props =>
-      props.breakpoint === 'mobile'
-        ? `${props.theme.breakpoint_mobile}px`
-        : `${props.breakpoint === 'tablet' ? `${props.theme.breakpoint_tablet}px` : `${props.theme.breakpoint_desktop}px`}`}) {
-    flex: none;
-    padding-top: 0;
+  padding: 0.75rem 0;
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    flex: auto;
     max-width: auto;
     padding-right: ${props => props.theme.break};
+    &:last-of-type {
+      padding-right: 0;
+    }
   }
 `;

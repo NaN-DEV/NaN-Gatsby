@@ -28,7 +28,7 @@ const SectionSellComponent = props => {
             <Title theme={settings}>
               <Cycler duration={3000} strings={strings} />
             </Title>
-            <Button link="/" type="link" color="secondary" newClass="button" title="Więc zobacz to :)" />
+            <Button type="link" content={{ title: 'Więc zobacz to :)', to: '/' }} parameters={{ newClass: 'button', colorStyle: 'secondary' }} />
           </BoxContent>
           <Mascot newClass="mascot" theme={settings} />
           <Icon secondary icon="triangle" newClass="triangle" />

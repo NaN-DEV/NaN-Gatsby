@@ -421,7 +421,7 @@ const SectionHeroComponent = props => {
                   </>
                 )}
 
-                <Button submit title="Wyślij" color="tertiary_1" disabled={!(formik.isValid && formik.dirty)} />
+                <Button submit content={{ title: 'Wyślij' }} parameters={{ colorStyle: 'tertiary_1', disabled: !(formik.isValid && formik.dirty) }} />
               </Half>
               <Half mascot theme={settings}>
                 <List type="vertical">

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, css } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -29,144 +29,115 @@ export const Modal = styled.div`
   min-width: 100vw;
   min-height: 100vh;
   position: relative;
-  background-color: black;
-  .row {
-    padding: 0 ${props => props.theme.break} !important;
-  }
+  background-color: ${props => props.theme.primary};
+
   .closed {
     margin-left: auto;
   }
 `;
 
 export const Header = styled.div`
-  flex: 100%;
-  height: 6rem;
-  display: flex;
-  max-width: 100%;
-  align-items: center;
+  min-height: 7rem;
+  position: relative;
 `;
 
 export const Content = styled.div`
   flex: 100%;
-  display: flex;
   max-width: 100%;
-  align-items: flex-start;
-  min-height: calc(100vh - 12rem);
+  position: relative;
+
+  .rowContent {
+    padding: 0 ${props => props.theme.break};
+  }
 `;
 
-export const MainManu = styled.ul`
+export const MainManu = styled.div`
   flex: 100%;
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
-  min-height: calc(100vh - 12rem);
-`;
+  max-width: 100%;
+  position: relative;
+  min-height: calc(100vh - 14rem);
 
-export const BoxMenu = styled.li`
-  flex: 50%;
-  width: 50%;
-  padding: 0 0.6rem 0.6rem 0;
-
-  a {
-    width: 100%;
+  .buttonMenu {
+    flex: 100%;
     display: flex;
-    height: 100%;
+    max-width: 100%;
     flex-wrap: wrap;
     min-height: 20rem;
     align-items: center;
     justify-content: center;
     padding: ${props => props.theme.break};
     background-color: ${props => props.theme.secondary};
-    p {
-      color: ${props => props.theme.primary};
-    }
-    &:hover {
-      background-color: ${props => props.theme.tertiary_1};
-    }
-  }
-  .icon-menu {
-    margin-top: auto;
-    svg {
-      fill: ${props => props.theme.primary} !important;
-    }
-  }
+    border: ${props => props.theme.border} solid ${props => props.theme.primary};
 
-  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
-    ${props =>
-      props.size
-        ? css`
-            flex: ${`${props.size}%`};
-            max-width: ${`${props.size}%`};
-          `
-        : css`
-            flex: 100%;
-            width: 100%;
-          `}
+    @media (min-width: ${props => `${props.theme.breakpoint_mobile}px`}) {
+      flex: 50%;
+      max-width: 50%;
+    }
+    @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+      &:nth-child(1n + 1) {
+        flex: 50%;
+        max-width: 50%;
+        border-left: 0 solid ${props => props.theme.primary};
+      }
+      &:nth-child(2n + 2) {
+        flex: 50%;
+        max-width: 50%;
+        border-right: 0 solid ${props => props.theme.primary};
+        border-left: ${props => props.theme.border} solid ${props => props.theme.primary};
+      }
+      &:nth-child(3n + 3) {
+        flex: 25%;
+        max-width: 25%;
+        border-left: 0 solid ${props => props.theme.primary};
+        border-right: ${props => props.theme.border} solid ${props => props.theme.primary};
+      }
+      &:nth-child(4n + 4) {
+        flex: 50%;
+        max-width: 50%;
+        border-left: ${props => props.theme.border} solid ${props => props.theme.primary};
+        border-right: ${props => props.theme.border} solid ${props => props.theme.primary};
+      }
+      &:nth-child(5n + 5) {
+        flex: 25%;
+        max-width: 25%;
+        border-right: 0 solid ${props => props.theme.primary};
+        border-left: ${props => props.theme.border} solid ${props => props.theme.primary};
+      }
+      &:nth-child(6n + 6) {
+        flex: 100%;
+        max-width: 100%;
+        border-left: 0 solid ${props => props.theme.primary};
+        border-right: 0 solid ${props => props.theme.primary};
+      }
+    }
   }
 `;
 
-export const MenuTitle = styled.p`
+export const Title = styled.p`
   width: 100%;
   display: block;
-  margin-top: auto;
-  text-align: left;
   font-weight: bold;
-  color: ${props => props.theme.secondary};
-`;
-
-export const Ul = styled.ul`
-  display: flex;
-  max-width: 100%;
-  flex-wrap: wrap;
-  list-style: none;
-
-  a {
-    color: #fff;
-    font-weight: bold;
-  }
-
-  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
-    flex: none;
-    max-width: auto;
-  }
-`;
-
-export const Li = styled.li`
-  flex: 100%;
-  max-width: 100%;
-  text-align: center;
-  padding-top: ${props => props.theme.break};
-
-  &:last-of-type {
-    padding-right: 0;
-  }
-
-  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
-    flex: none;
-    padding-top: 0;
-    max-width: auto;
-    padding-right: ${props => props.theme.break};
-  }
+  position: absolute;
+  left: ${props => props.theme.break};
+  bottom: ${props => props.theme.break};
+  color: ${props => props.theme.priamry};
 `;
 
 export const Footer = styled.div`
   flex: 100%;
-  min-height: 6rem;
-  display: flex;
   max-width: 100%;
-  align-items: center;
-  .link {
-    margin: 0 auto ${props => props.theme.break} auto;
-    @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
-      margin: 0;
+  min-height: 7rem;
+  position: relative;
+  .listLink {
+    a {
+      color: ${props => props.theme.secondary};
     }
-  }
-  .right {
     @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
-      margin-left: auto;
-      margin-right: 0.3rem;
+      &:last-child {
+        margin-left: auto;
+      }
     }
   }
 `;
-
-export const Url = styled.a``;

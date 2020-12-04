@@ -6,7 +6,7 @@ export const Box = styled.div`
   padding: 1.5rem 0;
   position: relative;
 
-  @media (min-width: ${props => `${props.theme.breakpoint_mobile}px`} {
+  @media (min-width: ${props => `${props.theme.breakpoint_mobile}px`}) {
     flex: 30%;
     width: 30%;
     padding: 1.5rem;

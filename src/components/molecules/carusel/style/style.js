@@ -3,59 +3,49 @@ import { Link } from 'gatsby';
 
 export const BoxCarousel = styled.section`
   display: none;
+
   @media (min-width: 768px) {
     width: 100%;
     display: block;
-    .button_back {
-      left: 0;
-      bottom: 0rem;
-      position: absolute;
-    }
-    .button_next {
-      position: absolute;
-      right: 0;
-      bottom: 0rem;
-    }
-  }
-`;
 
-export const BoxCarouselMobile = styled.section`
-  display: none;
-  @media (max-width: 767px) {
-    display: block;
-    width: 100%;
-    .button_back {
+    .arrow {
+      top: 2.5rem;
+      left: 1rem;
+      position: absolute;
+      transform: rotate(90deg);
+    }
+
+    .buttonBack {
       left: 0;
       bottom: 0rem;
       position: absolute;
     }
-    .button_next {
-      position: absolute;
+
+    .buttonNext {
       right: 0;
       bottom: 0rem;
+      position: absolute;
+      transform: scaleX(-1);
     }
   }
 `;
 
 export const Item = styled.div`
-  min-height: 500px;
-  height: 50vh;
   width: 100%;
+  height: 50vh;
+  min-height: 500px;
+  background-color: black;
+
   &:after {
     top: 0;
-    left: 0;
+    right: 0;
     z-index: 0;
-    width: 100%;
+    width: 50%;
     content: '';
     height: 100%;
     display: block;
     position: absolute;
-    background-color: black;
-  }
-  @media (min-width: ${`${props => props.theme.breakpoint_tablet}px`}) {
-    &:after {
-      width: 50%;
-    }
+    background-color: white;
   }
 `;
 
@@ -70,7 +60,7 @@ export const BoxLeft = styled(Link)`
   .triangle {
     margin-right: auto;
     margin-bottom: auto;
-    transform: scaleX(-1);
+    transform: scaleX(-1) rotate(180deg);
   }
 `;
 
@@ -81,29 +71,19 @@ export const BoxRight = styled(Link)`
   height: 100vh;
   position: relative;
   background-color: white;
+
   .triangle {
     margin-left: auto;
     margin-bottom: auto;
+    transform: rotate(180deg);
   }
+
   h1 {
     margin-left: 1.5rem;
   }
+
   p {
     margin-left: 1.5rem;
-  }
-`;
-
-export const BoxFull = styled(Link)`
-  width: 100%;
-  z-index: 1;
-  color: white;
-  height: 100vh;
-  position: relative;
-  background-color: black;
-
-  .triangle {
-    margin-left: auto;
-    margin-bottom: auto;
   }
 `;
 
@@ -115,6 +95,7 @@ export const BoxTop = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
 `;
+
 export const BoxBottom = styled.div`
   width: 100%;
   height: calc(25vh - 1.5rem);

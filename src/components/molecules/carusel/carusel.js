@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-plusplus */
 // IMPORT PLUGIN
 import React from 'react';
@@ -6,7 +7,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 // IMPORT LOCAL STYLE
-import { Item, BoxLeft, BoxRight, BoxFull, BoxTop, BoxBottom, Title, Category, BoxCarousel, BoxCarouselMobile } from './style/style';
+import { Item, BoxLeft, BoxRight, BoxTop, BoxBottom, Title, Category, BoxCarousel } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../layouts/settings/settings';
@@ -19,13 +20,13 @@ import Button from '../../atoms/button/button';
 // CREATE NEW COMPONENT
 
 const CarouselComponent = props => {
-  const { content } = props;
+  const { id, key, content, parameters } = props;
 
   const caruselDesctopFinal = [];
   let caruselDesctopOne = [];
   let resetArray = 0;
 
-  content.forEach(item => {
+  content.nodes.forEach(item => {
     caruselDesctopOne.push(item);
     if (resetArray === 1) {
       caruselDesctopFinal.push(caruselDesctopOne);
@@ -48,51 +49,40 @@ const CarouselComponent = props => {
   };
   const CustomRightArrowDesctop = ({ onClick, ...rest }) => {
     const {
-      // eslint-disable-next-line no-unused-vars
       onMove,
-      // eslint-disable-next-line no-unused-vars
       carouselState: { currentSlide, deviceType },
     } = rest;
-    // onMove means if dragging or swiping in progress.
-    return <Button onClick={() => onClick()} newClass="button_next" title="Następne" color="primary" type="triangle" right />;
-  };
 
-  const CustomRightArrowMobile = ({ onClick, ...rest }) => {
-    const {
-      // eslint-disable-next-line no-unused-vars
-      onMove,
-      // eslint-disable-next-line no-unused-vars
-      carouselState: { currentSlide, deviceType },
-    } = rest;
-    // onMove means if dragging or swiping in progress.
-    return <Button onClick={() => onClick()} newClass="button_next" title="Następne" color="secondary" type="triangle" right />;
+    return (
+      <Button type="button" onClick={() => onClick()} content={{ title: 'Wstecz' }} parameters={{ newClass: 'buttonBack', onClick: () => onClick() }}>
+        <Icon type="triangle" colorStyle="secondary" size={6} title="Następne" />
+        <Icon type="down" colorStyle="primary" newClass="arrow" />
+      </Button>
+    );
   };
 
   const CustomLeftArrowDesctop = ({ onClick, ...rest }) => {
     const {
-      // eslint-disable-next-line no-unused-vars
       onMove,
-      // eslint-disable-next-line no-unused-vars
       carouselState: { currentSlide, deviceType },
     } = rest;
-    // onMove means if dragging or swiping in progress.
-    return <Button onClick={() => onClick()} newClass="button_back" title="Wstecz" color="secondary" type="triangle" left />;
-  };
 
-  const CustomLeftArrowMobile = ({ onClick, ...rest }) => {
-    const {
-      // eslint-disable-next-line no-unused-vars
-      onMove,
-      // eslint-disable-next-line no-unused-vars
-      carouselState: { currentSlide, deviceType },
-    } = rest;
-    // onMove means if dragging or swiping in progress.
-    return <Button onClick={() => onClick()} newClass="button_back" title="Wstecz" color="secondary" type="triangle" left />;
+    return (
+      <Button
+        type="button"
+        onClick={() => onClick()}
+        content={{ title: 'Następne' }}
+        parameters={{ newClass: 'buttonNext', onClick: () => onClick() }}
+      >
+        <Icon type="triangle" colorStyle="primary" size={6} title="Następne" />
+        <Icon type="down" colorStyle="secondary" newClass="arrow" title="Następne" />
+      </Button>
+    );
   };
 
   return (
     <>
-      <BoxCarousel theme={settings}>
+      <BoxCarousel theme={settings} id={id} key={key} className={parameters.newClass} style={parameters.style}>
         <Carousel
           ssr
           infinite
@@ -108,91 +98,59 @@ const CarouselComponent = props => {
         >
           {caruselDesctopFinal.map(item => {
             return (
-              <Item theme={settings} key={item[0].id}>
-                <Row>
-                  <BoxLeft theme={settings} to={`/portfolio/projekt/${item[0].slug}`} title={item[0].title}>
-                    <BoxTop theme={settings}>
-                      <Icon turn icon="triangle" title={item[0].title} newClass="triangle" secondary />
-                    </BoxTop>
-                    <BoxBottom theme={settings}>
-                      {item[0].category.map(category => {
-                        return (
-                          <Category to={`/portfolio/${category.slug}`} theme={settings} title={category.name} key={category.id}>
-                            {category.name}
-                          </Category>
-                        );
-                      })}
-                      <Title>{item[0].title}</Title>
-                    </BoxBottom>
-                  </BoxLeft>
-                  <BoxRight theme={settings} to={`/portfolio/projekt/${item[1].slug}`} title={item[1].title}>
-                    <BoxTop theme={settings}>
-                      <Icon turn icon="triangle" title={item[1].title} newClass="triangle" primary />
-                    </BoxTop>
-                    <BoxBottom theme={settings}>
-                      {item[1].category.map(category => {
-                        return (
-                          <Category to={`/portfolio/${category.slug}`} theme={settings} title={category.name} key={category.id}>
-                            {category.name}
-                          </Category>
-                        );
-                      })}
-                      <Title theme={settings}>{item[1].title}</Title>
-                    </BoxBottom>
-                  </BoxRight>
-                </Row>
-              </Item>
+              item.length > 1 && (
+                <Item theme={settings} key={item[0].id}>
+                  <Row>
+                    <BoxLeft theme={settings} to={`/project/${item[0].slug}`} title={item[0].title}>
+                      <BoxTop theme={settings}>
+                        <Icon type="triangle" title={item[0].title} size={15} newClass="triangle" colorStyle="secondary" />
+                      </BoxTop>
+                      <BoxBottom theme={settings}>
+                        {item[0].category.map(category => {
+                          return (
+                            <Category to={`/portfolio/${category.slug}`} theme={settings} title={category.title} key={category.id}>
+                              {category.title}
+                            </Category>
+                          );
+                        })}
+                        <Title>{item[0].title}</Title>
+                      </BoxBottom>
+                    </BoxLeft>
+                    <BoxRight theme={settings} to={`/project/${item[1].slug}`} title={item[1].title}>
+                      <BoxTop theme={settings}>
+                        <Icon type="triangle" title={item[1].title} size={15} newClass="triangle" primary />
+                      </BoxTop>
+                      <BoxBottom theme={settings}>
+                        {item[1].category.map(category => {
+                          return (
+                            <Category to={`/portfolio/${category.slug}`} theme={settings} title={category.title} key={category.id}>
+                              {category.title}
+                            </Category>
+                          );
+                        })}
+                        <Title theme={settings}>{item[1].title}</Title>
+                      </BoxBottom>
+                    </BoxRight>
+                  </Row>
+                </Item>
+              )
             );
           })}
         </Carousel>
       </BoxCarousel>
-      <BoxCarouselMobile theme={settings}>
-        <Carousel
-          ssr
-          infinite
-          swipeable
-          draggable
-          keyBoardControl
-          autoPlaySpeed={1000}
-          responsive={responsive}
-          transitionDuration={500}
-          customTransition="all 0.5s"
-          customLeftArrow={<CustomLeftArrowMobile />}
-          customRightArrow={<CustomRightArrowMobile />}
-        >
-          {content.map(item => {
-            return (
-              <Item id={item.id} key={item.id}>
-                <Row>
-                  <BoxFull theme={settings} to={`/portfolio/projekt/${item.slug}`} title={item.title}>
-                    <BoxTop theme={settings}>
-                      <Icon turn icon="triangle" title={item.title} newClass="triangle" secondary />
-                    </BoxTop>
-                    <BoxBottom theme={settings}>
-                      {item.category.map(category => {
-                        return (
-                          <Category to={`/portfolio/${category.slug}`} theme={settings} title={category.name} key={category.id}>
-                            {category.name}
-                          </Category>
-                        );
-                      })}
-
-                      <Title theme={settings}>{item.title}</Title>
-                    </BoxBottom>
-                  </BoxFull>
-                </Row>
-              </Item>
-            );
-          })}
-        </Carousel>
-      </BoxCarouselMobile>
     </>
   );
 };
 
 // PropTpyes
-CarouselComponent.propTypes = { content: PropTypes.oneOfType([PropTypes.array]) };
+CarouselComponent.propTypes = {
+  id: PropTypes.string,
+  key: PropTypes.string,
+  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+};
 
-CarouselComponent.defaultProps = { content: null };
+// PropTypes default
+CarouselComponent.defaultProps = { id: null, key: null, content: null, parameters: false };
 
 export default CarouselComponent;

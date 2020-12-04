@@ -8,7 +8,7 @@ import Ring from './ring/ring';
 // CREATE NEW COMPONENT
 
 const ProgressBar = props => {
-  const { id, type, color, size, percent, unit, value, duration, newClass, newStyle, description, key } = props;
+  const { id, key, type, content, parameters } = props;
 
   switch (type) {
     case 'ring':
@@ -16,15 +16,15 @@ const ProgressBar = props => {
         <Ring
           id={id}
           key={key}
-          size={size}
-          unit={unit}
-          color={color}
-          value={value}
-          percent={percent}
-          newClass={newClass}
-          newStyle={newStyle}
-          duration={duration}
-          description={description}
+          unit={content.unit}
+          value={content.value}
+          size={parameters.size}
+          color={parameters.color}
+          percent={content.percent}
+          style={parameters.newStyle}
+          duration={content.duration}
+          nameClass={parameters.newClass}
+          description={content.description}
         />
       );
 
@@ -35,31 +35,18 @@ const ProgressBar = props => {
 
 // PropTpyes
 ProgressBar.propTypes = {
-  unit: PropTypes.string,
-  size: PropTypes.number,
-  color: PropTypes.string,
-  value: PropTypes.number,
-  precent: PropTypes.number,
-  newClass: PropTypes.string,
-  duration: PropTypes.number,
-  description: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  key: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  id: PropTypes.string,
+  key: PropTypes.string,
+  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
+// PropTpyes default
 ProgressBar.defaultProps = {
+  id: null,
   key: null,
-  unit: null,
-  size: null,
-  value: null,
-  color: null,
-  precent: null,
-  newClass: null,
-  newStyle: null,
-  duration: 6000,
-  description: null,
+  content: null,
+  parameters: false,
 };
 
 export default ProgressBar;

@@ -71,7 +71,7 @@ class ScrollNextElementComponent extends React.Component {
   timeStopForDevices() {
     if (window.innerWidth < 768) {
       this.setState({
-        stopTimeFor: 2000,
+        stopTimeFor: 1000,
       });
     } else {
       this.setState({
@@ -102,7 +102,7 @@ class ScrollNextElementComponent extends React.Component {
       case 'down':
         // Sprawdzam kolejność elementów do których będę przesuwał ekran scrolując w dół
         const whoIsNextElementScrollDown = allElementsOffsetToWindowTop.filter(item => {
-          return item > offsetPageYOld - 70;
+          return item > offsetPageYOld - 100;
         });
 
         // Sprawdzam następny element
@@ -121,7 +121,7 @@ class ScrollNextElementComponent extends React.Component {
 
           // Przesuwam do kolejnego elementu
           window.scrollTo({
-            top: whoIsNextElementScrollDown[0],
+            top: whoIsNextElementScrollDown[0] - 70,
             behavior: 'smooth',
           });
 
@@ -135,7 +135,7 @@ class ScrollNextElementComponent extends React.Component {
       default:
         // Sprawdzam kolejność elementów do których będę przesuwał ekran scrolując w górę
         const whoIsNextElementScrollUp = allElementsOffsetToWindowTop.filter(item => {
-          return item < offsetPageYOld + 70;
+          return item < offsetPageYOld + 100;
         });
         if (whoIsNextElementScrollUp.length > 1) {
           this.setState({
@@ -154,7 +154,7 @@ class ScrollNextElementComponent extends React.Component {
 
         // Przesuwam do kolejnego elementu
         window.scrollTo({
-          top: whoIsNextElementScrollUp[whoIsNextElementScrollUp.length - 1],
+          top: whoIsNextElementScrollUp[whoIsNextElementScrollUp.length - 1] - 70,
           behavior: 'smooth',
         });
 

@@ -12,20 +12,26 @@ import settings from '../layouts/settings/settings';
 
 // CREATE NEW COMPONENT
 const IndexPage = ({ data }) => {
-  const listScrollElement = ['hero', 'article-triangle-0', 'article-triangle-1', 'article-triangle-2', 'sell'];
+  const idArticle = [];
+  data.allDatoCmsHome.nodes[0].selectPortfolio.forEach(item => {
+    idArticle.push(item.id);
+  });
+  const listScrollElement = [`${data.allDatoCmsHome.nodes[0].id}-scrambler-id`, ...idArticle, 'sectionSellAds'];
 
   return (
     <>
       <Layout theme={settings}>
         <Animation type="scrollNextElement" allSlide={listScrollElement} />
-        {/* HERO SECCTION */}
-        <Section id="hero" size="full" color="primary" type="scrambler" title={data.allDatoCmsHome.nodes[0].heroSectionTitle} />
 
-        {/* SECCTION TRIANGLE */}
+        <Section
+          type="scrambler"
+          parameters={{ color: 'primary' }}
+          id={`${data.allDatoCmsHome.nodes[0].id}-scrambler-id`}
+          key={`${data.allDatoCmsHome.nodes[0].id}-scrambler-key`}
+          content={{ title: data.allDatoCmsHome.nodes[0].heroSectionTitle }}
+        />
 
         <Section type="triangle" content={data.allDatoCmsHome.nodes[0].selectPortfolio} />
-
-        {/* SECTION SELL */}
 
         <Section type="sellAds" />
       </Layout>
@@ -47,14 +53,14 @@ export const query = graphql`
           category {
             id
             slug
-            name
+            title
           }
           title
           slug
           imageSubstitute {
             alt
-            title
             url
+            title
             fluid {
               ...GatsbyDatoCmsFluid
             }

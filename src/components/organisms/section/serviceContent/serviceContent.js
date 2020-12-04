@@ -74,7 +74,7 @@ const serviceContentComponent = props => {
                 <Avatar theme={settings}>
                   <Mascot />
                 </Avatar>
-                <Button type="link" link="/sell" color="secondary" newClass="button" title="Wyceń projekt" />
+                <Button type="link" content={{ to: '/sell', title: 'Wyceń projekt' }} parameters={{ colorStyle: 'secondary', newClass: 'button' }} />
               </BoxAvatar>
             </Sticky>
           </BoxSell>

@@ -1,9 +1,4 @@
 const settings = {
-  // SETTINGS FONT START
-  font_primary: `'Montserrat', sans-serif`,
-  font_secondary: `'Roboto Mono', monospace`,
-  font_tertiary: `'Poppins', sans-serif`,
-
   // SETTINGS COLOR START
 
   primary: '#000000',
@@ -12,6 +7,8 @@ const settings = {
   tertiary_2: '#C8C8C8',
   tertiary_3: '#D6D6D6',
   tertiary_4: '#F1F1F1',
+  tertiary_5: '#929292',
+  tertiary_6: '#252527',
 
   danger: '#ffcc00',
   succes: '#055A01',

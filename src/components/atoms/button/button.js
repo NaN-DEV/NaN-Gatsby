@@ -3,78 +3,110 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { ButtonLinkOut, Button, ButtonLink, ButtonSubmit, ButtonTriangle } from './style/style';
+import { Button, LinkOut, LinkIn } from './style/style';
 
 // IMPORT SETTINGS STYLE
-import Icon from '../icon/icon';
 import settings from '../../../layouts/settings/settings';
 
 // CREATE NEW COMPONENT
-
 const ButtonComponent = props => {
-  const { type, title, color, newClass, newStyle, link, onClick, left, right } = props;
-  const selectTypeButton = wrap => {
-    switch (wrap) {
-      case 'linkOut':
-        return (
-          <>
-            <ButtonLinkOut color={color} theme={settings} style={newStyle} className={newClass} href={link} title={title} target="_blank">
-              {title}
-            </ButtonLinkOut>
-          </>
-        );
-      case 'link':
-        return (
-          <>
-            <ButtonLink color={color} theme={settings} style={newStyle} className={newClass} to={link} title={title}>
-              {title}
-            </ButtonLink>
-          </>
-        );
-      case 'sumbit':
-        return (
-          <>
-            <ButtonSubmit color={color} value={title} theme={settings} style={newStyle} className={newClass} />
-          </>
-        );
-      case 'triangle':
-        return (
-          <>
-            <ButtonTriangle color={color} theme={settings} style={newStyle} className={newClass} onClick={onClick} left={left} right={right}>
-              <Icon width={140} icon="triangle" title="ok" newClass="triangle" secondary />
-              <Icon width={140} icon="down" title="ok" newClass="arrow" secondary />
-            </ButtonTriangle>
-          </>
-        );
+  const { id, key, type, content, parameters, children } = props;
 
-      default:
-        return (
-          <>
-            <Button color={color} theme={settings} style={newStyle} className={newClass} onClick={onClick}>
-              {title}
-            </Button>
-          </>
-        );
-    }
-  };
-
-  return <>{selectTypeButton(type)}</>;
+  switch (type) {
+    case 'button':
+      return (
+        <Button
+          id={id}
+          key={key}
+          theme={settings}
+          title={content.title}
+          color={settings.primary}
+          onClick={parameters.onClick}
+          colorStyle={parameters.color}
+          newStyle={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          {children}
+        </Button>
+      );
+    case 'linkIn':
+      return (
+        <>
+          {parameters.direction ? (
+            <LinkIn
+              cover
+              id={id}
+              key={key}
+              duration={1}
+              to={content.to}
+              theme={settings}
+              bg={settings.primary}
+              title={content.title}
+              style={parameters.newStyle}
+              onClick={parameters.onClick}
+              colorStyle={parameters.color}
+              className={parameters.newClass}
+              direction={parameters.direction}
+            >
+              {children}
+            </LinkIn>
+          ) : (
+            <LinkIn
+              id={id}
+              key={key}
+              paintDrip
+              duration={1}
+              to={content.to}
+              theme={settings}
+              title={content.title}
+              color={settings.primary}
+              style={parameters.newStyle}
+              onClick={parameters.onClick}
+              colorStyle={parameters.color}
+              className={parameters.newClass}
+            >
+              {children}
+            </LinkIn>
+          )}
+        </>
+      );
+    case 'linkOut':
+      return (
+        <LinkOut
+          id={id}
+          key={key}
+          target="_blank"
+          theme={settings}
+          href={content.to}
+          title={content.title}
+          color={settings.primary}
+          style={parameters.newStyle}
+          onClick={parameters.onClick}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
+          {children}
+        </LinkOut>
+      );
+    default:
+      return 'Please add type button :)';
+  }
 };
+
 // PropTpyes
 ButtonComponent.propTypes = {
-  link: PropTypes.string,
-  title: PropTypes.string,
-  color: PropTypes.string,
-  newClass: PropTypes.string,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  id: PropTypes.string,
+  key: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 ButtonComponent.defaultProps = {
-  link: null,
-  newClass: null,
-  newStyle: null,
-  color: 'primary',
-  title: 'Add title',
+  id: null,
+  key: null,
+  content: null,
+  parameters: false,
 };
 
 export default ButtonComponent;

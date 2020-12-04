@@ -1,19 +1,22 @@
 import styled from 'styled-components';
 
 export const Ul = styled.ul`
-  display: block;
-  max-width: 100%;
+  width: 100%;
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
-
-  a {
-    color: #fff;
-    font-weight: bold;
-  }
 `;
 
 export const Li = styled.li`
   flex: 100%;
+  display: flex;
   max-width: 100%;
-  text-align: center;
-  padding-top: ${props => props.theme.break};
+  text-align: left;
+  position: relative;
+  padding-bottom: ${props => props.theme.break};
+
+  &:last-child {
+    padding-bottom: 0;
+  }
 `;

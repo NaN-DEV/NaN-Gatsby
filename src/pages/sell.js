@@ -10,19 +10,19 @@ import Layout from '../layouts/index';
 import settings from '../layouts/settings/settings';
 
 // CREATE NEW COMPONENT
-const SellPage = () => {
+const SellPageComponent = () => {
   return (
     <>
       <Layout theme={settings}>
         {/* HERO SECCTION */}
         <Section
-          type="hero"
-          color="primary"
-          title="Uzyskaj <strong>szybką  wycenę !</strong>"
+          id="SellPageComponent-id"
+          type="heroClassic"
+          title="Uzyskaj szybką  wycenę !"
           description="Wypełnij ten prosty formularz. Nasz zespół skontaktuje się z Tobą niezwłocznie, aby omówić kolejne kroki."
         />
 
-        <Section color="primary" type="sell" target="classic" />
+        <Section type="sell" color="primary" target="classic" />
       </Layout>
     </>
   );
@@ -42,7 +42,7 @@ export const query = graphql`
           category {
             id
             slug
-            name
+            title
           }
           title
           slug
@@ -60,4 +60,4 @@ export const query = graphql`
   }
 `;
 
-export default SellPage;
+export default SellPageComponent;

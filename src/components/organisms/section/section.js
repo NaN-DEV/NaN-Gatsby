@@ -4,46 +4,28 @@ import PropTypes from 'prop-types';
 
 // IMPORT COMPONENT
 import Sell from './sell/sell';
-import Hero from './hero/hero';
-import Skils from './skils/skils';
-import SellAds from './sellAds/sellAds';
-import FullText from './fullText/fullText';
-import Triangle from './triangle/triangle';
+import HeroProblem from './sectionHeroProblem/sectionHeroProblem';
+import ListSkils from './sectionListSkils/sectionListSkils';
+import SellAds from './sectionSellAds/sectionSellAds';
+import FullText from './sectionFullText/sectionFullText';
+import FullExcerpt from './sectionFullExcerpt/sectionFullExcerpt';
+import Triangle from './sectionTriangle/sectionTriangle';
+import HeroExcerpt from './sectionHeroExcerpt/sectionHeroExcerpt';
 import HeroClassic from './heroClassic/heroClassic';
-import Scrambler from './scramblerText/scramblerText';
+import CategoryPartners from './sectionCategoryPartners/sectionCategoryPartners';
+import Scrambler from './sectionScramblerText/sectionScramblerText';
 import NotFoundPage from './notFoundPage/notFoundPage';
-import ItemCategory from './itemCategory/itemCategory';
+import CategoryServices from './sectionCategoryServices/sectionCategoryServices';
+import CategoryPortfolio from './sectionCategoryPortfolio/sectionCategoryPortfolio';
 import ServiceContent from './serviceContent/serviceContent';
-import IdentificationExpert from './identificationExpert/identificationExpert';
-import IdentificationProject from './identificationProject/identificationProject';
+import SectionContact from './sectionContact/sectionContact';
+import IdExpert from './sectionIdExpert/sectionIdExpert';
+import IdentificationProject from './sectionIdentificationProject/sectionIdentificationProject';
 
 // CREATE NEW COMPONENT
 
 const SectionComponent = props => {
-  const {
-    id,
-    key,
-    big,
-    items,
-    half,
-    size,
-    type,
-    joke,
-    image,
-    brand,
-    title,
-    color,
-    content,
-    newClass,
-    newStyle,
-    children,
-    category,
-    description,
-
-    nameProject,
-    nameExpert,
-    options,
-  } = props;
+  const { id, key, size, type, title, color, newClass, newStyle, description, parameters, content } = props;
 
   // SELECT SECTION
   const renderSwitchWrap = wrap => {
@@ -51,15 +33,13 @@ const SectionComponent = props => {
       case 'scrambler':
         return (
           <>
-            <Scrambler id={id} size={size} color={color} title={title} newClass={newClass} newStyle={newStyle}>
-              {children}
-            </Scrambler>
+            <Scrambler id={id} key={key} content={content} parameters={parameters} />
           </>
         );
       case 'triangle':
         return (
           <>
-            <Triangle id={id} size={size} color={color} title={title} content={content} newClass={newClass} newStyle={newStyle} />
+            <Triangle id={id} content={content} newClass={newClass} newStyle={newStyle} />
           </>
         );
       case 'sell':
@@ -71,7 +51,7 @@ const SectionComponent = props => {
       case 'sellAds':
         return (
           <>
-            <SellAds id={id} size={size} color={color} newClass={newClass} newStyle={newStyle} />
+            <SellAds newClass={newClass} newStyle={newStyle} />
           </>
         );
       case 'notFoundPage':
@@ -80,92 +60,83 @@ const SectionComponent = props => {
             <NotFoundPage id={id} size={size} color={color} newClass={newClass} newStyle={newStyle} />
           </>
         );
-      case 'hero':
-        return (
-          <>
-            <Hero
-              id={id}
-              joke={joke}
-              half={half}
-              size={size}
-              color={color}
-              title={title}
-              newClass={newClass}
-              newStyle={newStyle}
-              description={description}
-            />
-          </>
-        );
       case 'heroClassic':
         return (
           <>
             <HeroClassic id={id} color={color} newClass={newClass} newStyle={newStyle} title={title} description={description} />
           </>
         );
+      case 'heroExcerpt':
+        return (
+          <>
+            <HeroExcerpt id={id} key={key} content={content} parameters={parameters} />
+          </>
+        );
+      case 'heroProblem':
+        return (
+          <>
+            <HeroProblem id={id} key={key} content={content} parameters={parameters} />
+          </>
+        );
       case 'identificationProject':
         return (
           <>
-            <IdentificationProject
-              id={id}
-              half={half}
-              size={size}
-              image={image}
-              color={color}
-              title={title}
-              brand={brand}
-              newClass={newClass}
-              newStyle={newStyle}
-              nameProject={nameProject}
-              description={description}
-            />
+            <IdentificationProject id={id} key={key} content={content} parameters={parameters} />
           </>
         );
-      case 'identificationExpert':
+      case 'idExpert':
         return (
           <>
-            <IdentificationExpert
-              id={id}
-              image={image}
-              color={color}
-              newClass={newClass}
-              newStyle={newStyle}
-              nameExpert={nameExpert}
-              description={description}
-            />
+            <IdExpert id={id} key={key} content={content} parameters={parameters} />
           </>
         );
       case 'fullText':
         return (
           <>
-            <FullText
-              id={id}
-              big={big}
-              key={key}
-              color={color}
-              title={title}
-              options={options}
-              newClass={newClass}
-              newStyle={newStyle}
-              description={description}
-            />
+            <FullText id={id} key={key} content={content} parameters={parameters} />
           </>
         );
-      case 'skils':
+      case 'fullExcerpt':
         return (
           <>
-            <Skils content={content} color={color} newClass={newClass} newStyle={newStyle} />
+            <FullExcerpt id={id} key={key} content={content} parameters={parameters} />
           </>
         );
-      case 'itemCategory':
+      case 'listSkils':
         return (
           <>
-            <ItemCategory id={id} key={key} items={items} category={category} newClass={newClass} newStyle={newStyle} />
+            <ListSkils id={id} key={key} content={content} parameters={parameters} />
+          </>
+        );
+
+      case 'categoryServices':
+        return (
+          <>
+            <CategoryServices id={id} key={key} parameters={parameters} content={content} />
+          </>
+        );
+      case 'categoryPortfolio':
+        return (
+          <>
+            <CategoryPortfolio id={id} key={key} parameters={parameters} content={content} />
+          </>
+        );
+      case 'categoryPartners':
+        return (
+          <>
+            <CategoryPartners id={id} key={key} parameters={parameters} content={content} />
           </>
         );
       case 'serviceContent':
         return (
           <>
             <ServiceContent id={id} newClass={newClass} newStyle={newStyle} content={content} />
+          </>
+        );
+      case 'contact':
+        return (
+          <>
+            <SectionContact id={id} newClass={newClass} newStyle={newStyle} content={content} />
           </>
         );
       default:
@@ -195,7 +166,6 @@ SectionComponent.propTypes = {
   newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   title: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
   content: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
 };
 
 SectionComponent.defaultProps = {
@@ -214,7 +184,6 @@ SectionComponent.defaultProps = {
   content: null,
   newClass: null,
   newStyle: null,
-  children: null,
   nameExpert: null,
   description: null,
   nameProject: null,

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 const cssHeader = css`
   width: 100%;
-  height: 6rem;
+  min-height: 7rem;
 `;
 
 export const Header = styled.header`
@@ -11,19 +11,10 @@ export const Header = styled.header`
   ${cssHeader}
   z-index: 999;
   display: flex;
-
+  position: fixed;
   background: black;
-  position: absolute;
-  .row {
-    flex-wrap: nowrap;
-    align-items: center;
-    padding: 0 ${props => props.theme.break};
-  }
-  .logo,
-  .search {
-    margin-right: ${props => props.theme.break};
-  }
-  button {
+
+  .open {
     margin-left: auto;
   }
 `;

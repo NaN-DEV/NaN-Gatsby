@@ -11,6 +11,7 @@ import { Header, HeaderStopBox } from './style/style';
 import Modal from '../modal/modal';
 import Row from '../../atoms/row/row';
 import Icon from '../../atoms/icon/icon';
+import Button from '../../atoms/button/button';
 
 // CREATE NEW COMPONENT
 class HeaderComponent extends React.Component {
@@ -43,16 +44,15 @@ class HeaderComponent extends React.Component {
         {isModalOpen && <Modal key="main-menu" closed={this.clouseModal} />}
         <Header theme={settings}>
           <Row newClass="row">
-            {/* ############## LOGO ############## */}
-            <Icon link="/" secondary height={4} type="link" icon="logo" newClass="logo" title="NAN SOFTWARE HOUSE" />
+            {/* ### Logo ### */}
+            <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ newClass: 'logo' }}>
+              <Icon type="logo" colorStyle="secondary" size={4} />
+            </Button>
 
-            {/* ########### FROM SEARCH ########## */}
-            {/* <Form newClass="search">
-              <Input width={30} type="search" color="secondary" placeholder="Szukaj..." />
-            </Form> */}
-
-            {/* ########## Button icon ########### */}
-            <Icon secondary type="button" icon="hamburger" title="OPEN MENU" onClick={this.openModal} />
+            {/* ### Button modal open ### */}
+            <Button type="button" content={{ to: '/', title: 'open menu' }} parameters={{ newClass: 'open', onClick: this.openModal }}>
+              <Icon type="hamburger" colorStyle="secondary" />
+            </Button>
           </Row>
         </Header>
         <HeaderStopBox />

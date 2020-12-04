@@ -1,41 +1,45 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
-import { Link } from 'gatsby';
 
-// IMPORT SETTING STYLE
+// Import settings style
 import settings from '../../../layouts/settings/settings';
 
-// IMPORT STYLE
-import { Footer, Copyright, Ul, Li } from './style/style';
+// Import style
+import { Footer, Copyright } from './style/style';
 
-// IMPORT COMPONENT
+// Import component
 import Row from '../../atoms/row/row';
 import Icon from '../../atoms/icon/icon';
+import List from '../../molecules/list/list';
+import Button from '../../atoms/button/button';
 
-// CREATE NEW COMPONENT
-const HeaderComponent = () => {
+// Create new component
+const footerComponent = () => {
   return (
     <>
       <Footer theme={settings}>
         <Row newClass="row">
-          <Icon link="/" primary height={4} type="link" icon="logo" newClass="logo" title="NAN SOFTWARE HOUSE" />
+          <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ newClass: 'logo' }}>
+            <Icon type="logo" colorStyle="primary" size={4} />
+          </Button>
+
           <Copyright theme={settings}>Copyright 2016-2020</Copyright>
-          <Ul theme={settings}>
-            <Li theme={settings}>
-              <Link to="/">#Regulamin</Link>
-            </Li>
-            <Li theme={settings}>
-              <Link to="/">#Polityka</Link>
-            </Li>
-            <Li theme={settings}>
-              <Link to="/">#Kontakt</Link>
-            </Li>
-          </Ul>
+          <List type="level" newClass="listLink">
+            <Button type="linkIn" content={{ to: '/sell', title: 'Wyceń Projekt' }}>
+              #Wyceń projekt
+            </Button>
+            <Button type="linkIn" content={{ to: '/', title: 'Prywatnosć' }}>
+              #Prywatność
+            </Button>
+            <Button type="linkIn" content={{ to: '/contact', title: 'Kontakt' }}>
+              #Kontakt
+            </Button>
+          </List>
         </Row>
       </Footer>
     </>
   );
 };
 
-// EXPORT NEW COMPONENT
-export default HeaderComponent;
+// Export new component
+export default footerComponent;

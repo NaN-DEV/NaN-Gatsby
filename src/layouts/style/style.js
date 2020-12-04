@@ -2,6 +2,8 @@ import { createGlobalStyle, css } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -17,12 +19,11 @@ html{
 body {
    margin: 0;
    padding: 0;
-   line-height: 1.2;
+   line-height: 1.3;
    font-size: 1.5rem;
    font-style: normal;
    font-weight: normal;
-
-   font-family: ${props => props.theme.font_primary}; 
+   font-family: 'Montserrat', sans-serif;
   
    ${props => {
      switch (props.color) {

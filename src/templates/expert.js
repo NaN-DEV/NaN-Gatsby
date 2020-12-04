@@ -1,10 +1,10 @@
 // IMPORT PLUGIN
 import React from 'react';
 import { graphql } from 'gatsby';
-import Section from '../components/organisms/section/section';
 
 // IMPORT COMPONENT
 import Layout from '../layouts/index';
+import Section from '../components/organisms/section/section';
 
 // IMPORT SETTINGS STYLE
 import settings from '../layouts/settings/settings';
@@ -12,15 +12,22 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const expertPage = ({ data }) => {
-  const { id, joke, name, lastName, image, hello, content, passions } = data.datoCmsExpert;
+  const { id, image, name, surname, joke, portfolio, description, content, passions } = data.datoCmsExpert;
 
   return (
     <>
       <Layout theme={settings} key="expertPage">
-        <Section half type="hero" color="primary" title="Co robię <strong>na codzień ?</strong>" joke={joke} />
-        <Section type="identificationExpert" id={id} image={image} nameExpert={`${name} ${lastName}`} description={hello} />
-        <Section half type="skils" content={content} />
-        <Section type="fullText" big color="primary" title="Pasje" key="Pasje-end" id="Pasje1-end" description={passions} />
+        <Section
+          half
+          type="heroExcerpt"
+          id={`${id}-heroExcerpt-id`}
+          key={`${id}-heroExcerpt-key`}
+          content={{ title: 'Co robię na co dzień ?', excerpt: joke }}
+        />
+        <Section type="idExpert" id={`${id}-idExpert-id`} key={`${id}-idExpert-key`} content={{ image, name, surname, portfolio, description }} />
+        <Section type="listSkils" id={`${id}-listSkils-id`} key={`${id}-listSkils-key`} content={{ skils: content }} />
+        <Section type="fullText" content={{ title: 'Pasje', description: passions }} parameters={{ color: 'tertiary_4' }} />
+        <Section type="sellAds" />
       </Layout>
     </>
   );
@@ -33,9 +40,10 @@ export const expertPageQuery = graphql`
       slug
       name
       joke
-      hello
-      lastName
+      surname
       passions
+      portfolio
+      description
       image {
         fluid {
           ...GatsbyDatoCmsFluid
@@ -44,10 +52,10 @@ export const expertPageQuery = graphql`
       content {
         id
         description
-        sinceWhenYouCan(difference: "")
+        sinceWhenYouCan
         skils {
           id
-          name
+          title
         }
       }
     }

@@ -11,17 +11,13 @@ import { Ul, Li } from './style/style';
 // CREATE NEW COMPONENT
 
 const ListLevelComponent = props => {
-  const { breakpoint, children, newClass, newStyle } = props;
+  const { children, newClass, newStyle } = props;
 
   return (
     <>
-      <Ul style={newStyle} theme={settings} className={newClass} breakpoint={breakpoint}>
-        {React.Children.map(children || null, item => {
-          return (
-            <Li breakpoint={breakpoint} theme={settings}>
-              {item}
-            </Li>
-          );
+      <Ul theme={settings} style={newStyle} className={newClass}>
+        {React.Children.map(children, child => {
+          return <Li theme={settings}>{child}</Li>;
         })}
       </Ul>
     </>
@@ -32,15 +28,13 @@ const ListLevelComponent = props => {
 ListLevelComponent.propTypes = {
   newStyle: PropTypes.string,
   newClass: PropTypes.string,
-  breakpoint: PropTypes.string,
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
+// PropTpyes default
 ListLevelComponent.defaultProps = {
   newClass: null,
   newStyle: null,
-  breakpoint: null,
 };
 
 export default ListLevelComponent;
-// PropTpyes default
