@@ -1,20 +1,20 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// IMPORT STYLE
+// Import style
 import { LeftBox, RightBox, Title, Section, BoxOptions, Description, ElementOptions, BoxElementOptions, DescriptionOptionsIcon } from './style/style';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../../../../layouts/settings/settings';
 
-// IMPORT COMPONENT
+// Import component
 import Row from '../../../atoms/row/row';
 import Icon from '../../../atoms/icon/icon';
 import Sticky from '../../../atoms/sticky/sticky';
 import ProgressBar from '../../../atoms/progressBar/progressBar';
 
-// CREATE NEW COMPONENT
+// Create new component
 const SectionFullText = props => {
   const { id, key, content, parameters } = props;
 
@@ -33,7 +33,7 @@ const SectionFullText = props => {
             <Description theme={settings}>{content.description ? `${content.description}` : 'Add Description'}</Description>
             {content.options ? (
               <BoxOptions theme={settings}>
-                {content.options[0].icon
+                {content.options.length > 0 && content.options[0].icon
                   ? content.options.map(icon => {
                       return (
                         <ElementOptions theme={settings} key={icon.id}>
@@ -45,7 +45,7 @@ const SectionFullText = props => {
                       );
                     })
                   : null}
-                {content.options[0].percent
+                {content.options.length > 0 && content.options[0].percent
                   ? content.options.map(percent => {
                       return (
                         <ProgressBar

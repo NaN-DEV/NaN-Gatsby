@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 // IMPORT PLUGIN
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -30,7 +31,6 @@ class ProgressBarRing extends React.Component {
     this.state = {
       rState: 0,
       start: false,
-
       strokeDasharrayState: 0,
       strokeDashoffsetState: 0,
     };
@@ -43,7 +43,7 @@ class ProgressBarRing extends React.Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('scroll', this.startAnimationProgress);
+    document.removeEventListener('scroll', this.startAnimationProgressBar);
   }
 
   startAnimationProgressBar() {
@@ -55,6 +55,8 @@ class ProgressBarRing extends React.Component {
       this.setState({
         start: true,
       });
+    } else {
+      return null;
     }
   }
 
