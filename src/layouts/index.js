@@ -24,7 +24,7 @@ const Root = props => {
         <meta name="description" content="NaN" />
         <link rel="canonical" href="https://nan.nz" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
       <GlobalStyle theme={settings} color={color} />
