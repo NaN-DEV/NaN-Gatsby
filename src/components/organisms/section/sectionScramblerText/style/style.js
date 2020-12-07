@@ -60,6 +60,15 @@ export const Content = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  font-size: 2.4rem;
+  text-align: center;
   position: relative;
   justify-content: center;
+
+  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
+    font-size: 3rem;
+  }
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    font-size: 6rem;
+  }
 `;

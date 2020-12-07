@@ -18,11 +18,11 @@ const ButtonComponent = props => {
         <Button
           id={id}
           key={key}
-          theme={settings}
+          settings={settings}
           title={content.title}
+          theme={parameters.color}
           color={settings.primary}
           onClick={parameters.onClick}
-          colorStyle={parameters.color}
           newStyle={parameters.newStyle}
           className={parameters.newClass}
         >
@@ -39,12 +39,12 @@ const ButtonComponent = props => {
               key={key}
               duration={1}
               to={content.to}
-              theme={settings}
+              settings={settings}
               bg={settings.primary}
               title={content.title}
+              theme={parameters.color}
               style={parameters.newStyle}
               onClick={parameters.onClick}
-              colorStyle={parameters.color}
               className={parameters.newClass}
               direction={parameters.direction}
             >
@@ -57,12 +57,12 @@ const ButtonComponent = props => {
               paintDrip
               duration={1}
               to={content.to}
-              theme={settings}
+              settings={settings}
               title={content.title}
+              theme={parameters.color}
               color={settings.primary}
               style={parameters.newStyle}
               onClick={parameters.onClick}
-              colorStyle={parameters.color}
               className={parameters.newClass}
             >
               {children}
@@ -76,13 +76,13 @@ const ButtonComponent = props => {
           id={id}
           key={key}
           target="_blank"
-          theme={settings}
+          settings={settings}
           href={content.to}
           title={content.title}
+          theme={parameters.color}
           color={settings.primary}
           style={parameters.newStyle}
           onClick={parameters.onClick}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           {children}
@@ -105,7 +105,7 @@ ButtonComponent.propTypes = {
 ButtonComponent.defaultProps = {
   id: null,
   key: null,
-  content: null,
+  content: false,
   parameters: false,
 };
 

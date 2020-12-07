@@ -22,7 +22,7 @@ const RadioBoxComponent = props => {
           <Box theme={settings}>
             <Radio id={id} name={name} type="radio" color={color} value={id} theme={settings} onChange={onChange} defaultChecked={defaultChecked} />
             <Label htmlFor={id} swith={swith} color={color} theme={settings} newClass={newClass} newStyle={newStyle}>
-              <Icon icon={icon} newClass="icon" />
+              <Icon type={icon} parameters={{ newClass: 'icon' }} />
               <Title theme={settings}>{title}</Title>
             </Label>
           </Box>
@@ -34,7 +34,7 @@ const RadioBoxComponent = props => {
           <Box theme={settings}>
             <Radio id={id} disabled name={name} type="radio" color={color} theme={settings} />
             <Label color={color} htmlFor={id} theme={settings} disabled>
-              <Icon icon={icon} newClass="icon" />
+              <Icon type={icon} parameters={{ newClass: 'icon' }} />
               <Title theme={settings} disabled>
                 {title}
               </Title>

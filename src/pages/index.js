@@ -33,9 +33,14 @@ const IndexPage = ({ data }) => {
           content={{ title: data.allDatoCmsHome.nodes[0].heroSectionTitle }}
         />
 
-        <Section type="triangle" content={data.allDatoCmsHome.nodes[0].selectPortfolio} />
+        <Section
+          type="triangle"
+          id={`${data.allDatoCmsHome.nodes[0].id}-triangle-id`}
+          content={data.allDatoCmsHome.nodes[0].selectPortfolio}
+          key={`${data.allDatoCmsHome.nodes[0].id}-triangle-key`}
+        />
 
-        <Section type="sellAds" />
+        <Section type="sellAds" id={`${data.allDatoCmsHome.nodes[0].id}-sellAds-id`} key={`${data.allDatoCmsHome.nodes[0].id}-sellAds-key`} />
       </Layout>
     </>
   );

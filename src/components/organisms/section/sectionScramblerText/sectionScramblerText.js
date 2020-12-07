@@ -59,12 +59,12 @@ class SectionScramblerTextComponent extends React.Component {
       <>
         <Section theme={settings} id={id} key={key} colorStyle={parameters.color} style={parameters.style} className={parameters.newClass}>
           <Row newClass="row">
-            <Content>
-              <Cycler duration={3000} strings={titleArray} />
+            <Content theme={settings}>
+              <Cycler theme={settings} duration={3000} strings={titleArray} />
             </Content>
           </Row>
           <Button type="button" content={{ title: 'kliknij' }} parameters={{ onClick: this.scrollClickArray, newClass: 'array' }}>
-            <Icon colorStyle="secondary" type="down" />
+            <Icon type="down" parameters={{ color: 'secondary' }} />
           </Button>
         </Section>
       </>

@@ -67,28 +67,23 @@ export const Article = styled.article`
   .link {
     width: 100%;
     height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    opacity: 1 !important;
-    justify-content: center;
+  }
 
-    .row {
-      height: 100%;
-      flex-direction: column;
+  .row {
+    height: 100%;
+    flex-direction: column;
 
-      .triangle {
-        svg {
-          margin-right: 12rem;
-          opacity: 1 !important;
-        }
+    .triangle {
+      svg {
+        margin-right: 12rem;
+        opacity: 1 !important;
       }
+    }
 
-      .buttonMore {
-        position: absolute;
-        right: ${props => props.theme.break};
-        bottom: ${props => props.theme.break};
-      }
+    .buttonMore {
+      position: absolute;
+      right: ${props => props.theme.break};
+      bottom: ${props => props.theme.break};
     }
   }
 
@@ -111,49 +106,43 @@ export const Article = styled.article`
       switch (props.articlePosition) {
         case 'left':
           return css`
-            .link {
+            .row {
+              margin: 0 0;
+              flex-direction: column;
               justify-content: flex-start;
+              max-width: ${props.theme.max_width_half};
 
-              .row {
-                margin: 0 0;
-                flex-direction: column;
-                max-width: ${props.theme.max_width_half};
-
-                .box {
-                  justify-content: flex-start !important;
-                }
+              .box {
+                justify-content: flex-start !important;
               }
             }
           `;
         case 'right':
           return css`
-            .link {
+            .row {
+              margin: 0 0;
               justify-content: flex-end;
+              flex-direction: column-reverse;
+              max-width: ${props.theme.max_width_half};
 
-              .row {
-                margin: 0 0;
-                flex-direction: column-reverse;
-                max-width: ${props.theme.max_width_half};
+              .box {
+                justify-content: flex-end !important;
+              }
 
-                .box {
-                  justify-content: flex-end !important;
-                }
+              .image {
+                top: 0;
+                right: 0;
+                left: auto !important;
+                bottom: auto !important;
+                transform: rotate(-180deg);
+              }
 
-                .image {
-                  top: 0;
-                  right: 0;
-                  left: auto !important;
-                  bottom: auto !important;
-                  transform: rotate(-180deg);
-                }
-
-                .triangle {
-                  top: 0;
-                  right: 0;
-                  left: auto !important;
-                  bottom: auto !important;
-                  transform: rotate(-180deg);
-                }
+              .triangle {
+                top: 0;
+                right: 0;
+                left: auto !important;
+                bottom: auto !important;
+                transform: rotate(-180deg);
               }
             }
           `;
@@ -169,10 +158,11 @@ export const Article = styled.article`
 export const Link = styled(AniLink)``;
 
 export const Box = styled.div`
+  height: 50%;
   display: flex;
   max-width: 100%;
-  min-height: 50%;
   flex: 100 1 auto;
+  min-height: 20rem;
   position: relative;
   flex-direction: column;
   justify-content: flex-start;

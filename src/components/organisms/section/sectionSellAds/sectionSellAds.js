@@ -52,7 +52,7 @@ const SectionSellAdsComponent = props => {
         </Box>
         <Box>
           <Mascot theme={settings} newClass="mascot" />
-          <Icon theme={settings} type="triangle" colorStyle="secondary" newClass="triangle" />
+          <Icon theme={settings} type="triangle" parameters={{ color: 'secondary', newClass: 'triangle' }} />
         </Box>
       </Row>
     </Section>

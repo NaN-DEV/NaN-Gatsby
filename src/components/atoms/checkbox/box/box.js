@@ -35,7 +35,7 @@ const CheckBoxComponent = props => {
               defaultValue={defaultValue}
             />
             <Label htmlFor={id} swith={swith} color={color} theme={settings}>
-              <Icon icon={icon} newClass="icon" />
+              <Icon type={icon} parameters={{ newClass: 'icon' }} />
               <Title theme={settings}>{title}</Title>
             </Label>
           </Box>
@@ -47,7 +47,7 @@ const CheckBoxComponent = props => {
           <Box theme={settings}>
             <CheckBox id={id} disabled name={name} type="radio" color={color} theme={settings} />
             <Label color={color} htmlFor={id} theme={settings} disabled>
-              <Icon icon={icon} newClass="icon" />
+              <Icon type={icon} parameters={{ newClass: 'icon' }} />
               <Title theme={settings} disabled>
                 {title}
               </Title>

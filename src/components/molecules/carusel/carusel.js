@@ -55,8 +55,8 @@ const CarouselComponent = props => {
 
     return (
       <Button type="button" onClick={() => onClick()} content={{ title: 'Wstecz' }} parameters={{ newClass: 'buttonBack', onClick: () => onClick() }}>
-        <Icon type="triangle" colorStyle="secondary" size={6} title="Następne" />
-        <Icon type="down" colorStyle="primary" newClass="arrow" />
+        <Icon type="triangle" parameters={{ color: 'secondary', size: 6 }} content={{ title: 'Następne' }} />
+        <Icon type="down" parameters={{ color: 'primary', newClass: 'arrow' }} />
       </Button>
     );
   };
@@ -74,8 +74,8 @@ const CarouselComponent = props => {
         content={{ title: 'Następne' }}
         parameters={{ newClass: 'buttonNext', onClick: () => onClick() }}
       >
-        <Icon type="triangle" colorStyle="primary" size={6} title="Następne" />
-        <Icon type="down" colorStyle="secondary" newClass="arrow" title="Następne" />
+        <Icon type="triangle" parameters={{ color: 'primary', size: 6 }} content={{ title: 'Następne' }} />
+        <Icon type="down" parameters={{ color: 'secondary', newClass: 'arrow' }} content={{ title: 'Następne' }} />
       </Button>
     );
   };
@@ -103,7 +103,11 @@ const CarouselComponent = props => {
                   <Row>
                     <BoxLeft theme={settings} to={`/project/${item[0].slug}`} title={item[0].title}>
                       <BoxTop theme={settings}>
-                        <Icon type="triangle" title={item[0].title} size={15} newClass="triangle" colorStyle="secondary" />
+                        <Icon
+                          type="triangle"
+                          content={{ title: item[0].title }}
+                          parameters={{ newClass: 'triangle', color: 'secondary', size: 15 }}
+                        />
                       </BoxTop>
                       <BoxBottom theme={settings}>
                         {item[0].category.map(category => {
@@ -118,7 +122,7 @@ const CarouselComponent = props => {
                     </BoxLeft>
                     <BoxRight theme={settings} to={`/project/${item[1].slug}`} title={item[1].title}>
                       <BoxTop theme={settings}>
-                        <Icon type="triangle" title={item[1].title} size={15} newClass="triangle" primary />
+                        <Icon type="triangle" parameters={{ size: 15, newClass: 'triangle', color: 'primary' }} content={{ title: item[1].title }} />
                       </BoxTop>
                       <BoxBottom theme={settings}>
                         {item[1].category.map(category => {

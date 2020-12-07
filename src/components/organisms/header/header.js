@@ -45,13 +45,13 @@ class HeaderComponent extends React.Component {
         <Header theme={settings}>
           <Row newClass="row">
             {/* ### Logo ### */}
-            <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ newClass: 'logo' }}>
-              <Icon type="logo" colorStyle="secondary" size={4} />
+            <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ newClass: 'logo', color: null }}>
+              <Icon type="logo" parameters={{ color: 'secondary', size: 4 }} />
             </Button>
 
             {/* ### Button modal open ### */}
-            <Button type="button" content={{ to: '/', title: 'open menu' }} parameters={{ newClass: 'open', onClick: this.openModal }}>
-              <Icon type="hamburger" colorStyle="secondary" />
+            <Button type="button" content={{ to: '/', title: 'open menu' }} parameters={{ newClass: 'open', color: null, onClick: this.openModal }}>
+              <Icon type="hamburger" parameters={{ color: 'secondary' }} />
             </Button>
           </Row>
         </Header>

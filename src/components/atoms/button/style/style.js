@@ -10,8 +10,8 @@ const buttonStyles = css`
   position: relative;
   align-items: center;
   justify-content: center;
-  transform: ${props => props.theme.animation};
-  border-radius: ${props => props.theme.border};
+  transform: ${props => props.settings.animation};
+  border-radius: ${props => props.settings.border};
 `;
 
 const buttonColor = css`
@@ -20,24 +20,24 @@ const buttonColor = css`
   }
 
   ${props => {
-    switch (props.colorStyle) {
+    switch (props.theme) {
       case 'primary':
         return css`
           height: 4.2rem;
           padding: 0 3rem;
-          border-radius: ${props.theme.border};
-          color: ${props.theme.secondary} !important;
-          background-color: ${props.theme.primary} !important;
-          box-shadow: ${props.theme.tertiary_5} ${props.theme.border} ${props.theme.border} 0 !important;
+          border-radius: ${props.settings.border};
+          color: ${props.settings.secondary} !important;
+          background-color: ${props.settings.primary} !important;
+          box-shadow: ${props.settings.tertiary_5} ${props.settings.border} ${props.settings.border} 0 !important;
         `;
       case 'secondary':
         return css`
           height: 4.2rem;
           padding: 0 3rem;
-          border-radius: ${props.theme.border};
-          color: ${props.theme.primary} !important;
-          background-color: ${props.theme.secondary} !important;
-          box-shadow: ${props.theme.tertiary_5} ${props.theme.border} ${props.theme.border} 0 !important;
+          border-radius: ${props.settings.border};
+          color: ${props.settings.primary} !important;
+          background-color: ${props.settings.secondary} !important;
+          box-shadow: ${props.settings.tertiary_5} ${props.settings.border} ${props.settings.border} 0 !important;
         `;
       default:
         return css`

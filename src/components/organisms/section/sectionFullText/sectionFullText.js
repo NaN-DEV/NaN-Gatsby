@@ -38,7 +38,7 @@ const SectionFullText = props => {
                       return (
                         <ElementOptions theme={settings} key={icon.id}>
                           <BoxElementOptions>
-                            <Icon type={icon.icon} id={icon.id} theme={settings} newClass="icon" />
+                            <Icon theme={settings} type={icon.icon} id={icon.id} parameters={{ newClass: 'icon' }} />
                             <DescriptionOptionsIcon theme={settings}>{icon.icon}</DescriptionOptionsIcon>
                           </BoxElementOptions>
                         </ElementOptions>

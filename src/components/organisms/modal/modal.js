@@ -47,11 +47,11 @@ const ModalMenuComponent = props => {
           <Header>
             <Row newClass="rowHeader">
               <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ newClass: 'logo' }}>
-                <Icon type="logo" colorStyle="secondary" size={4} />
+                <Icon type="logo" parameters={{ color: 'secondary', size: 4 }} />
               </Button>
 
               <Button type="button" content={{ title: 'closed menu' }} parameters={{ newClass: 'closed', onClick: closed }}>
-                <Icon type="closed" colorStyle="secondary" />
+                <Icon type="closed" parameters={{ color: 'secondary' }} />
               </Button>
             </Row>
           </Header>
@@ -69,10 +69,10 @@ const ModalMenuComponent = props => {
                           type="linkIn"
                           id={item.id}
                           key={item.id}
-                          parameters={{ newClass: 'buttonMenu' }}
+                          parameters={{ newClass: 'buttonMenu', color: null }}
                           content={{ title: item.title, to: slug }}
                         >
-                          <Icon type={item.icon} colorStyle="primary" size={9} newClass="iconMenu" />
+                          <Icon type={item.icon} parameters={{ color: 'primary', size: 9, newClass: 'iconMenu' }} />
                           <Title theme={settings}>{item.title}</Title>
                         </Button>
                       );
@@ -82,10 +82,10 @@ const ModalMenuComponent = props => {
                           type="linkOut"
                           id={item.id}
                           key={item.id}
-                          parameters={{ newClass: 'buttonMenu' }}
+                          parameters={{ newClass: 'buttonMenu', color: null }}
                           content={{ title: item.title, to: slug }}
                         >
-                          <Icon type={item.icon} colorStyle="primary" size={9} newClass="iconMenu" />
+                          <Icon type={item.icon} parameters={{ color: 'primary', size: 9, newClass: 'iconMenu' }} />
                           <Title theme={settings}>{item.title}</Title>
                         </Button>
                       );
@@ -98,7 +98,7 @@ const ModalMenuComponent = props => {
           <Footer theme={settings}>
             <Row newClass="rowFooter">
               <List type="level" newClass="listLink">
-                <Button type="linkIn" content={{ title: 'Wyceń Projekt', to: '/sell' }}>
+                <Button type="linkIn" parameters={{ color: null }} content={{ title: 'Wyceń Projekt', to: '/sell' }}>
                   Wyceń Projekt
                 </Button>
               </List>
@@ -106,7 +106,7 @@ const ModalMenuComponent = props => {
               <List type="level" newClass="listLink">
                 {datoCmsSettingsContact.socialMedia.map(item => {
                   return (
-                    <Button type="linkOut" id={item.id} key={item.id} content={{ title: item.title, to: item.slug }}>
+                    <Button type="linkOut" id={item.id} key={item.id} parameters={{ color: null }} content={{ title: item.title, to: item.slug }}>
                       #{item.title}
                     </Button>
                   );

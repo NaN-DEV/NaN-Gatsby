@@ -35,145 +35,330 @@ import Notification from '../../../assets/icon/notification.svg';
 
 // CREATE NEW COMPONENT
 const IconComponent = props => {
-  const { type, colorStyle, size, newClass, newStyle } = props;
+  const { id, key, type, content, parameters } = props;
 
   switch (type) {
     case 'cv':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Cv />
         </BoxIcon>
       );
 
     case 'ask':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Ask />
         </BoxIcon>
       );
     case 'ui/ux':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Ux />
         </BoxIcon>
       );
     case 'more':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <More />
         </BoxIcon>
       );
     case 'mail':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
-          <Mail />{' '}
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
+          <Mail />
         </BoxIcon>
       );
     case 'down':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Down />
         </BoxIcon>
       );
     case 'back-end':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Back />
         </BoxIcon>
       );
     case 'logo':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Logo />
         </BoxIcon>
       );
     case 'front-end':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Front />
         </BoxIcon>
       );
     case 'phone':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Phone />
         </BoxIcon>
       );
     case 'coffe':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Coffe />
         </BoxIcon>
       );
     case 'folder':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Folder />
         </BoxIcon>
       );
     case 'closed':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Closed />
         </BoxIcon>
       );
     case 'people':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <People />
         </BoxIcon>
       );
     case 'twitter':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Twitter />
         </BoxIcon>
       );
     case 'website':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Website />
         </BoxIcon>
       );
     case 'facebook':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Facebook />
         </BoxIcon>
       );
     case 'computer':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Computer />
         </BoxIcon>
       );
     case 'triangle':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Triangle />
         </BoxIcon>
       );
     case 'settings':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Settings />
         </BoxIcon>
       );
     case 'hamburger':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Hamburger />
         </BoxIcon>
       );
     case 'conversation':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          title={content.title}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Conversation />
         </BoxIcon>
       );
     case 'notification':
       return (
-        <BoxIcon theme={settings} className={newClass} style={newStyle} colorStyle={colorStyle} size={size}>
+        <BoxIcon
+          theme={settings}
+          id={id}
+          key={key}
+          size={parameters.size}
+          style={parameters.newStyle}
+          colorStyle={parameters.color}
+          className={parameters.newClass}
+        >
           <Notification />
         </BoxIcon>
       );
@@ -184,20 +369,18 @@ const IconComponent = props => {
 
 // PropTpyes
 IconComponent.propTypes = {
-  type: PropTypes.string,
-  size: PropTypes.number,
-  newClass: PropTypes.string,
-  colorStyle: PropTypes.string,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  id: PropTypes.string,
+  key: PropTypes.string,
+  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 // PropTpyes default
 IconComponent.defaultProps = {
-  type: null,
-  size: null,
-  newClass: null,
-  newStyle: null,
-  colorStyle: null,
+  id: null,
+  key: null,
+  content: null,
+  parameters: false,
 };
 
 export default IconComponent;

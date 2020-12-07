@@ -15,9 +15,9 @@ import Button from '../../../atoms/button/button';
 
 // Create new component
 const SectionTriangleComponent = props => {
-  const { id, content, newClass, newStyle } = props;
+  const { id, key, content, newClass, newStyle } = props;
   return (
-    <Section theme={settings} id={id} newStyle={newStyle} className={newClass}>
+    <Section theme={settings} id={id} key={key} newStyle={newStyle} className={newClass}>
       {content.map((item, index) => {
         return (
           <Article
@@ -27,41 +27,53 @@ const SectionTriangleComponent = props => {
             colorStyle={index % 3 === 0 || index === 0 ? 'secondary' : `${index % 2 === 0 ? 'primary' : 'tertiary'}`}
             articlePosition={index % 3 === 0 || index === 0 ? 'center' : `${(index - 1) % 3 || index === 0 ? 'left' : 'right'}`}
           >
-            <Button type="linkIn" content={{ title: 'Kliknij tu', to: `/portfolio/project/${item.slug}` }} parameters={{ newClass: 'link' }}>
-              <Row newClass="row">
-                <Box className="box">
-                  <Category>
-                    {item.category.map((category, i) => {
-                      return (
-                        <Button type="linkIn" id={`${category.id}-category-id`} key={category.id} content={{ to: category.slug }}>
-                          {category.title}
-                          {item.category.length > 1 && i < item.category.length && ' /'}
-                        </Button>
-                      );
-                    })}
-                  </Category>
+            <Row newClass="row">
+              <Box className="box">
+                <Category>
+                  {item.category.map((category, i) => {
+                    return (
+                      <Button
+                        type="linkIn"
+                        id={`${category.id}-category-id`}
+                        key={`${category.id}-category-key`}
+                        content={{ to: `/portfolio/${category.slug}` }}
+                        parameters={{
+                          color: null,
+                        }}
+                      >
+                        {category.title}
+                        {item.category.length > 1 && i < item.category.length && ' /'}
+                      </Button>
+                    );
+                  })}
+                </Category>
+                <Button type="linkIn" content={{ title: 'Kliknij tu', to: `/project/${item.slug}` }} parameters={{ newClass: 'link' }}>
                   <Title theme={settings}>{item.title}</Title>
-                </Box>
-                <Box>
-                  <Icon
-                    type="triangle"
-                    newClass="triangle"
-                    colorStyle={index % 3 === 0 || index === 0 ? 'primary' : `${index % 2 === 0 ? 'secondary' : 'primary'}`}
-                  />
-                  <Image theme={settings} fluid={item.imageSubstitute.fluid} className="image" />
-                </Box>
-                <Button
-                  type="linkIn"
-                  content={{ to: `/portfolio/project/${item.slug}`, title: 'więcej' }}
+                </Button>
+              </Box>
+              <Box>
+                <Icon
+                  type="triangle"
                   parameters={{
-                    newClass: 'buttonMore',
+                    newClass: 'triangle',
                     color: index % 3 === 0 || index === 0 ? 'primary' : `${index % 2 === 0 ? 'secondary' : 'primary'}`,
                   }}
-                >
-                  Więcej
-                </Button>
-              </Row>
-            </Button>
+                />
+                <Image theme={settings} fluid={item.imageSubstitute.fluid} className="image" />
+              </Box>
+              <Button
+                type="linkIn"
+                id={`${item.id}-button-more-id`}
+                key={`${item.id}-button-more-key`}
+                content={{ to: `/project/${item.slug}`, title: 'więcej' }}
+                parameters={{
+                  newClass: 'buttonMore',
+                  color: index % 3 === 0 || index === 0 ? 'primary' : `${index % 2 === 0 ? 'secondary' : 'primary'}`,
+                }}
+              >
+                Więcej
+              </Button>
+            </Row>
           </Article>
         );
       })}

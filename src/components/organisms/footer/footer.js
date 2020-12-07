@@ -20,18 +20,18 @@ const footerComponent = () => {
       <Footer theme={settings}>
         <Row newClass="row">
           <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ newClass: 'logo' }}>
-            <Icon type="logo" colorStyle="primary" size={4} />
+            <Icon type="logo" parameters={{ colorStyle: 'primary', size: 4 }} />
           </Button>
 
           <Copyright theme={settings}>Copyright 2016-2020</Copyright>
           <List type="level" newClass="listLink">
-            <Button type="linkIn" content={{ to: '/sell', title: 'Wyceń Projekt' }}>
+            <Button type="linkIn" content={{ to: '/sell', title: 'Wyceń Projekt' }} parameters={{ color: null }}>
               #Wyceń projekt
             </Button>
-            <Button type="linkIn" content={{ to: '/', title: 'Prywatnosć' }}>
+            <Button type="linkIn" content={{ to: '/', title: 'Prywatnosć' }} parameters={{ color: null }}>
               #Prywatność
             </Button>
-            <Button type="linkIn" content={{ to: '/contact', title: 'Kontakt' }}>
+            <Button type="linkIn" content={{ to: '/contact', title: 'Kontakt' }} parameters={{ color: null }}>
               #Kontakt
             </Button>
           </List>

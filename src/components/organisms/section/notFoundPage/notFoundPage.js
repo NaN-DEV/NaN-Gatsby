@@ -31,7 +31,7 @@ const SectionSellComponent = props => {
             <Button type="link" content={{ title: 'Więc zobacz to :)', to: '/' }} parameters={{ newClass: 'button', colorStyle: 'secondary' }} />
           </BoxContent>
           <Mascot newClass="mascot" theme={settings} />
-          <Icon secondary icon="triangle" newClass="triangle" />
+          <Icon type="triangle" parameters={{ color: 'secondary', newClass: 'triangle' }} />
         </Row>
       </Section>
     </>
