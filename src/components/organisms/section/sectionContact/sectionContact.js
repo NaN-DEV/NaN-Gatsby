@@ -35,8 +35,27 @@ const sectionContactComponent = props => {
         <Row newClass="row">
           <FormBox theme={settings}>
             <Title>FORMULARZ</Title>
-            <form name="example" method="POST" netlify>
-              <input name="something" type="text" />
+            <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+              <p className="hidden">
+                <label>
+                  Don’t fill this out if you’re human: <input name="bot-field" />
+                </label>
+              </p>
+              <p>
+                <label>
+                  Email: <input type="text" name="email" />
+                </label>
+              </p>
+              <p>
+                <label>
+                  Message: <textarea name="message" />
+                </label>
+              </p>
+              <p>
+                <button type="submit" style={{ color: 'white' }}>
+                  Send
+                </button>
+              </p>
             </form>
           </FormBox>
           <DataBox theme={settings}>
