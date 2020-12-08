@@ -1,23 +1,21 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-unused-vars */
 // IMPORT PLUGIN
 import React from 'react';
+
 import PropTypes from 'prop-types';
-import { useFormik } from 'formik';
 
 // IMPORT STYLE
-import { Section, FormBox, DataBox, LisData, BoxError, ListBox, Point, Important, Tel, Mail, MascotBox, Title, Form } from './style/style';
+import { Section, FormBox, DataBox, LisData, ListBox, Point, Important, Tel, Mail, MascotBox, Title } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
 
 // IMPORT COMPONENT
 import Row from '../../../atoms/row/row';
-import Input from '../../../atoms/input/input';
-import Button from '../../../atoms/button/button';
+
 import Mascot from '../../../atoms/mascot/mascot';
-import TextArea from '../../../atoms/textarea/textarea';
-import CheckBox from '../../../atoms/checkbox/checkbox';
+
+// VALUE
 
 // CREATE NEW COMPONENT
 const sectionContactComponent = props => {
@@ -35,7 +33,26 @@ const sectionContactComponent = props => {
         <Row newClass="row">
           <FormBox theme={settings}>
             <Title>FORMULARZ</Title>
-            <form name="kontakt" method="POST" data-netlify="true">
+            <form name="contact" method="POST" data-netlify="true">
+              <p>
+                <label>
+                  Your Name: <input type="text" name="name" />
+                </label>
+              </p>
+              <p>
+                <label>
+                  Your Email: <input type="email" name="email" />
+                </label>
+              </p>
+              <p>
+                <label>
+                  Your Role:
+                  <select name="role[]" multiple>
+                    <option value="leader">Leader</option>
+                    <option value="follower">Follower</option>
+                  </select>
+                </label>
+              </p>
               <p>
                 <label>
                   Message: <textarea name="message" />
