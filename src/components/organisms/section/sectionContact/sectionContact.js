@@ -33,16 +33,21 @@ const sectionContactComponent = props => {
         <Row newClass="row">
           <FormBox theme={settings}>
             <Title>FORMULARZ</Title>
-            <form name="contact" method="POST" data-netlify="true" action="/contact">
+            <form name="contact" method="POST" data-netlify="true">
               <input type="hidden" name="form-name" value="contact" />
               <p>
                 <label>
-                  Name <input type="text" name="name" />
+                  Your Name: <input type="text" name="name" />
                 </label>
               </p>
               <p>
                 <label>
-                  Email <input type="email" name="email" />
+                  Your Email: <input type="email" name="email" />
+                </label>
+              </p>
+              <p>
+                <label>
+                  Message: <textarea name="message" />
                 </label>
               </p>
               <p>
