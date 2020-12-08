@@ -33,7 +33,8 @@ const sectionContactComponent = props => {
         <Row newClass="row">
           <FormBox theme={settings}>
             <Title>FORMULARZ</Title>
-            <form name="contact" method="POST" data-netlify="true">
+            <form name="contact" method="POST" data-netlify="true" action="/contact">
+              <input type="hidden" name="form-name" value="contact" />
               <p>
                 <label>
                   Name <input type="text" name="name" />
