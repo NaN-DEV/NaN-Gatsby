@@ -11,7 +11,6 @@ module.exports = {
     { resolve: `gatsby-plugin-react-svg` },
     { resolve: `gatsby-transformer-sharp` },
     { resolve: `gatsby-plugin-react-helmet` },
-    { resolve: `gatsby-plugin-transition-link` },
     { resolve: `gatsby-plugin-styled-components` },
     {
       resolve: `gatsby-source-filesystem`,

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import { Link } from 'gatsby';
 
 const buttonStyles = css`
   opacity: 1;
@@ -57,7 +57,7 @@ export const Button = styled.button`
   ${buttonStyles}
 `;
 
-export const LinkIn = styled(AniLink)`
+export const LinkIn = styled(Link)`
   ${buttonColor}
   ${buttonStyles}
 `;
