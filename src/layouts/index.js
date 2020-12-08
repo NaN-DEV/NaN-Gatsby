@@ -39,7 +39,6 @@ class Root extends React.Component {
           <title>NaN</title>
           <meta name="description" content="NaN" />
           <link rel="canonical" href="https://nan.nz" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swapg" rel="stylesheet" />
           <meta name="twitter:card" content="summary_large_image" />
         </Helmet>
