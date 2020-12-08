@@ -35,36 +35,8 @@ const sectionContactComponent = props => {
         <Row newClass="row">
           <FormBox theme={settings}>
             <Title>FORMULARZ</Title>
-            <form name="kupa-test" method="POST" data-netlify="true">
-              <p>
-                <label>
-                  Your Name: <input type="text" name="name" />
-                </label>
-              </p>
-              <p>
-                <label>
-                  Your Email: <input type="email" name="email" />
-                </label>
-              </p>
-              <p>
-                <label>
-                  Your Role:
-                  <select name="role[]" multiple>
-                    <option value="leader">Leader</option>
-                    <option value="follower">Follower</option>
-                  </select>
-                </label>
-              </p>
-              <p>
-                <label>
-                  Message: <textarea name="message" />
-                </label>
-              </p>
-              <p>
-                <button type="submit" style={{ color: 'white' }}>
-                  Send
-                </button>
-              </p>
+            <form name="example" method="POST" netlify>
+              <input name="something" type="text" />
             </form>
           </FormBox>
           <DataBox theme={settings}>

@@ -25,6 +25,8 @@ class HeaderComponent extends React.Component {
     this.clouseModal = this.clouseModal.bind(this);
   }
 
+  componentDidMount() {}
+
   openModal = () => {
     this.setState({
       isModalOpen: true,
