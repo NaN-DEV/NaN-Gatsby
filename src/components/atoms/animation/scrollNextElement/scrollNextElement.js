@@ -2,7 +2,6 @@
 /* eslint-disable no-case-declarations */
 import React from 'react';
 import PropTypes from 'prop-types';
-import smoothscroll from 'smoothscroll-polyfill';
 
 // CREATE NEW COMPONENT
 class ScrollNextElementComponent extends React.Component {
@@ -23,7 +22,6 @@ class ScrollNextElementComponent extends React.Component {
 
   // Wykonuje po zmontowaniu komponentu
   componentDidMount() {
-    smoothscroll.polyfill();
     this.timeStopForDevices();
     this.addAllElementsOffsetTop();
     document.addEventListener('scroll', this.scrollUpOrDown);
@@ -34,7 +32,6 @@ class ScrollNextElementComponent extends React.Component {
 
   // Usuwam funkcje gdy nie uywam komponentu
   componentWillUnmount() {
-    smoothscroll.polyfill();
     this.timeStopForDevices();
     this.addAllElementsOffsetTop();
     document.removeEventListener('scroll', this.scrollUpOrDown);
