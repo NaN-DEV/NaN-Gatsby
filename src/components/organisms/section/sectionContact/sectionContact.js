@@ -1,21 +1,20 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 // IMPORT PLUGIN
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { Section, FormBox, DataBox, LisData, ListBox, Point, Important, Tel, Mail, MascotBox, Title } from './style/style';
+import { Section, FormBox, DataBox, LisData, ListBox, Point, Important, Tel, Mail, MascotBox, Title, Form } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
 
 // IMPORT COMPONENT
 import Row from '../../../atoms/row/row';
-
+import Input from '../../../atoms/input/input';
+import Button from '../../../atoms/button/button';
 import Mascot from '../../../atoms/mascot/mascot';
-
-// VALUE
+import TextArea from '../../../atoms/textarea/textarea';
+import CheckBox from '../../../atoms/checkbox/checkbox';
 
 // CREATE NEW COMPONENT
 const sectionContactComponent = props => {
@@ -33,27 +32,32 @@ const sectionContactComponent = props => {
         <Row newClass="row">
           <FormBox theme={settings}>
             <Title>FORMULARZ</Title>
-            <form name="contact" method="POST" data-netlify="true">
-              <input type="hidden" name="form-name" value="contact" />
-              <p>
-                <label>
-                  Your Name: <input type="text" name="name" />
-                </label>
-              </p>
-              <p>
-                <label>
-                  Your Email: <input type="email" name="email" />
-                </label>
-              </p>
-              <p>
-                <label>
-                  Message: <textarea name="message" />
-                </label>
-              </p>
-              <p>
-                <button type="submit">Send</button>
-              </p>
-            </form>
+            <Form name="contact" method="POST" data-netlify="true">
+              <Input type="hidden" name="form-name" value="contact" />
+              <Input required id="email" name="email" type="email" title="Email" newClass="error" color="secondary" placeholder="email@domian.com" />
+              <Input required id="name" name="name" type="text" title="Name" newClass="error" color="secondary" placeholder="name" />
+              <Input required id="tel" name="tel" type="tel" title="Phone" color="secondary" placeholder="Number" />
+              <TextArea
+                required
+                id="message"
+                name="message"
+                title="Najpierw potrzebujesz NDA? Wyślij nam e-mail na adres : <a href='mailto:hello@na3.eu'>hello@na3.eu</a>"
+                newClass="error"
+                color="secondary"
+                placeholder="A brief description of your idea"
+              />
+              <CheckBox
+                id="politycy"
+                type="classic"
+                name="checkbox"
+                color="secondary"
+                newClass="error"
+                content="NaN LLC potrzebuje twoich danych na czas odpowiedzi na twoje pytanie.  Masz prawo zrezygnować z przetwarzania twoich danych w dowolnym momencie, więcej informacji w <a href='#'>polityce prywatności</a> "
+              />
+              <Button type="sumbit" content={{ title: 'Wyślij' }} parameters={{ color: 'secondary' }}>
+                Wyślij
+              </Button>
+            </Form>
           </FormBox>
           <DataBox theme={settings}>
             <MascotBox theme={settings}>

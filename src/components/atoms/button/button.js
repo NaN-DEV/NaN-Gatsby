@@ -88,6 +88,23 @@ const ButtonComponent = props => {
           {children}
         </LinkOut>
       );
+    case 'sumbit':
+      return (
+        <Button
+          id={id}
+          key={key}
+          type={type}
+          settings={settings}
+          title={content.title}
+          theme={parameters.color}
+          color={settings.primary}
+          onClick={parameters.onClick}
+          newStyle={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          {children}
+        </Button>
+      );
     default:
       return 'Please add type button :)';
   }
