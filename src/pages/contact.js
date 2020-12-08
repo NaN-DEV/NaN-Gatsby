@@ -15,7 +15,7 @@ const ContactPageComponent = ({ data }) => (
   <>
     <Layout theme={settings}>
       <Section id={data.datoCmsSettingsContact.id} type="heroClassic" title="Dane Kontaktowe" description="Poznajmy się" />
-      <form name="contact" data-netlify="true">
+      <form name="contact" method="POST" data-netlify="true">
         <p>
           <label>
             Name <input type="text" name="name" />
