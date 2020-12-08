@@ -61,10 +61,9 @@ const sectionContactComponent = props => {
                 </label>
               </p>
               <p>
-                <input type="hidden" name="form-name" value="contact" />
-              </p>
-              <p>
-                <button type="submit">Send</button>
+                <button type="submit" style={{ color: 'white' }}>
+                  Send
+                </button>
               </p>
             </form>
           </FormBox>
