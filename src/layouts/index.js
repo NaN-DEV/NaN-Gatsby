@@ -29,8 +29,9 @@ class Root extends React.Component {
     smoothscroll.polyfill();
   }
 
-  return() {
+  render() {
     const { children, color } = this.props;
+
     return (
       <>
         <Helmet>

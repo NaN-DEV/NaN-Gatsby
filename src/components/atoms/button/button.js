@@ -21,7 +21,6 @@ const ButtonComponent = props => {
           settings={settings}
           title={content.title}
           theme={parameters.color}
-          color={settings.primary}
           onClick={parameters.onClick}
           newStyle={parameters.newStyle}
           className={parameters.newClass}
@@ -32,42 +31,18 @@ const ButtonComponent = props => {
     case 'linkIn':
       return (
         <>
-          {parameters.direction ? (
-            <LinkIn
-              cover
-              id={id}
-              key={key}
-              duration={1}
-              to={content.to}
-              settings={settings}
-              bg={settings.primary}
-              title={content.title}
-              theme={parameters.color}
-              style={parameters.newStyle}
-              onClick={parameters.onClick}
-              className={parameters.newClass}
-              direction={parameters.direction}
-            >
-              {children}
-            </LinkIn>
-          ) : (
-            <LinkIn
-              id={id}
-              key={key}
-              paintDrip
-              duration={1}
-              to={content.to}
-              settings={settings}
-              title={content.title}
-              theme={parameters.color}
-              color={settings.primary}
-              style={parameters.newStyle}
-              onClick={parameters.onClick}
-              className={parameters.newClass}
-            >
-              {children}
-            </LinkIn>
-          )}
+          <LinkIn
+            id={id}
+            key={key}
+            to={content.to}
+            settings={settings}
+            title={content.title}
+            theme={parameters.color}
+            style={parameters.newStyle}
+            className={parameters.newClass}
+          >
+            {children}
+          </LinkIn>
         </>
       );
     case 'linkOut':
@@ -80,9 +55,7 @@ const ButtonComponent = props => {
           href={content.to}
           title={content.title}
           theme={parameters.color}
-          color={settings.primary}
           style={parameters.newStyle}
-          onClick={parameters.onClick}
           className={parameters.newClass}
         >
           {children}
@@ -98,7 +71,6 @@ const ButtonComponent = props => {
           title={content.title}
           theme={parameters.color}
           color={settings.primary}
-          onClick={parameters.onClick}
           newStyle={parameters.newStyle}
           className={parameters.newClass}
         >
