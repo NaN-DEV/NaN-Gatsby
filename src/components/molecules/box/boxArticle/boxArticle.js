@@ -18,10 +18,10 @@ const boxArticleComponent = props => {
   return (
     <Article theme={settings} id={id} key={key} className={newClass} style={newStyle}>
       <Button type="linkIn" parameters={{ newClass: 'linkArticle' }} content={{ to, title }}>
-        <BoxImage>
+        <BoxImage theme={settings}>
           <Image fluid={image.fluid} />
         </BoxImage>
-        <Title>{title}</Title>
+        <Title theme={settings}>{title}</Title>
       </Button>
     </Article>
   );

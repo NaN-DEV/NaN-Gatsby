@@ -36,7 +36,10 @@ export const Image = styled(BackgroundImage)`
 `;
 
 export const Title = styled.p`
-  font-size: 2.4rem;
-  padding-top: 1.5rem;
+  padding-top: 0.3rem;
   font-weight: normal;
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    font-size: 2.4rem;
+    padding-top: 1.5rem;
+  }
 `;

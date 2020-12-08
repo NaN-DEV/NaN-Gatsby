@@ -1,6 +1,5 @@
 import GatsbyImage from 'gatsby-image';
 import styled, { css } from 'styled-components';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
 
 export const Section = styled.section`
   width: 100%;
@@ -67,6 +66,7 @@ export const Article = styled.article`
   .link {
     width: 100%;
     height: auto;
+    justify-content: flex-start;
   }
 
   .row {
@@ -155,8 +155,6 @@ export const Article = styled.article`
   }
 `;
 
-export const Link = styled(AniLink)``;
-
 export const Box = styled.div`
   height: 50%;
   display: flex;
@@ -185,6 +183,7 @@ export const Box = styled.div`
 `;
 
 export const Title = styled.h1`
+  flex: 100%;
   opacity: 1;
   display: block;
   max-width: 100%;
