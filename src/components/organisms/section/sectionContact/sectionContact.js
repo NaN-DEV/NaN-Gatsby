@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable prefer-template */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
@@ -27,6 +29,7 @@ class sectionContactComponent extends React.Component {
     super(props);
     this.state = {};
 
+    this.encode = this.encode.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -34,17 +37,24 @@ class sectionContactComponent extends React.Component {
     document.querySelector('form').addEventListener('submit', this.handleSubmit);
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
-    let myForm = document.getElementById('pizzaOrder');
-    let formData = new FormData(myForm);
+  encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString(),
+      body: this.encode({
+        'form-name': event.target.getAttribute('name'),
+        ...name,
+      }),
     })
-      .then(() => console.log('Form successfully submitted'))
-      .catch(error => alert(error));
+      .then(value => console.log(value))
+      .catch(error => console.log(error));
   };
 
   render() {
@@ -65,7 +75,7 @@ class sectionContactComponent extends React.Component {
                 <input type="hidden" name="form-name" value="pizzaOrder" />
                 <label>
                   What order did the pizza give to the pineapple?
-                  <input name="order" type="text" onChange={this.handleChange} />
+                  <input name="order" type="text" />
                 </label>
                 <input type="submit" />
               </form>
