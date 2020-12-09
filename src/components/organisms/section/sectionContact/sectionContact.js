@@ -1,3 +1,8 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
+/* eslint-disable prefer-const */
+/* eslint-disable no-undef */
 // IMPORT PLUGIN
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -17,106 +22,148 @@ import TextArea from '../../../atoms/textarea/textarea';
 import CheckBox from '../../../atoms/checkbox/checkbox';
 
 // CREATE NEW COMPONENT
-const sectionContactComponent = props => {
-  const { id, newStyle, newClass, content } = props;
+class sectionContactComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
 
-  return (
-    <>
-      <Section
-        theme={settings}
-        newStyle={newStyle}
-        className={newClass}
-        id={`${id}-sectionContactComponent-section-id`}
-        key={`${id}-sectionContactComponent-section-key`}
-      >
-        <Row newClass="row">
-          <FormBox theme={settings}>
-            <Title>FORMULARZ</Title>
-            <Form name="contact" method="POST" data-netlify="true">
-              <Input type="hidden" name="form-name" value="contact" />
-              <Input required id="email" name="email" type="email" title="Email" newClass="error" color="secondary" placeholder="email@domian.com" />
-              <Input required id="name" name="name" type="text" title="Name" newClass="error" color="secondary" placeholder="name" />
-              <Input required id="tel" name="tel" type="tel" title="Phone" color="secondary" placeholder="Number" />
-              <TextArea
-                required
-                id="message"
-                name="message"
-                title="Najpierw potrzebujesz NDA? Wyślij nam e-mail na adres : <a href='mailto:hello@na3.eu'>hello@na3.eu</a>"
-                newClass="error"
-                color="secondary"
-                placeholder="A brief description of your idea"
-              />
-              <CheckBox
-                id="politycy"
-                type="classic"
-                name="checkbox"
-                color="secondary"
-                newClass="error"
-                content="NaN LLC potrzebuje twoich danych na czas odpowiedzi na twoje pytanie.  Masz prawo zrezygnować z przetwarzania twoich danych w dowolnym momencie, więcej informacji w <a href='#'>polityce prywatności</a> "
-              />
-              <Button type="sumbit" content={{ title: 'Wyślij' }} parameters={{ color: 'secondary' }}>
-                Wyślij
-              </Button>
-            </Form>
-          </FormBox>
-          <DataBox theme={settings}>
-            <MascotBox theme={settings}>
-              <Mascot newClass="mascot" />
-            </MascotBox>
-            <ListBox>
-              <LisData theme={settings}>
-                <Point theme={settings}>
-                  <Important theme={settings}>{content.nameCompany}</Important>
-                </Point>
-                <Point theme={settings}>
-                  ul. {content.street} {content.streetNumber}
-                </Point>
-                <Point theme={settings}>
-                  {content.postCode} {content.city}
-                </Point>
-                <Point theme={settings}>{content.country}</Point>
-              </LisData>
-              <LisData theme={settings}>
-                <Point theme={settings}>
-                  <Important theme={settings}>VAT-ID :</Important> {content.vat}
-                </Point>
-                <Point theme={settings}>
-                  <Important theme={settings}>REGON :</Important> {content.regon}
-                </Point>
-                <Point theme={settings}>
-                  <Important theme={settings}>KRS :</Important> {content.krs}
-                </Point>
-              </LisData>
-              <LisData theme={settings}>
-                <Point theme={settings}>
-                  <Important theme={settings}>KAPITAŁ :</Important> {`${content.capital}`} PLN
-                </Point>
-                <Point theme={settings}>
-                  <Important theme={settings}>CEO :</Important> {content.ceo.name}
-                </Point>
-              </LisData>
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-              <LisData theme={settings}>
-                <Point theme={settings}>
-                  <Important theme={settings}>TEL :</Important>
-                  <Tel theme={settings} to={`+48 ${content.telephoneNumber}`}>
-                    {`+48 ${content.telephoneNumber}`}
-                  </Tel>
-                </Point>
-                <Point theme={settings}>
-                  <Important theme={settings}>MAIL :</Important>
-                  <Mail theme={settings} to={`mailo:${content.mail}`}>
-                    {`${content.mail}`}
-                  </Mail>
-                </Point>
-              </LisData>
-            </ListBox>
-          </DataBox>
-        </Row>
-      </Section>
-    </>
-  );
-};
+  componentDidMount() {
+    document.querySelector('form').addEventListener('submit', this.handleSubmit);
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    let myForm = document.getElementById('pizzaOrder');
+    let formData = new FormData(myForm);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => console.log('Form successfully submitted'))
+      .catch(error => alert(error));
+  };
+
+  render() {
+    const { id, newStyle, newClass, content } = this.props;
+    return (
+      <>
+        <Section
+          theme={settings}
+          newStyle={newStyle}
+          className={newClass}
+          id={`${id}-sectionContactComponent-section-id`}
+          key={`${id}-sectionContactComponent-section-key`}
+        >
+          <Row newClass="row">
+            <FormBox theme={settings}>
+              <Title>FORMULARZ</Title>
+              <form data-netlify="true" name="pizzaOrder" method="post" onSubmit={this.handleSubmit}>
+                <input type="hidden" name="form-name" value="pizzaOrder" />
+                <label>
+                  What order did the pizza give to the pineapple?
+                  <input name="order" type="text" onChange={this.handleChange} />
+                </label>
+                <input type="submit" />
+              </form>
+              <Form name="contact" method="POST" data-netlify="true">
+                <Input type="hidden" name="form-name" value="contact" />
+                <Input
+                  required
+                  id="email"
+                  name="email"
+                  type="email"
+                  title="Email"
+                  newClass="error"
+                  color="secondary"
+                  placeholder="email@domian.com"
+                />
+                <Input required id="name" name="name" type="text" title="Name" newClass="error" color="secondary" placeholder="name" />
+                <Input required id="tel" name="tel" type="tel" title="Phone" color="secondary" placeholder="Number" />
+                <TextArea
+                  required
+                  id="message"
+                  name="message"
+                  title="Najpierw potrzebujesz NDA? Wyślij nam e-mail na adres : <a href='mailto:hello@na3.eu'>hello@na3.eu</a>"
+                  newClass="error"
+                  color="secondary"
+                  placeholder="A brief description of your idea"
+                />
+                <CheckBox
+                  id="politycy"
+                  type="classic"
+                  name="checkbox"
+                  color="secondary"
+                  newClass="error"
+                  content="NaN LLC potrzebuje twoich danych na czas odpowiedzi na twoje pytanie.  Masz prawo zrezygnować z przetwarzania twoich danych w dowolnym momencie, więcej informacji w <a href='#'>polityce prywatności</a> "
+                />
+                <Button type="sumbit" content={{ title: 'Wyślij' }} parameters={{ color: 'secondary' }}>
+                  Wyślij
+                </Button>
+              </Form>
+            </FormBox>
+            <DataBox theme={settings}>
+              <MascotBox theme={settings}>
+                <Mascot newClass="mascot" />
+              </MascotBox>
+              <ListBox>
+                <LisData theme={settings}>
+                  <Point theme={settings}>
+                    <Important theme={settings}>{content.nameCompany}</Important>
+                  </Point>
+                  <Point theme={settings}>
+                    ul. {content.street} {content.streetNumber}
+                  </Point>
+                  <Point theme={settings}>
+                    {content.postCode} {content.city}
+                  </Point>
+                  <Point theme={settings}>{content.country}</Point>
+                </LisData>
+                <LisData theme={settings}>
+                  <Point theme={settings}>
+                    <Important theme={settings}>VAT-ID :</Important> {content.vat}
+                  </Point>
+                  <Point theme={settings}>
+                    <Important theme={settings}>REGON :</Important> {content.regon}
+                  </Point>
+                  <Point theme={settings}>
+                    <Important theme={settings}>KRS :</Important> {content.krs}
+                  </Point>
+                </LisData>
+                <LisData theme={settings}>
+                  <Point theme={settings}>
+                    <Important theme={settings}>KAPITAŁ :</Important> {`${content.capital}`} PLN
+                  </Point>
+                  <Point theme={settings}>
+                    <Important theme={settings}>CEO :</Important> {content.ceo.name}
+                  </Point>
+                </LisData>
+
+                <LisData theme={settings}>
+                  <Point theme={settings}>
+                    <Important theme={settings}>TEL :</Important>
+                    <Tel theme={settings} to={`+48 ${content.telephoneNumber}`}>
+                      {`+48 ${content.telephoneNumber}`}
+                    </Tel>
+                  </Point>
+                  <Point theme={settings}>
+                    <Important theme={settings}>MAIL :</Important>
+                    <Mail theme={settings} to={`mailo:${content.mail}`}>
+                      {`${content.mail}`}
+                    </Mail>
+                  </Point>
+                </LisData>
+              </ListBox>
+            </DataBox>
+          </Row>
+        </Section>
+      </>
+    );
+  }
+}
 
 // PropTpyes
 sectionContactComponent.propTypes = {
