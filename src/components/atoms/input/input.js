@@ -21,13 +21,14 @@ const InputComponent = props => {
             {`${content.title} ${parameters.required ? '*' : ''}`}
           </Label>
         )}
+
         <Input
           type={type}
           settings={settings}
           name={parameters.name}
           theme={parameters.color}
           style={parameters.style}
-          validate={parameters.validate}
+          value={parameters.value}
           className={parameters.newClass}
           placeholder={content.placeholder}
         />

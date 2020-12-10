@@ -131,18 +131,12 @@ class sectionContactComponent extends React.Component {
                   contract: '',
                 }}
                 onSubmit={(values, { resetForm }) => {
-                  setTimeout(resetForm(), 500);
+                  setTimeout(resetForm(), 1000);
                 }}
               >
                 {({ errors, touched, isValid, values }) => (
                   <Form name="contact" method="POST" data-netlify="true">
-                    <Input
-                      type="hidden"
-                      id="hidden-id"
-                      key="hidden-key"
-                      content={{ name: 'hidden' }}
-                      parameters={{ value: 'contact', name: 'form-name' }}
-                    />
+                    <Input type="hidden" id="hidden-id" key="hidden-key" parameters={{ value: 'contact', name: 'form-name' }} />
                     <Input
                       type="text"
                       id="username-id"
