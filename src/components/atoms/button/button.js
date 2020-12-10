@@ -71,6 +71,7 @@ const ButtonComponent = props => {
           title={content.title}
           theme={parameters.color}
           color={settings.primary}
+          disabled={parameters.disabled}
           newStyle={parameters.newStyle}
           className={parameters.newClass}
         >

@@ -9,43 +9,19 @@ import Classic from './classic/classic';
 // CREATE NEW COMPONENT
 
 const CheckboxComponent = props => {
-  const { id, icon, type, swith, color, title, onBlur, content, checked, onChange, newClass, newStyle, defaultChecked } = props;
+  const { id, key, type, content, parameters } = props;
 
   switch (type) {
     case 'box':
       return (
         <>
-          <Box
-            id={id}
-            icon={icon}
-            swith={swith}
-            color={color}
-            title={title}
-            onBlur={onBlur}
-            checked={checked}
-            onChange={onChange}
-            newStyle={newStyle}
-            newClass={newClass}
-            defaultChecked={defaultChecked}
-          />
+          <Box id={id} key={key} content={content} parameters={parameters} />
         </>
       );
     case 'classic':
       return (
         <>
-          <Classic
-            id={id}
-            icon={icon}
-            color={color}
-            title={title}
-            onBlur={onBlur}
-            checked={checked}
-            content={content}
-            onChange={onChange}
-            newStyle={newStyle}
-            newClass={newClass}
-            defaultChecked={defaultChecked}
-          />
+          <Classic id={id} key={key} content={content} parameters={parameters} />
         </>
       );
     default:
@@ -54,31 +30,19 @@ const CheckboxComponent = props => {
 };
 
 CheckboxComponent.propTypes = {
-  title: PropTypes.string,
-  checked: PropTypes.bool,
-  content: PropTypes.string,
-  newClass: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-
-  onBlur: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
-
-  onChange: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
-
-  defaultValue: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
+  id: PropTypes.string,
+  key: PropTypes.string,
+  type: PropTypes.string,
+  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 CheckboxComponent.defaultProps = {
-  title: null,
-  onBlur: null,
+  id: null,
+  key: null,
+  type: null,
   content: null,
-  newClass: null,
-  checked: false,
-  onChange: null,
-  newStyle: null,
-  defaultValue: null,
+  parameters: null,
 };
 
 // EXPORT NEW COMPONENT

@@ -1,16 +1,10 @@
-/* eslint-disable no-restricted-globals */
-/* eslint-disable prefer-template */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-alert */
-/* eslint-disable no-console */
-/* eslint-disable prefer-const */
-/* eslint-disable no-undef */
 // IMPORT PLUGIN
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Formik, Form } from 'formik';
 
 // IMPORT STYLE
-import { Section, FormBox, DataBox, LisData, ListBox, Point, Important, Tel, Mail, MascotBox, Title, Form } from './style/style';
+import { Section, FormBox, DataBox, LisData, ListBox, Point, Important, Tel, Mail, MascotBox, Title } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
@@ -29,36 +23,64 @@ class sectionContactComponent extends React.Component {
     super(props);
     this.state = {};
 
-    this.encode = this.encode.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.validateTel = this.validateTel.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
+    this.validateUsername = this.validateUsername.bind(this);
+    this.validateDescription = this.validateDescription.bind(this);
   }
 
-  componentDidMount() {
-    document.querySelector('form').addEventListener('submit', this.handleSubmit);
-  }
-
-  encode = data => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
+  validateUsername = value => {
+    let error;
+    if (!value) {
+      error = 'Imię jest wymagane !';
+    } else if (value === 'admin' || value === 'root') {
+      error = 'Niezła próba!';
+    }
+    return error;
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: this.encode({
-        'form-name': event.target.getAttribute('name'),
-        ...name,
-      }),
-    })
-      .then(value => console.log(value))
-      .catch(error => console.log(error));
+  validateEmail = value => {
+    let error;
+    if (!value) {
+      error = 'Adres email jest wymagany !';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+      error = 'Nie poprawny adres email !';
+    }
+    return error;
+  };
+
+  validateTel = value => {
+    let error;
+
+    if (!value) {
+      error = 'Numer telefonu jest wymagany !';
+    } else if (!/^(\+{0,})(\d{0,})([(]{1}\d{1,3}[)]{0,}){0,}(\s?\d+|\+\d{2,3}\s{1}\d+|\d+){1}[\s|-]?\d+([\s|-]?\d+){1,2}(\s){0,}$/gm.test(value)) {
+      error = 'Nie poprawny numer telefonu';
+    }
+    return error;
+  };
+
+  validateDescription = value => {
+    let error;
+    if (!value) {
+      error = 'Twój opis jest wymagany !';
+    } else if (value.length < 5) {
+      error = 'Cos za krótki jest ten opis :)';
+    }
+    return error;
+  };
+
+  validateContract = value => {
+    let error;
+    if (!value.length) {
+      error = 'Twoja zgoda jest wymagana';
+    }
+    return error;
   };
 
   render() {
     const { id, newStyle, newClass, content } = this.props;
+
     return (
       <>
         <Section
@@ -71,49 +93,105 @@ class sectionContactComponent extends React.Component {
           <Row newClass="row">
             <FormBox theme={settings}>
               <Title>FORMULARZ</Title>
-              <form data-netlify="true" name="pizzaOrder" method="post" onSubmit={this.handleSubmit}>
-                <input type="hidden" name="form-name" value="pizzaOrder" />
-                <label>
-                  What order did the pizza give to the pineapple?
-                  <input name="order" type="text" />
-                </label>
-                <input type="submit" />
-              </form>
-              <Form name="contact" method="POST" data-netlify="true">
-                <Input type="hidden" name="form-name" value="contact" />
-                <Input
-                  required
-                  id="email"
-                  name="email"
-                  type="email"
-                  title="Email"
-                  newClass="error"
-                  color="secondary"
-                  placeholder="email@domian.com"
-                />
-                <Input required id="name" name="name" type="text" title="Name" newClass="error" color="secondary" placeholder="name" />
-                <Input required id="tel" name="tel" type="tel" title="Phone" color="secondary" placeholder="Number" />
-                <TextArea
-                  required
-                  id="message"
-                  name="message"
-                  title="Najpierw potrzebujesz NDA? Wyślij nam e-mail na adres : <a href='mailto:hello@na3.eu'>hello@na3.eu</a>"
-                  newClass="error"
-                  color="secondary"
-                  placeholder="A brief description of your idea"
-                />
-                <CheckBox
-                  id="politycy"
-                  type="classic"
-                  name="checkbox"
-                  color="secondary"
-                  newClass="error"
-                  content="NaN LLC potrzebuje twoich danych na czas odpowiedzi na twoje pytanie.  Masz prawo zrezygnować z przetwarzania twoich danych w dowolnym momencie, więcej informacji w <a href='#'>polityce prywatności</a> "
-                />
-                <Button type="sumbit" content={{ title: 'Wyślij' }} parameters={{ color: 'secondary' }}>
-                  Wyślij
-                </Button>
-              </Form>
+              <Formik
+                isInitialValid={false}
+                initialValues={{
+                  username: '',
+                  email: '',
+                  phone: '',
+                  description: '',
+                  contract: '',
+                }}
+                // onSubmit={values => {
+                // same shape as initial values
+                //   console.log(values);
+                //   }}
+              >
+                {({ errors, touched, isValid }) => (
+                  <Form name="contact" method="POST" data-netlify="true">
+                    <Input
+                      type="hidden"
+                      id="hidden-id"
+                      key="hidden-key"
+                      content={{ name: 'hidden' }}
+                      parameters={{ value: 'contact', name: 'form-name' }}
+                    />
+                    <Input
+                      type="text"
+                      id="username-id"
+                      key="username-key"
+                      content={{ title: 'Imię', placeholder: 'Jak masz na imię ?', errors: errors.username && touched.username && errors.username }}
+                      parameters={{
+                        name: 'username',
+                        required: true,
+                        validate: this.validateUsername,
+                      }}
+                    />
+                    <Input
+                      type="email"
+                      id="email-id"
+                      key="email-key"
+                      content={{ title: 'Email', placeholder: 'name@domian.com', errors: errors.email && touched.email && errors.email }}
+                      parameters={{
+                        name: 'email',
+                        required: true,
+                        validate: this.validateEmail,
+                      }}
+                    />
+                    <Input
+                      type="text"
+                      id="tel-id"
+                      key="tel-key"
+                      content={{
+                        title: 'Telefon',
+                        placeholder: 'Jaki jest twój numer telefonu ?',
+                        errors: errors.phone && touched.phone && errors.phone,
+                      }}
+                      parameters={{
+                        name: 'phone',
+                        required: true,
+                        validate: this.validateTel,
+                      }}
+                    />
+                    <TextArea
+                      id="description-id"
+                      key="description-key"
+                      content={{
+                        title: `Najpierw potrzebujesz NDA? Wyślij mi e-mail na adres : ${content.mail}`,
+                        placeholder: 'Hej , opisz tutaj krótko swój pomysł lub problem',
+                        errors: errors.description && touched.description && errors.description,
+                      }}
+                      parameters={{
+                        name: 'description',
+                        required: true,
+                        validate: this.validateDescription,
+                      }}
+                    />
+                    <CheckBox
+                      type="classic"
+                      id="contract-id"
+                      key="contract-key"
+                      content={{
+                        description:
+                          "NaN LLC potrzebuje twoich danych na czas odpowiedzi na twoje pytanie.  Masz prawo zrezygnować z przetwarzania twoich danych w dowolnym momencie, więcej informacji w <a href='#'>polityce prywatności</a> ",
+                        errors: errors.contract && touched.contract && errors.contract,
+                      }}
+                      parameters={{ name: 'contract', required: true, value: 'contract', validate: this.validateContract }}
+                    />
+
+                    <Button
+                      type="sumbit"
+                      content={{ title: 'Wyślij' }}
+                      parameters={{
+                        disabled: !isValid,
+                        color: 'secondary',
+                      }}
+                    >
+                      Wyślij
+                    </Button>
+                  </Form>
+                )}
+              </Formik>
             </FormBox>
             <DataBox theme={settings}>
               <MascotBox theme={settings}>

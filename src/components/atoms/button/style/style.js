@@ -55,6 +55,12 @@ export const LinkOut = styled.a`
 export const Button = styled.button`
   ${buttonColor}
   ${buttonStyles}
+    ${props =>
+      props.disabled &&
+      css`
+        opacity: 0.1 !important;
+        cursor: no-drop !important;
+      `}
 `;
 
 export const LinkIn = styled(Link)`

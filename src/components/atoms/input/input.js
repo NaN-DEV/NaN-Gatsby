@@ -1,37 +1,38 @@
 // IMPORT PLUGIN
 import React from 'react';
+
 import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { BoxInput, Input, Label } from './style/style';
+import { Box, Input, Label, Error } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../layouts/settings/settings';
 
 // CREATE NEW COMPONENT
 const InputComponent = props => {
-  const { id, type, name, title, color, value, onBlur, newStyle, newClass, required, onChange, placeholder } = props;
+  const { id, key, type, content, parameters } = props;
+
   return (
     <>
-      <BoxInput theme={settings} id={id}>
-        {title && (
-          <Label theme={settings} color={color}>
-            {`${title} ${required ? '*' : ''}`}
+      <Box settings={settings} id={id} key={key}>
+        {content.title && (
+          <Label settings={settings} color={parameters.color}>
+            {`${content.title} ${parameters.required ? '*' : ''}`}
           </Label>
         )}
         <Input
-          name={name}
           type={type}
-          value={value}
-          color={color}
-          onBlur={onBlur}
-          style={newStyle}
-          theme={settings}
-          onChange={onChange}
-          className={newClass}
-          placeholder={`${placeholder} ${required ? '*' : ''}`}
+          settings={settings}
+          name={parameters.name}
+          theme={parameters.color}
+          style={parameters.style}
+          validate={parameters.validate}
+          className={parameters.newClass}
+          placeholder={content.placeholder}
         />
-      </BoxInput>
+        <Error settings={settings}>{content.errors}</Error>
+      </Box>
     </>
   );
 };
@@ -41,23 +42,15 @@ const InputComponent = props => {
 InputComponent.propTypes = {
   id: PropTypes.string,
   type: PropTypes.string,
-  title: PropTypes.string,
-  color: PropTypes.string,
-  required: PropTypes.bool,
-  newStyle: PropTypes.string,
-  newClass: PropTypes.string,
-  placeholder: PropTypes.string,
+  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 InputComponent.defaultProps = {
   id: null,
-  type: 'text',
-  title: null,
-  color: null,
-  newStyle: null,
-  newClass: null,
-  required: false,
-  placeholder: null,
+  type: null,
+  content: null,
+  parameters: null,
 };
 
 export default InputComponent;

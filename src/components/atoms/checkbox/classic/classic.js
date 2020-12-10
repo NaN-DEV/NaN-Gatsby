@@ -10,50 +10,42 @@ import { Box, CheckBox, Label } from './style/style';
 
 // CREATE NEW COMPONENT
 const CheckClassicComponent = props => {
-  const { id, color, title, onBlur, content, checked, newClass, newStyle, onChange, defaultValue } = props;
+  const { id, key, content, parameters } = props;
+
   return (
     <>
-      <Box newClass={newClass} newStyle={newStyle}>
+      <Box settings={settings} className={parameters.newClass} style={parameters.newStyle}>
         <CheckBox
           id={id}
-          name={title}
-          color={color}
+          key={key}
           type="checkbox"
-          onBlur={onBlur}
-          theme={settings}
-          content={content}
-          onChange={onChange}
-          defaultChecked={checked}
-          defaultValue={defaultValue}
+          settings={settings}
+          name={parameters.name}
+          theme={parameters.color}
+          style={parameters.style}
+          value={parameters.value}
+          validate={parameters.validate}
+          className={parameters.newClass}
+          placeholder={content.placeholder}
         />
-        <Label htmlFor={id} theme={settings} dangerouslySetInnerHTML={{ __html: content }} />
+        <Label htmlFor={id} settings={settings} dangerouslySetInnerHTML={{ __html: content.description }} />
       </Box>
     </>
   );
 };
 
 CheckClassicComponent.propTypes = {
-  checked: PropTypes.bool,
-  newClass: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-
-  onBlur: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
-
-  onChange: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
-
-  defaultValue: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
+  id: PropTypes.string,
+  key: PropTypes.string,
+  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 CheckClassicComponent.defaultProps = {
-  onBlur: null,
-  newClass: null,
-  checked: false,
-  onChange: null,
-  newStyle: null,
-  defaultValue: null,
+  id: null,
+  key: null,
+  content: null,
+  parameters: null,
 };
 
 // EXPORT NEW COMPONENT

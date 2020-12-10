@@ -1,33 +1,51 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
+import PropTypes from 'prop-types';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../../../layouts/settings/settings';
 
-// IMPORT STYLES
-import { BoxTextarea, Label, Textarea } from './style/style';
+// Import styles
+import { Box, Label, Textarea, Error } from './style/style';
 
-// CREATE NEW COMPONENT
+// Create new component
 const TextAreaComponent = props => {
-  const { id, name, title, color, value, onBlur, newStyle, newClass, required, onChange, placeholder } = props;
+  const { id, key, content, parameters } = props;
   return (
     <>
-      <BoxTextarea theme={settings} id={id}>
-        {title && <Label theme={settings} color={color} dangerouslySetInnerHTML={{ __html: title }} />}
+      <Box theme={settings} id={id} key={key}>
+        {content.title && <Label settings={settings} theme={parameters.color} dangerouslySetInnerHTML={{ __html: content.title }} />}
         <Textarea
-          name={name}
-          value={value}
-          color={color}
-          onBlur={onBlur}
-          style={newStyle}
-          theme={settings}
-          onChange={onChange}
-          className={newClass}
-          placeholder={`${placeholder} ${required ? '*' : ''}`}
+          component="textarea"
+          settings={settings}
+          name={parameters.name}
+          theme={parameters.color}
+          style={parameters.style}
+          validate={parameters.validate}
+          className={parameters.newClass}
+          placeholder={content.placeholder}
         />
-      </BoxTextarea>
+
+        <Error settings={settings}>{content.errors}</Error>
+      </Box>
     </>
   );
+};
+
+// PropTypes
+
+TextAreaComponent.propTypes = {
+  id: PropTypes.string,
+  key: PropTypes.string,
+  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+};
+
+TextAreaComponent.defaultProps = {
+  id: null,
+  key: null,
+  content: null,
+  parameters: null,
 };
 
 // EXPORT NEW COMPONENT

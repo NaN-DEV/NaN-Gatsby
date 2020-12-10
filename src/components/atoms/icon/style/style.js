@@ -15,42 +15,42 @@ const BoxIcon = styled.div`
             height: 3rem;
           `}
     ${props => {
-      switch (props.colorStyle) {
+      switch (props.theme) {
         case 'primary':
           return css`
-            fill: ${props.theme.primary};
+            fill: ${props.settings.primary};
           `;
         case 'secondary':
           return css`
-            fill: ${props.theme.secondary};
+            fill: ${props.settings.secondary};
           `;
         case 'tertiary_1':
           return css`
-            fill: ${props.theme.tertiary_1};
+            fill: ${props.settings.tertiary_1};
           `;
         case 'tertiary_2':
           return css`
-            fill: ${props.theme.tertiary_2};
+            fill: ${props.settings.tertiary_2};
           `;
         case 'tertiary_3':
           return css`
-            fill: ${props.theme.tertiary_3};
+            fill: ${props.settings.tertiary_3};
           `;
         case 'tertiary_4':
           return css`
-            fill: ${props.theme.tertiary_4};
+            fill: ${props.settings.tertiary_4};
           `;
         case 'tertiary_5':
           return css`
-            fill: ${props.theme.tertiary_5};
+            fill: ${props.settings.tertiary_5};
           `;
         case 'tertiary_6':
           return css`
-            fill: ${props.theme.tertiary_6};
+            fill: ${props.settings.tertiary_6};
           `;
         default:
           return css`
-            fill: ${props.theme.primary};
+            fill: ${props.settings.primary};
           `;
       }
     }}

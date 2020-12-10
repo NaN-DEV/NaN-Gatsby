@@ -35,18 +35,18 @@ import Notification from '../../../assets/icon/notification.svg';
 
 // CREATE NEW COMPONENT
 const IconComponent = props => {
-  const { id, key, type, content, parameters } = props;
+  const { id, key, type, parameters } = props;
 
   switch (type) {
     case 'cv':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Cv />
@@ -56,12 +56,12 @@ const IconComponent = props => {
     case 'ask':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Ask />
@@ -70,12 +70,12 @@ const IconComponent = props => {
     case 'ui/ux':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Ux />
@@ -84,12 +84,12 @@ const IconComponent = props => {
     case 'more':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <More />
@@ -98,12 +98,12 @@ const IconComponent = props => {
     case 'mail':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Mail />
@@ -112,12 +112,12 @@ const IconComponent = props => {
     case 'down':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Down />
@@ -126,12 +126,12 @@ const IconComponent = props => {
     case 'back-end':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Back />
@@ -140,12 +140,12 @@ const IconComponent = props => {
     case 'logo':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Logo />
@@ -154,12 +154,12 @@ const IconComponent = props => {
     case 'front-end':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Front />
@@ -168,12 +168,12 @@ const IconComponent = props => {
     case 'phone':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Phone />
@@ -182,12 +182,12 @@ const IconComponent = props => {
     case 'coffe':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Coffe />
@@ -196,12 +196,12 @@ const IconComponent = props => {
     case 'folder':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Folder />
@@ -210,12 +210,12 @@ const IconComponent = props => {
     case 'closed':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Closed />
@@ -224,12 +224,12 @@ const IconComponent = props => {
     case 'people':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <People />
@@ -238,12 +238,12 @@ const IconComponent = props => {
     case 'twitter':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Twitter />
@@ -252,12 +252,12 @@ const IconComponent = props => {
     case 'website':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Website />
@@ -266,12 +266,12 @@ const IconComponent = props => {
     case 'facebook':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Facebook />
@@ -280,12 +280,12 @@ const IconComponent = props => {
     case 'computer':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Computer />
@@ -294,12 +294,12 @@ const IconComponent = props => {
     case 'triangle':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Triangle />
@@ -308,12 +308,12 @@ const IconComponent = props => {
     case 'settings':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Settings />
@@ -322,12 +322,12 @@ const IconComponent = props => {
     case 'hamburger':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Hamburger />
@@ -336,13 +336,12 @@ const IconComponent = props => {
     case 'conversation':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
-          title={content.title}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Conversation />
@@ -351,12 +350,12 @@ const IconComponent = props => {
     case 'notification':
       return (
         <BoxIcon
-          theme={settings}
           id={id}
           key={key}
+          settings={settings}
           size={parameters.size}
+          theme={parameters.color}
           style={parameters.newStyle}
-          colorStyle={parameters.color}
           className={parameters.newClass}
         >
           <Notification />
@@ -371,7 +370,6 @@ const IconComponent = props => {
 IconComponent.propTypes = {
   id: PropTypes.string,
   key: PropTypes.string,
-  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
@@ -379,7 +377,6 @@ IconComponent.propTypes = {
 IconComponent.defaultProps = {
   id: null,
   key: null,
-  content: null,
   parameters: false,
 };
 

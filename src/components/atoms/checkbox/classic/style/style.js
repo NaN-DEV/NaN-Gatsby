@@ -1,3 +1,4 @@
+import { Field } from 'formik';
 import styled from 'styled-components';
 
 export const Box = styled.div`
@@ -10,7 +11,7 @@ export const Box = styled.div`
   align-items: center;
 `;
 
-export const CheckBox = styled.input`
+export const CheckBox = styled(Field)`
   width: 3rem;
   height: 3rem;
   cursor: pointer;
@@ -19,16 +20,16 @@ export const CheckBox = styled.input`
   border-radius: 3px;
   font-weight: normal;
   -webkit-appearance: none;
-  padding: ${props => props.theme.break};
-  color: ${props => props.theme.secondary};
-  border: 1px solid ${props => props.theme.secondary};
-  font-family: ${props => props.theme.font_secondary};
+  padding: ${props => props.settings.break};
+  color: ${props => props.settings.secondary};
+  border: 1px solid ${props => props.settings.secondary};
+  font-family: ${props => props.settings.font_secondary};
 
   &::placeholder {
     opacity: 1;
     font-weight: normal;
-    color: ${props => props.theme.primary};
-    transition: ${props => props.theme.animation};
+    color: ${props => props.settings.primary};
+    transition: ${props => props.settings.animation};
   }
   &:focus {
     outline: none;
@@ -47,7 +48,7 @@ export const CheckBox = styled.input`
       display: block;
       position: absolute;
       border-radius: 3px;
-      background-color: ${props => props.theme.secondary};
+      background-color: ${props => props.settings.secondary};
     }
   }
 `;
@@ -63,9 +64,9 @@ export const Label = styled.label`
   align-items: center;
   padding: 0 0 0 1.5rem;
   -webkit-appearance: none;
-  color: ${props => props.theme.secondary};
+  color: ${props => props.settings.secondary};
   a {
-    color: ${props => props.theme.secondary} !important;
+    color: ${props => props.settings.secondary} !important;
   }
   &:focus {
     outline: none;
