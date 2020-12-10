@@ -6,6 +6,7 @@ export const Box = styled.div`
   width: 100%;
   height: auto;
   display: flex;
+  flex-wrap: wrap;
   cursor: pointer;
   padding: 1.5rem 0;
   align-items: center;
@@ -54,7 +55,7 @@ export const CheckBox = styled(Field)`
 `;
 
 export const Label = styled.label`
-  width: 100%;
+  width: calc(100% - 4rem);
   display: inline-block;
 
   cursor: pointer;
@@ -71,4 +72,14 @@ export const Label = styled.label`
   &:focus {
     outline: none;
   }
+`;
+
+export const Error = styled.div`
+  flex: 100%;
+  display: block;
+  max-width: 100%;
+  min-height: 3rem;
+  font-weight: bold;
+  padding-top: 0.6rem;
+  color: ${props => props.settings.danger};
 `;

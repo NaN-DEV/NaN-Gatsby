@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import settings from '../../../../layouts/settings/settings';
 
 // IMPORT STYLES
-import { Box, CheckBox, Label } from './style/style';
+import { Box, CheckBox, Label, Error } from './style/style';
 
 // CREATE NEW COMPONENT
 const CheckClassicComponent = props => {
@@ -29,6 +29,7 @@ const CheckClassicComponent = props => {
           placeholder={content.placeholder}
         />
         <Label htmlFor={id} settings={settings} dangerouslySetInnerHTML={{ __html: content.description }} />
+        <Error settings={settings}>{content.errors}</Error>
       </Box>
     </>
   );

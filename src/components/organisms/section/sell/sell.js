@@ -1,4 +1,7 @@
-// IMPORT PLUGIN
+/* eslint-disable no-lone-blocks */
+{
+  /* 
+  // IMPORT PLUGIN
 import React from 'react';
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -455,3 +458,6 @@ SectionHeroComponent.defaultProps = {
 };
 
 export default SectionHeroComponent;
+
+*/
+}
