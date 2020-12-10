@@ -131,7 +131,7 @@ class sectionContactComponent extends React.Component {
                   contract: '',
                 }}
                 onSubmit={(values, { resetForm }) => {
-                  resetForm();
+                  setTimeout(resetForm(), 500);
                 }}
               >
                 {({ errors, touched, isValid, values }) => (
