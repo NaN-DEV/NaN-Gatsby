@@ -41,7 +41,7 @@ class HeaderComponent extends React.Component {
     const { isModalOpen } = this.state;
     return (
       <>
-        {isModalOpen && <Modal key="main-menu" closed={this.clouseModal} />}
+        {isModalOpen && <Modal type="menu" id="main-menu-id" key="main-menu-key" parameters={{ switchPower: this.clouseModal }} />}
         <Header theme={settings}>
           <Row newClass="row">
             {/* ### Logo ### */}

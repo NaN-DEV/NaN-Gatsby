@@ -20,7 +20,6 @@ body {
    padding: 0;
    line-height: 1.3;
    font-size: 1.5rem;
-   font-display: swap;
    font-style: normal;
    font-weight: normal;
    font-family: 'Montserrat', sans-serif;

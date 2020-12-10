@@ -11,6 +11,7 @@ import settings from '../../../../layouts/settings/settings';
 
 // IMPORT COMPONENT
 import Row from '../../../atoms/row/row';
+import Modal from '../../modal/modal';
 import Input from '../../../atoms/input/input';
 import Button from '../../../atoms/button/button';
 import Mascot from '../../../atoms/mascot/mascot';
@@ -21,13 +22,29 @@ import CheckBox from '../../../atoms/checkbox/checkbox';
 class sectionContactComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isModalOpen: false,
+    };
 
+    this.openModal = this.openModal.bind(this);
+    this.clouseModal = this.clouseModal.bind(this);
     this.validateTel = this.validateTel.bind(this);
     this.validateEmail = this.validateEmail.bind(this);
     this.validateUsername = this.validateUsername.bind(this);
     this.validateDescription = this.validateDescription.bind(this);
   }
+
+  openModal = () => {
+    this.setState({
+      isModalOpen: true,
+    });
+  };
+
+  clouseModal = () => {
+    this.setState({
+      isModalOpen: false,
+    });
+  };
 
   validateUsername = value => {
     let error;
@@ -79,10 +96,21 @@ class sectionContactComponent extends React.Component {
   };
 
   render() {
+    const { isModalOpen } = this.state;
     const { id, newStyle, newClass, content } = this.props;
 
     return (
       <>
+        {isModalOpen && (
+          <Modal
+            type="info"
+            id="info-send-form-id"
+            key="info-send-form-key"
+            content={{ info: 'Hej, dzięki za wiadomość !' }}
+            parameters={{ switchPower: this.clouseModal }}
+          />
+        )}
+
         <Section
           theme={settings}
           newStyle={newStyle}
@@ -102,12 +130,11 @@ class sectionContactComponent extends React.Component {
                   description: '',
                   contract: '',
                 }}
-                // onSubmit={values => {
-                // same shape as initial values
-                //   console.log(values);
-                //   }}
+                onSubmit={(values, { resetForm }) => {
+                  resetForm();
+                }}
               >
-                {({ errors, touched, isValid }) => (
+                {({ errors, touched, isValid, values }) => (
                   <Form name="contact" method="POST" data-netlify="true">
                     <Input
                       type="hidden"
@@ -125,6 +152,7 @@ class sectionContactComponent extends React.Component {
                         name: 'username',
                         required: true,
                         validate: this.validateUsername,
+                        value: values.username,
                       }}
                     />
                     <Input
@@ -151,6 +179,7 @@ class sectionContactComponent extends React.Component {
                         name: 'phone',
                         required: true,
                         validate: this.validateTel,
+                        value: values.phone,
                       }}
                     />
                     <TextArea
@@ -165,6 +194,7 @@ class sectionContactComponent extends React.Component {
                         name: 'description',
                         required: true,
                         validate: this.validateDescription,
+                        value: values.description,
                       }}
                     />
                     <CheckBox
@@ -185,6 +215,7 @@ class sectionContactComponent extends React.Component {
                       parameters={{
                         disabled: !isValid,
                         color: 'secondary',
+                        onClick: this.openModal,
                       }}
                     >
                       Wyślij

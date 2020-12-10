@@ -8,7 +8,6 @@ export const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
   cursor: pointer;
-  padding: 1.5rem 0;
   align-items: center;
 `;
 

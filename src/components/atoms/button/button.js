@@ -70,9 +70,9 @@ const ButtonComponent = props => {
           settings={settings}
           title={content.title}
           theme={parameters.color}
-          color={settings.primary}
+          style={parameters.newStyle}
+          onClick={parameters.onClick}
           disabled={parameters.disabled}
-          newStyle={parameters.newStyle}
           className={parameters.newClass}
         >
           {children}

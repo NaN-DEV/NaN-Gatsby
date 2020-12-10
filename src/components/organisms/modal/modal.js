@@ -1,124 +1,39 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 
-// IMPORT SETTINGS STYLE
+// Import Component
+import Menu from './menu/menu';
+import Info from './info/info';
 
-import Row from '../../atoms/row/row';
-import Icon from '../../atoms/icon/icon';
-import List from '../../molecules/list/list';
-import Button from '../../atoms/button/button';
-import settings from '../../../layouts/settings/settings';
+// Create new component
+const ModalComponent = props => {
+  const { id, key, type, content, parameters } = props;
 
-// IMPORT STYLE
-import { Modal, Footer, Header, Content, ModalBox, MainManu, Title, GlobalStyle } from './style/style';
+  switch (type) {
+    case 'menu':
+      return <Menu id={id} key={key} content={content} parameters={parameters} />;
+    case 'info':
+      return <Info id={id} key={key} content={content} parameters={parameters} />;
 
-// CREATE NEW COMPONENT
-const ModalMenuComponent = props => {
-  const { closed } = props;
-
-  const { datoCmsSetting, datoCmsSettingsContact } = useStaticQuery(
-    graphql`
-      query {
-        datoCmsSetting {
-          mainMenu {
-            id
-            slug
-            title
-            icon
-          }
-        }
-        datoCmsSettingsContact {
-          socialMedia {
-            id
-            slug
-            title
-          }
-        }
-      }
-    `,
-  );
-
-  return (
-    <>
-      <GlobalStyle />
-      <ModalBox>
-        <Modal theme={settings}>
-          <Header>
-            <Row newClass="rowHeader">
-              <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ newClass: 'logo' }}>
-                <Icon type="logo" parameters={{ color: 'secondary', size: 4 }} />
-              </Button>
-
-              <Button type="button" content={{ title: 'closed menu' }} parameters={{ newClass: 'closed', onClick: closed }}>
-                <Icon type="closed" parameters={{ color: 'secondary' }} />
-              </Button>
-            </Row>
-          </Header>
-
-          <Content theme={settings}>
-            <Row newClass="rowContent">
-              <MainManu theme={settings}>
-                {datoCmsSetting.mainMenu.map(item => {
-                  const slug = item.slug.slice(14, item.slug.length);
-
-                  switch (item.slug.search('nan.nz') > 0 ? 1 : 0) {
-                    case 1:
-                      return (
-                        <Button
-                          type="linkIn"
-                          id={item.id}
-                          key={item.id}
-                          parameters={{ newClass: 'buttonMenu', color: null }}
-                          content={{ title: item.title, to: slug }}
-                        >
-                          <Icon type={item.icon} parameters={{ color: 'primary', size: 9, newClass: 'iconMenu' }} />
-                          <Title theme={settings}>{item.title}</Title>
-                        </Button>
-                      );
-                    default:
-                      return (
-                        <Button
-                          type="linkOut"
-                          id={item.id}
-                          key={item.id}
-                          parameters={{ newClass: 'buttonMenu', color: null }}
-                          content={{ title: item.title, to: slug }}
-                        >
-                          <Icon type={item.icon} parameters={{ color: 'primary', size: 9, newClass: 'iconMenu' }} />
-                          <Title theme={settings}>{item.title}</Title>
-                        </Button>
-                      );
-                  }
-                })}
-              </MainManu>
-            </Row>
-          </Content>
-
-          <Footer theme={settings}>
-            <Row newClass="rowFooter">
-              <List type="level" newClass="listLink">
-                <Button type="linkIn" parameters={{ color: null }} content={{ title: 'Wyceń Projekt', to: '/sell' }}>
-                  Wyceń Projekt
-                </Button>
-              </List>
-
-              <List type="level" newClass="listLink">
-                {datoCmsSettingsContact.socialMedia.map(item => {
-                  return (
-                    <Button type="linkOut" id={item.id} key={item.id} parameters={{ color: null }} content={{ title: item.title, to: item.slug }}>
-                      #{item.title}
-                    </Button>
-                  );
-                })}
-              </List>
-            </Row>
-          </Footer>
-        </Modal>
-      </ModalBox>
-    </>
-  );
+    default:
+      return 'Please add type modal :)';
+  }
 };
 
-// EXPORT NEW COMPONENT
-export default ModalMenuComponent;
+// PropTpyes
+ModalComponent.propTypes = {
+  id: PropTypes.string,
+  key: PropTypes.string,
+  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+};
+
+ModalComponent.defaultProps = {
+  id: null,
+  key: null,
+  content: false,
+  parameters: false,
+};
+
+export default ModalComponent;
