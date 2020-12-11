@@ -26,7 +26,6 @@ class sectionContactComponent extends React.Component {
       isModalOpen: false,
     };
 
-    this.encode = this.encode.bind(this);
     this.openModal = this.openModal.bind(this);
     this.clouseModal = this.clouseModal.bind(this);
     this.validateTel = this.validateTel.bind(this);
