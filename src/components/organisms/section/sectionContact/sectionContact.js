@@ -137,7 +137,7 @@ class sectionContactComponent extends React.Component {
               >
                 {({ errors, touched, isValid, values }) => (
                   <Form name="contact" method="POST" data-netlify="true">
-                    <Input type="hidden" id="hidden-id" key="hidden-key" parameters={{ value: 'contact', name: 'form-name' }} />
+                    <Input type="hidden" id="hidden-id" key="hidden-key" value="contact" name="form-name" />
                     <Input
                       type="text"
                       id="username-id"
