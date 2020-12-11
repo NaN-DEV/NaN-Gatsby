@@ -1,7 +1,7 @@
 // IMPORT PLUGIN
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
 
 // IMPORT STYLE
 import { Section, FormBox, DataBox, LisData, ListBox, Point, Important, Tel, Mail, MascotBox, Title } from './style/style';
@@ -135,7 +135,7 @@ class sectionContactComponent extends React.Component {
                 }}
               >
                 {({ errors, touched, isValid, values }) => (
-                  <Form name="contact" method="POST" data-netlify="true">
+                  <form name="contact" method="POST" data-netlify="true">
                     <input type="hidden" id="hidden-id" key="hidden-key" value="contact" name="form-name" />
                     <Input
                       type="text"
@@ -214,7 +214,7 @@ class sectionContactComponent extends React.Component {
                     >
                       Wyślij
                     </Button>
-                  </Form>
+                  </form>
                 )}
               </Formik>
             </FormBox>
