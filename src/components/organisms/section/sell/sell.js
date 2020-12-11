@@ -1,7 +1,6 @@
 // IMPORT PLUGIN
 import React from 'react';
 
-// VALUE
 // CREATE NEW COMPONENT
 
 const SectionHeroComponent = () => {

@@ -12,7 +12,7 @@ import settings from '../../../layouts/settings/settings';
 // CREATE NEW COMPONENT
 const InputComponent = props => {
   const { id, key, type, content, parameters } = props;
-
+  console.log(!!content.title);
   return (
     <>
       <Box settings={settings} id={id} key={key}>
