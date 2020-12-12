@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-boolean-value */
 /* eslint-disable no-alert */
 /* eslint-disable no-undef */
 /* eslint-disable prefer-template */
@@ -131,7 +132,6 @@ class sectionContactComponent extends React.Component {
             <FormBox theme={settings}>
               <Title>FORMULARZ</Title>
               <Formik
-                isInitialValid={false}
                 initialValues={{
                   username: '',
                   email: '',
@@ -156,8 +156,7 @@ class sectionContactComponent extends React.Component {
                 }}
               >
                 {({ errors, touched, isValid, values }) => (
-                  <Form name="contact" method="POST" data-netlify="true">
-                    <input type="hidden" id="hidden-id" key="hidden-key" value="contact" name="form-name" />
+                  <Form name="contact-demo" data-netlify={true}>
                     <Input
                       type="text"
                       id="username-id"
