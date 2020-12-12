@@ -12,6 +12,7 @@ import settings from '../../../layouts/settings/settings';
 // CREATE NEW COMPONENT
 const InputComponent = props => {
   const { id, key, type, content, parameters } = props;
+
   return (
     <>
       <Box settings={settings} id={id} key={key}>
@@ -28,6 +29,7 @@ const InputComponent = props => {
           theme={parameters.color}
           style={parameters.style}
           value={parameters.value}
+          validate={parameters.validate}
           className={parameters.newClass}
           placeholder={content.placeholder}
         />

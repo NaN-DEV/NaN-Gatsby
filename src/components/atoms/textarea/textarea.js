@@ -21,6 +21,7 @@ const TextAreaComponent = props => {
           name={parameters.name}
           theme={parameters.color}
           style={parameters.style}
+          value={parameters.value}
           validate={parameters.validate}
           className={parameters.newClass}
           placeholder={content.placeholder}

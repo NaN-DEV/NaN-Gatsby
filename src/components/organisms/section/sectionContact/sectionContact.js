@@ -1,7 +1,10 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-undef */
+/* eslint-disable prefer-template */
 // IMPORT PLUGIN
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 
 // IMPORT STYLE
 import { Section, FormBox, DataBox, LisData, ListBox, Point, Important, Tel, Mail, MascotBox, Title } from './style/style';
@@ -17,6 +20,12 @@ import Button from '../../../atoms/button/button';
 import Mascot from '../../../atoms/mascot/mascot';
 import TextArea from '../../../atoms/textarea/textarea';
 import CheckBox from '../../../atoms/checkbox/checkbox';
+
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
+};
 
 // CREATE NEW COMPONENT
 class sectionContactComponent extends React.Component {
@@ -130,12 +139,24 @@ class sectionContactComponent extends React.Component {
                   description: '',
                   contract: '',
                 }}
-                onSubmit={values => {
-                  return values;
+                onSubmit={(values, actions) => {
+                  fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: encode({ 'form-name': 'contact-demo', ...values }),
+                  })
+                    .then(() => {
+                      alert('Success');
+                      actions.resetForm();
+                    })
+                    .catch(() => {
+                      alert('Error');
+                    })
+                    .finally(() => actions.setSubmitting(false));
                 }}
               >
                 {({ errors, touched, isValid, values }) => (
-                  <form name="contact" method="POST" data-netlify="true">
+                  <Form name="contact" method="POST" data-netlify="true">
                     <input type="hidden" id="hidden-id" key="hidden-key" value="contact" name="form-name" />
                     <Input
                       type="text"
@@ -214,7 +235,7 @@ class sectionContactComponent extends React.Component {
                     >
                       Wyślij
                     </Button>
-                  </form>
+                  </Form>
                 )}
               </Formik>
             </FormBox>
