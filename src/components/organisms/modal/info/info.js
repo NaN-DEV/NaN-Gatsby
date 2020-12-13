@@ -19,9 +19,9 @@ const ModalInfoComponent = props => {
     <>
       <GlobalStyle />
       <ModalBox>
-        <Modal theme={settings}>
+        <Modal settings={settings}>
           <Header>
-            <Row newClass="rowHeader">
+            <Row>
               <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ newClass: 'logo' }}>
                 <Icon type="logo" parameters={{ color: 'secondary', size: 4 }} />
               </Button>
@@ -32,11 +32,13 @@ const ModalInfoComponent = props => {
             </Row>
           </Header>
 
-          <Content theme={settings}>
-            <MainInfo theme={settings}>{content.info ? content.info : 'Add infomation'}</MainInfo>
+          <Content settings={settings}>
+            <Row>
+              <MainInfo settings={settings}>{content.info ? content.info : 'Add infomation'}</MainInfo>
+            </Row>
           </Content>
 
-          <Footer theme={settings} />
+          <Footer settings={settings} />
         </Modal>
       </ModalBox>
     </>

@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-boolean-value */
-/* eslint-disable no-alert */
 /* eslint-disable no-undef */
 /* eslint-disable prefer-template */
 // IMPORT PLUGIN
@@ -34,6 +32,7 @@ class sectionContactComponent extends React.Component {
     super(props);
     this.state = {
       isModalOpen: false,
+      isModalMessage: 'false',
     };
 
     this.openModal = this.openModal.bind(this);
@@ -44,15 +43,17 @@ class sectionContactComponent extends React.Component {
     this.validateDescription = this.validateDescription.bind(this);
   }
 
-  openModal = () => {
+  openModal = message => {
     this.setState({
       isModalOpen: true,
+      isModalMessage: message,
     });
   };
 
   clouseModal = () => {
     this.setState({
       isModalOpen: false,
+      isModalMessage: '',
     });
   };
 
@@ -106,7 +107,7 @@ class sectionContactComponent extends React.Component {
   };
 
   render() {
-    const { isModalOpen } = this.state;
+    const { isModalOpen, isModalMessage } = this.state;
     const { id, newStyle, newClass, content } = this.props;
 
     return (
@@ -116,7 +117,7 @@ class sectionContactComponent extends React.Component {
             type="info"
             id="info-send-form-id"
             key="info-send-form-key"
-            content={{ info: 'Hej, dzięki za wiadomość !' }}
+            content={{ info: isModalMessage }}
             parameters={{ switchPower: this.clouseModal }}
           />
         )}
@@ -132,6 +133,7 @@ class sectionContactComponent extends React.Component {
             <FormBox theme={settings}>
               <Title>FORMULARZ</Title>
               <Formik
+                isInitialValid={false}
                 initialValues={{
                   username: '',
                   email: '',
@@ -143,20 +145,20 @@ class sectionContactComponent extends React.Component {
                   fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: encode({ 'form-name': 'contact-demo', ...values }),
+                    body: encode({ 'form-name': 'contact', ...values }),
                   })
                     .then(() => {
-                      alert('Success');
+                      this.openModal('Hej, dzięki za kontakt , niebawem dam ci znać co o tym myślę !');
                       actions.resetForm();
                     })
                     .catch(() => {
-                      alert('Error');
+                      this.openModal('Upsss... Coś poszło nie tak spróbuj jeszcze raz wysłać wiadomość !');
                     })
                     .finally(() => actions.setSubmitting(false));
                 }}
               >
                 {({ errors, touched, isValid, values }) => (
-                  <Form name="contact-demo" data-netlify={true}>
+                  <Form name="contact" data-netlify={1}>
                     <Input
                       type="text"
                       id="username-id"
@@ -229,7 +231,6 @@ class sectionContactComponent extends React.Component {
                       parameters={{
                         disabled: !isValid,
                         color: 'secondary',
-                        onClick: this.openModal,
                       }}
                     >
                       Wyślij

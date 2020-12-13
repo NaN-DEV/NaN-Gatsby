@@ -29,7 +29,7 @@ export const Modal = styled.div`
   min-width: 100vw;
   min-height: 100vh;
   position: relative;
-  background-color: ${props => props.theme.primary};
+  background-color: ${props => props.settings.primary};
 
   .closed {
     margin-left: auto;
@@ -53,10 +53,13 @@ export const Content = styled.div`
 export const MainInfo = styled.p`
   flex: 100%;
   width: 100%;
-  font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  color: ${props => props.theme.secondary};
+  color: ${props => props.settings.secondary};
+
+  @media (min-width: ${props => `${props.settings.breakpoint_tablet}px`}) {
+    font-size: 3rem;
+  }
 `;
 
 export const Footer = styled.div`
