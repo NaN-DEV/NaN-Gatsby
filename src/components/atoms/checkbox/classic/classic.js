@@ -21,12 +21,8 @@ const CheckClassicComponent = props => {
           type="checkbox"
           settings={settings}
           name={parameters.name}
-          theme={parameters.color}
-          style={parameters.style}
-          value={parameters.value}
-          validate={parameters.validate}
-          className={parameters.newClass}
-          placeholder={content.placeholder}
+          checked={parameters.checked}
+          onChange={parameters.onChange}
         />
         <Label htmlFor={id} settings={settings} dangerouslySetInnerHTML={{ __html: content.description }} />
         <Error settings={settings}>{content.errors}</Error>

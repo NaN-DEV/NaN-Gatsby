@@ -139,13 +139,13 @@ class sectionContactComponent extends React.Component {
                   email: '',
                   phone: '',
                   description: '',
-                  contract: '',
+                  rodoGroup: '',
                 }}
                 onSubmit={(values, actions) => {
                   fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: encode({ 'form-name': 'contact', ...values }),
+                    body: encode({ 'form-name': 'contact', ...values, rodoGroup: values.rodoGroup.filter(e => e) }),
                   })
                     .then(() => {
                       this.openModal('Hej, dzięki za kontakt , niebawem dam ci znać co o tym myślę !');
@@ -157,7 +157,7 @@ class sectionContactComponent extends React.Component {
                     .finally(() => actions.setSubmitting(false));
                 }}
               >
-                {({ errors, touched, isValid, values }) => (
+                {({ errors, touched, isValid, values, setFieldValue }) => (
                   <Form name="contact" data-netlify={1}>
                     <Input
                       type="text"
@@ -222,7 +222,16 @@ class sectionContactComponent extends React.Component {
                           "NaN LLC potrzebuje twoich danych na czas odpowiedzi na twoje pytanie.  Masz prawo zrezygnować z przetwarzania twoich danych w dowolnym momencie, więcej informacji w <a href='#'>polityce prywatności</a> ",
                         errors: errors.contract && touched.contract && errors.contract,
                       }}
-                      parameters={{ name: 'contract', required: true, value: 'contract', validate: this.validateContract }}
+                      parameters={{
+                        name: 'rodoGroup',
+                        required: true,
+                        validate: this.validateContract,
+                        onChange: event => {
+                          const value = event.target.checked ? 'privacyPolicyAccepted' : null;
+                          setFieldValue('rodoGroup.0', value);
+                        },
+                        checked: values.rodoGroup.includes('privacyPolicyAccepted'),
+                      }}
                     />
 
                     <Button
