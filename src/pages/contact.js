@@ -13,8 +13,19 @@ import Section from '../components/organisms/section/section';
 const ContactPageComponent = ({ data }) => (
   <>
     <Layout theme={settings}>
-      <Section id={data.datoCmsSettingsContact.id} type="heroClassic" title="Dane Kontaktowe" description="Poznajmy się" />
-      <Section id={data.datoCmsSettingsContact.id} type="contact" content={data.datoCmsSettingsContact} />
+      <Section
+        type="heroClassic"
+        title="Dane Kontaktowe"
+        description="Poznajmy się"
+        id={`${data.datoCmsSettingsContact.id}-heroClassic-id`}
+        key={`${data.datoCmsSettingsContact.id}-heroClassic-key`}
+      />
+      <Section
+        type="contact"
+        content={{ data: data.datoCmsSettingsContact }}
+        id={`${data.datoCmsSettingsContact.id}-contact-id`}
+        key={`${data.datoCmsSettingsContact.id}-contact-key`}
+      />
     </Layout>
   </>
 );

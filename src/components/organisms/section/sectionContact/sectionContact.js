@@ -1,19 +1,20 @@
 /* eslint-disable no-undef */
 /* eslint-disable prefer-template */
-// IMPORT PLUGIN
+
+// Import plugin
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 
-// IMPORT STYLE
+// Import style
 import { Section, FormBox, DataBox, LisData, ListBox, Point, Important, Tel, Mail, MascotBox, Title } from './style/style';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../../../../layouts/settings/settings';
 
-// IMPORT COMPONENT
-import Row from '../../../atoms/row/row';
+// Import component
 import Modal from '../../modal/modal';
+import Row from '../../../atoms/row/row';
 import Input from '../../../atoms/input/input';
 import Button from '../../../atoms/button/button';
 import Mascot from '../../../atoms/mascot/mascot';
@@ -26,8 +27,8 @@ const encode = data => {
     .join('&');
 };
 
-// CREATE NEW COMPONENT
-class sectionContactComponent extends React.Component {
+// Crete new component
+class SectionContactComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -98,9 +99,9 @@ class sectionContactComponent extends React.Component {
     return error;
   };
 
-  validateContract = value => {
+  validateRodoGroup = value => {
     let error;
-    if (!value.length) {
+    if (!value[0]) {
       error = 'Twoja zgoda jest wymagana';
     }
     return error;
@@ -108,7 +109,7 @@ class sectionContactComponent extends React.Component {
 
   render() {
     const { isModalOpen, isModalMessage } = this.state;
-    const { id, newStyle, newClass, content } = this.props;
+    const { id, key, content } = this.props;
 
     return (
       <>
@@ -122,16 +123,10 @@ class sectionContactComponent extends React.Component {
           />
         )}
 
-        <Section
-          theme={settings}
-          newStyle={newStyle}
-          className={newClass}
-          id={`${id}-sectionContactComponent-section-id`}
-          key={`${id}-sectionContactComponent-section-key`}
-        >
+        <Section settings={settings} id={id} key={key}>
           <Row newClass="row">
-            <FormBox theme={settings}>
-              <Title>FORMULARZ</Title>
+            <FormBox settings={settings}>
+              <Title settings={settings}>FORMULARZ</Title>
               <Formik
                 isInitialValid={false}
                 initialValues={{
@@ -139,13 +134,13 @@ class sectionContactComponent extends React.Component {
                   email: '',
                   phone: '',
                   description: '',
-                  rodoGroup: '',
+                  rodoGroup: [],
                 }}
                 onSubmit={(values, actions) => {
                   fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: encode({ 'form-name': 'contact', ...values, rodoGroup: values.rodoGroup.filter(e => e) }),
+                    body: encode({ contact: 'contact', ...values, rodoGroup: values.rodoGroup.filter(e => e) }),
                   })
                     .then(() => {
                       this.openModal('Hej, dzięki za kontakt , niebawem dam ci znać co o tym myślę !');
@@ -171,6 +166,7 @@ class sectionContactComponent extends React.Component {
                         value: values.username,
                       }}
                     />
+
                     <Input
                       type="email"
                       id="email-id"
@@ -182,6 +178,7 @@ class sectionContactComponent extends React.Component {
                         validate: this.validateEmail,
                       }}
                     />
+
                     <Input
                       type="text"
                       id="tel-id"
@@ -194,10 +191,11 @@ class sectionContactComponent extends React.Component {
                       parameters={{
                         name: 'phone',
                         required: true,
-                        validate: this.validateTel,
                         value: values.phone,
+                        validate: this.validateTel,
                       }}
                     />
+
                     <TextArea
                       id="description-id"
                       key="description-key"
@@ -213,19 +211,20 @@ class sectionContactComponent extends React.Component {
                         value: values.description,
                       }}
                     />
+
                     <CheckBox
                       type="classic"
-                      id="contract-id"
-                      key="contract-key"
+                      id="rodoGroup-privacyPolicyAccepted-id"
+                      key="rodoGroup-privacyPolicyAccepted-key"
                       content={{
                         description:
                           "NaN LLC potrzebuje twoich danych na czas odpowiedzi na twoje pytanie.  Masz prawo zrezygnować z przetwarzania twoich danych w dowolnym momencie, więcej informacji w <a href='#'>polityce prywatności</a> ",
-                        errors: errors.contract && touched.contract && errors.contract,
+                        errors: errors.rodoGroup && touched.rodoGroup && errors.rodoGroup,
                       }}
                       parameters={{
                         name: 'rodoGroup',
                         required: true,
-                        validate: this.validateContract,
+                        validate: this.validateRodoGroup,
                         onChange: event => {
                           const value = event.target.checked ? 'privacyPolicyAccepted' : null;
                           setFieldValue('rodoGroup.0', value);
@@ -248,54 +247,54 @@ class sectionContactComponent extends React.Component {
                 )}
               </Formik>
             </FormBox>
-            <DataBox theme={settings}>
-              <MascotBox theme={settings}>
+            <DataBox settings={settings}>
+              <MascotBox settings={settings}>
                 <Mascot newClass="mascot" />
               </MascotBox>
               <ListBox>
-                <LisData theme={settings}>
-                  <Point theme={settings}>
-                    <Important theme={settings}>{content.nameCompany}</Important>
+                <LisData settings={settings}>
+                  <Point settings={settings}>
+                    <Important settings={settings}>{content.data.nameCompany}</Important>
                   </Point>
-                  <Point theme={settings}>
-                    ul. {content.street} {content.streetNumber}
+                  <Point settings={settings}>
+                    ul. {content.data.street} {content.data.streetNumber}
                   </Point>
-                  <Point theme={settings}>
-                    {content.postCode} {content.city}
+                  <Point settings={settings}>
+                    {content.data.postCode} {content.data.city}
                   </Point>
-                  <Point theme={settings}>{content.country}</Point>
+                  <Point settings={settings}>{content.data.country}</Point>
                 </LisData>
-                <LisData theme={settings}>
-                  <Point theme={settings}>
-                    <Important theme={settings}>VAT-ID :</Important> {content.vat}
+                <LisData settings={settings}>
+                  <Point settings={settings}>
+                    <Important settings={settings}>VAT-ID :</Important> {content.data.vat}
                   </Point>
-                  <Point theme={settings}>
-                    <Important theme={settings}>REGON :</Important> {content.regon}
+                  <Point settings={settings}>
+                    <Important settings={settings}>REGON :</Important> {content.data.regon}
                   </Point>
-                  <Point theme={settings}>
-                    <Important theme={settings}>KRS :</Important> {content.krs}
+                  <Point settings={settings}>
+                    <Important settings={settings}>KRS :</Important> {content.data.krs}
                   </Point>
                 </LisData>
-                <LisData theme={settings}>
-                  <Point theme={settings}>
-                    <Important theme={settings}>KAPITAŁ :</Important> {`${content.capital}`} PLN
+                <LisData settings={settings}>
+                  <Point settings={settings}>
+                    <Important settings={settings}>KAPITAŁ :</Important> {`${content.data.capital}`} PLN
                   </Point>
-                  <Point theme={settings}>
-                    <Important theme={settings}>CEO :</Important> {content.ceo.name}
+                  <Point settings={settings}>
+                    <Important settings={settings}>CEO :</Important> {content.data.ceo.name}
                   </Point>
                 </LisData>
 
-                <LisData theme={settings}>
-                  <Point theme={settings}>
-                    <Important theme={settings}>TEL :</Important>
-                    <Tel theme={settings} to={`+48 ${content.telephoneNumber}`}>
-                      {`+48 ${content.telephoneNumber}`}
+                <LisData settings={settings}>
+                  <Point settings={settings}>
+                    <Important settings={settings}>TEL :</Important>
+                    <Tel settings={settings} to={`+48 ${content.data.telephoneNumber}`}>
+                      {`+48 ${content.data.telephoneNumber}`}
                     </Tel>
                   </Point>
-                  <Point theme={settings}>
-                    <Important theme={settings}>MAIL :</Important>
-                    <Mail theme={settings} to={`mailo:${content.mail}`}>
-                      {`${content.mail}`}
+                  <Point settings={settings}>
+                    <Important settings={settings}>MAIL :</Important>
+                    <Mail settings={settings} to={`mailo:${content.data.mail}`}>
+                      {`${content.data.mail}`}
                     </Mail>
                   </Point>
                 </LisData>
@@ -309,18 +308,16 @@ class sectionContactComponent extends React.Component {
 }
 
 // PropTpyes
-sectionContactComponent.propTypes = {
+SectionContactComponent.propTypes = {
   id: PropTypes.string,
-  newClass: PropTypes.string,
+  key: PropTypes.string,
   content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
-sectionContactComponent.defaultProps = {
+// PropTpyes default
+SectionContactComponent.defaultProps = {
   id: null,
+  key: null,
   content: null,
-  newClass: null,
-  newStyle: null,
 };
-
-export default sectionContactComponent;
+export default SectionContactComponent;

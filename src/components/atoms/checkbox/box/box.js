@@ -14,71 +14,43 @@ import { Box, CheckBox, Label, Title } from './style/style';
 // CREATE NEW COMPONENT
 
 const CheckBoxComponent = props => {
-  const { id, icon, name, swith, color, title, onBlur, checked, newClass, newStyle, onChange, defaultValue } = props;
+  const { id, key, content, parameters } = props;
 
-  switch (swith) {
-    case 'active':
-      return (
-        <>
-          <Box theme={settings}>
-            <CheckBox
-              id={id}
-              name={title}
-              color={color}
-              type="checkbox"
-              onBlur={onBlur}
-              theme={settings}
-              newClass={newClass}
-              newStyle={newStyle}
-              onChange={onChange}
-              defaultChecked={checked}
-              defaultValue={defaultValue}
-            />
-            <Label htmlFor={id} swith={swith} color={color} theme={settings}>
-              <Icon type={icon} parameters={{ newClass: 'icon' }} />
-              <Title theme={settings}>{title}</Title>
-            </Label>
-          </Box>
-        </>
-      );
-    default:
-      return (
-        <>
-          <Box theme={settings}>
-            <CheckBox id={id} disabled name={name} type="radio" color={color} theme={settings} />
-            <Label color={color} htmlFor={id} theme={settings} disabled>
-              <Icon type={icon} parameters={{ newClass: 'icon' }} />
-              <Title theme={settings} disabled>
-                {title}
-              </Title>
-            </Label>
-          </Box>
-        </>
-      );
-  }
+  return (
+    <>
+      <Box settings={settings}>
+        <CheckBox
+          id={id}
+          key={key}
+          type="checkbox"
+          settings={settings}
+          name={parameters.name}
+          value={parameters.value}
+          checked={parameters.checked}
+          validate={parameters.validate}
+          onChange={parameters.onChange}
+        />
+        <Label settings={settings} htmlFor={id}>
+          <Icon type={content.icon} parameters={{ newClass: 'icon' }} />
+          <Title settings={settings}>{content.title}</Title>
+        </Label>
+      </Box>
+    </>
+  );
 };
 
 CheckBoxComponent.propTypes = {
-  checked: PropTypes.bool,
-  newClass: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-
-  onBlur: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
-
-  onChange: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
-
-  defaultValue: PropTypes.oneOfType([PropTypes.object, PropTypes.array, PropTypes.func]),
+  id: PropTypes.string,
+  key: PropTypes.string,
+  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 CheckBoxComponent.defaultProps = {
-  onBlur: null,
-  newClass: null,
-  checked: false,
-  onChange: null,
-  newStyle: null,
-  defaultValue: null,
+  id: null,
+  key: null,
+  content: null,
+  parameters: null,
 };
 
 // EXPORT NEW COMPONENT

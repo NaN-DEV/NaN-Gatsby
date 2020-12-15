@@ -8,8 +8,8 @@ export const Section = styled.section`
   align-items: center;
   display: flex;
   min-height: calc(100vh - 33rem);
-  color: ${props => props.theme.secondary};
-  background-color: ${props => props.theme.primary};
+  color: ${props => props.settings.secondary};
+  background-color: ${props => props.settings.primary};
   .row {
     align-items: center;
   }
@@ -23,7 +23,7 @@ export const FormBox = styled.div`
     width: 100%;
     display: block;
   }
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
     flex: 50%;
     max-width: 50%;
     padding-right: 6rem;
@@ -35,7 +35,7 @@ export const Title = styled.h1`
   font-size: 3rem;
   text-align: center;
   font-weight: normal;
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
     font-size: 6rem;
   }
 `;
@@ -48,7 +48,7 @@ export const DataBox = styled.div`
   max-width: 100%;
   flex-wrap: wrap;
   align-items: center;
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
     flex: 50%;
     max-width: 50%;
   }
@@ -78,12 +78,12 @@ export const Important = styled.strong`
 
 export const Tel = styled(Link)`
   padding-left: 1rem;
-  color: ${props => props.theme.secondary};
+  color: ${props => props.settings.secondary};
 `;
 
 export const Mail = styled(Link)`
   padding-left: 1rem;
-  color: ${props => props.theme.secondary};
+  color: ${props => props.settings.secondary};
 `;
 
 export const BoxError = styled.div``;
@@ -96,7 +96,7 @@ export const MascotBox = styled.div`
   overflow: hidden;
   min-height: 20rem;
   position: relative;
-  border-top: ${props => props.theme.border} solid ${props => props.theme.secondary};
+  border-top: ${props => props.settings.border} solid ${props => props.settings.secondary};
 
   .mascot {
     top: -10rem;
@@ -106,13 +106,13 @@ export const MascotBox = styled.div`
     left: calc(50% - 10rem);
     transform: rotate(180deg);
   }
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
     margin: 0 0;
     height: 100%;
     width: 11rem;
     border-top: none;
     min-height: 75rem;
-    border-left: ${props => props.theme.border} solid ${props => props.theme.secondary};
+    border-left: ${props => props.settings.border} solid ${props => props.settings.secondary};
 
     .mascot {
       top: auto;
