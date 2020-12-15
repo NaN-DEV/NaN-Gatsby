@@ -140,7 +140,7 @@ class SectionContactComponent extends React.Component {
                   fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: encode({ contact: 'contact', ...values, rodoGroup: values.rodoGroup.filter(e => e) }),
+                    body: encode({ 'form-name': 'contact', ...values, rodoGroup: values.rodoGroup.filter(e => e) }),
                   })
                     .then(() => {
                       this.openModal('Hej, dzięki za kontakt , niebawem dam ci znać co o tym myślę !');

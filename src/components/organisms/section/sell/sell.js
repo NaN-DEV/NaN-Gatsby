@@ -160,7 +160,7 @@ class sectionSellComponent extends React.Component {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                   body: encode({
-                    sell: 'sell',
+                    'form-name': 'sell',
                     ...values,
                     job: values.job.filter(e => e),
                     rodo: values.rodo.filter(e => e),
