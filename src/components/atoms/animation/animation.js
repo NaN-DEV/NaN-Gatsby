@@ -1,20 +1,33 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
+import PropTypes from 'prop-types';
 
-// IMPORT COMPONENT
+// Import component
 import ScrollNextElement from './scrollNextElement/scrollNextElement';
 
-// CREATE NEW COMPONENT
+// Create new component
 const AnimationComponent = props => {
-  const { type, allSlide } = props;
+  const { type, parameters } = props;
 
   switch (type) {
     case 'scrollNextElement':
-      return <ScrollNextElement allSlide={allSlide} />;
+      return <ScrollNextElement parameters={parameters} />;
     default:
       return 'Please add type animation :) ';
   }
 };
 
-// EXPORT NEW COMPONENT
+// PropTpyes
+ScrollNextElement.propTypes = {
+  type: PropTypes.string,
+  parameters: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
+};
+
+// PropTyoes default
+ScrollNextElement.defaultProps = {
+  type: null,
+  parameters: null,
+};
+
+// Export new component
 export default AnimationComponent;

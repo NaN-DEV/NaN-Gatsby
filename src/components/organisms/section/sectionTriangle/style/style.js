@@ -6,6 +6,8 @@ export const Section = styled.section`
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 `;
 
 export const Article = styled.article`
@@ -15,6 +17,8 @@ export const Article = styled.article`
   display: flex;
   position: relative;
   justify-content: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
   min-height: calc(100vh - 7rem);
 
   ${props => {

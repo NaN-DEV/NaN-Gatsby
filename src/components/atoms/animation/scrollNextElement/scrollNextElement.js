@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-/* eslint-disable no-case-declarations */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -8,160 +8,124 @@ class ScrollNextElementComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stopTimeFor: 0,
-      nextElement: 0,
       offsetPageYOld: 0,
-      shiftDirection: 'down',
-      allElementsOffsetToWindowTop: [],
+      wheelActionNumber: 0,
+      lastActiveElement: 0,
+      allElementsHeight: [],
+      topEdgesAllElements: [],
+      scrollDirection: 'down',
     };
-    this.scrollUpOrDown = this.scrollUpOrDown.bind(this);
-    this.whoIsNextElement = this.whoIsNextElement.bind(this);
-    this.timeStopForDevices = this.timeStopForDevices.bind(this);
-    this.addAllElementsOffsetTop = this.addAllElementsOffsetTop.bind(this);
+
+    this.animationScoll = this.animationScoll.bind(this);
+    this.scrollDirectionNow = this.scrollDirectionNow.bind(this);
+    this.addTopEdgesAllElement = this.addTopEdgesAllElement.bind(this);
   }
 
-  // Wykonuje po zmontowaniu komponentu
   componentDidMount() {
-    this.timeStopForDevices();
-    this.addAllElementsOffsetTop();
-    document.addEventListener('scroll', this.scrollUpOrDown);
-    document.addEventListener('scroll', this.whoIsNextElement);
-    document.addEventListener('resize', this.timeStopForDevices);
-    window.addEventListener('resize', this.addAllElementsOffsetTop);
+    this.addTopEdgesAllElement();
+    document.addEventListener('wheel', this.animationScoll);
+    document.addEventListener('scroll', this.scrollDirectionNow);
+    window.addEventListener('resize', this.addTopEdgesAllElement);
   }
 
-  // Usuwam funkcje gdy nie uywam komponentu
   componentWillUnmount() {
-    this.timeStopForDevices();
-    this.addAllElementsOffsetTop();
-    document.removeEventListener('scroll', this.scrollUpOrDown);
-    document.removeEventListener('scroll', this.whoIsNextElement);
-    document.removeEventListener('resize', this.timeStopForDevices);
-    window.removeEventListener('resize', this.addAllElementsOffsetTop);
+    this.addTopEdgesAllElement();
+    document.removeEventListener('wheel', this.animationScoll);
+    document.removeEventListener('scroll', this.scrollDirectionNow);
+    window.removeEventListener('resize', this.addTopEdgesAllElement);
   }
 
-  // Funkcja sprawdza czy lecę w dół czy w górę
-  scrollUpOrDown() {
-    // Pobieram potrzebny state
+  addTopEdgesAllElement = () => {
+    const { parameters } = this.props;
+    const AllEdge = [];
+    const AllHeight = [];
+
+    parameters.slide.forEach((element, i) => {
+      const topEdgeElement = document.getElementById(element);
+      if (AllEdge[i - 1] === topEdgeElement) return null;
+      AllEdge.push(topEdgeElement.getBoundingClientRect().top + window.pageYOffset);
+      AllHeight.push(topEdgeElement.offsetHeight);
+    });
+
+    this.setState({
+      topEdgesAllElements: AllEdge,
+      allElementsHeight: AllHeight,
+    });
+  };
+
+  scrollDirectionNow = () => {
     const { offsetPageYOld } = this.state;
 
-    // Srawdzam o ile px został przewinięty dokument
-    const offsetPageY = window.pageYOffset;
+    const offsetPageYNow = window.pageYOffset;
 
-    // Sprawdzam czy przewijam w górę czy w dół
-    if (offsetPageY > offsetPageYOld) {
+    if (offsetPageYNow > offsetPageYOld) {
       this.setState({
-        shiftDirection: 'down',
+        scrollDirection: 'down',
       });
     } else {
       this.setState({
-        shiftDirection: 'up',
+        scrollDirection: 'up',
       });
     }
-    // Dodaję aktualną pozycje dokumentu
+
     this.setState({
-      offsetPageYOld: offsetPageY,
+      offsetPageYOld: offsetPageYNow,
     });
-  }
+  };
 
-  // Ustalam zatrzymanie czasu dla urządzeń
-  timeStopForDevices() {
-    if (window.innerWidth < 768) {
-      this.setState({
-        stopTimeFor: 1000,
-      });
-    } else {
-      this.setState({
-        stopTimeFor: 2000,
-      });
-    }
-  }
+  animationScoll = () => {
+    const heightWindows = window.pageYOffset;
+    const { lastActiveElement, topEdgesAllElements, wheelActionNumber, scrollDirection, allElementsHeight } = this.state;
 
-  // Ustalam odległosć między wszystkimi elementami a górną krawędzią
-  addAllElementsOffsetTop() {
-    const { allSlide } = this.props;
-    const { allElementsOffsetToWindowTop } = this.state;
-    // eslint-disable-next-line array-callback-return
-    allSlide.map((item, i) => {
-      if (allSlide[i - 1] === item) {
-        return true;
-      }
-      allElementsOffsetToWindowTop.push(document.getElementById(item).getBoundingClientRect().top + window.pageYOffset);
+    this.setState({
+      wheelActionNumber: wheelActionNumber + 1,
     });
-  }
 
-  whoIsNextElement() {
-    // Pobieram sobie potrzebne stany
-    const { allElementsOffsetToWindowTop, nextElement, stopTimeFor, offsetPageYOld, shiftDirection } = this.state;
+    const isItLastaction = new Promise(resolve => {
+      setTimeout(resolve, 30, this.state.wheelActionNumber);
+    });
 
-    // Sprawdzam w którym kierunku scrolujemy
-    switch (shiftDirection) {
-      case 'down':
-        // Sprawdzam kolejność elementów do których będę przesuwał ekran scrolując w dół
-        const whoIsNextElementScrollDown = allElementsOffsetToWindowTop.filter(item => {
-          return item > offsetPageYOld - 100;
-        });
-
-        // Sprawdzam następny element
-        if (whoIsNextElementScrollDown.length > 0) {
-          this.setState({
-            nextElement: whoIsNextElementScrollDown[0],
-          });
-
-          // Sprawdzam czy mam juz scrolować do kolejnego elementu
-          if (nextElement >= whoIsNextElementScrollDown[0] || whoIsNextElementScrollDown[0] < 100) {
-            return true;
-          }
-
-          // Blokuje moliwość scrolowania
-          document.body.style.overflow = 'hidden';
-
-          // Przesuwam do kolejnego elementu
+    isItLastaction.then(values => {
+      if (this.state.wheelActionNumber === values) {
+        if (
+          scrollDirection === 'down' &&
+          topEdgesAllElements.length > lastActiveElement &&
+          topEdgesAllElements[lastActiveElement] < heightWindows + allElementsHeight[lastActiveElement] / 2
+        ) {
           window.scrollTo({
-            top: whoIsNextElementScrollDown[0] - 70,
+            top: topEdgesAllElements[lastActiveElement] - 70,
             behavior: 'smooth',
           });
-
-          // Odblokowuje moliwośći scrolowania
-          setTimeout(() => {
-            document.body.style.overflow = 'auto';
-          }, stopTimeFor);
-        }
-
-        break;
-      default:
-        // Sprawdzam kolejność elementów do których będę przesuwał ekran scrolując w górę
-        const whoIsNextElementScrollUp = allElementsOffsetToWindowTop.filter(item => {
-          return item < offsetPageYOld + 100;
-        });
-        if (whoIsNextElementScrollUp.length > 1) {
-          this.setState({
-            nextElement: whoIsNextElementScrollUp[whoIsNextElementScrollUp.length - 1] || 0,
+        } else if (
+          scrollDirection === 'up' &&
+          lastActiveElement > 0 &&
+          topEdgesAllElements[lastActiveElement] > allElementsHeight[lastActiveElement] / 2
+        ) {
+          window.scrollTo({
+            top: topEdgesAllElements[lastActiveElement - 1] - 70,
+            behavior: 'smooth',
           });
         }
-        // Sprawdzam czy mam juz scrolować do kolejnego elementu
-        if (
-          nextElement <= whoIsNextElementScrollUp[whoIsNextElementScrollUp.length - 1] ||
-          whoIsNextElementScrollUp[whoIsNextElementScrollUp.length - 1] < 100
-        ) {
-          return true;
-        }
-        // Blokuje moliwość scrolowania
-        document.body.style.overflow = 'hidden';
-
-        // Przesuwam do kolejnego elementu
-        window.scrollTo({
-          top: whoIsNextElementScrollUp[whoIsNextElementScrollUp.length - 1] - 70,
-          behavior: 'smooth',
+      }
+      if (
+        scrollDirection === 'down' &&
+        topEdgesAllElements.length > lastActiveElement &&
+        topEdgesAllElements[lastActiveElement + 1] < heightWindows + allElementsHeight[lastActiveElement] / 2
+      ) {
+        this.setState({
+          lastActiveElement: lastActiveElement + 1,
         });
-
-        // Odblokowuje moliwośći scrolowania
-        setTimeout(() => {
-          document.body.style.overflow = 'auto';
-        }, stopTimeFor);
-    }
-    return null;
-  }
+      } else if (
+        scrollDirection === 'up' &&
+        lastActiveElement > 0 &&
+        topEdgesAllElements[lastActiveElement - 1] > heightWindows + allElementsHeight[lastActiveElement] / 2
+      ) {
+        this.setState({
+          lastActiveElement: lastActiveElement - 1,
+        });
+      }
+    });
+  };
 
   render() {
     return null;
@@ -170,7 +134,7 @@ class ScrollNextElementComponent extends React.Component {
 
 // PropTpyes
 ScrollNextElementComponent.propTypes = {
-  allSlide: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
 };
 
 // EXPORT NEW COMPONENT

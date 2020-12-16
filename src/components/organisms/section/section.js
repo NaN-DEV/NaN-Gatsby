@@ -1,33 +1,32 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// IMPORT COMPONENT
-import Sell from './sell/sell';
-import HeroProblem from './sectionHeroProblem/sectionHeroProblem';
-import ListSkils from './sectionListSkils/sectionListSkils';
-import SellAds from './sectionSellAds/sectionSellAds';
-import FullText from './sectionFullText/sectionFullText';
-import FullExcerpt from './sectionFullExcerpt/sectionFullExcerpt';
-import Triangle from './sectionTriangle/sectionTriangle';
-import HeroExcerpt from './sectionHeroExcerpt/sectionHeroExcerpt';
+// Import component
+import Sell from './sectionSell/sectionSell';
 import HeroClassic from './heroClassic/heroClassic';
-import CategoryPartners from './sectionCategoryPartners/sectionCategoryPartners';
-import Scrambler from './sectionScramblerText/sectionScramblerText';
+import SellAds from './sectionSellAds/sectionSellAds';
 import NotFoundPage from './notFoundPage/notFoundPage';
-import CategoryServices from './sectionCategoryServices/sectionCategoryServices';
-import CategoryPortfolio from './sectionCategoryPortfolio/sectionCategoryPortfolio';
+import IdExpert from './sectionIdExpert/sectionIdExpert';
+import Triangle from './sectionTriangle/sectionTriangle';
+import FullText from './sectionFullText/sectionFullText';
+import ListSkils from './sectionListSkils/sectionListSkils';
 import ServiceContent from './serviceContent/serviceContent';
 import SectionContact from './sectionContact/sectionContact';
-import IdExpert from './sectionIdExpert/sectionIdExpert';
+import HeroExcerpt from './sectionHeroExcerpt/sectionHeroExcerpt';
+import FullExcerpt from './sectionFullExcerpt/sectionFullExcerpt';
+import HeroProblem from './sectionHeroProblem/sectionHeroProblem';
+import Scrambler from './sectionScramblerText/sectionScramblerText';
+import CategoryPartners from './sectionCategoryPartners/sectionCategoryPartners';
+import CategoryServices from './sectionCategoryServices/sectionCategoryServices';
+import CategoryPortfolio from './sectionCategoryPortfolio/sectionCategoryPortfolio';
 import IdentificationProject from './sectionIdentificationProject/sectionIdentificationProject';
 
-// CREATE NEW COMPONENT
-
+// Create new component
 const SectionComponent = props => {
-  const { id, key, size, type, title, color, newClass, newStyle, description, parameters, content } = props;
+  const { id, key, type, title, color, newClass, newStyle, description, parameters, content } = props;
 
-  // SELECT SECTION
+  // Select section
   const renderSwitchWrap = wrap => {
     switch (wrap) {
       case 'scrambler':
@@ -39,25 +38,25 @@ const SectionComponent = props => {
       case 'triangle':
         return (
           <>
-            <Triangle id={id} content={content} newClass={newClass} newStyle={newStyle} />
+            <Triangle id={id} content={content} parameters={parameters} />
           </>
         );
       case 'sell':
         return (
           <>
-            <Sell id={id} size={size} color={color} newClass={newClass} newStyle={newStyle} />
+            <Sell id={id} key={key} />
           </>
         );
       case 'sellAds':
         return (
           <>
-            <SellAds newClass={newClass} newStyle={newStyle} />
+            <SellAds id={id} key={key} />
           </>
         );
       case 'notFoundPage':
         return (
           <>
-            <NotFoundPage id={id} size={size} color={color} newClass={newClass} newStyle={newStyle} />
+            <NotFoundPage id={id} key={key} />
           </>
         );
       case 'heroClassic':
@@ -136,7 +135,7 @@ const SectionComponent = props => {
       case 'contact':
         return (
           <>
-            <SectionContact id={id} newClass={newClass} newStyle={newStyle} content={content} />
+            <SectionContact id={id} key={key} parameters={parameters} content={content} />
           </>
         );
       default:
@@ -168,6 +167,7 @@ SectionComponent.propTypes = {
   content: PropTypes.oneOfType([PropTypes.array, PropTypes.string, PropTypes.object]),
 };
 
+// PropTyoes default
 SectionComponent.defaultProps = {
   id: null,
   key: null,
