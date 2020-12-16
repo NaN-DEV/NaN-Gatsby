@@ -23,14 +23,14 @@ class ScrollNextElementComponent extends React.Component {
 
   componentDidMount() {
     this.addTopEdgesAllElement();
-    document.addEventListener('wheel', this.animationScoll);
+    document.addEventListener('scroll', this.animationScoll);
     document.addEventListener('scroll', this.scrollDirectionNow);
     window.addEventListener('resize', this.addTopEdgesAllElement);
   }
 
   componentWillUnmount() {
     this.addTopEdgesAllElement();
-    document.removeEventListener('wheel', this.animationScoll);
+    document.removeEventListener('scroll', this.animationScoll);
     document.removeEventListener('scroll', this.scrollDirectionNow);
     window.removeEventListener('resize', this.addTopEdgesAllElement);
   }
@@ -82,7 +82,7 @@ class ScrollNextElementComponent extends React.Component {
     });
 
     const isItLastaction = new Promise(resolve => {
-      setTimeout(resolve, 30, this.state.wheelActionNumber);
+      setTimeout(resolve, 200, this.state.wheelActionNumber);
     });
 
     isItLastaction.then(values => {
