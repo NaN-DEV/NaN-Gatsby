@@ -8,48 +8,44 @@ class ScrollNextElementComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      activeIndex: 0,
+      heightWindows: 0,
       offsetPageYOld: 0,
       wheelActionNumber: 0,
-      lastActiveElement: 0,
-      allElementsHeight: [],
       topEdgesAllElements: [],
-      scrollDirection: 'down',
     };
 
-    this.animationScoll = this.animationScoll.bind(this);
+    this.animationScollUp = this.animationScollUp.bind(this);
+    this.animationScollDown = this.animationScollDown.bind(this);
     this.scrollDirectionNow = this.scrollDirectionNow.bind(this);
     this.addTopEdgesAllElement = this.addTopEdgesAllElement.bind(this);
   }
 
   componentDidMount() {
     this.addTopEdgesAllElement();
-    document.addEventListener('wheel', this.animationScoll);
     document.addEventListener('scroll', this.scrollDirectionNow);
     window.addEventListener('resize', this.addTopEdgesAllElement);
   }
 
   componentWillUnmount() {
     this.addTopEdgesAllElement();
-    document.removeEventListener('wheel', this.animationScoll);
     document.removeEventListener('scroll', this.scrollDirectionNow);
     window.removeEventListener('resize', this.addTopEdgesAllElement);
   }
 
   addTopEdgesAllElement = () => {
-    const { parameters } = this.props;
     const AllEdge = [];
-    const AllHeight = [];
+    const { parameters } = this.props;
 
     parameters.slide.forEach((element, i) => {
       const topEdgeElement = document.getElementById(element);
-      if (AllEdge[i - 1] === topEdgeElement) return null;
+      if (i > 0 && AllEdge[i - 1] === topEdgeElement.getBoundingClientRect().top + window.pageYOffset) return null;
       AllEdge.push(topEdgeElement.getBoundingClientRect().top + window.pageYOffset);
-      AllHeight.push(topEdgeElement.offsetHeight);
     });
 
     this.setState({
+      heightWindows: window.innerHeight,
       topEdgesAllElements: AllEdge,
-      allElementsHeight: AllHeight,
     });
   };
 
@@ -59,13 +55,9 @@ class ScrollNextElementComponent extends React.Component {
     const offsetPageYNow = window.pageYOffset;
 
     if (offsetPageYNow > offsetPageYOld) {
-      this.setState({
-        scrollDirection: 'down',
-      });
+      this.animationScollDown();
     } else {
-      this.setState({
-        scrollDirection: 'up',
-      });
+      this.animationScollUp();
     }
 
     this.setState({
@@ -73,56 +65,61 @@ class ScrollNextElementComponent extends React.Component {
     });
   };
 
-  animationScoll = () => {
-    const heightWindows = window.pageYOffset;
-    const { lastActiveElement, topEdgesAllElements, wheelActionNumber, scrollDirection, allElementsHeight } = this.state;
+  animationScollDown = () => {
+    const edgeTopWindow = window.pageYOffset;
+    const { wheelActionNumber, topEdgesAllElements, heightWindows } = this.state;
 
     this.setState({
       wheelActionNumber: wheelActionNumber + 1,
     });
 
-    const isItLastaction = new Promise(resolve => {
-      setTimeout(resolve, 30, this.state.wheelActionNumber);
+    const isItLastAction = new Promise(resolve => {
+      setTimeout(resolve, 60, this.state.wheelActionNumber);
     });
 
-    if (
-      scrollDirection === 'down' &&
-      topEdgesAllElements.length - 1 > lastActiveElement &&
-      topEdgesAllElements[lastActiveElement + 1] < heightWindows + allElementsHeight[lastActiveElement] / 2
-    ) {
-      this.setState({
-        lastActiveElement: lastActiveElement + 1,
-      });
-    } else if (
-      scrollDirection === 'up' &&
-      lastActiveElement > 0 &&
-      topEdgesAllElements[lastActiveElement - 1] > heightWindows + allElementsHeight[lastActiveElement] / 2
-    ) {
-      this.setState({
-        lastActiveElement: lastActiveElement - 1,
-      });
-    }
-
-    isItLastaction.then(values => {
+    isItLastAction.then(values => {
       if (this.state.wheelActionNumber === values) {
-        if (
-          scrollDirection === 'down' &&
-          topEdgesAllElements.length - 1 >= lastActiveElement &&
-          topEdgesAllElements[lastActiveElement] < heightWindows + allElementsHeight[lastActiveElement] / 2
-        ) {
-          window.scrollTo({
-            top: topEdgesAllElements[lastActiveElement] - 70,
-            behavior: 'smooth',
-          });
-        } else if (
-          scrollDirection === 'up' &&
-          lastActiveElement > 0 &&
-          topEdgesAllElements[lastActiveElement] > allElementsHeight[lastActiveElement] / 2
-        ) {
-          window.scrollTo({
-            top: topEdgesAllElements[lastActiveElement - 1] - 70,
-            behavior: 'smooth',
-          });
+        const index = topEdgesAllElements.findIndex(el => {
+          return el >= edgeTopWindow;
+        });
+
+        if (index >= 0) {
+          if (topEdgesAllElements[index] < heightWindows + edgeTopWindow && topEdgesAllElements[topEdgesAllElements.length - 1] > edgeTopWindow) {
+            window.scrollTo({
+              top: topEdgesAllElements[index] - 70,
+              behavior: 'smooth',
+            });
+          }
+        }
+
+        this.setState({
+          activeIndex: index,
+        });
+      }
+    });
+  };
+
+  animationScollUp = () => {
+    const edgeTopWindow = window.pageYOffset;
+    const { wheelActionNumber, topEdgesAllElements, heightWindows, activeIndex } = this.state;
+
+    this.setState({
+      wheelActionNumber: wheelActionNumber + 1,
+    });
+
+    const isItLastAction = new Promise(resolve => {
+      setTimeout(resolve, 40, this.state.wheelActionNumber);
+    });
+
+    isItLastAction.then(values => {
+      if (this.state.wheelActionNumber === values) {
+        if (activeIndex > 0) {
+          if (topEdgesAllElements[activeIndex - 1] < heightWindows + edgeTopWindow) {
+            window.scrollTo({
+              top: topEdgesAllElements[activeIndex - 1] - 70,
+              behavior: 'smooth',
+            });
+          }
         }
       }
     });
