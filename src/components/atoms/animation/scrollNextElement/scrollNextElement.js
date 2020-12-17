@@ -23,14 +23,14 @@ class ScrollNextElementComponent extends React.Component {
 
   componentDidMount() {
     this.addTopEdgesAllElement();
-    document.addEventListener('scroll', this.animationScoll);
+    document.addEventListener('wheel', this.animationScoll);
     document.addEventListener('scroll', this.scrollDirectionNow);
     window.addEventListener('resize', this.addTopEdgesAllElement);
   }
 
   componentWillUnmount() {
     this.addTopEdgesAllElement();
-    document.removeEventListener('scroll', this.animationScoll);
+    document.removeEventListener('wheel', this.animationScoll);
     document.removeEventListener('scroll', this.scrollDirectionNow);
     window.removeEventListener('resize', this.addTopEdgesAllElement);
   }
@@ -82,14 +82,32 @@ class ScrollNextElementComponent extends React.Component {
     });
 
     const isItLastaction = new Promise(resolve => {
-      setTimeout(resolve, 200, this.state.wheelActionNumber);
+      setTimeout(resolve, 30, this.state.wheelActionNumber);
     });
+
+    if (
+      scrollDirection === 'down' &&
+      topEdgesAllElements.length - 1 > lastActiveElement &&
+      topEdgesAllElements[lastActiveElement + 1] < heightWindows + allElementsHeight[lastActiveElement] / 2
+    ) {
+      this.setState({
+        lastActiveElement: lastActiveElement + 1,
+      });
+    } else if (
+      scrollDirection === 'up' &&
+      lastActiveElement > 0 &&
+      topEdgesAllElements[lastActiveElement - 1] > heightWindows + allElementsHeight[lastActiveElement] / 2
+    ) {
+      this.setState({
+        lastActiveElement: lastActiveElement - 1,
+      });
+    }
 
     isItLastaction.then(values => {
       if (this.state.wheelActionNumber === values) {
         if (
           scrollDirection === 'down' &&
-          topEdgesAllElements.length > lastActiveElement &&
+          topEdgesAllElements.length - 1 >= lastActiveElement &&
           topEdgesAllElements[lastActiveElement] < heightWindows + allElementsHeight[lastActiveElement] / 2
         ) {
           window.scrollTo({
@@ -106,23 +124,6 @@ class ScrollNextElementComponent extends React.Component {
             behavior: 'smooth',
           });
         }
-      }
-      if (
-        scrollDirection === 'down' &&
-        topEdgesAllElements.length > lastActiveElement &&
-        topEdgesAllElements[lastActiveElement + 1] < heightWindows + allElementsHeight[lastActiveElement] / 2
-      ) {
-        this.setState({
-          lastActiveElement: lastActiveElement + 1,
-        });
-      } else if (
-        scrollDirection === 'up' &&
-        lastActiveElement > 0 &&
-        topEdgesAllElements[lastActiveElement - 1] > heightWindows + allElementsHeight[lastActiveElement] / 2
-      ) {
-        this.setState({
-          lastActiveElement: lastActiveElement - 1,
-        });
       }
     });
   };
