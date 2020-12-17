@@ -85,6 +85,7 @@ export const Article = styled.article`
     }
 
     .buttonMore {
+      z-index: 99;
       position: absolute;
       right: ${props => props.theme.break};
       bottom: ${props => props.theme.break};
