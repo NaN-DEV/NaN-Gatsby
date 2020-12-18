@@ -9,7 +9,6 @@ class ScrollNextElementComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeIndex: 0,
       heightWindows: 0,
       offsetPageYOld: 0,
       wheelActionNumber: 0,
@@ -81,7 +80,7 @@ class ScrollNextElementComponent extends React.Component {
     });
 
     const isItLastAction = new Promise(resolve => {
-      setTimeout(resolve, 40, this.state.wheelActionNumber);
+      setTimeout(resolve, 60, this.state.wheelActionNumber);
     });
 
     isItLastAction.then(values => {
@@ -103,37 +102,37 @@ class ScrollNextElementComponent extends React.Component {
             });
           }
         }
-
-        this.setState({
-          activeIndex: index,
-        });
       }
     });
   };
 
   animationScollUp = () => {
     const edgeTopWindow = window.pageYOffset;
-    const { wheelActionNumber, topEdgesAllElements, heightWindows, allHeightElement, activeIndex } = this.state;
+    const { wheelActionNumber, topEdgesAllElements, heightWindows, allHeightElement } = this.state;
 
     this.setState({
       wheelActionNumber: wheelActionNumber + 1,
     });
 
     const isItLastAction = new Promise(resolve => {
-      setTimeout(resolve, 40, this.state.wheelActionNumber);
+      setTimeout(resolve, 60, this.state.wheelActionNumber);
     });
 
     isItLastAction.then(values => {
       if (this.state.wheelActionNumber === values) {
-        if (activeIndex > 0) {
-          if (topEdgesAllElements[activeIndex] + allHeightElement[activeIndex - 1] > edgeTopWindow + heightWindows + 60) {
+        const index = topEdgesAllElements.findIndex(el => {
+          return el >= edgeTopWindow;
+        });
+
+        if (index > 0) {
+          if (topEdgesAllElements[index] + allHeightElement[index - 1] > edgeTopWindow + heightWindows + 60) {
             window.scrollTo({
-              top: topEdgesAllElements[activeIndex - 1] - 70,
+              top: topEdgesAllElements[index - 1] - 70,
               behavior: 'smooth',
             });
           } else {
             window.scrollTo({
-              top: topEdgesAllElements[activeIndex] - 70,
+              top: topEdgesAllElements[index] - 70,
               behavior: 'smooth',
             });
           }
