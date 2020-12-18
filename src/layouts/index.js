@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-boolean-cast */
 // Import plugin
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -44,12 +45,12 @@ const Root = props => {
     `,
   );
 
-  const title = parameters.seo.title
+  const title = !!parameters.seo.title
     ? `${parameters.seo.title} ${datoCmsSite.globalSeo.titleSuffix}`
     : `${datoCmsSite.globalSeo.siteName} ${datoCmsSite.globalSeo.titleSuffix}`;
-  const url = parameters.seo.slug ? `https://www.nan.nz/${parameters.seo.slug}` : `https://www.nan.nz/`;
-  const image = parameters.seo.image.url ? parameters.seo.image.url : datoCmsSite.globalSeo.image.url;
-  const description = parameters.seo.description ? parameters.seo.description : datoCmsSite.globalSeo.description;
+  const url = !!parameters.seo.slug ? `https://www.nan.nz/${parameters.seo.slug}` : `https://www.nan.nz/`;
+  const image = !!parameters.seo.image.url ? parameters.seo.image.url : datoCmsSite.globalSeo.image.url;
+  const description = !!parameters.seo.description ? parameters.seo.description : datoCmsSite.globalSeo.description;
   return (
     <>
       <Helmet>
