@@ -1,16 +1,16 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import { graphql } from 'gatsby';
 import Section from '../components/organisms/section/section';
 
-// IMPORT COMPONENT
+// Import component
 import Layout from '../layouts/index';
 import Animation from '../components/atoms/animation/animation';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../layouts/settings/settings';
 
-// CREATE NEW COMPONENT
+// Create new component
 const IndexPage = ({ data }) => {
   const idArticle = [];
   data.datoCmsHome.selectPortfolio.forEach(item => {
@@ -19,7 +19,10 @@ const IndexPage = ({ data }) => {
 
   return (
     <>
-      <Layout theme={settings} parameters={{ seo: data.datoCmsHome.seo }}>
+      <Layout
+        theme={settings}
+        parameters={{ title: data.datoCmsHome.seo.title, description: data.datoCmsHome.seo.description, image: data.datoCmsHome.seo.image }}
+      >
         <Animation type="scrollNextElement" parameters={{ slide: [...idArticle, 'sectionSellAds'] }} />
 
         <Section
@@ -43,7 +46,7 @@ const IndexPage = ({ data }) => {
   );
 };
 
-// GRAPHQL
+// GraphQl
 export const query = graphql`
   query {
     datoCmsHome {
@@ -83,4 +86,5 @@ export const query = graphql`
   }
 `;
 
+// Export component
 export default IndexPage;

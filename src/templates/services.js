@@ -16,7 +16,7 @@ const servicesPageComponent = props => {
 
   return (
     <>
-      <Layout theme={settings} key="projectPage">
+      <Layout theme={settings}>
         <Section
           type="heroExcerpt"
           id={`${props.pageContext.id}-heroExcerpt-id`}

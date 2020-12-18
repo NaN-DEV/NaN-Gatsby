@@ -34,7 +34,6 @@ const Root = props => {
               description
               twitterCard
               image {
-                id
                 url
               }
             }
@@ -44,17 +43,15 @@ const Root = props => {
     `,
   );
 
-  const title = parameters.seo.title
-    ? `${parameters.seo.title} ${datoCmsSite.globalSeo.titleSuffix}`
-    : `${datoCmsSite.globalSeo.siteName} ${datoCmsSite.globalSeo.titleSuffix}`;
-  const url = parameters.seo.slug ? `https://www.nan.nz/${parameters.seo.slug}` : `https://www.nan.nz/`;
-  const image = parameters.seo.image.url ? parameters.seo.image.url : datoCmsSite.globalSeo.image.url;
-  const description = parameters.seo.description ? parameters.seo.description : datoCmsSite.globalSeo.description;
+  const title = parameters.title || datoCmsSite.globalSeo.siteName;
+  const image = parameters.image || datoCmsSite.globalSeo.fallbackSeo.image.url;
+  const description = parameters.description || datoCmsSite.globalSeo.description;
+  const url = parameters.slug ? `https://www.nan.nz/${parameters.slug}` : `https://www.nan.nz/`;
   return (
     <>
       <Helmet>
         {/* General tags */}
-        <title>{title}</title>
+        <title>{title} </title>
         <meta name="description" content={description} />
         <meta name="image" content={image} />
         <link rel="canonical" href={url} />
@@ -90,12 +87,20 @@ const Root = props => {
 // PropTpyes
 Root.propTypes = {
   children: PropTypes.node.isRequired,
-  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  parameters: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  }),
 };
 
 // PropTpyes default
 Root.defaultProps = {
-  parameters: null,
+  parameters: PropTypes.shape({
+    title: false,
+    image: false,
+    description: false,
+  }),
 };
 
 // Export new component
