@@ -13,6 +13,7 @@ class ScrollNextElementComponent extends React.Component {
       heightWindows: 0,
       offsetPageYOld: 0,
       wheelActionNumber: 0,
+      allHeightElement: [],
       topEdgesAllElements: [],
     };
 
@@ -37,18 +38,21 @@ class ScrollNextElementComponent extends React.Component {
   }
 
   addTopEdgesAllElement = () => {
-    const AllEdge = [];
+    const allEdge = [];
+    const allHeight = [];
     const { parameters } = this.props;
 
     parameters.slide.forEach((element, i) => {
       const topEdgeElement = document.getElementById(element);
-      if (i > 0 && AllEdge[i - 1] === topEdgeElement.getBoundingClientRect().top + window.pageYOffset) return null;
-      AllEdge.push(topEdgeElement.getBoundingClientRect().top + window.pageYOffset);
+      if (i > 0 && allEdge[i - 1] === topEdgeElement.getBoundingClientRect().top + window.pageYOffset) return null;
+      allHeight.push(topEdgeElement.offsetHeight);
+      allEdge.push(topEdgeElement.getBoundingClientRect().top + window.pageYOffset);
     });
 
     this.setState({
+      allHeightElement: allHeight,
+      topEdgesAllElements: allEdge,
       heightWindows: window.innerHeight,
-      topEdgesAllElements: AllEdge,
     });
   };
 
@@ -77,7 +81,7 @@ class ScrollNextElementComponent extends React.Component {
     });
 
     const isItLastAction = new Promise(resolve => {
-      setTimeout(resolve, 60, this.state.wheelActionNumber);
+      setTimeout(resolve, 40, this.state.wheelActionNumber);
     });
 
     isItLastAction.then(values => {
@@ -87,9 +91,14 @@ class ScrollNextElementComponent extends React.Component {
         });
 
         if (index >= 0) {
-          if (topEdgesAllElements[index] < heightWindows + edgeTopWindow && topEdgesAllElements[topEdgesAllElements.length - 1] > edgeTopWindow) {
+          if (topEdgesAllElements[index] < edgeTopWindow + heightWindows - 60) {
             window.scrollTo({
               top: topEdgesAllElements[index] - 70,
+              behavior: 'smooth',
+            });
+          } else {
+            window.scrollTo({
+              top: topEdgesAllElements[index - 1] - 70,
               behavior: 'smooth',
             });
           }
@@ -104,7 +113,7 @@ class ScrollNextElementComponent extends React.Component {
 
   animationScollUp = () => {
     const edgeTopWindow = window.pageYOffset;
-    const { wheelActionNumber, topEdgesAllElements, heightWindows, activeIndex } = this.state;
+    const { wheelActionNumber, topEdgesAllElements, heightWindows, allHeightElement, activeIndex } = this.state;
 
     this.setState({
       wheelActionNumber: wheelActionNumber + 1,
@@ -117,9 +126,14 @@ class ScrollNextElementComponent extends React.Component {
     isItLastAction.then(values => {
       if (this.state.wheelActionNumber === values) {
         if (activeIndex > 0) {
-          if (topEdgesAllElements[activeIndex - 1] < heightWindows + edgeTopWindow) {
+          if (topEdgesAllElements[activeIndex] + allHeightElement[activeIndex - 1] > edgeTopWindow + heightWindows + 60) {
             window.scrollTo({
               top: topEdgesAllElements[activeIndex - 1] - 70,
+              behavior: 'smooth',
+            });
+          } else {
+            window.scrollTo({
+              top: topEdgesAllElements[activeIndex] - 70,
               behavior: 'smooth',
             });
           }

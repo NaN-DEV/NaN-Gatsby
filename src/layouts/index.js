@@ -51,7 +51,9 @@ const Root = props => {
     <>
       <Helmet>
         {/* General tags */}
-        <title>{title} </title>
+        <title>
+          {title} {datoCmsSite.globalSeo.titleSuffix}
+        </title>
         <meta name="description" content={description} />
         <meta name="image" content={image} />
         <link rel="canonical" href={url} />
