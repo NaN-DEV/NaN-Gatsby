@@ -25,43 +25,43 @@ export const Article = styled.article`
     switch (props.colorStyle) {
       case 'secondary':
         return css`
-          color: ${props.theme.primary};
-          background-color: ${props.theme.secondary};
+          color: ${props.settings.primary};
+          background-color: ${props.settings.secondary};
           a {
-            color: ${props.theme.primary};
+            color: ${props.settings.primary};
           }
           svg {
-            fill: ${props.theme.primary};
+            fill: ${props.settings.primary};
           }
         `;
       case 'primary':
         return css`
-          color: ${props.theme.secondary};
-          background-color: ${props.theme.primary};
+          color: ${props.settings.secondary};
+          background-color: ${props.settings.primary};
           a {
-            color: ${props.theme.secondary};
+            color: ${props.settings.secondary};
           }
           svg {
-            fill: ${props.theme.secondary};
+            fill: ${props.settings.secondary};
           }
         `;
       case 'tertiary':
         return css`
-          color: ${props.theme.primary};
-          background-color: ${props.theme.tertiary_1};
+          color: ${props.settings.primary};
+          background-color: ${props.settings.tertiary_1};
           a {
-            color: ${props.theme.primary};
+            color: ${props.settings.primary};
           }
           svg {
-            fill: ${props.theme.primary};
+            fill: ${props.settings.primary};
           }
         `;
       default:
         return css`
-          color: ${props.theme.primary};
-          background-color: ${props.theme.secondary};
+          color: ${props.settings.primary};
+          background-color: ${props.settings.secondary};
           svg {
-            fill: ${props.theme.primary};
+            fill: ${props.settings.primary};
           }
         `;
     }
@@ -87,12 +87,12 @@ export const Article = styled.article`
     .buttonMore {
       z-index: 99;
       position: absolute;
-      right: ${props => props.theme.break};
-      bottom: ${props => props.theme.break};
+      right: ${props => props.settings.break};
+      bottom: ${props => props.settings.break};
     }
   }
 
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
     ${props => {
       switch (props.colorStyle) {
         case 'secondary':
@@ -108,14 +108,15 @@ export const Article = styled.article`
       }
     }}
     ${props => {
+      console.log(props.articlePosition);
       switch (props.articlePosition) {
         case 'left':
           return css`
+            justify-content: flex-start;
             .row {
               margin: 0 0;
               flex-direction: column;
-              justify-content: flex-start;
-              max-width: ${props.theme.max_width_half};
+              max-width: ${props.settings.max_width_half};
 
               .box {
                 justify-content: flex-start !important;
@@ -124,11 +125,12 @@ export const Article = styled.article`
           `;
         case 'right':
           return css`
+            justify-content: flex-end;
             .row {
               margin: 0 0;
-              justify-content: flex-end;
+
               flex-direction: column-reverse;
-              max-width: ${props.theme.max_width_half};
+              max-width: ${props.settings.max_width_half};
 
               .box {
                 justify-content: flex-end !important;
@@ -195,11 +197,11 @@ export const Title = styled.h1`
   font-size: 3rem;
   cursor: pointer;
   text-align: left;
-  transition: ${props => props.theme.animation};
+  transition: ${props => props.settings.animation};
   &:hover {
     opacity: 0.6;
   }
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
     max-width: calc(100% - 20rem);
   }
 `;
@@ -214,27 +216,20 @@ export const Category = styled.div`
   }
 `;
 
-export const Image = styled(GatsbyImage)`
+export const BoxImage = styled.div`
   z-index: 0;
   left: 0rem;
   bottom: 0rem;
-  width: 25rem;
-  height: 25rem;
+  width: 60rem;
+  height: auto;
+  max-width: 100%;
+  position: absolute;
+  padding-right: 12rem;
+`;
+
+export const Image = styled(GatsbyImage)`
+  width: 60rem;
+  height: auto;
   display: block;
-  position: absolute !important;
-
-  @media (min-width: ${props => `${props.theme.breakpoint_mobile}px`}) {
-    width: 40rem;
-    height: 40rem;
-  }
-
-  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
-    width: 50rem;
-    height: 50rem;
-  }
-
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    width: 60rem;
-    height: 60rem;
-  }
+  max-width: 100%;
 `;
