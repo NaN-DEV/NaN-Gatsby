@@ -21,7 +21,7 @@ const IndexPage = ({ data }) => {
     <>
       <Layout
         theme={settings}
-        parameters={{ title: data.datoCmsHome.seo.title, description: data.datoCmsHome.seo.description, image: data.datoCmsHome.seo.image }}
+        parameters={{ title: data.datoCmsHome.seo.title, description: data.datoCmsHome.seo.description, image: data.datoCmsHome.seo.image.url }}
       >
         <Animation type="scrollNextElement" parameters={{ slide: [...idArticle, 'sectionSellAds'] }} />
 
