@@ -13,31 +13,31 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 const IndexPage = ({ data }) => {
   const idArticle = [];
-  data.allDatoCmsHome.nodes[0].selectPortfolio.forEach(item => {
+  data.datoCmsHome.selectPortfolio.forEach(item => {
     idArticle.push(item.id);
   });
 
   return (
     <>
-      <Layout theme={settings}>
+      <Layout theme={settings} parameters={{ seo: data.datoCmsHome.seo }}>
         <Animation type="scrollNextElement" parameters={{ slide: [...idArticle, 'sectionSellAds'] }} />
 
         <Section
           type="scrambler"
           parameters={{ color: 'primary' }}
-          id={`${data.allDatoCmsHome.nodes[0].id}-scrambler-id`}
-          key={`${data.allDatoCmsHome.nodes[0].id}-scrambler-key`}
-          content={{ title: data.allDatoCmsHome.nodes[0].heroSectionTitle }}
+          id={`${data.datoCmsHome.id}-scrambler-id`}
+          key={`${data.datoCmsHome.id}-scrambler-key`}
+          content={{ title: data.datoCmsHome.heroSectionTitle }}
         />
 
         <Section
           type="triangle"
-          id={`${data.allDatoCmsHome.nodes[0].id}-triangle-id`}
-          content={data.allDatoCmsHome.nodes[0].selectPortfolio}
-          key={`${data.allDatoCmsHome.nodes[0].id}-triangle-key`}
+          id={`${data.datoCmsHome.id}-triangle-id`}
+          content={data.datoCmsHome.selectPortfolio}
+          key={`${data.datoCmsHome.id}-triangle-key`}
         />
 
-        <Section type="sellAds" id={`${data.allDatoCmsHome.nodes[0].id}-sellAds-id`} key={`${data.allDatoCmsHome.nodes[0].id}-sellAds-key`} />
+        <Section type="sellAds" id={`${data.datoCmsHome.id}-sellAds-id`} key={`${data.datoCmsHome.id}-sellAds-key`} />
       </Layout>
     </>
   );
@@ -46,29 +46,37 @@ const IndexPage = ({ data }) => {
 // GRAPHQL
 export const query = graphql`
   query {
-    allDatoCmsHome {
-      nodes {
+    datoCmsHome {
+      id
+      heroSectionTitle {
         id
-        heroSectionTitle {
+        title
+      }
+      selectPortfolio {
+        id
+        slug
+        title
+        category {
+          id
+          slug
           title
         }
-        selectPortfolio {
+        imageSubstitute {
+          alt
+          author
+          fluid {
+            ...GatsbyDatoCmsFluid
+          }
+        }
+      }
+      seo {
+        title
+        twitterCard
+        description
+        image {
           id
-          category {
-            id
-            slug
-            title
-          }
-          title
-          slug
-          imageSubstitute {
-            alt
-            url
-            title
-            fluid {
-              ...GatsbyDatoCmsFluid
-            }
-          }
+          url
+          author
         }
       }
     }

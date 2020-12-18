@@ -2,6 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import PropTypes from 'prop-types';
+import smoothscroll from 'smoothscroll-polyfill';
 
 // CREATE NEW COMPONENT
 class ScrollNextElementComponent extends React.Component {
@@ -22,12 +23,14 @@ class ScrollNextElementComponent extends React.Component {
   }
 
   componentDidMount() {
+    smoothscroll.polyfill();
     this.addTopEdgesAllElement();
     document.addEventListener('scroll', this.scrollDirectionNow);
     window.addEventListener('resize', this.addTopEdgesAllElement);
   }
 
   componentWillUnmount() {
+    smoothscroll.polyfill();
     this.addTopEdgesAllElement();
     document.removeEventListener('scroll', this.scrollDirectionNow);
     window.removeEventListener('resize', this.addTopEdgesAllElement);
