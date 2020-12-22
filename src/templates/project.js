@@ -13,11 +13,11 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const projectPageComponent = ({ data }) => {
-  const { id, problem, link, image, brand, target, process, score, job, jobTechnology, scoreStat } = data.datoCmsProject;
+  const { id, problem, link, image, brand, target, process, score, job, jobTechnology, scoreStat, seo } = data.datoCmsProject;
 
   return (
     <>
-      <Layout theme={settings}>
+      <Layout theme={settings} parameters={{ title: seo.title, description: seo.description, image: seo.image.url }}>
         <Section
           type="heroProblem"
           id={`${id}-heroProblem-id`}
@@ -101,6 +101,15 @@ export const projectPageQuery = graphql`
         value
         percent
         description
+      }
+      seo {
+        title
+        description
+        twitterCard
+        image {
+          id
+          url
+        }
       }
     }
     allDatoCmsProject {
