@@ -23,9 +23,10 @@ const ModalMenuComponent = props => {
         datoCmsSetting {
           mainMenu {
             id
+            url
             slug
-            title
             icon
+            title
           }
         }
         datoCmsSettingsContact {
@@ -60,17 +61,15 @@ const ModalMenuComponent = props => {
             <Row newClass="rowContent">
               <MainManu theme={settings}>
                 {datoCmsSetting.mainMenu.map(item => {
-                  const slug = item.slug.slice(14, item.slug.length);
-
-                  switch (item.slug.search('nan.nz') > 0 ? 1 : 0) {
-                    case 1:
+                  switch (item.url) {
+                    case false:
                       return (
                         <Button
                           type="linkIn"
                           id={item.id}
                           key={item.id}
                           parameters={{ newClass: 'buttonMenu', color: null }}
-                          content={{ title: item.title, to: slug }}
+                          content={{ title: item.title, to: item.slug }}
                         >
                           <Icon type={item.icon} parameters={{ color: 'primary', size: 9, newClass: 'iconMenu' }} />
                           <Title theme={settings}>{item.title}</Title>
@@ -83,7 +82,7 @@ const ModalMenuComponent = props => {
                           id={item.id}
                           key={item.id}
                           parameters={{ newClass: 'buttonMenu', color: null }}
-                          content={{ title: item.title, to: slug }}
+                          content={{ title: item.title, to: item.slug }}
                         >
                           <Icon type={item.icon} parameters={{ color: 'primary', size: 9, newClass: 'iconMenu' }} />
                           <Title theme={settings}>{item.title}</Title>
