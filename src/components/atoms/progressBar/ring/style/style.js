@@ -15,9 +15,10 @@ export const ProgressBarBoxOptions = styled.div`
     }
   }
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    width: 33.3333%;
-    flex: 33.3333%;
     padding: 0 0;
+    flex: 33.3333%;
+    max-width: 33.3333%;
+
     &:nth-child(0n + 1) {
       justify-content: flex-start;
     }

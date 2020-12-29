@@ -41,8 +41,9 @@ const SectionTriangleComponent = props => {
                           color: null,
                         }}
                       >
-                        {category.title}
-                        {item.category.length > 1 && i < item.category.length && ' /'}
+                        {item.category.length === 1 && category.title}
+                        {item.category.length > 1 && i === 0 && category.title}
+                        {item.category.length > 1 && i > 0 && `, ${category.title}`}
                       </Button>
                     );
                   })}
@@ -59,7 +60,10 @@ const SectionTriangleComponent = props => {
                     color: index % 3 === 0 || index === 0 ? 'primary' : `${index % 2 === 0 ? 'secondary' : 'primary'}`,
                   }}
                 />
-                <BoxImage>
+                <BoxImage
+                  settings={settings}
+                  site={index % 3 === 0 || index === 0 ? 'center' : `${(index - 1) % 3 || index === 0 ? 'right' : 'left'}`}
+                >
                   <Image settings={settings} fluid={item.imageSubstitute.fluid} className="image" />
                 </BoxImage>
               </Box>

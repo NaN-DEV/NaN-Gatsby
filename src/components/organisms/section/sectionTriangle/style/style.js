@@ -108,7 +108,6 @@ export const Article = styled.article`
       }
     }}
     ${props => {
-      console.log(props.articlePosition);
       switch (props.articlePosition) {
         case 'left':
           return css`
@@ -128,34 +127,34 @@ export const Article = styled.article`
             justify-content: flex-end;
             .row {
               margin: 0 0;
-
-              flex-direction: column-reverse;
+              flex-direction: column;
               max-width: ${props.settings.max_width_half};
 
               .box {
-                justify-content: flex-end !important;
+                justify-content: flex-start !important;
               }
 
               .image {
-                top: 0;
                 right: 0;
-                left: auto !important;
-                bottom: auto !important;
-                transform: rotate(-180deg);
+                bottom: 0;
+                left: auto;
               }
 
               .triangle {
-                top: 0;
                 right: 0;
-                left: auto !important;
-                bottom: auto !important;
-                transform: rotate(-180deg);
+                bottom: 0;
+                left: auto;
+                transform: scaleX(-1);
+              }
+              .buttonMore {
+                right: auto;
+                left: ${props.settings.break};
               }
             }
           `;
         default:
           return css`
-            justify-content: center;
+            justify-content: flex-start;
           `;
       }
     }}
@@ -217,14 +216,31 @@ export const Category = styled.div`
 `;
 
 export const BoxImage = styled.div`
+  left: 0;
   z-index: 0;
-  left: 0rem;
   bottom: 0rem;
   width: 60rem;
   height: auto;
   max-width: 100%;
   position: absolute;
   padding-right: 12rem;
+
+  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
+    ${props => {
+      switch (props.site) {
+        case 'left':
+          return css`
+            right: 0;
+            left: auto;
+            padding-right: 0;
+            padding-left: 12rem;
+          `;
+
+        default:
+          return null;
+      }
+    }}
+  }
 `;
 
 export const Image = styled(GatsbyImage)`

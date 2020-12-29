@@ -98,7 +98,9 @@ export const BoxOptions = styled.div`
   flex-wrap: wrap;
   padding-top: 9rem;
   position: relative;
+  align-items: center;
   justify-content: center;
+  flex-direction: row-reverse;
 
   &::after {
     top: 3rem;
