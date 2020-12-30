@@ -86,15 +86,6 @@ export const projectPageQuery = graphql`
           ...GatsbyDatoCmsFluid
         }
       }
-      projectMenager {
-        name
-        surname
-        image {
-          fluid(maxWidth: 220) {
-            ...GatsbyDatoCmsFluid
-          }
-        }
-      }
 
       jobTechnology {
         id
