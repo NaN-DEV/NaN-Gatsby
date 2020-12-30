@@ -63,7 +63,6 @@ export const portfolioPageQuery = graphql`
     datoCmsPortfolio(id: { eq: $id }) {
       id
       title
-      excerpt
       description
     }
     allDatoCmsProject {
@@ -73,9 +72,8 @@ export const portfolioPageQuery = graphql`
         slug
         title
         image {
-          alt
-          title
           url
+          title
           fluid {
             ...GatsbyDatoCmsFluid
           }
@@ -91,7 +89,6 @@ export const portfolioPageQuery = graphql`
         id
         slug
         title
-        excerpt
         tag {
           id
           title
