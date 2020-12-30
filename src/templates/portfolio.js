@@ -69,8 +69,9 @@ export const portfolioPageQuery = graphql`
     allDatoCmsProject {
       nodes {
         id
-        title
+        link
         slug
+        title
         image {
           alt
           title

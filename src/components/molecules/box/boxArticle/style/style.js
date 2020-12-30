@@ -4,8 +4,8 @@ import BackgroundImage from 'gatsby-background-image';
 export const Article = styled.article`
   width: 100%;
   height: 100%;
-  padding: 0 0 3rem 0;
   position: relative;
+  padding-bottom: 3rem;
 
   .linkArticle {
     padding: 0;
@@ -36,10 +36,7 @@ export const Image = styled(BackgroundImage)`
 `;
 
 export const Title = styled.p`
-  padding-top: 0.3rem;
+  font-size: 2.4rem;
+  padding-top: 1.5rem;
   font-weight: normal;
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    font-size: 2.4rem;
-    padding-top: 1.5rem;
-  }
 `;

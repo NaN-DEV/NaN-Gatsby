@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // IMPORT STYLE
-import { Section, Left, Right, Brand, Title, BigImage } from './style/style';
+import { Section, Box, Title, BigImage } from './style/style';
 
 // IMPORT SETTINGS STYLE
 import settings from '../../../../layouts/settings/settings';
@@ -23,13 +23,7 @@ const IdentificationProject = props => {
     <>
       <Section theme={settings} id={id} key={key} style={parameters.style} className={parameters.newClass}>
         <Row theme={settings} newClass="row">
-          <Left theme={settings}>
-            <Brand theme={settings} fluid={content.brand.fluid} />
-            <Title id={id} theme={settings}>
-              Start
-            </Title>
-          </Left>
-          <Right theme={settings}>
+          <Box theme={settings}>
             <Title theme={settings}>{content.link}</Title>
             <Button
               type="linkOut"
@@ -39,7 +33,7 @@ const IdentificationProject = props => {
               Zobacz na żywo
             </Button>
             <BigImage theme={settings} fluid={content.image.fluid} />
-          </Right>
+          </Box>
         </Row>
       </Section>
     </>

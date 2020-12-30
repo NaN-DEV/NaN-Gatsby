@@ -58,7 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   let posts = [];
   let categorys = [];
-  const postsPerPage = 2;
+  const postsPerPage = 9;
   let postInCategoryAll = [];
   const numPages = postsAll => {
     return Math.ceil(postsAll.length / postsPerPage);

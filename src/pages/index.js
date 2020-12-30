@@ -67,7 +67,7 @@ export const query = graphql`
         imageSubstitute {
           alt
           author
-          fluid {
+          fluid(maxWidth: 480) {
             ...GatsbyDatoCmsFluid
           }
         }

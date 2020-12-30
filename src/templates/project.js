@@ -13,7 +13,7 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const projectPageComponent = ({ data }) => {
-  const { id, problem, link, image, brand, target, process, score, job, jobTechnology, scoreStat, seo } = data.datoCmsProject;
+  const { id, problem, link, image, projectMenager, target, process, score, job, jobTechnology, scoreStat, seo } = data.datoCmsProject;
 
   return (
     <>
@@ -27,7 +27,7 @@ const projectPageComponent = ({ data }) => {
         />
         <Section
           type="identificationProject"
-          content={{ link, image, brand }}
+          content={{ link, image, projectMenager }}
           parameters={{ color: 'primary' }}
           id={`${id}-identificationProject-id`}
           key={`${id}-identificationProject-key`}
@@ -82,15 +82,20 @@ export const projectPageQuery = graphql`
       problem
       process
       image {
-        fluid {
+        fluid(maxWidth: 1200) {
           ...GatsbyDatoCmsFluid
         }
       }
-      brand {
-        fluid {
-          ...GatsbyDatoCmsFluid
+      projectMenager {
+        name
+        surname
+        image {
+          fluid(maxWidth: 220) {
+            ...GatsbyDatoCmsFluid
+          }
         }
       }
+
       jobTechnology {
         id
         icon

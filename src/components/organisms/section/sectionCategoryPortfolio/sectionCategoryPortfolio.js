@@ -49,7 +49,7 @@ class sectionCategoryServicesComponent extends React.Component {
   render() {
     const { allArticleInCategory, thisIndexCategory } = this.state;
     const { id, key, content, parameters, newStyle, newClass } = this.props;
-
+    console.log(content);
     return (
       <>
         <Section
@@ -99,7 +99,7 @@ class sectionCategoryServicesComponent extends React.Component {
                           <Article
                             type="article"
                             image={article.image}
-                            title={article.title}
+                            title={article.link}
                             id={`${article.id}-id`}
                             key={`${article.id}-key`}
                             to={`/service/${article.slug}`}
@@ -116,7 +116,7 @@ class sectionCategoryServicesComponent extends React.Component {
                           <Article
                             type="article"
                             image={article.image}
-                            title={article.title}
+                            title={article.link}
                             id={`${article.id}-id`}
                             key={`${article.id}-key`}
                             to={`/project/${article.slug}`}
