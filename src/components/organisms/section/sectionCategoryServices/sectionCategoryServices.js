@@ -99,7 +99,7 @@ class sectionCategoryServicesComponent extends React.Component {
                           <Article
                             type="article"
                             image={article.image}
-                            title={article.title}
+                            title={article.tag.title}
                             id={`${article.id}-id`}
                             key={`${article.id}-key`}
                             to={`/service/${article.slug}`}
@@ -116,7 +116,7 @@ class sectionCategoryServicesComponent extends React.Component {
                           <Article
                             type="article"
                             image={article.image}
-                            title={article.title}
+                            title={article.tag.title}
                             id={`${article.id}-id`}
                             key={`${article.id}-key`}
                             to={`/service/${article.slug}`}

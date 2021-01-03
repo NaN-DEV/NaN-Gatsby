@@ -4,19 +4,18 @@ import PropTypes from 'prop-types';
 
 // Import component
 import Sell from './sectionSell/sectionSell';
-import HeroClassic from './heroClassic/heroClassic';
 import SellAds from './sectionSellAds/sectionSellAds';
 import NotFoundPage from './notFoundPage/notFoundPage';
 import IdExpert from './sectionIdExpert/sectionIdExpert';
 import Triangle from './sectionTriangle/sectionTriangle';
 import FullText from './sectionFullText/sectionFullText';
 import ListSkils from './sectionListSkils/sectionListSkils';
-import ServiceContent from './serviceContent/serviceContent';
 import SectionContact from './sectionContact/sectionContact';
 import HeroExcerpt from './sectionHeroExcerpt/sectionHeroExcerpt';
 import FullExcerpt from './sectionFullExcerpt/sectionFullExcerpt';
 import HeroProblem from './sectionHeroProblem/sectionHeroProblem';
 import Scrambler from './sectionScramblerText/sectionScramblerText';
+import ServiceContent from './sectionServiceContent/sectionServiceContent';
 import CategoryPartners from './sectionCategoryPartners/sectionCategoryPartners';
 import CategoryServices from './sectionCategoryServices/sectionCategoryServices';
 import CategoryPortfolio from './sectionCategoryPortfolio/sectionCategoryPortfolio';
@@ -24,7 +23,7 @@ import IdentificationProject from './sectionIdentificationProject/sectionIdentif
 
 // Create new component
 const SectionComponent = props => {
-  const { id, key, type, title, color, newClass, newStyle, description, parameters, content } = props;
+  const { id, key, type, parameters, content } = props;
 
   // Select section
   const renderSwitchWrap = wrap => {
@@ -59,12 +58,7 @@ const SectionComponent = props => {
             <NotFoundPage id={id} key={key} />
           </>
         );
-      case 'heroClassic':
-        return (
-          <>
-            <HeroClassic id={id} color={color} newClass={newClass} newStyle={newStyle} title={title} description={description} />
-          </>
-        );
+
       case 'heroExcerpt':
         return (
           <>
@@ -129,7 +123,7 @@ const SectionComponent = props => {
       case 'serviceContent':
         return (
           <>
-            <ServiceContent id={id} newClass={newClass} newStyle={newStyle} content={content} />
+            <ServiceContent id={id} key={key} content={content} parameters={parameters} />
           </>
         );
       case 'contact':

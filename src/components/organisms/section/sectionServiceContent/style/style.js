@@ -2,42 +2,60 @@ import styled from 'styled-components';
 import GatsbyImage from 'gatsby-image';
 
 export const Section = styled.section`
+  padding: 0;
   width: 100%;
   display: block;
-  padding: 3rem 0;
   position: relative;
   color: ${props => props.theme.secondary};
-  padding: ${props => props.theme.break} 0;
   background-color: ${props => props.theme.primary};
-`;
 
-export const BoxContent = styled.section`
-  flex: 100%;
-  display: flex;
-  max-width: 100%;
-  flex-wrap: wrap;
-  position: relative;
-
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    flex: calc(100% - 25rem);
-    max-width: calc(100% - 25rem);
+  .row {
+    padding: 0 1.5rem;
   }
 `;
 
-export const BoxSell = styled.div`
+export const Box = styled.div`
+  flex: 100%;
+  max-width: 100%;
+  position: relative;
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  .row {
+    padding: 1.5rem 0;
+  }
+
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    flex: calc(100% - 30rem);
+    max-width: calc(100% - 30rem);
+
+    .row {
+      padding: 6rem 0;
+    }
+  }
+`;
+
+export const Sell = styled.div`
   left: 0;
   bottom: 0;
   width: 100%;
+  z-index: 999;
   display: block;
   position: fixed;
+  padding: 1.5rem;
+  background-color: ${props => props.theme.primary};
 
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     left: auto;
     bottom: auto;
-    width: 25rem;
+    width: 30rem;
     display: block;
-    padding: 0 1.5rem;
     position: relative;
+    padding-left: 1.5rem;
   }
 `;
 
@@ -45,110 +63,89 @@ export const Avatar = styled.div`
   display: none;
 
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    width: 100%;
-    height: 20rem;
+    width: 30rem;
+    height: 30rem;
     display: block;
+    max-width: 100%;
     overflow: hidden;
+    padding-top: 3rem;
     margin-bottom: 3rem;
-    padding-top: 1.5rem;
     background-color: #fff;
     background-color: rgba(255, 255, 255, 0.1);
   }
 `;
 
-export const BoxAvatar = styled.div`
-  width: 100%;
-  display: block;
-
-  button {
-    margin: 1.5rem auto;
-  }
-
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    width: 22rem;
-    min-height: 30rem;
-    position: relative;
-  }
-`;
-
-export const BoxNumeration = styled.div`
+export const Number = styled.div`
   flex: 100%;
   display: block;
   max-width: 100%;
-  margin: 3rem 0;
   position: relative;
+  padding-bottom: 1.5rem;
+
+  .box {
+    display: flex;
+    min-height: 25rem;
+    align-items: center;
+  }
 
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    flex: 25rem;
-    margin: 3rem 0;
-    max-width: 25rem;
+    flex: 30rem;
+    max-width: 30rem;
+
+    .box {
+      min-height: 30rem;
+    }
   }
 `;
 
-export const BoxPoint = styled.div`
+export const Point = styled.div`
+  flex: 100%;
   width: 100%;
-  display: flex;
-  overflow: hidden;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    min-height: 23rem;
-  }
-`;
-
-export const Point = styled.h1`
-  display: none;
-
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    opacity: 0.2;
-    display: block;
-    line-height: 1;
-    font-size: 30rem;
-    position: absolute;
-  }
-`;
-
-export const Title = styled.p`
+  opacity: 0.2;
   display: block;
-  font-size: 1.8rem;
+  line-height: 1;
+  font-size: 30rem;
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    font-size: 40rem;
+  }
+`;
+
+export const Title = styled.h1`
+  flex: 100%;
+  width: 100%;
+  display: block;
+  font-size: 3rem;
   font-weight: bold;
   text-align: center;
   letter-spacing: 0.3rem;
 `;
 
-export const Content = styled.div`
+export const Description = styled.div`
   flex: 100%;
-  display: block;
-  margin: 3rem 0;
+  width: 100%;
+  display: flex;
   max-width: 100%;
-  min-height: 23rem;
-  text-align: center;
-  position: relative;
-
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    text-align: left;
-    flex: calc(100% - 25rem);
-    max-width: calc(100% - 25rem);
-  }
-`;
-
-export const Description = styled.p`
-  display: block;
-  line-height: 1.6;
-  font-size: 1.8rem;
+  flex-wrap: wrap;
+  font-size: 2rem;
   text-align: center;
 
   p {
-    padding-bottom: 1.5rem;
-  }
-  strong {
-    letter-spacing: 0.3rem;
+    flex: 100%;
+    display: block;
+    max-width: 100%;
+    position: relative;
   }
 
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    padding: 0 3rem;
+    font-size: 3rem;
     text-align: left;
+    min-height: 30rem;
+    max-width: calc(100% - 30rem);
   }
 `;
 

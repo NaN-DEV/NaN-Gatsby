@@ -12,18 +12,25 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const servicesPageComponent = props => {
-  const { datoCmsServiceCategory, allDatoCmsService, allDatoCmsServiceCategory } = props.data;
+  const { datoCmsServiceCategory, allDatoCmsService, allDatoCmsServiceCategory, datoCmsServicesCategory } = props.data;
 
   return (
     <>
-      <Layout theme={settings}>
+      <Layout
+        theme={settings}
+        parameters={{
+          title: datoCmsServiceCategory ? datoCmsServiceCategory.seo.title : datoCmsServicesCategory.seo.title,
+          description: datoCmsServiceCategory ? datoCmsServiceCategory.seo.description : datoCmsServicesCategory.seo.description,
+          image: datoCmsServiceCategory ? datoCmsServiceCategory.seo.image.url : datoCmsServicesCategory.seo.image.url,
+        }}
+      >
         <Section
           type="heroExcerpt"
           id={`${props.pageContext.id}-heroExcerpt-id`}
           key={`${props.pageContext.id}-heroExcerpt-key`}
           content={{
-            excerpt: props.pageContext.id === 'all' ? 'Chętnie pomogę !' : datoCmsServiceCategory.excerpt,
-            title: props.pageContext.id === 'all' ? 'Planujesz jakiś projekt ?' : datoCmsServiceCategory.title,
+            title: props.pageContext.id === 'all' ? datoCmsServicesCategory.title : datoCmsServiceCategory.title,
+            excerpt: props.pageContext.id === 'all' ? datoCmsServicesCategory.excerpt : datoCmsServiceCategory.excerpt,
           }}
         />
 
@@ -33,10 +40,7 @@ const servicesPageComponent = props => {
           key={`${props.pageContext.id}-fullExcerpt-key`}
           content={{
             title: 'Hej !',
-            description:
-              props.pageContext.id === 'all'
-                ? 'Rozumiem ze szukasz podwykonawcy do urzeczywistnienia Twoich marzeń ... spoko na luzie. Programowanie to moja pasja, tak wiec chętnie zaangażuje się w projekt. Poniej znajdziesz listę usług jakie moge dla Ciebie wykonać wraz z moimi przyjacółmi, jednak jeżeli czegoś Ci brakuje lub masz pytania śmiało pisz na hello@nan.nz ... nie gryzę jestem szczepiony i mam maseczkę, więc myślę że się dogadamy :)'
-                : datoCmsServiceCategory.description,
+            description: props.pageContext.id === 'all' ? datoCmsServicesCategory.description : datoCmsServiceCategory.description,
           }}
         />
 
@@ -66,12 +70,25 @@ export const portfolioPageQuery = graphql`
       title
       excerpt
       description
+      seo {
+        title
+        twitterCard
+        description
+        image {
+          id
+          url
+          author
+        }
+      }
     }
     allDatoCmsService {
       nodes {
         id
         title
         slug
+        tag {
+          title
+        }
         image {
           alt
           title
@@ -95,6 +112,22 @@ export const portfolioPageQuery = graphql`
         tag {
           id
           title
+        }
+      }
+    }
+    datoCmsServicesCategory {
+      id
+      title
+      excerpt
+      description
+      seo {
+        title
+        twitterCard
+        description
+        image {
+          id
+          url
+          author
         }
       }
     }

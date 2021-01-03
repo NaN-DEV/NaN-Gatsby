@@ -12,12 +12,28 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const servicePageComponent = ({ data }) => {
-  const { id, title, excerpt, content } = data.datoCmsService;
+  const { id, seo, title, excerpt, content } = data.datoCmsService;
   return (
     <>
-      <Layout theme={settings} key={`${id}-servicePageComponent-section-key`} id={`${id}-servicePageComponent-section-id`} color="primary">
-        <Section id={id} type="heroClassic" title={title} description={excerpt} />
-        <Section id={id} type="serviceContent" content={content} />
+      <Layout
+        theme={settings}
+        parameters={{
+          title: seo ? seo.title : null,
+          image: seo ? seo.image.url : null,
+          description: seo ? seo.description : null,
+        }}
+      >
+        <Section
+          type="heroExcerpt"
+          id={`${id}-heroExcerpt-id`}
+          key={`${id}-heroExcerpt-key`}
+          content={{
+            title,
+            excerpt,
+          }}
+        />
+        <Section id={id} type="serviceContent" content={{ description: content }} />
+        <Section type="sellAds" />
       </Layout>
     </>
   );
@@ -30,12 +46,22 @@ export const servicePageQuery = graphql`
       id
       title
       excerpt
+      seo {
+        title
+        twitterCard
+        description
+        image {
+          id
+          url
+          author
+        }
+      }
       content {
         id
         title
         description
         image {
-          fluid {
+          fluid(maxWidth: 1920) {
             ...GatsbyDatoCmsFluid
           }
         }

@@ -16,12 +16,14 @@ const SellPageComponent = () => {
       <Layout theme={settings}>
         {/* HERO SECCTION */}
         <Section
-          id="SellPageComponent-id"
-          type="heroClassic"
-          title="Uzyskaj szybką  wycenę !"
-          description="Wypełnij ten prosty formularz. Nasz zespół skontaktuje się z Tobą niezwłocznie, aby omówić kolejne kroki."
+          type="heroExcerpt"
+          id="sellPageComponent-id"
+          key="sellPageComponent-key"
+          content={{
+            title: 'Uzyskaj szybką wycenę za darmo !',
+            excerpt: 'Wypełnij formularz lub zadzwoń +48 888 333 885',
+          }}
         />
-
         <Section type="sell" color="primary" target="classic" />
       </Layout>
     </>

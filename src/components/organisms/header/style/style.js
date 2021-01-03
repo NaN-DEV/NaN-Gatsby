@@ -9,7 +9,7 @@ export const Header = styled.header`
   top: 0;
   left: 0;
   ${cssHeader}
-  z-index: 999;
+  z-index: 9999;
   display: flex;
   position: fixed;
   background: black;

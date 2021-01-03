@@ -14,11 +14,13 @@ const ContactPageComponent = ({ data }) => (
   <>
     <Layout theme={settings}>
       <Section
-        type="heroClassic"
-        title="Dane Kontaktowe"
-        description="Poznajmy się"
-        id={`${data.datoCmsSettingsContact.id}-heroClassic-id`}
-        key={`${data.datoCmsSettingsContact.id}-heroClassic-key`}
+        type="heroExcerpt"
+        id={`${data.datoCmsSettingsContact.id}-heroExcerpt-id`}
+        key={`${data.datoCmsSettingsContact.id}-heroExcerpt-key`}
+        content={{
+          title: 'Dane Kontaktowe',
+          excerpt: 'Poznajmy się',
+        }}
       />
       <Section
         type="contact"
