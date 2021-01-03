@@ -12,7 +12,7 @@ export const ModalBox = styled.div`
   outline: 0;
   width: 100%;
   height: 100%;
-  z-index: 9999;
+  z-index: 99999;
   display: block;
   position: fixed;
   overflow-y: auto;
