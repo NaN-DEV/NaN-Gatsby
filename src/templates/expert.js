@@ -12,7 +12,7 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const expertPage = ({ data }) => {
-  const { id, seo, image, name, surname, title, excerpt, portfolio, description, content, passions } = data.datoCmsExpert;
+  const { id, seo, image, name, surname, title, excerpt, portfolio, description, content, stack, passions } = data.datoCmsExpert;
 
   return (
     <>
@@ -20,6 +20,7 @@ const expertPage = ({ data }) => {
         <Section half type="heroExcerpt" id={`${id}-id`} key={`${id}-key`} content={{ title, excerpt }} />
         <Section type="idExpert" id={`${id}-idExpert-id`} key={`${id}-idExpert-key`} content={{ image, name, surname, portfolio, description }} />
         <Section type="listSkils" id={`${id}-listSkils-id`} key={`${id}-listSkils-key`} content={{ skils: content }} />
+        <Section type="fullText" content={{ title: 'Stack', tags: stack }} parameters={{ color: 'tertiary_1' }} />
         <Section type="fullText" content={{ title: 'Pasje', description: passions }} parameters={{ color: 'tertiary_4' }} />
         <Section type="sellAds" />
       </Layout>
@@ -39,6 +40,9 @@ export const expertPageQuery = graphql`
       passions
       portfolio
       description
+      stack {
+        title
+      }
       image {
         fluid {
           ...GatsbyDatoCmsFluid

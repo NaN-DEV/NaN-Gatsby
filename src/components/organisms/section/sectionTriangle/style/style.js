@@ -209,9 +209,11 @@ export const Category = styled.div`
   width: 100%;
   display: flex;
   position: relative;
+
   a {
     font-size: 1.8rem;
     font-weight: normal;
+    text-transform: lowercase;
   }
 `;
 

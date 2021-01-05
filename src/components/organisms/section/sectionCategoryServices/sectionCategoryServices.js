@@ -73,7 +73,7 @@ class sectionCategoryServicesComponent extends React.Component {
                       Wszystko ( {content.articles.length} )
                     </Button>
                     {content.category.map((item, i) => {
-                      return (
+                      return item.tag.title === 'ALL' ? null : (
                         <Button
                           type="linkIn"
                           id={`${item.id}-category-id`}

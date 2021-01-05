@@ -45,22 +45,26 @@ export const Section = styled.section`
   }}
 `;
 
-export const LeftBox = styled.div`
+export const Left = styled.div`
   flex: 100%;
   width: 100%;
   position: relative;
+  padding-top: 1.5rem;
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     flex: 25rem;
     width: 25rem;
     text-align: left;
   }
 `;
-export const RightBox = styled.div`
+export const Right = styled.div`
   flex: 100%;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
+  justify-content: center;
+
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    text-align: left;
     flex: calc(100% - 25rem);
     width: calc(100% - 25rem);
   }
@@ -78,92 +82,20 @@ export const Title = styled.h1`
   }
 `;
 
-export const Description = styled.p`
+export const Box = styled.div`
   display: block;
-  text-align: center;
   position: relative;
-  font-weight: normal;
-  padding-right: ${props => props.theme.break};
-  font-family: ${props => props.theme.font_primary};
+
+  svg {
+    opacity: 0.8;
+    height: 10rem;
+    margin: 1.5rem 6rem;
+  }
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    font-size: 3rem;
-    text-align: left;
-  }
-`;
-
-export const Tag = styled.p`
-  display: block;
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    font-size: 3rem;
-  }
-`;
-
-export const BoxOptions = styled.div`
-  flex: 100%;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 9rem;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row-reverse;
-
-  &::after {
-    top: 3rem;
-    content: '';
-    width: 30vw;
-    opacity: 0.3;
-    height: 0.1rem;
-    display: block;
-    position: absolute;
-    left: calc(50% - 15vw);
-    background-color: black;
-  }
-`;
-
-export const ElementOptions = styled.div`
-  flex: 100%;
-  width: 100%;
-  display: flex;
-  padding: 3rem 0;
-  flex-wrap: wrap;
-  justify-content: center;
-  .icon {
-    display: flex;
-    justify-content: center;
     svg {
-      height: 25rem;
+      opacity: 0.8;
+      height: 15rem;
+      margin: 1.5rem 6rem;
     }
   }
-
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    width: 33.3333%;
-    flex: 33.3333%;
-    padding: 0 0;
-    &:nth-child(0n + 1) {
-      justify-content: flex-start;
-    }
-    &:nth-child(0n + 2) {
-      justify-content: center;
-    }
-    &:nth-child(0n + 3) {
-      justify-content: flex-end;
-    }
-  }
-`;
-
-export const BoxElementOptions = styled.div`
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-export const DescriptionOptionsIcon = styled.div`
-  width: 100%;
-  max-width: 250px;
-  font-size: 2.4rem;
-  padding: 1.5rem 0;
-  text-align: center;
-  text-transform: uppercase;
 `;

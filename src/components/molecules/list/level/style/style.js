@@ -18,7 +18,7 @@ export const Li = styled.li`
   padding: 0.75rem 0;
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     flex: auto;
-    max-width: auto;
+    max-width: max-content;
     padding-right: ${props => props.theme.break};
     &:last-of-type {
       padding-right: 0;

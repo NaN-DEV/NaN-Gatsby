@@ -9,6 +9,7 @@ import NotFoundPage from './notFoundPage/notFoundPage';
 import IdExpert from './sectionIdExpert/sectionIdExpert';
 import Triangle from './sectionTriangle/sectionTriangle';
 import FullText from './sectionFullText/sectionFullText';
+import FullIcon from './sectionFullIcon/sectionFullIcon';
 import ListSkils from './sectionListSkils/sectionListSkils';
 import SectionContact from './sectionContact/sectionContact';
 import HeroExcerpt from './sectionHeroExcerpt/sectionHeroExcerpt';
@@ -87,6 +88,12 @@ const SectionComponent = props => {
         return (
           <>
             <FullText id={id} key={key} content={content} parameters={parameters} />
+          </>
+        );
+      case 'fullIcon':
+        return (
+          <>
+            <FullIcon id={id} key={key} content={content} parameters={parameters} />
           </>
         );
       case 'fullExcerpt':

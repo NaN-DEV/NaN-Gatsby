@@ -12,7 +12,7 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const projectPageComponent = ({ data }) => {
-  const { id, problem, link, image, projectMenager, target, process, score, job, jobTechnology, scoreStat, seo } = data.datoCmsProject;
+  const { id, problem, link, image, projectMenager, target, process, score, technology, scoreStat, seo } = data.datoCmsProject;
 
   return (
     <>
@@ -46,18 +46,19 @@ const projectPageComponent = ({ data }) => {
           content={{ title: 'Proces', description: process }}
         />
         <Section
+          type="fullIcon"
+          id={`${id}-fullText-prace-id`}
+          key={`${id}-fullText-prace-key`}
+          parameters={{ color: 'tertiary_1' }}
+          content={{ title: 'Technologie', icons: technology }}
+        />
+
+        <Section
           type="fullText"
           id={`${id}-fullText-wynik-id`}
           key={`${id}-fullText-wynik-key`}
           parameters={{ color: 'tertiary_2' }}
           content={{ title: 'Wynik', description: score, options: scoreStat }}
-        />
-        <Section
-          type="fullText"
-          id={`${id}-fullText-prace-id`}
-          key={`${id}-fullText-prace-key`}
-          parameters={{ color: 'tertiary_1' }}
-          content={{ title: 'Prace', description: job, options: jobTechnology }}
         />
 
         <Section type="sellAds" />
@@ -72,7 +73,6 @@ export const projectPageQuery = graphql`
   query projectPageComponentGraphql($id: String) {
     datoCmsProject(id: { eq: $id }) {
       id
-      job
       link
       score
       target
@@ -84,7 +84,7 @@ export const projectPageQuery = graphql`
         }
       }
 
-      jobTechnology {
+      technology {
         id
         icon
       }

@@ -9,26 +9,43 @@ import BoxIcon from './style/style';
 import settings from '../../../layouts/settings/settings';
 
 // IMPORT SVG
+
+import Js from '../../../assets/icon/js.svg';
 import Cv from '../../../assets/icon/cv.svg';
+import Git from '../../../assets/icon/git.svg';
+import Npm from '../../../assets/icon/npm.svg';
+import Css from '../../../assets/icon/css.svg';
 import Ask from '../../../assets/icon/ask.svg';
 import Ux from '../../../assets/icon/uxui.svg';
+import Php from '../../../assets/icon/php.svg';
+import Sass from '../../../assets/icon/sass.svg';
+import Node from '../../../assets/icon/node.svg';
+import Html from '../../../assets/icon/html.svg';
 import More from '../../../assets/icon/more.svg';
 import Mail from '../../../assets/icon/mail.svg';
 import Down from '../../../assets/icon/down.svg';
 import Back from '../../../assets/icon/back.svg';
 import Logo from '../../../assets/brand/logo.svg';
+import Grunt from '../../../assets/icon/grunt.svg';
 import Front from '../../../assets/icon/front.svg';
 import Phone from '../../../assets/icon/phone.svg';
 import Coffe from '../../../assets/icon/coffe.svg';
+import Gatsby from '../../../assets/icon/gatsby.svg';
 import Folder from '../../../assets/icon/folder.svg';
 import Closed from '../../../assets/icon/closed.svg';
 import People from '../../../assets/icon/people.svg';
+import ReactJs from '../../../assets/icon/reactJs.svg';
 import Twitter from '../../../assets/icon/twitter.svg';
 import Website from '../../../assets/icon/website.svg';
+import Webpack from '../../../assets/icon/webpack.svg';
+import Graphql from '../../../assets/icon/graphql.svg';
+import Datocms from '../../../assets/icon/datocms.svg';
+import Netlify from '../../../assets/icon/netlify.svg';
 import Facebook from '../../../assets/icon/facebook.svg';
 import Computer from '../../../assets/icon/computer.svg';
 import Triangle from '../../../assets/icon/triangle.svg';
 import Settings from '../../../assets/icon/settings.svg';
+import Wordpress from '../../../assets/icon/wordpress.svg';
 import Hamburger from '../../../assets/icon/hamburger.svg';
 import Conversation from '../../../assets/icon/conversation.svg';
 import Notification from '../../../assets/icon/notification.svg';
@@ -38,6 +55,20 @@ const IconComponent = props => {
   const { id, key, type, parameters } = props;
 
   switch (type) {
+    case 'js':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Js />
+        </BoxIcon>
+      );
     case 'cv':
       return (
         <BoxIcon
@@ -50,6 +81,51 @@ const IconComponent = props => {
           className={parameters.newClass}
         >
           <Cv />
+        </BoxIcon>
+      );
+
+    case 'git':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Git />
+        </BoxIcon>
+      );
+
+    case 'npm':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Npm />
+        </BoxIcon>
+      );
+
+    case 'css':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Css />
         </BoxIcon>
       );
 
@@ -81,6 +157,67 @@ const IconComponent = props => {
           <Ux />
         </BoxIcon>
       );
+
+    case 'php':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Php />
+        </BoxIcon>
+      );
+
+    case 'sass':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Sass />
+        </BoxIcon>
+      );
+
+    case 'node':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Node />
+        </BoxIcon>
+      );
+
+    case 'html':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Html />
+        </BoxIcon>
+      );
+
     case 'more':
       return (
         <BoxIcon
@@ -151,6 +288,22 @@ const IconComponent = props => {
           <Logo />
         </BoxIcon>
       );
+
+    case 'grunt':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Grunt />
+        </BoxIcon>
+      );
+
     case 'front-end':
       return (
         <BoxIcon
@@ -193,6 +346,22 @@ const IconComponent = props => {
           <Coffe />
         </BoxIcon>
       );
+
+    case 'gatsby':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Gatsby />
+        </BoxIcon>
+      );
+
     case 'folder':
       return (
         <BoxIcon
@@ -235,6 +404,22 @@ const IconComponent = props => {
           <People />
         </BoxIcon>
       );
+
+    case 'react.js':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <ReactJs />
+        </BoxIcon>
+      );
+
     case 'twitter':
       return (
         <BoxIcon
@@ -249,6 +434,7 @@ const IconComponent = props => {
           <Twitter />
         </BoxIcon>
       );
+
     case 'website':
       return (
         <BoxIcon
@@ -263,6 +449,67 @@ const IconComponent = props => {
           <Website />
         </BoxIcon>
       );
+
+    case 'webpack':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Webpack />
+        </BoxIcon>
+      );
+
+    case 'graphql':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Graphql />
+        </BoxIcon>
+      );
+
+    case 'datocms':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Datocms />
+        </BoxIcon>
+      );
+
+    case 'netlify':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Netlify />
+        </BoxIcon>
+      );
+
     case 'facebook':
       return (
         <BoxIcon
@@ -277,6 +524,7 @@ const IconComponent = props => {
           <Facebook />
         </BoxIcon>
       );
+
     case 'computer':
       return (
         <BoxIcon
@@ -291,6 +539,7 @@ const IconComponent = props => {
           <Computer />
         </BoxIcon>
       );
+
     case 'triangle':
       return (
         <BoxIcon
@@ -305,6 +554,7 @@ const IconComponent = props => {
           <Triangle />
         </BoxIcon>
       );
+
     case 'settings':
       return (
         <BoxIcon
@@ -319,6 +569,22 @@ const IconComponent = props => {
           <Settings />
         </BoxIcon>
       );
+
+    case 'wordpress':
+      return (
+        <BoxIcon
+          id={id}
+          key={key}
+          settings={settings}
+          size={parameters.size}
+          theme={parameters.color}
+          style={parameters.newStyle}
+          className={parameters.newClass}
+        >
+          <Wordpress />
+        </BoxIcon>
+      );
+
     case 'hamburger':
       return (
         <BoxIcon

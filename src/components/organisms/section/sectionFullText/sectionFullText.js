@@ -3,7 +3,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Import style
-import { LeftBox, RightBox, Title, Section, BoxOptions, Description, ElementOptions, BoxElementOptions, DescriptionOptionsIcon } from './style/style';
+import {
+  LeftBox,
+  RightBox,
+  Title,
+  Section,
+  BoxOptions,
+  Description,
+  Tag,
+  ElementOptions,
+  BoxElementOptions,
+  DescriptionOptionsIcon,
+} from './style/style';
 
 // Import settings style
 import settings from '../../../../layouts/settings/settings';
@@ -11,6 +22,7 @@ import settings from '../../../../layouts/settings/settings';
 // Import component
 import Row from '../../../atoms/row/row';
 import Icon from '../../../atoms/icon/icon';
+import List from '../../../molecules/list/list';
 import Sticky from '../../../atoms/sticky/sticky';
 import ProgressBar from '../../../atoms/progressBar/progressBar';
 
@@ -30,7 +42,15 @@ const SectionFullText = props => {
             </Sticky>
           </LeftBox>
           <RightBox theme={settings}>
-            <Description theme={settings}>{content.description ? `${content.description}` : 'Add Description'}</Description>
+            {content.description && <Description theme={settings}>{content.description}</Description>}
+
+            {content.tags && (
+              <List type="level">
+                {content.tags.map(tag => {
+                  return <Tag theme={settings}>#{tag.title}, </Tag>;
+                })}
+              </List>
+            )}
             {content.options ? (
               <BoxOptions theme={settings}>
                 {content.options.length > 0 && content.options[0].icon
