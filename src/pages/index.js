@@ -63,6 +63,10 @@ export const query = graphql`
           id
           slug
           title
+          tag {
+            id
+            title
+          }
         }
         imageSubstitute {
           alt

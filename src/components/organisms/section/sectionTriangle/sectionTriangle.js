@@ -41,9 +41,9 @@ const SectionTriangleComponent = props => {
                           color: null,
                         }}
                       >
-                        {item.category.length === 1 && category.title}
-                        {item.category.length > 1 && i === 0 && category.title}
-                        {item.category.length > 1 && i > 0 && `, ${category.title}`}
+                        {item.category.length === 1 && category.tag.title}
+                        {item.category.length > 1 && i === 0 && category.tag.title}
+                        {item.category.length > 1 && i > 0 && `, ${category.tag.title}`}
                       </Button>
                     );
                   })}
