@@ -102,7 +102,7 @@ class sectionCategoryServicesComponent extends React.Component {
                             title={article.link}
                             id={`${article.id}-id`}
                             key={`${article.id}-key`}
-                            to={`/service/${article.slug}`}
+                            to={`/project/${article.slug}`}
                           />
                         </BoxArticle>
                       )
