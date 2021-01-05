@@ -11,7 +11,13 @@ import Section from '../components/organisms/section/section';
 // CREATE NEW COMPONENT
 const NotFoundPage = () => (
   <>
-    <Layout theme={settings}>
+    <Layout
+      theme={settings}
+      parameters={{
+        title: 'Upssss 404',
+        description: 'Coś poszło nie tak błąd 404',
+      }}
+    >
       <Section type="notFoundPage" />
     </Layout>
   </>

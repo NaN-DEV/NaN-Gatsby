@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 // Import component
 import Sell from './sectionSell/sectionSell';
 import SellAds from './sectionSellAds/sectionSellAds';
-import NotFoundPage from './notFoundPage/notFoundPage';
 import IdExpert from './sectionIdExpert/sectionIdExpert';
 import Triangle from './sectionTriangle/sectionTriangle';
 import FullText from './sectionFullText/sectionFullText';
@@ -16,6 +15,8 @@ import HeroExcerpt from './sectionHeroExcerpt/sectionHeroExcerpt';
 import FullExcerpt from './sectionFullExcerpt/sectionFullExcerpt';
 import HeroProblem from './sectionHeroProblem/sectionHeroProblem';
 import Scrambler from './sectionScramblerText/sectionScramblerText';
+import NotFoundPage from './sectionNotFoundPage/sectionNotFoundPage';
+import PointContent from './sectionPointContent/sectionPointContent';
 import ServiceContent from './sectionServiceContent/sectionServiceContent';
 import CategoryPartners from './sectionCategoryPartners/sectionCategoryPartners';
 import CategoryServices from './sectionCategoryServices/sectionCategoryServices';
@@ -131,6 +132,12 @@ const SectionComponent = props => {
         return (
           <>
             <ServiceContent id={id} key={key} content={content} parameters={parameters} />
+          </>
+        );
+      case 'pointContent':
+        return (
+          <>
+            <PointContent id={id} key={key} content={content} parameters={parameters} />
           </>
         );
       case 'contact':

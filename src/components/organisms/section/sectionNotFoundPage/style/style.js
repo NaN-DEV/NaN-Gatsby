@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  margin: 0;
-  padding: 0;
   width: 100%;
-  min-height: calc(100vh - 6rem);
+  position: relative;
+  min-height: calc(100vh - 7rem);
+  padding: ${props => props.theme.break};
   background-color: ${props => props.theme.primary};
 
   .row {
@@ -14,35 +14,45 @@ export const Section = styled.section`
   }
 
   .mascot {
-    width: 12rem;
+    left: 5rem;
+    width: 19rem;
     display: block;
     position: absolute;
-    left: ${props => props.theme.break};
     bottom: ${props => props.theme.break};
   }
 
   .triangle {
+    z-index: 10;
+    width: 100%;
+    height: auto;
     display: block;
+    max-width: 60rem;
     position: absolute;
-    left: ${props => props.theme.break};
-    bottom: ${props => props.theme.break};
+    bottom: 0;
+    left: 0;
+
+    svg {
+      width: 100%;
+      height: auto;
+      max-width: 60rem;
+    }
   }
   @media (min-width: ${props => `${props.theme.breakpoint_mobile}px`}) {
     .mascot {
-      left: 1.5rem;
-      width: 15rem;
+      left: 6rem;
+      width: 30rem;
     }
   }
   @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
     .mascot {
-      left: 9rem;
-      width: 18rem;
+      left: 6rem;
+      width: 35rem;
     }
   }
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     .mascot {
-      left: 14rem;
-      width: 30rem;
+      left: 6rem;
+      width: 40rem;
     }
   }
 `;

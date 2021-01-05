@@ -28,7 +28,7 @@ const footerComponent = () => {
             <Button type="linkIn" content={{ to: '/sell', title: 'Wyceń Projekt' }} parameters={{ color: null }}>
               #Wyceń projekt
             </Button>
-            <Button type="linkIn" content={{ to: '/', title: 'Prywatnosć' }} parameters={{ color: null }}>
+            <Button type="linkIn" content={{ to: '/private-politics', title: 'Prywatnosć' }} parameters={{ color: null }}>
               #Prywatność
             </Button>
             <Button type="linkIn" content={{ to: '/contact', title: 'Kontakt' }} parameters={{ color: null }}>

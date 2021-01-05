@@ -1,6 +1,5 @@
 // IMPORT PLUGIN
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Cycler } from 'react-text-scrambler';
 
 // IMPORT STYLE
@@ -17,16 +16,15 @@ import Mascot from '../../../atoms/mascot/mascot';
 
 // CREATE NEW COMPONENT
 
-const SectionSellComponent = props => {
-  const { newStyle, newClass } = props;
-  const strings = ['Ups! Houston mamy problem!', 'Nie znalazłem tej strony :('];
+const SectionSellComponent = () => {
+  const strings = ['Ups... Houston mamy problem!', 'Nie znalazłem tej strony :('];
   return (
     <>
-      <Section theme={settings} newStyle={newStyle} className={newClass}>
-        <Row newClass="row" center>
+      <Section theme={settings}>
+        <Row newClass="row">
           <BoxContent>
             <Title theme={settings}>
-              <Cycler duration={3000} strings={strings} />
+              <Cycler duration={6000} strings={strings} />
             </Title>
             <Button type="link" content={{ title: 'Więc zobacz to :)', to: '/' }} parameters={{ newClass: 'button', colorStyle: 'secondary' }} />
           </BoxContent>
@@ -36,17 +34,6 @@ const SectionSellComponent = props => {
       </Section>
     </>
   );
-};
-
-// PropTpyes
-SectionSellComponent.propTypes = {
-  newClass: PropTypes.string,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-};
-
-SectionSellComponent.defaultProps = {
-  newClass: null,
-  newStyle: null,
 };
 
 export default SectionSellComponent;
