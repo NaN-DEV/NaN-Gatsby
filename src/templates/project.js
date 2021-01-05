@@ -5,7 +5,6 @@ import Section from '../components/organisms/section/section';
 
 // IMPORT COMPONENT
 import Layout from '../layouts/index';
-import Carousel from '../components/molecules/carusel/carusel';
 
 // IMPORT SETTINGS STYLE
 import settings from '../layouts/settings/settings';
@@ -60,8 +59,6 @@ const projectPageComponent = ({ data }) => {
           parameters={{ color: 'tertiary_1' }}
           content={{ title: 'Prace', description: job, options: jobTechnology }}
         />
-
-        <Carousel id={`${id}-carousel-prace-id`} key={`${id}-carousel-prace-key`} content={{ nodes: data.allDatoCmsProject.nodes }} />
 
         <Section type="sellAds" />
       </Layout>

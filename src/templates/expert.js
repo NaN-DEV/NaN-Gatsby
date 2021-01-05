@@ -12,18 +12,12 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const expertPage = ({ data }) => {
-  const { id, image, name, surname, joke, portfolio, description, content, passions } = data.datoCmsExpert;
+  const { id, seo, image, name, surname, title, excerpt, portfolio, description, content, passions } = data.datoCmsExpert;
 
   return (
     <>
-      <Layout theme={settings} key="expertPage">
-        <Section
-          half
-          type="heroExcerpt"
-          id={`${id}-heroExcerpt-id`}
-          key={`${id}-heroExcerpt-key`}
-          content={{ title: 'Co robię na co dzień ?', excerpt: joke }}
-        />
+      <Layout theme={settings} parameters={{ title: seo.title, description: seo.description, image: seo.image.url }}>
+        <Section half type="heroExcerpt" id={`${id}-id`} key={`${id}-key`} content={{ title, excerpt }} />
         <Section type="idExpert" id={`${id}-idExpert-id`} key={`${id}-idExpert-key`} content={{ image, name, surname, portfolio, description }} />
         <Section type="listSkils" id={`${id}-listSkils-id`} key={`${id}-listSkils-key`} content={{ skils: content }} />
         <Section type="fullText" content={{ title: 'Pasje', description: passions }} parameters={{ color: 'tertiary_4' }} />
@@ -39,7 +33,8 @@ export const expertPageQuery = graphql`
       id
       slug
       name
-      joke
+      title
+      excerpt
       surname
       passions
       portfolio
@@ -56,6 +51,16 @@ export const expertPageQuery = graphql`
         skils {
           id
           title
+        }
+      }
+      seo {
+        title
+        twitterCard
+        description
+        image {
+          id
+          url
+          author
         }
       }
     }

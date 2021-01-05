@@ -12,6 +12,9 @@ export const Section = styled.section`
   .row {
     padding: 0 1.5rem;
   }
+  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+    padding: 3rem 0;
+  }
 `;
 
 export const Box = styled.div`

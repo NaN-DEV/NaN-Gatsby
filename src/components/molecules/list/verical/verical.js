@@ -17,7 +17,7 @@ const ListLevelComponent = props => {
     <>
       <Ul theme={settings} style={newStyle} className={newClass}>
         {React.Children.map(children, child => {
-          return <Li theme={settings}>{child}</Li>;
+          return child === null ? null : <Li theme={settings}>{child}</Li>;
         })}
       </Ul>
     </>

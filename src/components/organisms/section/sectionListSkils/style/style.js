@@ -8,8 +8,7 @@ export const Section = styled.section`
   align-items: center;
   background-color: ${props => (props.dark ? props.theme.tertiary_1 : props.theme.tertiary_4)};
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    padding: 6rem 0;
-    min-height: 100vh;
+    padding: 12rem 0;
   }
 `;
 export const BoxTitle = styled.div`
@@ -28,6 +27,7 @@ export const Title = styled.h1`
   font-size: 3rem;
   text-align: center;
   position: relative;
+  text-transform: uppercase;
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
     text-align: left;
   }
@@ -54,7 +54,7 @@ export const Score = styled.p`
   text-overflow: ellipsis;
 
   @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    font-size: 35rem;
+    font-size: 30rem;
     letter-spacing: -3rem;
     font-family: ${props => props.theme.font_tertiary};
   }

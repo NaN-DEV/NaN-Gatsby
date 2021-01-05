@@ -16,25 +16,19 @@ import Row from '../../../atoms/row/row';
 class SkilsSectionComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      listTime: [],
-    };
+    this.state = {};
   }
 
-  componentDidMount() {
-    const { listTime } = this.state;
-    const { content } = this.props;
+  render() {
+    const listTime = [];
+    const { content, parameters } = this.props;
+
     content.skils.forEach(skil => {
       const start = new Date();
       const stop = new Date(skil.sinceWhenYouCan);
       const differenceTime = start.getTime() - stop.getTime();
       listTime.push(Math.floor(differenceTime / 31536000000));
     });
-  }
-
-  render() {
-    const { listTime } = this.state;
-    const { content, parameters } = this.props;
 
     return (
       <>
@@ -59,7 +53,7 @@ class SkilsSectionComponent extends React.Component {
                     </BoxTitle>
                     <BoxLeft site={i % 2 === 0 ? 1 : 0} theme={settings} order={i % 2 === 0 ? 1 : 0}>
                       <Score theme={settings}>
-                        {listTime[i]} <Unit theme={settings}>{listTime[i] > 1 ? 'lata' : 'rok'}</Unit>
+                        {listTime[i]} <Unit theme={settings}>{listTime[i] > 1 ? `${listTime[i] <= 4 ? 'lata' : 'lat'}` : 'rok'}</Unit>
                       </Score>
                     </BoxLeft>
                     <BoxRight site={i % 2 === 0 ? 1 : 0} theme={settings} order={i % 2 === 0 ? 1 : 0}>

@@ -12,16 +12,17 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const servicesPageComponent = props => {
-  const { datoCmsServiceCategory, allDatoCmsService, allDatoCmsServiceCategory, datoCmsServicesCategory } = props.data;
+  const { datoCmsServiceCategory, allDatoCmsService, allDatoCmsServiceCategory } = props.data;
+  const allCategory = allDatoCmsServiceCategory.nodes.filter(category => category.tag.title === 'ALL')[0];
 
   return (
     <>
       <Layout
         theme={settings}
         parameters={{
-          title: datoCmsServiceCategory ? datoCmsServiceCategory.seo.title : datoCmsServicesCategory.seo.title,
-          description: datoCmsServiceCategory ? datoCmsServiceCategory.seo.description : datoCmsServicesCategory.seo.description,
-          image: datoCmsServiceCategory ? datoCmsServiceCategory.seo.image.url : datoCmsServicesCategory.seo.image.url,
+          title: datoCmsServiceCategory ? datoCmsServiceCategory.seo.title : allCategory.seo.title,
+          description: datoCmsServiceCategory ? datoCmsServiceCategory.seo.description : allCategory.seo.description,
+          image: datoCmsServiceCategory ? datoCmsServiceCategory.seo.image.url : allCategory.seo.image.url,
         }}
       >
         <Section
@@ -29,8 +30,8 @@ const servicesPageComponent = props => {
           id={`${props.pageContext.id}-heroExcerpt-id`}
           key={`${props.pageContext.id}-heroExcerpt-key`}
           content={{
-            title: props.pageContext.id === 'all' ? datoCmsServicesCategory.title : datoCmsServiceCategory.title,
-            excerpt: props.pageContext.id === 'all' ? datoCmsServicesCategory.excerpt : datoCmsServiceCategory.excerpt,
+            title: props.pageContext.id === 'all' ? allCategory.title : datoCmsServiceCategory.title,
+            excerpt: props.pageContext.id === 'all' ? allCategory.excerpt : datoCmsServiceCategory.excerpt,
           }}
         />
 
@@ -40,7 +41,7 @@ const servicesPageComponent = props => {
           key={`${props.pageContext.id}-fullExcerpt-key`}
           content={{
             title: 'Hej !',
-            description: props.pageContext.id === 'all' ? datoCmsServicesCategory.description : datoCmsServiceCategory.description,
+            description: props.pageContext.id === 'all' ? allCategory.description : datoCmsServiceCategory.description,
           }}
         />
 
@@ -109,25 +110,20 @@ export const portfolioPageQuery = graphql`
         slug
         title
         excerpt
+        description
+        seo {
+          title
+          twitterCard
+          description
+          image {
+            id
+            url
+            author
+          }
+        }
         tag {
           id
           title
-        }
-      }
-    }
-    datoCmsServicesCategory {
-      id
-      title
-      excerpt
-      description
-      seo {
-        title
-        twitterCard
-        description
-        image {
-          id
-          url
-          author
         }
       }
     }

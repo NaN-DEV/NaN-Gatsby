@@ -12,7 +12,13 @@ import Section from '../components/organisms/section/section';
 // CREATE NEW COMPONENT
 const ContactPageComponent = ({ data }) => (
   <>
-    <Layout theme={settings}>
+    <Layout
+      theme={settings}
+      parameters={{
+        title: 'Kontakt',
+        description: 'Znajdziesz tutaj wszelkie dane kontaktowe do Paweł Niedźwiecki',
+      }}
+    >
       <Section
         type="heroExcerpt"
         id={`${data.datoCmsSettingsContact.id}-heroExcerpt-id`}

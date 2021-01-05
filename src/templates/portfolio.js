@@ -13,16 +13,25 @@ import settings from '../layouts/settings/settings';
 
 const portfolioPageComponent = props => {
   const { datoCmsPortfolio, allDatoCmsProject, allDatoCmsPortfolio } = props.data;
+  const allCategory = allDatoCmsPortfolio.nodes.filter(category => category.tag.title === 'ALL')[0];
+
   return (
     <>
-      <Layout theme={settings}>
+      <Layout
+        theme={settings}
+        parameters={{
+          title: datoCmsPortfolio ? datoCmsPortfolio.seo.title : allCategory.seo.title,
+          description: datoCmsPortfolio ? datoCmsPortfolio.seo.description : allCategory.seo.description,
+          image: datoCmsPortfolio ? datoCmsPortfolio.seo.image.url : allCategory.seo.image.url,
+        }}
+      >
         <Section
           type="heroExcerpt"
           id={`${props.pageContext.id}-heroExcerpt-id`}
           key={`${props.pageContext.id}-heroExcerpt-key`}
           content={{
-            excerpt: props.pageContext.id === 'all' ? 'zobacz sam !' : datoCmsPortfolio.excerpt,
-            title: props.pageContext.id === 'all' ? 'Nasze portfolo' : datoCmsPortfolio.title,
+            title: props.pageContext.id === 'all' ? allCategory.title : datoCmsPortfolio.title,
+            excerpt: props.pageContext.id === 'all' ? allCategory.excerpt : datoCmsPortfolio.excerpt,
           }}
         />
 
@@ -32,10 +41,7 @@ const portfolioPageComponent = props => {
           key={`${props.pageContext.id}-fullExcerpt-key`}
           content={{
             title: 'Hej !',
-            description:
-              props.pageContext.id === 'all'
-                ? 'Ciekawi cię do ja wyprawiałem do tej pory nim na mnie trafiłeś spoko rozumiem. Domyślam się e nie jesteś naiwniakiem który chce brać kota w worku dla tego te poniej znajdziesz litę realizacji które za zgodą klientów mógłem udostępnić po lewej znajdziesz listę kategorii w jakiej dany projekt był realizowany. '
-                : datoCmsPortfolio.description,
+            description: props.pageContext.id === 'all' ? allCategory.description : datoCmsPortfolio.description,
           }}
         />
 
@@ -63,7 +69,18 @@ export const portfolioPageQuery = graphql`
     datoCmsPortfolio(id: { eq: $id }) {
       id
       title
+      excerpt
       description
+      seo {
+        title
+        twitterCard
+        description
+        image {
+          id
+          url
+          author
+        }
+      }
     }
     allDatoCmsProject {
       nodes {
@@ -89,9 +106,21 @@ export const portfolioPageQuery = graphql`
         id
         slug
         title
+        excerpt
+        description
         tag {
           id
           title
+        }
+        seo {
+          title
+          twitterCard
+          description
+          image {
+            id
+            url
+            author
+          }
         }
       }
     }

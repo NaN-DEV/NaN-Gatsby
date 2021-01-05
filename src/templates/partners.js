@@ -12,16 +12,25 @@ import settings from '../layouts/settings/settings';
 // Create new component
 const partnersPageComponent = props => {
   const { datoCmsSkil, allDatoCmsExpert, allDatoCmsSkil } = props.data;
+  const allSkils = allDatoCmsSkil.nodes.filter(category => category.tag.title === 'ALL')[0];
+
   return (
     <>
-      <Layout theme={settings} key="projectPage">
+      <Layout
+        theme={settings}
+        parameters={{
+          title: datoCmsSkil ? datoCmsSkil.seo.title : allSkils.seo.title,
+          description: datoCmsSkil ? datoCmsSkil.seo.description : allSkils.seo.description,
+          image: datoCmsSkil ? datoCmsSkil.seo.image.url : allSkils.seo.image.url,
+        }}
+      >
         <Section
           type="heroExcerpt"
           id={`${props.pageContext.id}-heroExcerpt-id`}
           key={`${props.pageContext.id}-heroExcerpt-key`}
           content={{
-            excerpt: props.pageContext.id === 'all' ? 'Lista osób których chętnie polecam klientom' : datoCmsSkil.excerpt,
-            title: props.pageContext.id === 'all' ? 'Fachowcy godni polecenia' : datoCmsSkil.title,
+            title: props.pageContext.id === 'all' ? allSkils.title : datoCmsSkil.title,
+            excerpt: props.pageContext.id === 'all' ? allSkils.excerpt : datoCmsSkil.excerpt,
           }}
         />
 
@@ -31,10 +40,7 @@ const partnersPageComponent = props => {
           key={`${props.pageContext.id}-fullExcerpt-key`}
           content={{
             title: 'Hej !',
-            description:
-              props.pageContext.id === 'all'
-                ? 'Hej , sam jako programista sporo poświęcam czasu na naukę programowania i poprostu nie ma moliwości abym był dobry w UX czy SEO dla tego te aby obsłuyć kompleksowo klientów którzy nie znają brany it '
-                : datoCmsSkil.description,
+            description: props.pageContext.id === 'all' ? allSkils.description : datoCmsSkil.description,
           }}
         />
 
@@ -63,6 +69,16 @@ export const portfolioPageQuery = graphql`
       title
       excerpt
       description
+      seo {
+        title
+        twitterCard
+        description
+        image {
+          id
+          url
+          author
+        }
+      }
     }
     allDatoCmsExpert {
       nodes {
@@ -87,9 +103,20 @@ export const portfolioPageQuery = graphql`
         slug
         title
         excerpt
+        description
         tag {
           id
           title
+        }
+        seo {
+          title
+          twitterCard
+          description
+          image {
+            id
+            url
+            author
+          }
         }
       }
     }

@@ -24,7 +24,7 @@ export const Left = styled.div`
       .linkCategory {
         font-size: 1.8rem;
         font-weight: normal;
-        text-transform: capitalize;
+        text-transform: uppercase;
       }
       .bold {
         font-weight: bold;
@@ -57,7 +57,7 @@ export const Title = styled.h1`
     display: block;
     font-size: 3rem;
     text-align: left;
-    text-transform: capitalize;
+    text-transform: uppercase;
   }
 `;
 
