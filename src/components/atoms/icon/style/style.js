@@ -3,9 +3,12 @@ import styled, { css } from 'styled-components';
 const BoxIcon = styled.div`
   display: block;
   position: relative;
+
   svg {
     display: block;
     transition: all 0.3s;
+    fill: ${props => props.theme.settings.colorText};
+
     ${props =>
       props.size
         ? css`
@@ -14,46 +17,6 @@ const BoxIcon = styled.div`
         : css`
             height: 3rem;
           `}
-    ${props => {
-      switch (props.theme) {
-        case 'primary':
-          return css`
-            fill: ${props.settings.primary};
-          `;
-        case 'secondary':
-          return css`
-            fill: ${props.settings.secondary};
-          `;
-        case 'tertiary_1':
-          return css`
-            fill: ${props.settings.tertiary_1};
-          `;
-        case 'tertiary_2':
-          return css`
-            fill: ${props.settings.tertiary_2};
-          `;
-        case 'tertiary_3':
-          return css`
-            fill: ${props.settings.tertiary_3};
-          `;
-        case 'tertiary_4':
-          return css`
-            fill: ${props.settings.tertiary_4};
-          `;
-        case 'tertiary_5':
-          return css`
-            fill: ${props.settings.tertiary_5};
-          `;
-        case 'tertiary_6':
-          return css`
-            fill: ${props.settings.tertiary_6};
-          `;
-        default:
-          return css`
-            fill: ${props.settings.primary};
-          `;
-      }
-    }}
   }
 `;
 

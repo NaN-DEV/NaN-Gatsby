@@ -1,22 +1,22 @@
-// Import plugin
+// import plugin
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-// Import setting style
+// import style
+import GlobalStyle from './style/globalStyle';
+
+// import settings style
 import settings from './settings/settings';
 
-// Import style
-import GlobalStyle from './style/style';
-
-// Import component
+// import component
 import Header from '../components/organisms/header/header';
 import Footer from '../components/organisms/footer/footer';
 
-// Create new component
+// create new component
 const Root = props => {
-  const { type, children, parameters } = props;
+  const { content, children } = props;
 
   const { datoCmsSite } = useStaticQuery(
     graphql`
@@ -43,13 +43,14 @@ const Root = props => {
     `,
   );
 
-  const title = parameters.title || datoCmsSite.globalSeo.siteName;
-  const image = parameters.image || datoCmsSite.globalSeo.fallbackSeo.image.url;
-  const description = parameters.description || datoCmsSite.globalSeo.description;
-  const url = parameters.slug ? `https://www.nan.nz/${parameters.slug}` : `https://www.nan.nz/`;
+  const title = content.title ? content.title : datoCmsSite.globalSeo.siteName;
+  const image = content.image ? content.image : datoCmsSite.globalSeo.fallbackSeo.image.url;
+  const url = content.slug ? `https://www.nan.nz/${content.slug}` : `https://www.nzn.nz/`;
+  const description = content.description ? content.description : datoCmsSite.globalSeo.fallbackSeo.description;
+
   return (
     <>
-      <Helmet>
+      <Helmet htmlAttributes={{ lang: 'pl' }}>
         {/* General tags */}
         <title>
           {title} {datoCmsSite.globalSeo.titleSuffix}
@@ -59,11 +60,10 @@ const Root = props => {
         <link rel="canonical" href={url} />
 
         {/* OpenGraph tags */}
-        <meta property="og:url" content={url} />
-        <meta property="og:image" content={image} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        {type === 'blog' ? <meta property="og:type" content="article" /> : null}
+        <meta name="og:url" content={url} />
+        <meta name="og:image" content={image} />
+        <meta name="og:title" content={title} />
+        <meta name="og:description" content={description} />
 
         {/* Twitter Card tags */}
         <meta name="twitter:title" content={title} />
@@ -71,14 +71,14 @@ const Root = props => {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:creator" content={datoCmsSite.globalSeo.twitterAccount} />
-
-        {/* schema tags */}
-        {parameters.schema ? <script type="application/ld+json">{parameters.schema}</script> : null}
-
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swapg" rel="stylesheet" defer />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,800;1,400;1,700&display=swap"
+          rel="stylesheet"
+          defer
+        />
       </Helmet>
-      <GlobalStyle theme={settings} />
 
+      <GlobalStyle theme={{ settings }} />
       <Header />
       {children}
       <Footer />
@@ -89,21 +89,18 @@ const Root = props => {
 // PropTpyes
 Root.propTypes = {
   children: PropTypes.node.isRequired,
-  parameters: PropTypes.shape({
+
+  content: PropTypes.shape({
     title: PropTypes.string,
+    image: PropTypes.string,
     description: PropTypes.string,
-    image: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   }),
 };
 
 // PropTpyes default
 Root.defaultProps = {
-  parameters: PropTypes.shape({
-    title: false,
-    image: false,
-    description: false,
-  }),
+  content: PropTypes.shape({ title: false, description: false, image: null }),
 };
 
-// Export new component
+// export new component
 export default Root;

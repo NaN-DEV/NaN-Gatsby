@@ -1,18 +1,17 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import { graphql } from 'gatsby';
 import Section from '../components/organisms/section/section';
 
-// IMPORT COMPONENT
+// Import component
 import Layout from '../layouts/index';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../layouts/settings/settings';
 
-// CREATE NEW COMPONENT
-
+// Create new component
 const servicePageComponent = ({ data }) => {
-  const { id, seo, title, excerpt, content } = data.datoCmsService;
+  const { seo, excerpt, content } = data.datoCmsService;
   return (
     <>
       <Layout
@@ -24,27 +23,22 @@ const servicePageComponent = ({ data }) => {
         }}
       >
         <Section
-          type="heroExcerpt"
-          id={`${id}-heroExcerpt-id`}
-          key={`${id}-heroExcerpt-key`}
+          type="excerpt"
           content={{
-            title,
-            excerpt,
+            title: excerpt,
           }}
         />
-        <Section id={id} type="serviceContent" content={{ description: content }} />
-        <Section type="sellAds" />
+        <Section type="point" content={{ description: content }} />
       </Layout>
     </>
   );
 };
 
-// QUERY GRAPHQL
+// GraphQL
 export const servicePageQuery = graphql`
   query servicePageComponentGraphql($id: String) {
     datoCmsService(id: { eq: $id }) {
       id
-      title
       excerpt
       seo {
         title
@@ -70,5 +64,5 @@ export const servicePageQuery = graphql`
   }
 `;
 
-// EXPORT NEW COMPONENT
+// Export new component
 export default servicePageComponent;

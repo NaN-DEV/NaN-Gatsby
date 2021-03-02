@@ -2,57 +2,32 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   width: 100%;
+  height: 30rem;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: revert;
   position: relative;
-  min-height: calc(100vh - 7rem);
-  padding: ${props => props.theme.break};
-  background-color: ${props => props.theme.primary};
-
-  .row {
-    align-items: center;
-    justify-content: center;
-    min-height: calc(100vh - 6rem);
-  }
+  align-items: center;
+  min-height: calc(100vh - 36rem);
+  padding: ${props => props.theme.settings.breakFat} ${props => props.theme.settings.breakBig};
 
   .mascot {
-    left: 5rem;
-    width: 19rem;
+    width: 9rem;
     display: block;
     position: absolute;
-    bottom: ${props => props.theme.break};
+    bottom: ${props => props.theme.settings.break};
+    left: ${props => props.theme.settings.breakFat};
   }
 
-  .triangle {
-    z-index: 10;
-    width: 100%;
-    height: auto;
-    display: block;
-    max-width: 60rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    svg {
-      width: 100%;
-      height: auto;
-      max-width: 60rem;
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    .mascot {
+      width: 20rem;
     }
   }
-  @media (min-width: ${props => `${props.theme.breakpoint_mobile}px`}) {
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_desktop}px`}) {
     .mascot {
-      left: 6rem;
       width: 30rem;
-    }
-  }
-  @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
-    .mascot {
-      left: 6rem;
-      width: 35rem;
-    }
-  }
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    .mascot {
-      left: 6rem;
-      width: 40rem;
     }
   }
 `;
@@ -68,12 +43,11 @@ export const BoxContent = styled.div`
 export const Title = styled.h1`
   width: 100%;
   display: block;
-  font-size: 2.4rem;
+  font-size: 3rem;
   text-align: center;
-  margin: ${props => props.theme.break} 0;
-  color: ${props => props.theme.secondary};
-  font-family: ${props => props.theme.font_secondary};
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    font-size: 4.2rem;
+  color: ${props => props.theme.settings.colorText};
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    font-size: 6rem;
   }
 `;

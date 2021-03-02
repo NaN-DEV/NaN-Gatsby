@@ -3,35 +3,23 @@ import styled from 'styled-components';
 export const Box = styled.div`
   flex: 100%;
   width: 100%;
-  padding: 1.5rem 0;
   position: relative;
-
-  @media (min-width: ${props => `${props.settings.breakpoint_tablet}px`}) {
-    flex: 30%;
-    width: 30%;
-    padding: 1.5rem;
-  }
 `;
 
 export const CheckBox = styled.input`
   display: none;
 
   &:checked ~ label {
-    color: ${props => props.settings.primary};
-    background-color: ${props => props.settings.secondary};
-    box-shadow: 3px 3px 0px ${props => props.settings.tertiary_5};
-
-    svg {
-      fill: ${props => props.settings.primary};
-    }
+    color: ${props => props.theme.settings.colorText};
+    background-color: ${props => props.theme.settings.colorBackgroundDisactive};
 
     &::after {
       transform: scale(1);
-      background-color: ${props => props.settings.primary};
+      background-color: ${props => props.theme.settings.colorText};
     }
 
     &::before {
-      border: 1px solid ${props => props.settings.primary};
+      border: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorText};
     }
   }
 `;
@@ -40,56 +28,57 @@ export const Label = styled.label`
   flex: 100%;
   width: 100%;
   display: flex;
+  cursor: pointer;
   flex-wrap: wrap;
   overflow: hidden;
-  min-height: 20rem;
+  min-height: 30rem;
   position: relative;
-  border-radius: 3px;
-  padding: 3rem 0.5rem;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  color: ${props => props.settings.tertiary_3};
-  transition: ${props => props.settings.animation};
-  background-color: ${props => props.settings.primary};
-  border: 1px solid ${props => props.settings.secondary};
-  box-shadow: 3px 3px 0px ${props => props.settings.tertiary_6};
-
-  svg {
-    width: 12rem;
-    height: 12rem;
-    fill: ${props => props.settings.secondary};
-    transition: ${props => props.settings.animation};
-  }
+  transition: ${props => props.theme.settings.animation};
+  color: ${props => props.theme.settings.colorTextActive};
+  background-color: ${props => props.theme.settings.colorBackgroundLight};
+  padding: ${props => props.theme.settings.breakFat} ${props => props.theme.settings.breakBig};
 
   &::before {
     content: '';
-    top: 0.6rem;
-    width: 3rem;
-    height: 3rem;
-    right: 0.6rem;
+    top: 1rem;
+    right: 1rem;
+    width: 4rem;
+    height: 4rem;
     display: block;
     position: absolute;
-    border-radius: 3px;
     background-color: transparent;
-    border: 1px solid ${props => props.settings.secondary};
+    border: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorTextActive};
   }
 
   &::after {
     content: '';
+    top: 2rem;
+    right: 2rem;
     width: 2rem;
-    top: 1.1rem;
     height: 2rem;
-    right: 1.1rem;
     display: block;
-    border-radius: 3px;
     position: absolute;
     transform: scale(0);
-    transition: ${props => props.settings.animation};
+    transition: ${props => props.theme.settings.animation};
+    border-radius: ${props => props.theme.settings.borderRadius};
+  }
+
+  &:hover {
+    color: ${props => props.theme.settings.colorText};
+    background-color: ${props => props.theme.settings.colorBackgroundDisactive};
+
+    &::before {
+      border: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorText};
+    }
   }
 `;
 
 export const Title = styled.p`
-  flex: 100%;
   width: 100%;
+  flex: 0 1 auto;
   height: 2.4rem;
   font-size: 2.4rem;
   font-weight: bold;

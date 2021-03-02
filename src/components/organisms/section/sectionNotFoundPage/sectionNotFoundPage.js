@@ -1,36 +1,28 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import { Cycler } from 'react-text-scrambler';
 
-// IMPORT STYLE
+// Import style
 import { Section, BoxContent, Title } from './style/style';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../../../../layouts/settings/settings';
 
-// IMPORT COMPONENT
-import Row from '../../../atoms/row/row';
-import Icon from '../../../atoms/icon/icon';
-import Button from '../../../atoms/button/button';
+// Import component
 import Mascot from '../../../atoms/mascot/mascot';
 
-// CREATE NEW COMPONENT
-
+// Create new component
 const SectionSellComponent = () => {
-  const strings = ['Ups... Houston mamy problem!', 'Nie znalazłem tej strony :('];
+  const strings = ['ku**a', '404'];
   return (
     <>
-      <Section theme={settings}>
-        <Row newClass="row">
-          <BoxContent>
-            <Title theme={settings}>
-              <Cycler duration={6000} strings={strings} />
-            </Title>
-            <Button type="link" content={{ title: 'Więc zobacz to :)', to: '/' }} parameters={{ newClass: 'button', colorStyle: 'secondary' }} />
-          </BoxContent>
-          <Mascot newClass="mascot" theme={settings} />
-          <Icon type="triangle" parameters={{ color: 'secondary', newClass: 'triangle' }} />
-        </Row>
+      <Section theme={{ settings }}>
+        <BoxContent>
+          <Title theme={{ settings }}>
+            <Cycler duration={1000} strings={strings} />
+          </Title>
+        </BoxContent>
+        <Mascot newClass="mascot" theme={{ settings }} />
       </Section>
     </>
   );

@@ -8,13 +8,13 @@ import Info from './info/info';
 
 // Create new component
 const ModalComponent = props => {
-  const { id, key, type, content, parameters } = props;
+  const { type, content, parameters } = props;
 
   switch (type) {
     case 'menu':
-      return <Menu id={id} key={key} content={content} parameters={parameters} />;
+      return <Menu parameters={parameters} />;
     case 'info':
-      return <Info id={id} key={key} content={content} parameters={parameters} />;
+      return <Info content={content} parameters={parameters} />;
 
     default:
       return 'Please add type modal :)';
@@ -23,17 +23,7 @@ const ModalComponent = props => {
 
 // PropTpyes
 ModalComponent.propTypes = {
-  id: PropTypes.string,
-  key: PropTypes.string,
-  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-};
-
-ModalComponent.defaultProps = {
-  id: null,
-  key: null,
-  content: false,
-  parameters: false,
+  type: PropTypes.string.isRequired,
 };
 
 export default ModalComponent;

@@ -1,58 +1,68 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 
 import PropTypes from 'prop-types';
 
-// IMPORT STYLE
-import { Box, Input, Label, Error } from './style/style';
+// Import style
+import { Box, Input, Error } from './style/style';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../../../layouts/settings/settings';
 
-// CREATE NEW COMPONENT
+// Create new component
 const InputComponent = props => {
-  const { id, key, type, content, parameters } = props;
+  const { type, content, parameters } = props;
 
   return (
     <>
-      <Box settings={settings} id={id} key={key}>
-        {content.title && (
-          <Label settings={settings} color={parameters.color}>
-            {`${content.title} ${parameters.required ? '*' : ''}`}
-          </Label>
-        )}
-
+      <Box theme={{ settings }}>
         <Input
           type={type}
-          settings={settings}
           name={parameters.name}
-          theme={parameters.color}
           style={parameters.style}
           value={parameters.value}
           validate={parameters.validate}
           className={parameters.newClass}
           placeholder={content.placeholder}
+          theme={{ errors: content.errors ? 1 : 0, settings }}
         />
-        <Error settings={settings}>{content.errors}</Error>
+        <Error theme={{ settings }}>{content.errors}</Error>
       </Box>
     </>
   );
 };
 
 // PropTypes
-
 InputComponent.propTypes = {
-  id: PropTypes.string,
   type: PropTypes.string,
-  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  content: PropTypes.shape({
+    errors: PropTypes.string,
+    placeholder: PropTypes.string,
+  }),
+  parameters: PropTypes.shape({
+    name: PropTypes.string,
+    theme: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array, PropTypes.func]),
+    validate: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array, PropTypes.func]),
+    className: PropTypes.string,
+  }),
 };
 
+// PropTypes default
 InputComponent.defaultProps = {
-  id: null,
   type: null,
-  content: null,
-  parameters: null,
+  content: PropTypes.shape({
+    errors: null,
+    placeholder: 'add placeholder',
+  }),
+  parameters: PropTypes.shape({
+    name: null,
+    theme: null,
+    style: null,
+    value: null,
+    validate: null,
+    className: null,
+  }),
 };
 
 export default InputComponent;

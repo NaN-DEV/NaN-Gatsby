@@ -1,23 +1,22 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../../../../layouts/settings/settings';
 
-// IMPORT STYLE
+// Import style
 import { Ul, Li } from './style/style';
 
-// CREATE NEW COMPONENT
-
-const ListLevelComponent = props => {
-  const { children, newClass, newStyle } = props;
+// Create new component
+const ListVertivalComponent = props => {
+  const { parameters, children } = props;
 
   return (
     <>
-      <Ul theme={settings} style={newStyle} className={newClass}>
+      <Ul theme={{ settings }} className={parameters.className}>
         {React.Children.map(children, child => {
-          return child === null ? null : <Li theme={settings}>{child}</Li>;
+          return child === null ? null : <Li theme={{ settings }}>{child}</Li>;
         })}
       </Ul>
     </>
@@ -25,16 +24,18 @@ const ListLevelComponent = props => {
 };
 
 // PropTpyes
-ListLevelComponent.propTypes = {
-  newStyle: PropTypes.string,
-  newClass: PropTypes.string,
+ListVertivalComponent.propTypes = {
   children: PropTypes.node.isRequired,
+  parameters: PropTypes.shape({
+    className: PropTypes.string,
+  }),
 };
 
 // PropTpyes default
-ListLevelComponent.defaultProps = {
-  newClass: null,
-  newStyle: null,
+ListVertivalComponent.defaultProps = {
+  parameters: PropTypes.shape({
+    className: null,
+  }),
 };
 
-export default ListLevelComponent;
+export default ListVertivalComponent;

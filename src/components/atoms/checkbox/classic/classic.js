@@ -1,51 +1,76 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../../../../layouts/settings/settings';
 
-// IMPORT STYLES
+// Import styles
 import { Box, CheckBox, Label, Error } from './style/style';
 
-// CREATE NEW COMPONENT
+// Create new component
 const CheckClassicComponent = props => {
-  const { id, key, content, parameters } = props;
+  const { id, content, parameters } = props;
 
   return (
     <>
-      <Box settings={settings} className={parameters.newClass} style={parameters.newStyle}>
+      <Box theme={{ settings }}>
         <CheckBox
           id={id}
-          key={key}
           type="checkbox"
-          settings={settings}
           name={parameters.name}
           value={parameters.value}
           checked={parameters.checked}
+          theme={{ settings }}
           validate={parameters.validate}
           onChange={parameters.onChange}
+          errors={!!content.errors}
         />
-        <Label htmlFor={id} settings={settings} dangerouslySetInnerHTML={{ __html: content.description }} />
-        <Error settings={settings}>{content.errors}</Error>
+        <Label
+          htmlFor={id}
+          theme={{ settings }}
+          errors={!!content.errors}
+          dangerouslySetInnerHTML={{ __html: content.description }}
+        />
+        <Error theme={{ settings }}>{content.errors}</Error>
       </Box>
     </>
   );
 };
 
+// PropTypes
 CheckClassicComponent.propTypes = {
-  id: PropTypes.string,
-  key: PropTypes.string,
-  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  content: PropTypes.shape({
+    errors: PropTypes.string,
+    description: PropTypes.string,
+  }),
+  parameters: PropTypes.shape({
+    name: PropTypes.string,
+    theme: PropTypes.string,
+    checked: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array, PropTypes.func]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array, PropTypes.func]),
+    validate: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array, PropTypes.func]),
+    onChange: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array, PropTypes.func]),
+    className: PropTypes.string,
+  }),
 };
 
+// PropTypes default
 CheckClassicComponent.defaultProps = {
-  id: null,
-  key: null,
-  content: null,
-  parameters: null,
+  content: PropTypes.shape({
+    errors: '',
+    description: 'add description',
+  }),
+  parameters: PropTypes.shape({
+    name: null,
+    theme: null,
+    checked: null,
+    value: null,
+    validate: null,
+    onChange: null,
+    className: null,
+  }),
 };
 
-// EXPORT NEW COMPONENT
+// Export new component
 export default CheckClassicComponent;

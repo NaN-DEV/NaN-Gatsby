@@ -4,104 +4,107 @@ import BackgroundImage from 'gatsby-background-image';
 export const Section = styled.section`
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-wrap: wrap;
   overflow: revert;
   position: relative;
-  .row {
-    padding-bottom: 0;
-  }
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    padding-bottom: 6rem;
+  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat} ${props => props.theme.settings.breakBig}
+      ${props => props.theme.settings.breakFat};
   }
 `;
 
 export const Left = styled.div`
-  display: none;
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    top: -15rem;
-    width: 25rem;
-    display: block;
+  width: 100%;
+  display: block;
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_mobile}px`}) {
+    width: 12rem;
+  }
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    width: 30rem;
     position: relative;
+    padding-top: 10rem;
   }
 `;
+
 export const Title = styled.p`
   display: none;
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
     top: 0rem;
     display: block;
     font-size: 3rem;
     font-weight: bold;
     position: relative;
-    padding-right: ${props => props.theme.break};
+    padding-right: ${props => props.theme.settings.break};
   }
 `;
 
-export const FaceExpert = styled(BackgroundImage)`
-  display: none;
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+export const Image = styled(BackgroundImage)`
+  left: 0;
+  top: 0rem;
+  width: 12rem;
+  z-index: 100;
+  height: 12rem;
+  display: block;
+  margin-right: ${props => props.theme.settings.break};
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    left: 0;
+    top: -17rem;
     z-index: 100;
-    height: 30rem;
+    height: 24rem;
     display: block;
-    position: relative;
-    margin-bottom: 3rem;
-    width: calc(25rem - 3rem);
-    margin-right: ${props => props.theme.break};
-    background-color: ${props => props.theme.primary};
-    border: solid ${props => props.theme.border} ${props => props.theme.secondary};
+    width: 20rem;
+    position: absolute !important;
+    left: -${props => props.theme.settings.borderFat};
+    border: solid ${props => props.theme.settings.borderFat} ${props => props.theme.settings.colorBackgroundDark};
   }
-`;
-
-export const BoxData = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  min-height: 15rem;
-  position: relative;
-  align-items: flex-start;
-  justify-content: flex-start;
 `;
 
 export const Right = styled.div`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   position: relative;
-  align-items: center;
-  justify-content: center;
 
-  .buttonPortfolio {
-    margin: ${props => props.theme.border} auto 0 auto;
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_mobile}px`}) {
+    width: calc(100% - 12rem);
+    padding-left: ${props => props.theme.settings.break};
   }
 
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    width: calc(100% - 25rem);
-    justify-content: flex-start;
-
-    .buttonPortfolio {
-      margin: 0 ${props => props.theme.border} auto auto;
-    }
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    padding-left: 0;
+    width: calc(100% - 30rem);
   }
 `;
 
-export const NameExpert = styled.p`
+export const NameExpert = styled.h1`
   width: 100%;
-  font-size: 3rem;
-  font-weight: bold;
-  text-align: center;
-  padding-right: ${props => props.theme.break};
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    width: auto;
-    text-align: center;
+  font-size: 2rem;
+  text-align: left;
+  padding: ${props => props.theme.settings.break} 0;
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_mobile}px`}) {
+    padding: 0;
+  }
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    width: 100%;
+    font-size: 3rem;
   }
 `;
 
 export const Description = styled.p`
   width: 100%;
   display: block;
-  text-align: center;
-  padding-bottom: 3rem;
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+  text-align: left;
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
     font-size: 3rem;
-    text-align: left;
-    padding-top: 3rem;
+    padding-top: 7rem;
   }
 `;

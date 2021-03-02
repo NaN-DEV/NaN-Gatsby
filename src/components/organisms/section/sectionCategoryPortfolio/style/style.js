@@ -3,33 +3,22 @@ import styled from 'styled-components';
 export const Section = styled.section`
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-wrap: wrap;
   overflow: revert;
   position: relative;
-  padding-bottom: 3rem;
+  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
 `;
 
 export const Left = styled.div`
   display: none;
 
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    flex: 25rem;
-    width: 25rem;
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    flex: 30rem;
+    width: 30rem;
     display: block;
+    overflow: revert;
     position: relative;
-    justify-content: flex-start;
-    margin-bottom: ${props => props.theme.break};
-    .listCategory {
-      padding-top: 3rem;
-
-      .linkCategory {
-        font-size: 1.8rem;
-        font-weight: normal;
-        text-transform: uppercase;
-      }
-      .bold {
-        font-weight: bold;
-      }
-    }
   }
 `;
 
@@ -39,25 +28,22 @@ export const Right = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    flex: calc(100% - 25rem);
-    width: calc(100% - 25rem);
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
     justify-content: flex-start;
+    flex: calc(100% - 30rem);
+    width: calc(100% - 30rem);
   }
 `;
 
 export const Category = styled.div`
   position: relative;
-`;
-
-export const Title = styled.h1`
-  display: none;
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    width: 100%;
-    display: block;
-    font-size: 3rem;
-    text-align: left;
-    text-transform: uppercase;
+  a {
+    font-size: 2rem;
+  }
+  .desactive {
+    cursor: no-drop;
+    color: ${props => props.theme.settings.colorBackgroundDisactive};
   }
 `;
 
@@ -65,10 +51,37 @@ export const BoxArticle = styled.div`
   flex: 100%;
   max-width: 100%;
   position: relative;
+  padding-bottom: ${props => props.theme.settings.breakLight};
 
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    flex: 50%;
+    max-width: 50%;
+
+    &:nth-child(1n + 1) {
+      padding-left: 0;
+      padding-right: ${props => props.theme.settings.breakLight};
+    }
+    &:nth-child(2n + 2) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_desktop}px`}) {
     flex: 33.3333%;
     max-width: 33.333%;
-    padding-left: ${props => props.theme.break};
+
+    &:nth-child(1n + 1) {
+      padding-left: 0;
+      padding-right: ${props => props.theme.settings.breakLight};
+    }
+    &:nth-child(2n + 2) {
+      padding-left: 0;
+      padding-right: ${props => props.theme.settings.breakLight};
+    }
+    &:nth-child(3n + 3) {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 `;

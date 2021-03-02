@@ -60,11 +60,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Js />
         </BoxIcon>
@@ -74,11 +73,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Cv />
         </BoxIcon>
@@ -89,11 +87,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Git />
         </BoxIcon>
@@ -104,11 +101,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Npm />
         </BoxIcon>
@@ -119,11 +115,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Css />
         </BoxIcon>
@@ -134,11 +129,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Ask />
         </BoxIcon>
@@ -148,11 +142,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Ux />
         </BoxIcon>
@@ -163,11 +156,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Php />
         </BoxIcon>
@@ -178,11 +170,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Sass />
         </BoxIcon>
@@ -193,11 +184,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Node />
         </BoxIcon>
@@ -208,11 +198,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Html />
         </BoxIcon>
@@ -223,11 +212,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <More />
         </BoxIcon>
@@ -237,11 +225,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Mail />
         </BoxIcon>
@@ -251,11 +238,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Down />
         </BoxIcon>
@@ -265,11 +251,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Back />
         </BoxIcon>
@@ -279,11 +264,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Logo />
         </BoxIcon>
@@ -294,11 +278,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Grunt />
         </BoxIcon>
@@ -309,11 +292,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Front />
         </BoxIcon>
@@ -323,11 +305,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Phone />
         </BoxIcon>
@@ -337,11 +318,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Coffe />
         </BoxIcon>
@@ -352,11 +332,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Gatsby />
         </BoxIcon>
@@ -367,11 +346,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Folder />
         </BoxIcon>
@@ -381,11 +359,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Closed />
         </BoxIcon>
@@ -395,11 +372,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <People />
         </BoxIcon>
@@ -410,11 +386,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <ReactJs />
         </BoxIcon>
@@ -425,11 +400,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Twitter />
         </BoxIcon>
@@ -440,11 +414,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Website />
         </BoxIcon>
@@ -455,11 +428,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Webpack />
         </BoxIcon>
@@ -470,11 +442,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Graphql />
         </BoxIcon>
@@ -485,11 +456,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Datocms />
         </BoxIcon>
@@ -500,11 +470,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Netlify />
         </BoxIcon>
@@ -515,11 +484,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Facebook />
         </BoxIcon>
@@ -530,11 +498,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Computer />
         </BoxIcon>
@@ -545,11 +512,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Triangle />
         </BoxIcon>
@@ -560,11 +526,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Settings />
         </BoxIcon>
@@ -575,11 +540,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Wordpress />
         </BoxIcon>
@@ -590,11 +554,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Hamburger />
         </BoxIcon>
@@ -604,11 +567,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Conversation />
         </BoxIcon>
@@ -618,11 +580,10 @@ const IconComponent = props => {
         <BoxIcon
           id={id}
           key={key}
-          settings={settings}
           size={parameters.size}
-          theme={parameters.color}
           style={parameters.newStyle}
           className={parameters.newClass}
+          theme={{ settings, color: parameters.color }}
         >
           <Notification />
         </BoxIcon>

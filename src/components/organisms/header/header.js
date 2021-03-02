@@ -5,11 +5,10 @@ import React from 'react';
 import settings from '../../../layouts/settings/settings';
 
 // IMPORT STYLE
-import { Header, HeaderStopBox } from './style/style';
+import Header from './style/style';
 
 // IMPORT COMPONENT
 import Modal from '../modal/modal';
-import Row from '../../atoms/row/row';
 import Icon from '../../atoms/icon/icon';
 import Button from '../../atoms/button/button';
 
@@ -41,21 +40,17 @@ class HeaderComponent extends React.Component {
     const { isModalOpen } = this.state;
     return (
       <>
-        {isModalOpen && <Modal type="menu" id="main-menu-id" key="main-menu-key" parameters={{ switchPower: this.clouseModal }} />}
-        <Header theme={settings}>
-          <Row newClass="row">
-            {/* ### Logo ### */}
-            <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ newClass: 'logo', color: null }}>
-              <Icon type="logo" parameters={{ color: 'secondary', size: 4 }} />
-            </Button>
+        {isModalOpen && <Modal type="menu" parameters={{ switchPower: this.clouseModal }} />}
+        <Header theme={{ settings }}>
+          <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ className: 'logo', color: null }}>
+            <Icon type="logo" parameters={{ color: 'secondary', size: 4 }} />
+          </Button>
 
-            {/* ### Button modal open ### */}
-            <Button type="button" content={{ to: '/', title: 'open menu' }} parameters={{ newClass: 'open', color: null, onClick: this.openModal }}>
-              <Icon type="hamburger" parameters={{ color: 'secondary' }} />
-            </Button>
-          </Row>
+          {/* ### Button modal open ### */}
+          <Button type="button" content={{ to: '/', title: 'open menu' }} parameters={{ className: 'open', color: null, onClick: this.openModal }}>
+            <Icon type="hamburger" parameters={{ color: 'secondary' }} />
+          </Button>
         </Header>
-        <HeaderStopBox />
       </>
     );
   }

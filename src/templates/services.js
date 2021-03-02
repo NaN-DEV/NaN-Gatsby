@@ -12,36 +12,23 @@ import settings from '../layouts/settings/settings';
 // CREATE NEW COMPONENT
 
 const servicesPageComponent = props => {
-  const { datoCmsServiceCategory, allDatoCmsService, allDatoCmsServiceCategory } = props.data;
-  const allCategory = allDatoCmsServiceCategory.nodes.filter(category => category.tag.title === 'ALL')[0];
+  const { datoCmsServiceCategory, allDatoCmsService, allDatoCmsServiceCategory, datoCmsPage } = props.data;
 
   return (
     <>
       <Layout
         theme={settings}
         parameters={{
-          title: datoCmsServiceCategory ? datoCmsServiceCategory.seo.title : allCategory.seo.title,
-          description: datoCmsServiceCategory ? datoCmsServiceCategory.seo.description : allCategory.seo.description,
-          image: datoCmsServiceCategory ? datoCmsServiceCategory.seo.image.url : allCategory.seo.image.url,
+          title: datoCmsServiceCategory ? datoCmsServiceCategory.seo.title : datoCmsPage.seo.title,
+          description: datoCmsServiceCategory ? datoCmsServiceCategory.seo.description : datoCmsPage.seo.description,
+          image: datoCmsServiceCategory ? datoCmsServiceCategory.seo.image.url : datoCmsPage.seo.image.url,
         }}
       >
         <Section
-          type="heroExcerpt"
-          id={`${props.pageContext.id}-heroExcerpt-id`}
-          key={`${props.pageContext.id}-heroExcerpt-key`}
+          type="excerpt"
           content={{
-            title: props.pageContext.id === 'all' ? allCategory.title : datoCmsServiceCategory.title,
-            excerpt: props.pageContext.id === 'all' ? allCategory.excerpt : datoCmsServiceCategory.excerpt,
-          }}
-        />
-
-        <Section
-          type="fullExcerpt"
-          id={`${props.pageContext.id}-fullExcerpt-id`}
-          key={`${props.pageContext.id}-fullExcerpt-key`}
-          content={{
-            title: 'Hej !',
-            description: props.pageContext.id === 'all' ? allCategory.description : datoCmsServiceCategory.description,
+            title: props.pageContext.id === 'all' ? datoCmsPage.title : datoCmsServiceCategory.title,
+            excerpt: props.pageContext.id === 'all' ? datoCmsPage.excerpt : datoCmsServiceCategory.excerpt,
           }}
         />
 
@@ -52,13 +39,10 @@ const servicesPageComponent = props => {
             slug: props.pageContext.slug,
             limit: props.pageContext.limit,
             page: props.pageContext.currentPage,
+            id: props.pageContext.id === 'all' ? 'all' : datoCmsServiceCategory.id,
           }}
-          key={`${props.pageContext.id}-categoryServices-key`}
           content={{ category: allDatoCmsServiceCategory.nodes, articles: allDatoCmsService.nodes }}
-          id={props.pageContext.id === 'all' ? `${props.pageContext.id}-categoryServices-id` : datoCmsServiceCategory.id}
         />
-
-        <Section type="sellAds" />
       </Layout>
     </>
   );
@@ -68,35 +52,35 @@ export const portfolioPageQuery = graphql`
   query servicesPageComponentGraphql($id: String) {
     datoCmsServiceCategory(id: { eq: $id }) {
       id
+      slug
       title
       excerpt
-      description
       seo {
         title
-        twitterCard
         description
         image {
-          id
           url
-          author
+        }
+      }
+    }
+    datoCmsPage(tag: { title: { eq: "services" } }) {
+      id
+      title
+      excerpt
+      seo {
+        title
+        description
+        image {
+          url
         }
       }
     }
     allDatoCmsService {
       nodes {
         id
-        title
         slug
         tag {
           title
-        }
-        image {
-          alt
-          title
-          url
-          fluid {
-            ...GatsbyDatoCmsFluid
-          }
         }
         category {
           id
@@ -110,17 +94,6 @@ export const portfolioPageQuery = graphql`
         slug
         title
         excerpt
-        description
-        seo {
-          title
-          twitterCard
-          description
-          image {
-            id
-            url
-            author
-          }
-        }
         tag {
           id
           title

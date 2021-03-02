@@ -10,20 +10,17 @@ import settings from '../../../layouts/settings/settings';
 
 // CREATE NEW COMPONENT
 const ButtonComponent = props => {
-  const { id, key, type, content, parameters, children } = props;
+  const { type, content, parameters, children } = props;
 
   switch (type) {
     case 'button':
       return (
         <Button
-          id={id}
-          key={key}
-          settings={settings}
           title={content.title}
-          theme={parameters.color}
           onClick={parameters.onClick}
           newStyle={parameters.newStyle}
-          className={parameters.newClass}
+          className={parameters.className}
+          theme={{ settings, button: parameters.button }}
         >
           {children}
         </Button>
@@ -32,14 +29,11 @@ const ButtonComponent = props => {
       return (
         <>
           <LinkIn
-            id={id}
-            key={key}
             to={content.to}
-            settings={settings}
             title={content.title}
-            theme={parameters.color}
             style={parameters.newStyle}
-            className={parameters.newClass}
+            className={parameters.className}
+            theme={{ settings, button: parameters.button }}
           >
             {children}
           </LinkIn>
@@ -48,15 +42,12 @@ const ButtonComponent = props => {
     case 'linkOut':
       return (
         <LinkOut
-          id={id}
-          key={key}
           target="_blank"
-          settings={settings}
           href={content.to}
           title={content.title}
-          theme={parameters.color}
           style={parameters.newStyle}
-          className={parameters.newClass}
+          className={parameters.className}
+          theme={{ settings, button: parameters.button }}
         >
           {children}
         </LinkOut>
@@ -64,16 +55,13 @@ const ButtonComponent = props => {
     case 'sumbit':
       return (
         <Button
-          id={id}
-          key={key}
           type={type}
-          settings={settings}
           title={content.title}
-          theme={parameters.color}
           style={parameters.newStyle}
           onClick={parameters.onClick}
           disabled={parameters.disabled}
-          className={parameters.newClass}
+          className={parameters.className}
+          theme={{ settings, button: parameters.button }}
         >
           {children}
         </Button>
@@ -85,16 +73,12 @@ const ButtonComponent = props => {
 
 // PropTpyes
 ButtonComponent.propTypes = {
-  id: PropTypes.string,
-  key: PropTypes.string,
   children: PropTypes.node.isRequired,
   content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 ButtonComponent.defaultProps = {
-  id: null,
-  key: null,
   content: false,
   parameters: false,
 };

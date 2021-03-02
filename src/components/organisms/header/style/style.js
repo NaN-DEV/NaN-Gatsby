@@ -1,27 +1,16 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-const cssHeader = css`
+const Header = styled.header`
   width: 100%;
   min-height: 7rem;
-`;
-
-export const Header = styled.header`
-  top: 0;
-  left: 0;
-  ${cssHeader}
-  z-index: 9999;
   display: flex;
-  position: fixed;
-  background: black;
+  position: relative;
+  padding: 1.5rem 3rem;
+  background: ${props => props.theme.settings.colorBackgroundDark};
 
   .open {
     margin-left: auto;
   }
 `;
 
-export const HeaderStopBox = styled.div`
-  ${cssHeader}
-  display: block;
-  position: relative;
-  background: transparent;
-`;
+export default Header;

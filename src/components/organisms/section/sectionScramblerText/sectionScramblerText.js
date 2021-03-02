@@ -1,71 +1,124 @@
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable prefer-const */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-undef */
+/* eslint-disable no-return-assign */
+/* eslint-disable react/destructuring-assignment */
 // Import plugin
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Cycler } from 'react-text-scrambler';
 
 // Import style
-import { Section, Content } from './style/style';
+import { Section, Content, ContentStatic, ContentScrambler } from './style/style';
 
 // Import settings style
 import settings from '../../../../layouts/settings/settings';
-
-// Import component
-import Row from '../../../atoms/row/row';
-import Icon from '../../../atoms/icon/icon';
-import Button from '../../../atoms/button/button';
 
 // Create new component
 class SectionScramblerTextComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      height: 0,
-      titleArray: [],
+      textScrambler: '',
+      chars: '!<>-_\\/[]{}—=+*^?#________',
     };
 
-    this.scrollClickArray = this.scrollClickArray.bind(this);
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.update = this.update.bind(this);
+    this.setText = this.setText.bind(this);
+    this.randomChar = this.randomChar.bind(this);
   }
 
   componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
+    const { phrases } = this.props.content;
+    const { speed } = this.props.parameters;
+
+    let counter = 0;
+    const next = () => {
+      this.setText(phrases[counter]).then(() => {
+        setTimeout(next, speed || 1500);
+      });
+
+      counter = (counter + 1) % phrases.length;
+    };
+
+    next();
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
+  setText = newText => {
+    const { textScrambler } = this.state;
 
-  updateWindowDimensions() {
-    this.setState({ height: window.innerHeight - 70 });
-  }
+    const length = Math.max(textScrambler.length, newText.length);
+    const promise = new Promise(resolve => (this.resolve = resolve));
+    this.queue = [];
 
-  scrollClickArray() {
-    const { height } = this.state;
-    window.scrollTo({
-      top: height,
-      behavior: 'smooth',
+    for (let i = 0; i < length; i++) {
+      const from = textScrambler[i] || '';
+      const to = newText[i] || '';
+      const start = Math.floor(Math.random() * 40);
+      const end = start + Math.floor(Math.random() * 40);
+      this.queue.push({
+        from,
+        to,
+        start,
+        end,
+      });
+    }
+
+    cancelAnimationFrame(this.frameRequest);
+    this.frame = 0;
+    this.update();
+    return promise;
+  };
+
+  update = () => {
+    let output = '';
+    let complete = 0;
+
+    for (let i = 0, n = this.queue.length; i < n; i++) {
+      let { from, to, start, end, char } = this.queue[i];
+
+      if (this.frame >= end) {
+        complete++;
+        output += to;
+      } else if (this.frame >= start) {
+        if (!char || Math.random() < 0.28) {
+          char = this.randomChar();
+          this.queue[i].char = char;
+        }
+
+        output += char;
+      } else {
+        output += from;
+      }
+    }
+
+    this.setState({
+      textScrambler: output,
     });
-  }
+
+    if (complete === this.queue.length) {
+      this.resolve();
+    } else {
+      this.frameRequest = requestAnimationFrame(this.update);
+      this.frame++;
+    }
+  };
+
+  randomChar = () => {
+    return this.state.chars[Math.floor(Math.random() * this.state.chars.length)];
+  };
 
   render() {
-    const { titleArray } = this.state;
-    const { id, key, content, parameters } = this.props;
-
-    content.title.forEach(item => {
-      titleArray.push(item.title);
-    });
     return (
       <>
-        <Section theme={settings} id={id} key={key} colorStyle={parameters.color} style={parameters.style} className={parameters.newClass}>
-          <Row newClass="row">
-            <Content theme={settings}>
-              <Cycler theme={settings} duration={4000} strings={titleArray} />
-            </Content>
-          </Row>
-          <Button type="button" content={{ title: 'kliknij' }} parameters={{ onClick: this.scrollClickArray, newClass: 'array' }}>
-            <Icon type="down" parameters={{ color: 'secondary' }} />
-          </Button>
+        <Section theme={{ settings }}>
+          <Content theme={{ settings }}>
+            <ContentStatic theme={{ settings }}>Witaj, świecie !</ContentStatic>
+            <ContentStatic theme={{ settings }}>
+              jestem developerem{' '}
+              <ContentScrambler theme={{ settings }} dangerouslySetInnerHTML={{ __html: this.state.textScrambler }}></ContentScrambler>
+            </ContentStatic>
+          </Content>
         </Section>
       </>
     );
@@ -74,16 +127,12 @@ class SectionScramblerTextComponent extends React.Component {
 
 // PropTpyes
 SectionScramblerTextComponent.propTypes = {
-  id: PropTypes.string,
-  key: PropTypes.string,
   content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
 // PropTpyes default
 SectionScramblerTextComponent.defaultProps = {
-  id: null,
-  key: null,
   content: null,
   parameters: false,
 };

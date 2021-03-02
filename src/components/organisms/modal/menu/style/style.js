@@ -29,7 +29,7 @@ export const Modal = styled.div`
   min-width: 100vw;
   min-height: 100vh;
   position: relative;
-  background-color: ${props => props.theme.primary};
+  background-color: ${props => props.theme.settings.colorBackgroundDark};
 
   .closed {
     margin-left: auto;
@@ -37,18 +37,17 @@ export const Modal = styled.div`
 `;
 
 export const Header = styled.div`
-  min-height: 7rem;
+  width: 100%;
+  display: flex;
   position: relative;
+  padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat};
 `;
 
 export const Content = styled.div`
-  flex: 100%;
-  max-width: 100%;
+  width: 100%;
+  display: flex;
   position: relative;
-
-  .rowContent {
-    padding: 0 ${props => props.theme.break};
-  }
+  padding: 0 ${props => props.theme.settings.breakFat};
 `;
 
 export const MainManu = styled.div`
@@ -67,49 +66,49 @@ export const MainManu = styled.div`
     min-height: 20rem;
     align-items: center;
     justify-content: center;
-    padding: ${props => props.theme.break};
-    background-color: ${props => props.theme.secondary};
-    border: ${props => props.theme.border} solid ${props => props.theme.primary};
+    padding: ${props => props.theme.settings.break};
+    background-color: ${props => props.theme.settings.colorBackgroundLight};
+    border: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBackgroundDark};
 
-    @media (min-width: ${props => `${props.theme.breakpoint_mobile}px`}) {
+    &:hover {
+      background-color: ${props => props.theme.settings.colorBackgroundDisactive};
+    }
+
+    @media (min-width: ${props => `${props.theme.settings.breakpoint_mobile}px`}) {
       flex: 50%;
       max-width: 50%;
     }
-    @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
+
+    @media (min-width: ${props => `${props.theme.settings.breakpoint_desktop}px`}) {
       &:nth-child(1n + 1) {
-        flex: 50%;
-        max-width: 50%;
-        border-left: 0 solid ${props => props.theme.primary};
-      }
-      &:nth-child(2n + 2) {
-        flex: 50%;
-        max-width: 50%;
-        border-right: 0 solid ${props => props.theme.primary};
-        border-left: ${props => props.theme.border} solid ${props => props.theme.primary};
-      }
-      &:nth-child(3n + 3) {
-        flex: 25%;
-        max-width: 25%;
-        border-left: 0 solid ${props => props.theme.primary};
-        border-right: ${props => props.theme.border} solid ${props => props.theme.primary};
-      }
-      &:nth-child(4n + 4) {
-        flex: 50%;
-        max-width: 50%;
-        border-left: ${props => props.theme.border} solid ${props => props.theme.primary};
-        border-right: ${props => props.theme.border} solid ${props => props.theme.primary};
-      }
-      &:nth-child(5n + 5) {
-        flex: 25%;
-        max-width: 25%;
-        border-right: 0 solid ${props => props.theme.primary};
-        border-left: ${props => props.theme.border} solid ${props => props.theme.primary};
-      }
-      &:nth-child(6n + 6) {
         flex: 100%;
         max-width: 100%;
-        border-left: 0 solid ${props => props.theme.primary};
-        border-right: 0 solid ${props => props.theme.primary};
+        border-left: 0 solid ${props => props.theme.settings.colorBackgroundDark};
+        border-right: 0 solid ${props => props.theme.settings.colorBackgroundDark};
+      }
+      &:nth-child(2n + 2) {
+        flex: 25%;
+        max-width: 25%;
+        border-left: 0 solid ${props => props.theme.settings.primary};
+        border-right: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBackgroundDark};
+      }
+      &:nth-child(3n + 3) {
+        flex: 50%;
+        max-width: 50%;
+        border-left: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBackgroundDark};
+        border-right: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBackgroundDark};
+      }
+      &:nth-child(4n + 4) {
+        flex: 25%;
+        max-width: 25%;
+        border-right: 0 solid ${props => props.theme.settings.colorBackgroundDark};
+        border-left: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBackgroundDark};
+      }
+      &:nth-child(5n + 5) {
+        flex: 100%;
+        max-width: 100%;
+        border-left: 0 solid ${props => props.theme.settings.colorBackgroundDark};
+        border-right: 0 solid ${props => props.theme.settings.colorBackgroundDark};
       }
     }
   }
@@ -120,21 +119,19 @@ export const Title = styled.p`
   display: block;
   font-weight: bold;
   position: absolute;
-  left: ${props => props.theme.break};
-  bottom: ${props => props.theme.break};
-  color: ${props => props.theme.priamry};
+  left: ${props => props.theme.settings.break};
+  bottom: ${props => props.theme.settings.break};
 `;
 
 export const Footer = styled.div`
-  flex: 100%;
-  max-width: 100%;
-  min-height: 7rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
+  padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat};
+
   .listLink {
-    a {
-      color: ${props => props.theme.secondary};
-    }
-    @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
+    @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
       &:last-child {
         margin-left: auto;
       }

@@ -1,36 +1,28 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
+import settings from '../../../../layouts/settings/settings';
 
-import Row from '../../../atoms/row/row';
+// Import style
+import { Modal, Footer, Header, Content, ModalBox, MainManu, Title, GlobalStyle } from './style/style';
+
+// Import component
 import Icon from '../../../atoms/icon/icon';
 import List from '../../../molecules/list/list';
 import Button from '../../../atoms/button/button';
-import settings from '../../../../layouts/settings/settings';
 
-// IMPORT STYLE
-import { Modal, Footer, Header, Content, ModalBox, MainManu, Title, GlobalStyle } from './style/style';
-
-// CREATE NEW COMPONENT
+// Create new component
 const ModalMenuComponent = props => {
   const { parameters } = props;
 
-  const { datoCmsSetting, datoCmsSettingsContact } = useStaticQuery(
+  const { datoCmsContact } = useStaticQuery(
     graphql`
       query {
-        datoCmsSetting {
-          mainMenu {
-            id
-            url
-            slug
-            icon
-            title
-          }
-        }
-        datoCmsSettingsContact {
-          socialMedia {
+        datoCmsContact {
+          id
+          social {
             id
             slug
             title
@@ -44,74 +36,62 @@ const ModalMenuComponent = props => {
     <>
       <GlobalStyle />
       <ModalBox>
-        <Modal theme={settings}>
-          <Header>
-            <Row newClass="rowHeader">
-              <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ newClass: 'logo' }}>
-                <Icon type="logo" parameters={{ color: 'secondary', size: 4 }} />
-              </Button>
+        <Modal theme={{ settings }}>
+          <Header theme={{ settings }}>
+            <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ className: 'logo' }}>
+              <Icon type="logo" parameters={{ color: 'secondary', size: 4 }} />
+            </Button>
 
-              <Button type="button" content={{ title: 'closed menu' }} parameters={{ newClass: 'closed', onClick: parameters.switchPower }}>
-                <Icon type="closed" parameters={{ color: 'secondary' }} />
-              </Button>
-            </Row>
+            <Button type="button" content={{ title: 'closed menu' }} parameters={{ className: 'closed', onClick: parameters.switchPower }}>
+              <Icon type="closed" parameters={{ color: 'secondary' }} />
+            </Button>
           </Header>
 
-          <Content theme={settings}>
-            <Row newClass="rowContent">
-              <MainManu theme={settings}>
-                {datoCmsSetting.mainMenu.map(item => {
-                  switch (item.url) {
-                    case false:
-                      return (
-                        <Button
-                          type="linkIn"
-                          id={item.id}
-                          key={item.id}
-                          parameters={{ newClass: 'buttonMenu', color: null }}
-                          content={{ title: item.title, to: item.slug }}
-                        >
-                          <Icon type={item.icon} parameters={{ color: 'primary', size: 9, newClass: 'iconMenu' }} />
-                          <Title theme={settings}>{item.title}</Title>
-                        </Button>
-                      );
-                    default:
-                      return (
-                        <Button
-                          type="linkOut"
-                          id={item.id}
-                          key={item.id}
-                          parameters={{ newClass: 'buttonMenu', color: null }}
-                          content={{ title: item.title, to: item.slug }}
-                        >
-                          <Icon type={item.icon} parameters={{ color: 'primary', size: 9, newClass: 'iconMenu' }} />
-                          <Title theme={settings}>{item.title}</Title>
-                        </Button>
-                      );
-                  }
-                })}
-              </MainManu>
-            </Row>
+          <Content theme={{ settings }}>
+            <MainManu theme={{ settings }}>
+              <Button type="linkIn" parameters={{ className: 'buttonMenu' }} content={{ title: 'portfolio', to: '/p/' }}>
+                <Icon type="folder" parameters={{ size: 9 }} />
+                <Title theme={{ settings }}>portfolio</Title>
+              </Button>
+
+              <Button type="linkOut" parameters={{ className: 'buttonMenu' }} content={{ title: 'blog', to: 'https://www.uxu.pl' }}>
+                <Icon type="coffe" parameters={{ size: 9 }} />
+                <Title theme={{ settings }}>blog</Title>
+              </Button>
+
+              <Button type="linkIn" parameters={{ className: 'buttonMenu' }} content={{ title: 'o mnie', to: '/about/' }}>
+                <Icon type="cv" parameters={{ size: 9 }} />
+                <Title theme={{ settings }}>o mnie</Title>
+              </Button>
+
+              <Button type="linkIn" parameters={{ className: 'buttonMenu' }} content={{ title: 'usługi', to: '/s/' }}>
+                <Icon type="settings" parameters={{ size: 9 }} />
+                <Title theme={{ settings }}>uslugi</Title>
+              </Button>
+
+              <Button type="linkIn" parameters={{ className: 'buttonMenu' }} content={{ title: 'kontakt', to: '/contact/' }}>
+                <Icon type="mail" parameters={{ size: 9 }} />
+                <Title theme={{ settings }}>kontakt</Title>
+              </Button>
+            </MainManu>
           </Content>
 
-          <Footer theme={settings}>
-            <Row newClass="rowFooter">
-              <List type="level" newClass="listLink">
-                <Button type="linkIn" parameters={{ color: null }} content={{ title: 'Wyceń Projekt', to: '/sell' }}>
-                  Wyceń Projekt
-                </Button>
-              </List>
+          <Footer theme={{ settings }}>
+            <List type="level" parameters={{ className: 'listLink' }}>
+              <Button type="linkIn" parameters={{}} content={{ title: 'Wyceń Projekt', to: '/sell' }}>
+                Wyceń Projekt
+              </Button>
+            </List>
 
-              <List type="level" newClass="listLink">
-                {datoCmsSettingsContact.socialMedia.map(item => {
-                  return (
-                    <Button type="linkOut" id={item.id} key={item.id} parameters={{ color: null }} content={{ title: item.title, to: item.slug }}>
-                      #{item.title}
-                    </Button>
-                  );
-                })}
-              </List>
-            </Row>
+            <List type="level" parameters={{ className: 'listLink' }}>
+              {datoCmsContact.social.map(item => {
+                return (
+                  <Button type="linkOut" key={item.id} parameters={{}} content={{ title: item.title, to: item.slug }}>
+                    {item.title}
+                  </Button>
+                );
+              })}
+            </List>
           </Footer>
         </Modal>
       </ModalBox>

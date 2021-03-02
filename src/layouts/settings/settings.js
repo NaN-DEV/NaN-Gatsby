@@ -1,5 +1,5 @@
 const settings = {
-  // SETTINGS COLOR START
+  // Settings color
 
   primary: '#000000',
   secondary: '#FFFFFF',
@@ -13,24 +13,36 @@ const settings = {
   danger: '#ffcc00',
   succes: '#055A01',
 
-  // SETTINGS BREAK START
-  break: '1.5rem',
+  colorBorder: '#737373',
+  colorText: '#A6A6A6',
+  colorTextActive: '#F2F2F2',
+  colorBackgroundDark: '#262626',
+  colorBackgroundLight: '#404040',
+  colorBackgroundDisactive: '#363636',
 
-  // SETTINGS BREAKPOINT START
+  // Settings break
+  break: '1.5rem',
+  breakFat: '3rem',
+  breakBig: '6rem',
+  breakLight: '0.6rem',
+
+  // Settings breakpoint
   breakpoint_mobile: 525,
   breakpoint_tablet: 768,
   breakpoint_desktop: 1280,
 
-  // SETTINGS MAXWIDTH START
+  // Settings maxwidth
   max_width: '198rem',
   max_width_half: '99rem',
 
-  // SETTINGS TIME ANIMATION
+  // Settings time animation
   animation: 'all 0.3s',
   animation_slow: 'all 0.6s',
 
-  // SETTINGS BORDER
+  // Settings border
   border: '0.3rem',
+  borderFat: '0.6rem',
+  borderRadius: '0.3rem',
 };
 
 export default settings;

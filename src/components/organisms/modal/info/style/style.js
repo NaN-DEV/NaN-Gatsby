@@ -29,7 +29,7 @@ export const Modal = styled.div`
   min-width: 100vw;
   min-height: 100vh;
   position: relative;
-  background-color: ${props => props.settings.primary};
+  background-color: ${props => props.theme.settings.colorBackgroundDark};
 
   .closed {
     margin-left: auto;
@@ -37,17 +37,20 @@ export const Modal = styled.div`
 `;
 
 export const Header = styled.div`
-  min-height: 7rem;
+  width: 100%;
+  display: flex;
   position: relative;
+  padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat};
 `;
 
 export const Content = styled.div`
   flex: 100%;
-  max-width: 100%;
   display: flex;
+  max-width: 100%;
   position: relative;
   align-items: center;
   min-height: calc(100vh - 14rem);
+  padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat};
 `;
 
 export const MainInfo = styled.p`
@@ -55,15 +58,17 @@ export const MainInfo = styled.p`
   width: 100%;
   font-weight: bold;
   text-align: center;
-  color: ${props => props.settings.secondary};
+  color: ${props => props.theme.settings.colorText};
 
-  @media (min-width: ${props => `${props.settings.breakpoint_tablet}px`}) {
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
     font-size: 3rem;
   }
 `;
 
 export const Footer = styled.div`
-  flex: 100%;
-  max-width: 100%;
+  width: 100%;
+  display: flex;
   min-height: 7rem;
+  position: relative;
+  padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat};
 `;

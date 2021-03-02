@@ -6,75 +6,64 @@ export const Box = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 100%;
-  font-size: 1.2rem;
   position: relative;
+  padding: ${props => props.theme.settings.break} 0;
 `;
 
 export const Input = styled(Field)`
-  flex: 100%;
-  height: 3.8rem;
-  max-width: 100%;
-  background-color: transparent;
-  padding: ${props => props.settings.break};
-  border-radius: ${props => props.settings.border};
-
-  ${props => {
-    switch (props.theme) {
-      case 'primary':
-        return css`
-          color: ${props.settings.primary};
-          border: 1px solid ${props.settings.tertiary_3};
-          box-shadow: 3px 2px 0px ${props.settings.tertiary_3};
-          &::placeholder {
-            color: 3px 2px 0px ${props.settings.tertiary_3};
-          }
-          &:focus {
-            border: 1px solid ${props.settings.primary};
-            box-shadow: 3px 2px 0px ${props.settings.primary};
-          }
-        `;
-      default:
-        return css`
-          color: ${props.settings.secondary};
-          border: 1px solid ${props.settings.tertiary_3};
-          box-shadow: 3px 2px 0px ${props.settings.tertiary_3};
-          &::placeholder {
-            color: 3px 2px 0px ${props.settings.tertiary_3};
-          }
-          &:focus {
-            border: 1px solid ${props.settings.secondary};
-            box-shadow: 3px 2px 0px ${props.settings.secondary};
-          }
-        `;
-    }
-  }}
-`;
-
-export const Label = styled.label`
-  flex: 100%;
-  max-width: 100%;
+  width: 100%;
+  height: 6rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  padding-bottom: 0.3rem;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  background-color: transparent;
+  font-family: 'Montserrat', sans-serif;
+  padding: ${props => props.theme.settings.break};
+  color: ${props => props.theme.settings.colorTextActive};
+  border-radius: ${props => props.theme.settings.borderRadius};
+
+  &::placeholder {
+    opacity: 1;
+    font-weight: bold;
+    color: ${props => props.theme.settings.colorTextDisactive};
+  }
+
   ${props => {
-    switch (props.theme) {
-      case 'primary':
-        return css`
-          color: ${props.settings.primary};
-        `;
-      default:
-        return css`
-          color: ${props.settings.secondary};
-        `;
+    if (props.theme.errors) {
+      return css`
+        border: ${props.theme.settings.border} solid ${props.theme.settings.danger};
+
+        &::placeholder {
+          color: ${props.theme.settings.danger};
+        }
+      `;
     }
+    return css`
+      border: ${props.theme.settings.border} solid ${props.theme.settings.colorTextActive};
+
+      &::placeholder {
+        color: ${props.theme.settings.colorTextDisactive};
+      }
+    `;
   }}
+
+  &:focus {
+    outline: none;
+    border: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBorder};
+
+    &::placeholder {
+      opacity: 0;
+    }
+  }
 `;
 
-export const Error = styled.div`
+export const Error = styled.p`
   flex: 100%;
   display: block;
   max-width: 100%;
-  min-height: 3rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  padding-top: 0.6rem;
-  color: ${props => props.settings.danger};
+  color: ${props => props.theme.settings.danger};
+  padding-top: ${props => props.theme.settings.breakLight};
 `;

@@ -1,26 +1,51 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
+import { graphql } from 'gatsby';
 
-// IMPORT SETTINGS STYLE
-import settings from '../layouts/settings/settings';
-
-// IMPORT COMPONENT
+// Import component
 import Layout from '../layouts/index';
 import Section from '../components/organisms/section/section';
 
-// CREATE NEW COMPONENT
-const NotFoundPage = () => (
-  <>
+// Create new component
+const NotFoundPage = ({ data }) => {
+  return (
     <Layout
-      theme={settings}
-      parameters={{
-        title: 'Upssss 404',
-        description: 'Coś poszło nie tak błąd 404',
+      content={{
+        title: data.datoCmsPage.seo.title,
+        image: data.datoCmsPage.seo.image.url,
+        description: data.datoCmsPage.seo.description,
       }}
     >
+      <Section
+        type="excerpt"
+        content={{
+          title: data.datoCmsPage.title,
+          excerpt: data.datoCmsPage.excerpt,
+        }}
+      />
       <Section type="notFoundPage" />
     </Layout>
-  </>
-);
+  );
+};
+
+// Query GraphQL
+export const NotFoundPageQuery = graphql`
+  query {
+    datoCmsPage(tag: { title: { eq: "not-found-404" } }) {
+      id
+      title
+      excerpt
+      seo {
+        title
+        description
+        image {
+          url
+        }
+      }
+    }
+  }
+`;
+
+// export
 
 export default NotFoundPage;

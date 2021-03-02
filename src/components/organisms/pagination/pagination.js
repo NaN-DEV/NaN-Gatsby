@@ -22,7 +22,7 @@ const paginationComponent = props => {
           content={{ title: 'Dalej', to: page > 2 ? `${slug}/${page - 1}` : slug }}
           parameters={{
             direction: 'right',
-            newClass: `button ${page === 1 && 'disablet'}`,
+            className: `button ${page === 1 && 'disablet'}`,
             color: colorStyle === 'primary' ? 'primary' : 'secondary',
           }}
         >
@@ -33,7 +33,7 @@ const paginationComponent = props => {
           content={{ title: 'Dalej', to: page < limit && `${slug}/${page + 1}` }}
           parameters={{
             direction: 'left',
-            newClass: `button ${page === limit && 'disablet'}`,
+            className: `button ${page === limit && 'disablet'}`,
             color: colorStyle === 'primary' ? 'primary' : 'secondary',
           }}
         >

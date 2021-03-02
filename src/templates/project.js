@@ -1,74 +1,40 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import { graphql } from 'gatsby';
 import Section from '../components/organisms/section/section';
 
-// IMPORT COMPONENT
+// Import component
 import Layout from '../layouts/index';
 
-// IMPORT SETTINGS STYLE
-import settings from '../layouts/settings/settings';
-
-// CREATE NEW COMPONENT
-
+// Create new component
 const projectPageComponent = ({ data }) => {
-  const { id, problem, link, image, projectMenager, target, process, score, technology, scoreStat, seo } = data.datoCmsProject;
+  const { problem, link, image, projectMenager, target, process, score, technology, scoreStat, seo } = data.datoCmsProject;
 
   return (
     <>
-      <Layout theme={settings} parameters={{ title: seo.title, description: seo.description, image: seo.image.url }}>
+      <Layout content={{ title: seo.title, description: seo.description, image: seo.image.url }}>
         <Section
-          type="heroProblem"
-          id={`${id}-heroProblem-id`}
-          key={`${id}-heroProblem-key`}
-          parameters={{ color: 'primary' }}
-          content={{ title: 'Problem', description: problem }}
-        />
-        <Section
-          type="identificationProject"
-          content={{ link, image, projectMenager }}
-          parameters={{ color: 'primary' }}
-          id={`${id}-identificationProject-id`}
-          key={`${id}-identificationProject-key`}
-        />
-        <Section
-          type="fullText"
-          id={`${id}-fullText-cel-id`}
-          key={`${id}-fullText-cel-key`}
-          parameters={{ color: 'tertiary_4' }}
-          content={{ title: 'Cel', description: target }}
-        />
-        <Section
-          type="fullText"
-          id={`${id}-fullText-proces-id`}
-          key={`${id}-fullText-proces-key`}
-          parameters={{ color: 'tertiary_3' }}
-          content={{ title: 'Proces', description: process }}
-        />
-        <Section
-          type="fullIcon"
-          id={`${id}-fullText-prace-id`}
-          key={`${id}-fullText-prace-key`}
-          parameters={{ color: 'tertiary_1' }}
-          content={{ title: 'Technologie', icons: technology }}
+          type="excerpt"
+          content={{
+            excerpt: problem,
+          }}
         />
 
+        <Section type="idProject" content={{ link, image, projectMenager }} />
+        <Section type="text" parameters={{ theme: 'light', id: 'fullTextCel' }} content={{ title: 'cel', description: target }} />
+        <Section type="text" parameters={{ theme: 'dark', id: 'fullTextProces' }} content={{ title: 'proces', description: process }} />
+        <Section type="icon" parameters={{ theme: 'light', id: 'fullIconTechnology' }} content={{ title: 'technologie', icons: technology }} />
         <Section
-          type="fullText"
-          id={`${id}-fullText-wynik-id`}
-          key={`${id}-fullText-wynik-key`}
-          parameters={{ color: 'tertiary_2' }}
-          content={{ title: 'Wynik', description: score, options: scoreStat }}
+          type="text"
+          parameters={{ theme: 'dark', id: 'fullIconScore' }}
+          content={{ title: 'wynik', description: score, options: scoreStat }}
         />
-
-        <Section type="sellAds" />
       </Layout>
     </>
   );
 };
 
-// QUERY GRAPHQL
-
+// GraphQL
 export const projectPageQuery = graphql`
   query projectPageComponentGraphql($id: String) {
     datoCmsProject(id: { eq: $id }) {
@@ -119,5 +85,5 @@ export const projectPageQuery = graphql`
   }
 `;
 
-// EXPORT NEW COMPONENT
+// Export new component
 export default projectPageComponent;

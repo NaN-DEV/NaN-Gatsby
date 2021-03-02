@@ -1,64 +1,62 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import { graphql } from 'gatsby';
 
-// IMPORT SETTINGS STYLE
-import settings from '../layouts/settings/settings';
-
-// IMPORT COMPONENT
+// Import component
 import Layout from '../layouts/index';
 import Section from '../components/organisms/section/section';
 
-// CREATE NEW COMPONENT
+// Create new component
 const ContactPageComponent = ({ data }) => (
   <>
     <Layout
-      theme={settings}
-      parameters={{
-        title: 'Kontakt',
-        description: 'Znajdziesz tutaj wszelkie dane kontaktowe do Paweł Niedźwiecki',
+      content={{
+        title: data.datoCmsPage.seo.title,
+        image: data.datoCmsPage.seo.image.url,
+        description: data.datoCmsPage.seo.description,
       }}
     >
       <Section
-        type="heroExcerpt"
-        id={`${data.datoCmsSettingsContact.id}-heroExcerpt-id`}
-        key={`${data.datoCmsSettingsContact.id}-heroExcerpt-key`}
+        type="excerpt"
         content={{
-          title: 'Dane Kontaktowe',
-          excerpt: 'Poznajmy się',
+          title: data.datoCmsPage.title,
+          excerpt: data.datoCmsPage.excerpt,
         }}
       />
-      <Section
-        type="contact"
-        content={{ data: data.datoCmsSettingsContact }}
-        id={`${data.datoCmsSettingsContact.id}-contact-id`}
-        key={`${data.datoCmsSettingsContact.id}-contact-key`}
-      />
+
+      <Section type="contact" content={{ ...data.datoCmsContact }} />
     </Layout>
   </>
 );
 
-// GRAPHQL
+// GraphQL
 export const query = graphql`
   query {
-    datoCmsSettingsContact {
+    datoCmsContact {
       id
-      nameCompany
+      company
       street
-      streetNumber
-      postCode
       city
+      postCode
       country
       vat
       regon
       krs
-      capital
-      ceo {
-        id
-        name
-      }
-      telephoneNumber
+      phone
       mail
+    }
+
+    datoCmsPage(tag: { title: { eq: "contact" } }) {
+      id
+      title
+      excerpt
+      seo {
+        title
+        description
+        image {
+          url
+        }
+      }
     }
   }
 `;

@@ -3,63 +3,49 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Section from '../components/organisms/section/section';
 
-// IMPORT COMPONENT
+// Import component
 import Layout from '../layouts/index';
 
-// IMPORT SETTINGS STYLE
-import settings from '../layouts/settings/settings';
-
-// CREATE NEW COMPONENT
-const SellPageComponent = () => {
+// Create new component
+const SellPageComponent = ({ data }) => {
   return (
     <>
-      <Layout theme={settings}>
-        {/* HERO SECCTION */}
+      <Layout
+        content={{
+          title: data.datoCmsPage.seo.title,
+          image: data.datoCmsPage.seo.image.url,
+          description: data.datoCmsPage.seo.description,
+        }}
+      >
         <Section
-          type="heroExcerpt"
-          id="sellPageComponent-id"
-          key="sellPageComponent-key"
+          type="excerpt"
           content={{
-            title: 'Uzyskaj szybką wycenę za darmo !',
-            excerpt: 'Wypełnij formularz lub zadzwoń +48 888 333 885',
+            title: data.datoCmsPage.title,
           }}
         />
-        <Section type="sell" color="primary" target="classic" />
+        <Section type="sell" />
       </Layout>
     </>
   );
 };
 
-// GRAPHQL
-export const query = graphql`
+// Query GraphQL
+export const SellPageComponentQuery = graphql`
   query {
-    allDatoCmsHome {
-      nodes {
-        id
-        heroSectionTitle {
-          title
-        }
-        selectPortfolio {
-          id
-          category {
-            id
-            slug
-            title
-          }
-          title
-          slug
-          imageSubstitute {
-            alt
-            title
-            url
-            fluid {
-              ...GatsbyDatoCmsFluid
-            }
-          }
+    datoCmsPage(tag: { title: { eq: "sale" } }) {
+      id
+      title
+      excerpt
+      seo {
+        title
+        description
+        image {
+          url
         }
       }
     }
   }
 `;
 
+// export
 export default SellPageComponent;

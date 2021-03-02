@@ -1,43 +1,44 @@
 import { Field } from 'formik';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Box = styled.div`
   flex: 100%;
-  width: 100%;
-  height: auto;
   display: flex;
   flex-wrap: wrap;
-  cursor: pointer;
-  align-items: center;
+  max-width: 100%;
+  position: relative;
+  padding: ${props => props.theme.settings.break} 0;
 `;
 
 export const CheckBox = styled(Field)`
   width: 3rem;
   height: 3rem;
-  cursor: pointer;
   font-size: 1.5rem;
   position: relative;
   border-radius: 3px;
   font-weight: normal;
   -webkit-appearance: none;
-  padding: ${props => props.settings.break};
-  color: ${props => props.settings.secondary};
-  border: 1px solid ${props => props.settings.secondary};
-  font-family: ${props => props.settings.font_secondary};
+  padding: ${props => props.theme.settings.break};
+  color: ${props => props.theme.settings.colorTextActive};
+  border-radius: ${props => props.theme.settings.borderRadius};
+  background-color: ${props => props.theme.settings.colorMainBackGround};
 
-  &::placeholder {
-    opacity: 1;
-    font-weight: normal;
-    color: ${props => props.settings.primary};
-    transition: ${props => props.settings.animation};
-  }
+  ${props => {
+    if (props.errors) {
+      return css`
+        border: ${props.theme.settings.border} solid ${props.theme.settings.danger};
+      `;
+    } 
+      return css`
+        border: ${props.theme.settings.border} solid ${props.theme.settings.colorTextActive};
+      `;
+    
+  }}
+
   &:focus {
     outline: none;
-
-    &::placeholder {
-      opacity: 0;
-    }
   }
+
   &:checked {
     &:after {
       content: '';
@@ -47,38 +48,59 @@ export const CheckBox = styled(Field)`
       height: 1.5rem;
       display: block;
       position: absolute;
-      border-radius: 3px;
-      background-color: ${props => props.settings.secondary};
+      border-radius: ${props => props.theme.settings.borderRadius};
+      background-color: ${props => props.theme.settings.colorTextActive};
     }
   }
 `;
 
 export const Label = styled.label`
-  width: calc(100% - 4rem);
-  display: inline-block;
-
+  width: calc(100% - 4.3rem);
+  display: flex;
   cursor: pointer;
-  font-weight: normal;
   font-size: 1.2rem;
   border-radius: 3px;
   align-items: center;
-  padding: 0 0 0 1.5rem;
   -webkit-appearance: none;
-  color: ${props => props.settings.secondary};
-  a {
-    color: ${props => props.settings.secondary} !important;
+  padding: 0 0 0 ${props => props.theme.settings.break};
+
+  p {
+    font-weight: bold;
   }
+
+  a {
+    color: ${props => props.theme.settings.colorTextActive};
+    &:hover {
+      color: ${props => props.theme.settings.colorText};
+    }
+  }
+
+  ${props => {
+    if (props.errors) {
+      return css`
+        color: ${props.theme.settings.danger};
+        a {
+          color: ${props.theme.settings.danger};
+        }
+      `;
+    } 
+      return css`
+        color: ${props.theme.settings.colorText};
+      `;
+    
+  }}
+
   &:focus {
     outline: none;
   }
 `;
 
-export const Error = styled.div`
+export const Error = styled.p`
   flex: 100%;
   display: block;
   max-width: 100%;
-  min-height: 3rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  padding-top: 0.6rem;
-  color: ${props => props.settings.danger};
+  color: ${props => props.theme.settings.danger};
+  padding-top: ${props => props.theme.settings.breakLight};
 `;

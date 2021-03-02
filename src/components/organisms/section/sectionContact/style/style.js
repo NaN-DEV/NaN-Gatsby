@@ -1,102 +1,95 @@
-import styled from 'styled-components';
-import { Link } from 'gatsby';
+import styled, { css } from 'styled-components';
 
 export const Section = styled.section`
   width: 100%;
-  padding: 6rem 0;
-  position: relative;
-  align-items: center;
   display: flex;
-  min-height: calc(100vh - 33rem);
-  color: ${props => props.settings.secondary};
-  background-color: ${props => props.settings.primary};
-  .row {
-    align-items: center;
-  }
-`;
-
-export const FormBox = styled.div`
-  flex: 100%;
-  max-width: 100%;
-  position: relative;
-  button {
-    width: 100%;
-    display: block;
-  }
-  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
-    flex: 50%;
-    max-width: 50%;
-    padding-right: 6rem;
-  }
-`;
-
-export const Title = styled.h1`
-  width: 100%;
-  font-size: 3rem;
-  text-align: center;
-  font-weight: normal;
-  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
-    font-size: 6rem;
-  }
-`;
-
-export const Form = styled.form``;
-
-export const DataBox = styled.div`
-  flex: 100%;
-  display: flex;
-  max-width: 100%;
   flex-wrap: wrap;
-  align-items: center;
-  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
-    flex: 50%;
-    max-width: 50%;
+  position: relative;
+  min-height: calc(100vh - 36rem);
+  background-color: ${props => props.theme.settings.colorBackgroundDark};
+  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
+`;
+
+export const CompanyData = styled.div`
+  flex: 100%;
+  display: flex;
+  max-width: 100%;
+  align-items: flex-start;
+  padding: ${props => props.theme.settings.break} 0;
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    flex: 30rem;
+    max-width: 30rem;
+    padding: ${props => props.theme.settings.breakBig} 0;
   }
-`;
-
-export const ListBox = styled.div`
-  width: auto;
-  margin: 0 auto;
-  display: block;
-`;
-
-export const LisData = styled.ul`
-  list-style: none;
-  padding-bottom: 3rem;
 `;
 
 export const Point = styled.li`
-  font-size: 2.4rem;
-  padding: 0.3rem 0;
+  display:flex;
   position: relative;
   text-overflow: nowrap;
+
+   a {
+     padding-left: ${props => props.theme.settings.breakLight};
+   }
+
+  ${props => {
+    switch (props.theme.break) {
+      case true:
+        return css`
+          padding-bottom: ${props.theme.settings.breakFat};
+        `;
+      default:
+        return null;
+    }
+  }}
+  
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    font-size: 2rem;
+
+    a {
+      font-size: 2rem;
+    }
+  }
 `;
 
 export const Important = styled.strong`
   font-weight: bold;
 `;
 
-export const Tel = styled(Link)`
-  padding-left: 1rem;
-  color: ${props => props.settings.secondary};
-`;
+export const FormBox = styled.div`
+  flex: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  position: relative;
+  align-items: flex-start;
+  padding: ${props => props.theme.settings.break} 0;
 
-export const Mail = styled(Link)`
-  padding-left: 1rem;
-  color: ${props => props.settings.secondary};
-`;
+  .button {
+    width: 100%;
+  }
 
-export const BoxError = styled.div``;
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    flex: calc(100% - 30rem);
+    max-width: calc(100% - 30rem);
+    padding: ${props => props.theme.settings.breakBig} 0 ${props => props.theme.settings.breakBig} 15rem;
+  }
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_desktop}px`}) {
+    padding: ${props => props.theme.settings.breakBig} 0 ${props => props.theme.settings.breakBig} 30rem;
+  }
+`;
 
 export const MascotBox = styled.div`
+  left: 0;
   width: 100%;
-  height: 100%;
-  margin: 6rem 0;
+  height: 20rem;
   display: block;
   overflow: hidden;
-  min-height: 20rem;
+  margin-top: 3rem;
   position: relative;
-  border-top: ${props => props.settings.border} solid ${props => props.settings.secondary};
+  border-top: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBorder};
 
   .mascot {
     top: -10rem;
@@ -106,20 +99,37 @@ export const MascotBox = styled.div`
     left: calc(50% - 10rem);
     transform: rotate(180deg);
   }
-  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
-    margin: 0 0;
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    top: 0;
     height: 100%;
     width: 11rem;
     border-top: none;
-    min-height: 75rem;
-    border-left: ${props => props.settings.border} solid ${props => props.settings.secondary};
+    margin-top: auto;
+    position: absolute;
+    border-left: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBorder};
+
+    .mascot {
+      top: auto;
+      left: -6rem;
+      width: 15rem;
+      bottom: 1rem;
+      transform: rotate(0deg);
+    }
+  }
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_desktop}px`}) {
+    height: 100%;
+    width: 20rem;
+    border-top: none;
+    position: absolute;
+    border-left: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBorder};
 
     .mascot {
       top: auto;
       bottom: 0;
-      left: -9rem;
-      width: 20rem;
-      position: absolute;
+      left: -12rem;
+      width: 30rem;
       transform: rotate(0deg);
     }
   }

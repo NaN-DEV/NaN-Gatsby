@@ -10,46 +10,44 @@ const buttonStyles = css`
   position: relative;
   align-items: center;
   justify-content: center;
-  transform: ${props => props.settings.animation};
-  border-radius: ${props => props.settings.border};
+  transform: ${props => props.theme.settings.animation};
+  border-radius: ${props => props.theme.settings.borderRadius};
 `;
 
 const buttonColor = css`
-  &:hover {
-    opacity: 0.6;
+  color: ${props => props.theme.settings.colorTextActive};
+
+  svg {
+    fill: ${props => props.theme.settings.colorTextActive};
   }
 
-  ${props => {
-    switch (props.theme) {
-      case 'primary':
-        return css`
-          height: 4.2rem;
-          padding: 0 3rem;
-          border-radius: ${props.settings.border};
-          color: ${props.settings.secondary} !important;
-          background-color: ${props.settings.primary} !important;
-          box-shadow: ${props.settings.tertiary_5} ${props.settings.border} ${props.settings.border} 0 !important;
-        `;
-      case 'secondary':
-        return css`
-          height: 4.2rem;
-          padding: 0 3rem;
-          border-radius: ${props.settings.border};
-          color: ${props.settings.primary} !important;
-          background-color: ${props.settings.secondary} !important;
-          box-shadow: ${props.settings.tertiary_5} ${props.settings.border} ${props.settings.border} 0 !important;
-        `;
-      default:
-        return css`
-          background-color: transparent;
-        `;
+  &:hover {
+    color: ${props => props.theme.settings.colorText};
+
+    svg {
+      fill: ${props => props.theme.settings.colorText};
     }
-  }}
+  }
+
+  ${props =>
+    props.theme.button === true &&
+    css`
+      height: 4.2rem;
+      padding: 1.5rem 3rem;
+      color: ${props.theme.settings.colorTextActive};
+      background-color: ${props.theme.settings.colorBackgroundDisactive};
+
+      &:hover {
+        color: ${props.theme.settings.colorBackgroundDisactive};
+        background-color: ${props.theme.settings.colorTextActive};
+      }
+    `}
 `;
 
 export const LinkOut = styled.a`
   ${buttonColor}
   ${buttonStyles}
+  cursor: pointer;
 `;
 
 export const Button = styled.button`
@@ -58,12 +56,20 @@ export const Button = styled.button`
     ${props =>
       props.disabled &&
       css`
-        opacity: 0.1 !important;
+        opacity: 0.2;
         cursor: no-drop !important;
+        color: ${props.theme.settings.colorText};
+        background-color: ${props.theme.settings.colorBackgroundDisactive};
+
+        &:hover {
+          color: ${props.theme.settings.colorText};
+          background-color: ${props.theme.settings.colorBackgroundDisactive};
+        }
       `}
 `;
 
 export const LinkIn = styled(Link)`
   ${buttonColor}
   ${buttonStyles}
+  cursor: pointer;
 `;

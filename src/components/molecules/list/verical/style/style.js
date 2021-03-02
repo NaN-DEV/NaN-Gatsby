@@ -14,7 +14,7 @@ export const Li = styled.li`
   max-width: 100%;
   text-align: left;
   position: relative;
-  padding-bottom: ${props => props.theme.break};
+  padding-bottom: ${props => props.theme.settings.break};
 
   &:last-child {
     padding-bottom: 0;

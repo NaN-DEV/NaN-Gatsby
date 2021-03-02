@@ -1,56 +1,71 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Section = styled.section`
   flex: 100%;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
-  color: ${props => props.settings.secondary};
-  background-color: ${props => props.settings.primary};
+  background-color: ${props => props.theme.settings.colorBackgroundDark};
+  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
 `;
 
 export const Step = styled.div`
-  z-index: 1;
-  flex: 100%;
-  padding: 3rem;
+  width: 100%;
   display: flex;
-  max-width: 100%;
-  line-height: 1.4;
-  min-height: 12rem;
-  font-size: 2.4rem;
   position: relative;
-  text-align: center;
   align-items: center;
-  justify-content: center;
-  color: ${props => props.settings.secondary};
+
 
   &::before {
-    color: ${props => props.settings.tertiary_6};
-  }
-
-  &::before {
-    left: 0;
-    width: 100%;
-    z-index: -1;
-    margin: auto 0;
     display: block;
-    font-size: 18rem;
-    line-height: 0.7;
+    font-size: 15rem;
     font-weight: bold;
+    position: relative;
     text-align: center;
-    position: absolute;
-    content: "${props => {
-      return props.number;
-    }}";
+    line-height: 12rem;
+    content: "${props => props.theme.number}";
+    color: ${props => props.theme.settings.colorBackgroundDisactive};
   }
-  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
-    flex: 25rem;
-    max-width: 25rem;
-    font-size: 2.4rem;
-    min-height: 21rem;
 
-    &::before {
-      font-size: 30rem;
-    }
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    min-height: 15rem;
+       
+       &::before {
+         width: 100%;
+         font-size: 20rem;
+         line-height: 15rem;
+         position: absolute;
+         text-align: center;
+       }
+  }
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_desktop}px`}) {
+    flex:30rem;
+    max-width:30rem;
+    min-height: 30rem;
+
+     &::before {
+       font-size: 40rem;
+       line-height: 30rem;
+     }
+   }
+`;
+
+export const Title = styled.h1`
+  flex: 100%;
+  width: 100%;
+  display: block;
+  font-size: 2rem;
+  text-align: left;
+  font-weight: bold;
+  position: relative;
+  letter-spacing: 0.3rem;
+  padding: 0 ${props => props.theme.settings.breakFat};
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    font-size: 3rem;
+    text-align: center;
   }
 `;
 
@@ -59,68 +74,122 @@ export const Box = styled.div`
   display: flex;
   max-width: 100%;
   flex-wrap: wrap;
-  min-height: 30rem;
   align-items: center;
-  padding: 3rem 1.5rem;
+  padding: ${props => props.theme.settings.breakBig} 0;
 
-  button {
-    width: 100%;
-    display: block;
+  .CheckBox {
+    flex: 100%;
+    max-width: 100%;
+    padding: ${props => props.theme.settings.breakLight} 0;
   }
 
-  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
-    flex: calc(100% - 250px);
-    max-width: calc(100% - 250px);
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    .CheckBox {
+      flex: 33.3333%;
+      max-width: 33.3333%;
+      padding: 0 0 0 ${props => props.theme.settings.breakLight};
+    }
   }
-`;
 
-export const BoxError = styled.p`
-  width: 100%;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: ${props => props.settings.danger};
-  padding: 0.3rem 0.6rem 0;
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_desktop}px`}) {
+    flex: calc(100% - 30rem);
+    max-width: calc(100% - 30rem);
+  }
 `;
 
 export const Half = styled.div`
   flex: 100%;
-  height: 100%;
+  display: block;
   max-width: 100%;
-  display: relative;
+  overflow: hidden;
+  position: relative;
 
-  @media (min-width: ${props => `${props.settings.breakpoint_desktop}px`}) {
-    flex: 50%;
-    max-width: 50%;
-    padding-right: 3rem;
+  .list {
+    display: none;
   }
 
-  ${props =>
-    props.mascot
-      ? css`
-          display: none;
-          @media (min-width: ${`${props.settings.breakpoint_desktop}px`}) {
-            display: flex;
-            overflow: hidden;
-            position: relative;
-            padding-left: 3rem;
-            flex-direction: column;
-            justify-content: center;
-            border-left: 0.3rem solid #fff;
+  .button {
+    width: 100%;
+  }
 
-            .mascot {
-              bottom: 0;
-              left: -9rem;
-              height: 21rem;
-              display: block;
-              position: absolute;
-            }
-          }
-        `
-      : null}
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    flex: 50%;
+    height: 100%;
+    display: flex;
+    max-width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakBig} 0;
+
+    .list {
+      display: block;
+      padding-left: 10rem;
+    }
+  }
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_desktop}px`}) {
+    .list {
+      padding-left: 20rem;
+    }
+  }
 `;
 
-export const Pkt = styled.p`
+export const MascotBox = styled.div`
+  left: 0;
+  width: 100%;
+  height: 20rem;
+  display: block;
+  overflow: hidden;
+  margin-top: 3rem;
+  position: relative;
+  border-top: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBorder};
+
+  .mascot {
+    top: -10rem;
+    bottom: auto;
+    width: 20rem;
+    position: absolute;
+    left: calc(50% - 10rem);
+    transform: rotate(180deg);
+  }
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
+    top: 0;
+    height: 100%;
+    width: 11rem;
+    border-top: none;
+    margin-top: auto;
+    position: absolute;
+    border-left: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBorder};
+
+    .mascot {
+      top: auto;
+      left: -6rem;
+      width: 15rem;
+      bottom: 1rem;
+      transform: rotate(0deg);
+    }
+  }
+
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_desktop}px`}) {
+    height: 100%;
+    width: 20rem;
+    border-top: none;
+    position: absolute;
+    border-left: ${props => props.theme.settings.border} solid ${props => props.theme.settings.colorBorder};
+
+    .mascot {
+      top: auto;
+      bottom: 0;
+      left: -12rem;
+      width: 30rem;
+      transform: rotate(0deg);
+    }
+  }
+`;
+
+export const Point = styled.p`
+  font-size: 2rem;
   text-align: left;
-  font-weight: normal;
-  font-size: 2.4rem;
+  font-weight: bold;
 `;

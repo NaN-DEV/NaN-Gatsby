@@ -1,72 +1,52 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// IMPORT STYLE
-import { Section, Left, Right, FaceExpert, NameExpert, Description, Title, BoxData } from './style/style';
+// Import style
+import { Section, Left, Right, Image, Title, NameExpert, Description } from './style/style';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../../../../layouts/settings/settings';
 
-// IMPORT COMPONENT
-import Row from '../../../atoms/row/row';
-import Button from '../../../atoms/button/button';
-
-// CREATE NEW COMPONENT
-
-// CREATE NEW COMPONENT
-
-const identificationExpertComponent = props => {
-  const { id, key, content, parameters } = props;
+// Create new component
+const sectionIdExpertComponent = props => {
+  const { content } = props;
 
   return (
     <>
-      <Section theme={settings} style={parameters.newStyle} className={parameters.newClass} id={id} key={key}>
-        <Row theme={settings} newClass="row">
-          <Left theme={settings}>
-            <FaceExpert theme={settings} fluid={content.image.fluid} />
-            <Title theme={settings}>Witam</Title>
-          </Left>
-          <Right theme={settings}>
-            <BoxData theme={settings}>
-              <NameExpert theme={settings}>
-                {content.name} {content.surname}
-              </NameExpert>
+      <Section theme={{ settings }}>
+        <Left theme={{ settings }}>
+          <Image theme={{ settings }} fluid={content.image.fluid} />
+          <Title theme={{ settings }}>Hej</Title>
+        </Left>
+        <Right theme={{ settings }}>
+          <NameExpert theme={{ settings }}>
+            {content.name} {content.surname}
+          </NameExpert>
 
-              <Button
-                theme={settings}
-                type={content.portfolio.includes('http://') || content.portfolio.includes('https://') ? 'linkOut' : 'linkIn'}
-                content={{
-                  title: 'Portfolio',
-                  to: content.portfolio,
-                }}
-                parameters={{ color: 'primary', newClass: 'buttonPortfolio' }}
-              >
-                Moje portfolio
-              </Button>
-            </BoxData>
-            <Description theme={settings}>{content.description}</Description>
-          </Right>
-        </Row>
+          <Description theme={{ settings }}>{content.description}</Description>
+        </Right>
       </Section>
     </>
   );
 };
 
 // PropTpyes
-identificationExpertComponent.propTypes = {
-  id: PropTypes.string,
-  key: PropTypes.string,
-  content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+sectionIdExpertComponent.propTypes = {
+  content: PropTypes.shape({
+    name: PropTypes.string,
+    surname: PropTypes.string,
+    description: PropTypes.string,
+  }),
 };
 
 // PropsTypes default
-identificationExpertComponent.defaultProps = {
-  id: null,
-  key: null,
-  content: null,
-  parameters: false,
+sectionIdExpertComponent.defaultProps = {
+  content: PropTypes.shape({
+    name: 'Add name',
+    surname: 'Add surname',
+    description: 'description',
+  }),
 };
 
-export default identificationExpertComponent;
+export default sectionIdExpertComponent;

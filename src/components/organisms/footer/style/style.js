@@ -4,42 +4,27 @@ export const Footer = styled.footer`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  min-height: 7rem;
   align-items: center;
   justify-content: flex-start;
-  background-color: ${props => props.theme.secondary};
+  background-color: ${props => props.theme.settings.colorBackgroundLight};
+  padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat};
 
-  .row {
-    align-items: center;
-  }
-
-  .logo {
-    margin: 0 auto;
-  }
-
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    .logo {
-      margin: 0;
-    }
-
-    .listLink {
-      margin-left: auto;
-    }
+  .listLink {
+    width: auto;
+    margin-left: auto;
   }
 `;
 
 export const Copyright = styled.div`
-  flex: 100%;
-  display: flex;
-  line-height: 1;
-  max-width: 100%;
-  align-items: center;
-  justify-content: center;
-  padding: ${props => props.theme.break};
+  display: none;
 
-  @media (min-width: ${props => `${props.theme.breakpoint_desktop}px`}) {
-    flex: none;
+  @media (min-width: ${props => `${props.theme.settings.breakpoint_desktop}px`}) {
     max-width: auto;
-    padding: 0 ${props => props.theme.break};
+    align-items: center;
+    display: inline-block;
+    max-width: max-content;
+    justify-content: center;
+    color: ${props => props.theme.settings.colorText};
+    padding: 0 ${props => props.theme.settings.break};
   }
 `;

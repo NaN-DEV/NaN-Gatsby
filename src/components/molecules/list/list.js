@@ -1,28 +1,20 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// IMPORT COMPONENT
+// Import component
 import Level from './level/level';
 import Vertical from './verical/verical';
 
-// CREATE NEW COMPONENT
+// Create new component
 const ListComponent = props => {
-  const { type, children, newClass, newStyle } = props;
+  const { type, parameters, children } = props;
 
   switch (type) {
     case 'level':
-      return (
-        <Level newClass={newClass} newStyle={newStyle}>
-          {children}
-        </Level>
-      );
+      return <Level parameters={parameters}>{children}</Level>;
     case 'vertical':
-      return (
-        <Vertical newClass={newClass} newStyle={newStyle}>
-          {children}
-        </Vertical>
-      );
+      return <Vertical parameters={parameters}>{children}</Vertical>;
     default:
       return 'Please add type list :) ';
   }
@@ -30,17 +22,8 @@ const ListComponent = props => {
 
 // PropTpyes
 ListComponent.propTypes = {
-  type: PropTypes.string,
-  newClass: PropTypes.string,
+  type: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  newStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-};
-
-// PropTpyes default
-ListComponent.defaultProps = {
-  type: null,
-  newClass: null,
-  newStyle: null,
 };
 
 export default ListComponent;
