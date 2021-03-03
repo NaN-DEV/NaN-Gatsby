@@ -3,13 +3,16 @@ import styled from 'styled-components';
 export const Section = styled.section`
   width: 100%;
   height: 30rem;
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   overflow: revert;
   position: relative;
-  align-items: center;
   min-height: calc(100vh - 36rem);
   padding: ${props => props.theme.settings.breakFat} 0;
+
+  .row {
+    align-items: center;
+    min-height: calc(100vh - 42rem);
+  }
 
   .mascot {
     width: 9rem;

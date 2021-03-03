@@ -18,7 +18,7 @@ const SectionSellComponent = () => {
   return (
     <>
       <Section theme={{ settings }}>
-        <Row parameters={{}}>
+        <Row parameters={{ className: 'row' }}>
           <BoxContent>
             <Title theme={{ settings }}>
               <Cycler duration={1000} strings={strings} />
