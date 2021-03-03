@@ -6,17 +6,14 @@ import Section from '../components/organisms/section/section';
 // Import component
 import Layout from '../layouts/index';
 
-// Import settings style
-import settings from '../layouts/settings/settings';
-
 // Create new component
 const servicePageComponent = ({ data }) => {
-  const { seo, excerpt, content } = data.datoCmsService;
+  const { seo, title, excerpt, content } = data.datoCmsService;
+
   return (
     <>
       <Layout
-        theme={settings}
-        parameters={{
+        content={{
           title: seo ? seo.title : null,
           image: seo ? seo.image.url : null,
           description: seo ? seo.description : null,
@@ -25,7 +22,8 @@ const servicePageComponent = ({ data }) => {
         <Section
           type="excerpt"
           content={{
-            title: excerpt,
+            title,
+            excerpt,
           }}
         />
         <Section type="point" content={{ description: content }} />
@@ -39,15 +37,13 @@ export const servicePageQuery = graphql`
   query servicePageComponentGraphql($id: String) {
     datoCmsService(id: { eq: $id }) {
       id
+      title
       excerpt
       seo {
         title
-        twitterCard
         description
         image {
-          id
           url
-          author
         }
       }
       content {

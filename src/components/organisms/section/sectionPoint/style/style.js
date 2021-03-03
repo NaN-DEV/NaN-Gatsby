@@ -39,6 +39,8 @@ export const Point = styled.div`
   align-items: center;
   padding-bottom: ${props => props.theme.settings.break} ;
 
+
+
   &::before {
     display: block;
     font-size: 15rem;
@@ -99,6 +101,49 @@ export const Description = styled.div`
   text-align: left;
   position: relative;
   padding-right: ${props => props.theme.settings.break};
+
+  p {
+    text-align: left !important;
+    padding-bottom: ${props => props.theme.settings.breakFat};
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+  }
+
+  ul,
+  ol {
+    padding: revert;
+    margin-bottom: ${props => props.theme.settings.breakFat};
+    li {
+      text-align: left !important;
+      padding-top: ${props => props.theme.settings.break};
+    }
+  }
+
+  blockquote {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.6rem;
+    padding: ${props => props.theme.settings.break};
+    margin: ${props => props.theme.settings.break} 0;
+    border: 0.1rem solid ${props => props.theme.settings.colorBorder};
+    background-color: ${props => props.theme.settings.colorMainBackGround};
+
+    p {
+      width: 100%;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+
+      &::before {
+        content: '„';
+      }
+      &::after {
+        content: '”';
+      }
+    }
+  }
 
   @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
     font-size: 2rem;

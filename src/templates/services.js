@@ -1,24 +1,19 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import { graphql } from 'gatsby';
 
-// IMPORT COMPONENT
+// Import component
 import Layout from '../layouts/index';
 import Section from '../components/organisms/section/section';
 
-// IMPORT SETTINGS STYLE
-import settings from '../layouts/settings/settings';
-
-// CREATE NEW COMPONENT
-
+// Create new component
 const servicesPageComponent = props => {
   const { datoCmsServiceCategory, allDatoCmsService, allDatoCmsServiceCategory, datoCmsPage } = props.data;
 
   return (
     <>
       <Layout
-        theme={settings}
-        parameters={{
+        content={{
           title: datoCmsServiceCategory ? datoCmsServiceCategory.seo.title : datoCmsPage.seo.title,
           description: datoCmsServiceCategory ? datoCmsServiceCategory.seo.description : datoCmsPage.seo.description,
           image: datoCmsServiceCategory ? datoCmsServiceCategory.seo.image.url : datoCmsPage.seo.image.url,
