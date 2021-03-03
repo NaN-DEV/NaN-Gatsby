@@ -33,7 +33,6 @@ const ContactPageComponent = ({ data }) => (
 export const query = graphql`
   query {
     datoCmsContact {
-      id
       company
       street
       city
@@ -47,7 +46,6 @@ export const query = graphql`
     }
 
     datoCmsPage(tag: { title: { eq: "contact" } }) {
-      id
       title
       excerpt
       seo {

@@ -22,9 +22,7 @@ const ModalMenuComponent = props => {
     graphql`
       query {
         datoCmsContact {
-          id
           social {
-            id
             slug
             title
           }

@@ -38,7 +38,6 @@ const projectPageComponent = ({ data }) => {
 export const projectPageQuery = graphql`
   query projectPageComponentGraphql($id: String) {
     datoCmsProject(id: { eq: $id }) {
-      id
       link
       score
       target
@@ -51,7 +50,6 @@ export const projectPageQuery = graphql`
       }
 
       technology {
-        id
         icon
       }
       scoreStat {
@@ -64,21 +62,8 @@ export const projectPageQuery = graphql`
       seo {
         title
         description
-        twitterCard
         image {
-          id
           url
-        }
-      }
-    }
-    allDatoCmsProject {
-      nodes {
-        id
-        slug
-        title
-        category {
-          id
-          slug
         }
       }
     }

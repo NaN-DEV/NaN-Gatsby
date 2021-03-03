@@ -36,7 +36,6 @@ const servicePageComponent = ({ data }) => {
 export const servicePageQuery = graphql`
   query servicePageComponentGraphql($id: String) {
     datoCmsService(id: { eq: $id }) {
-      id
       title
       excerpt
       seo {

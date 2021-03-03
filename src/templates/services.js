@@ -59,7 +59,6 @@ export const portfolioPageQuery = graphql`
       }
     }
     datoCmsPage(tag: { title: { eq: "services" } }) {
-      id
       title
       excerpt
       seo {
@@ -72,7 +71,6 @@ export const portfolioPageQuery = graphql`
     }
     allDatoCmsService {
       nodes {
-        id
         slug
         tag {
           title
@@ -90,7 +88,6 @@ export const portfolioPageQuery = graphql`
         title
         excerpt
         tag {
-          id
           title
         }
       }

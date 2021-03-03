@@ -55,14 +55,11 @@ export const PortfolioPageQuery = graphql`
         title
         description
         image {
-          id
           url
-          author
         }
       }
     }
     datoCmsPage(tag: { title: { eq: "portfolio" } }) {
-      id
       title
       excerpt
       seo {
@@ -75,17 +72,8 @@ export const PortfolioPageQuery = graphql`
     }
     allDatoCmsProject {
       nodes {
-        id
-        link
         slug
         title
-        image {
-          url
-          title
-          fluid {
-            ...GatsbyDatoCmsFluid
-          }
-        }
         category {
           id
           title
@@ -99,15 +87,7 @@ export const PortfolioPageQuery = graphql`
         title
         excerpt
         tag {
-          id
           title
-        }
-        seo {
-          title
-          description
-          image {
-            url
-          }
         }
       }
     }
