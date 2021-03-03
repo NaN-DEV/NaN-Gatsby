@@ -98,19 +98,15 @@ export const PortfolioPageQuery = graphql`
         slug
         title
         excerpt
-        description
         tag {
           id
           title
         }
         seo {
           title
-          twitterCard
           description
           image {
-            id
             url
-            author
           }
         }
       }
