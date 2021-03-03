@@ -49,7 +49,7 @@ class ProgressBarRingComponent extends React.Component {
 
   calculatorProgress() {
     const radius = 200 / 2 - 9 * 2;
-    const { percent } = this.props.content;
+    const { percent } = this.props.parameters;
     const circumference = radius * 2 * Math.PI;
     const offset = circumference - (percent / 100) * circumference;
 
@@ -96,10 +96,10 @@ class ProgressBarRingComponent extends React.Component {
 ProgressBarRingComponent.propTypes = {
   parameters: PropTypes.shape({
     id: PropTypes.string.isRequired,
+    percent: PropTypes.number.isRequired,
   }).isRequired,
 
   content: PropTypes.shape({
-    percent: PropTypes.number,
     unit: PropTypes.string,
     value: PropTypes.string,
     description: PropTypes.string,
