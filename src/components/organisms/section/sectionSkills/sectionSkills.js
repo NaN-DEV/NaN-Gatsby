@@ -10,6 +10,9 @@ import { Section, Title, Score, Unit, Description } from './style/style';
 // Import settings style
 import settings from '../../../../layouts/settings/settings';
 
+// Import component
+import Row from '../../../atoms/row/row';
+
 // Create new component
 class SectionSkillsComponent extends React.Component {
   constructor(props) {
@@ -33,13 +36,15 @@ class SectionSkillsComponent extends React.Component {
         {content.skills.map((item, i) => {
           return (
             <Section theme={{ settings, theme: i % 2 }} key={i}>
-              <Title theme={{ settings }}>{item.skill.title}</Title>
-              <Score theme={{ settings, order: i % 2 }}>
-                {listTime[i]} <Unit theme={{ settings }}>{listTime[i] > 1 ? `${listTime[i] <= 4 ? 'lata' : 'lat'}` : 'rok'}</Unit>
-              </Score>
-              <Description theme={{ settings, order: i % 2 }}>
-                <>{item.description}</>
-              </Description>
+              <Row parameters={{}}>
+                <Title theme={{ settings }}>{item.skill.title}</Title>
+                <Score theme={{ settings, order: i % 2 }}>
+                  {listTime[i]} <Unit theme={{ settings }}>{listTime[i] > 1 ? `${listTime[i] <= 4 ? 'lata' : 'lat'}` : 'rok'}</Unit>
+                </Score>
+                <Description theme={{ settings, order: i % 2 }}>
+                  <>{item.description}</>
+                </Description>
+              </Row>
             </Section>
           );
         })}

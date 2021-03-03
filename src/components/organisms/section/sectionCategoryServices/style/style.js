@@ -7,7 +7,7 @@ export const Section = styled.section`
   flex-wrap: wrap;
   overflow: revert;
   position: relative;
-  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
+  padding: ${props => props.theme.settings.breakBig} 0;
 `;
 
 export const Left = styled.div`

@@ -38,16 +38,15 @@ export const Modal = styled.div`
 
 export const Header = styled.div`
   width: 100%;
-  display: flex;
+  display: block;
   position: relative;
-  padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat};
+  padding: ${props => props.theme.settings.break} 0;
 `;
 
 export const Content = styled.div`
   width: 100%;
-  display: flex;
+  display: block;
   position: relative;
-  padding: 0 ${props => props.theme.settings.breakFat};
 `;
 
 export const MainManu = styled.div`
@@ -125,10 +124,9 @@ export const Title = styled.p`
 
 export const Footer = styled.div`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   position: relative;
-  padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat};
+  padding: ${props => props.theme.settings.break} 0;
 
   .listLink {
     @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {

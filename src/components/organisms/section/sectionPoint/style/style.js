@@ -8,7 +8,7 @@ export const Section = styled.section`
   overflow: hidden;
   position: relative;
   flex-direction: row;
-  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
+  padding: ${props => props.theme.settings.breakBig} 0;
 `;
 
 export const ContentBox = styled.div`

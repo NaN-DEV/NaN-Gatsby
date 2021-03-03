@@ -4,15 +4,13 @@ import BackgroundImage from 'gatsby-background-image';
 export const Section = styled.section`
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   overflow: revert;
   position: relative;
-  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
+  padding: ${props => props.theme.settings.breakBig} 0;
 
   @media (min-width: ${props => `${props.theme.settings.breakpoint_tablet}px`}) {
-    padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat} ${props => props.theme.settings.breakBig}
-      ${props => props.theme.settings.breakFat};
+    padding: ${props => props.theme.settings.break} 0 ${props => props.theme.settings.breakBig} 0;
   }
 `;
 

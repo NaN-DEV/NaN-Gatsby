@@ -3,11 +3,10 @@ import styled from 'styled-components';
 export const Section = styled.section`
   flex: 100%;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   position: relative;
+  padding: ${props => props.theme.settings.breakBig} 0;
   background-color: ${props => props.theme.settings.colorBackgroundDark};
-  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
 `;
 
 export const Step = styled.div`

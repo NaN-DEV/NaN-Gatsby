@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Section, Left, Right, Image, Title, NameExpert, Description } from './style/style';
 
 // Import settings style
+import Row from '../../../atoms/row/row';
 import settings from '../../../../layouts/settings/settings';
 
 // Create new component
@@ -15,17 +16,19 @@ const sectionIdExpertComponent = props => {
   return (
     <>
       <Section theme={{ settings }}>
-        <Left theme={{ settings }}>
-          <Image theme={{ settings }} fluid={content.image.fluid} />
-          <Title theme={{ settings }}>Hej</Title>
-        </Left>
-        <Right theme={{ settings }}>
-          <NameExpert theme={{ settings }}>
-            {content.name} {content.surname}
-          </NameExpert>
+        <Row parameters={{}}>
+          <Left theme={{ settings }}>
+            <Image theme={{ settings }} fluid={content.image.fluid} />
+            <Title theme={{ settings }}>Hej</Title>
+          </Left>
+          <Right theme={{ settings }}>
+            <NameExpert theme={{ settings }}>
+              {content.name} {content.surname}
+            </NameExpert>
 
-          <Description theme={{ settings }}>{content.description}</Description>
-        </Right>
+            <Description theme={{ settings }}>{content.description}</Description>
+          </Right>
+        </Row>
       </Section>
     </>
   );

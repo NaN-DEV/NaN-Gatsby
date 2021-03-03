@@ -3,12 +3,9 @@ import styled from 'styled-components';
 export const Section = styled.section`
   width: 100%;
   display: block;
-  flex-wrap: wrap;
   position: relative;
-  flex-direction: column;
-  justify-content: flex-start;
+  padding: ${props => props.theme.settings.breakBig} 0;
   background-color: ${props => props.theme.settings.colorBackgroundLight};
-  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
 `;
 
 export const Title = styled.h1`

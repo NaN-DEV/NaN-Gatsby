@@ -6,8 +6,8 @@ export const Section = styled.section`
   flex-wrap: wrap;
   position: relative;
   min-height: calc(100vh - 36rem);
+  padding: ${props => props.theme.settings.breakBig} 0;
   background-color: ${props => props.theme.settings.colorBackgroundDark};
-  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
 `;
 
 export const CompanyData = styled.div`

@@ -13,6 +13,7 @@ import { Section, CompanyData, Point, Important, FormBox, MascotBox } from './st
 import settings from '../../../../layouts/settings/settings';
 
 // Import component
+import Row from '../../../atoms/row/row';
 import Modal from '../../modal/modal';
 import Input from '../../../atoms/input/input';
 import List from '../../../molecules/list/list';
@@ -116,163 +117,165 @@ class SectionContactComponent extends React.Component {
         {isModalOpen && <Modal type="info" content={{ info: isModalMessage }} parameters={{ switchPower: this.clouseModal }} />}
 
         <Section theme={{ settings }}>
-          <CompanyData theme={{ settings }}>
-            <List type="vertical" parameters={{}}>
-              <Point theme={{ settings }}>
-                <Important theme={{ settings }}>{content.company}</Important>
-              </Point>
-              <Point theme={{ settings }}>ul. {content.street}</Point>
-              <Point theme={{ settings }}>
-                {content.postCode} {content.city}
-              </Point>
-              <Point theme={{ settings, break: true }}>{content.country}</Point>
+          <Row parameters={{}}>
+            <CompanyData theme={{ settings }}>
+              <List type="vertical" parameters={{}}>
+                <Point theme={{ settings }}>
+                  <Important theme={{ settings }}>{content.company}</Important>
+                </Point>
+                <Point theme={{ settings }}>ul. {content.street}</Point>
+                <Point theme={{ settings }}>
+                  {content.postCode} {content.city}
+                </Point>
+                <Point theme={{ settings, break: true }}>{content.country}</Point>
 
-              <Point theme={{ settings }}>
-                <Important theme={{ settings }}>VAT-ID :</Important> {content.vat}
-              </Point>
-              <Point theme={{ settings }}>
-                <Important theme={{ settings }}>REGON :</Important> {content.regon}
-              </Point>
-              <Point theme={{ settings, break: true }}>
-                <Important theme={{ settings }}>KRS :</Important> {content.krs}
-              </Point>
+                <Point theme={{ settings }}>
+                  <Important theme={{ settings }}>VAT-ID :</Important> {content.vat}
+                </Point>
+                <Point theme={{ settings }}>
+                  <Important theme={{ settings }}>REGON :</Important> {content.regon}
+                </Point>
+                <Point theme={{ settings, break: true }}>
+                  <Important theme={{ settings }}>KRS :</Important> {content.krs}
+                </Point>
 
-              <Point theme={{ settings }}>
-                <Important theme={{ settings }}>TEL :</Important>
-                <Button type="linkOut" to={`+48 ${content.phone}`}>
-                  {`+48 ${content.phone}`}
-                </Button>
-              </Point>
-              <Point theme={{ settings }}>
-                <Important theme={{ settings }}>MAIL :</Important>
-                <Button type="linkOut" to={`mailo:${content.mail}`}>
-                  {`${content.mail}`}
-                </Button>
-              </Point>
-            </List>
-          </CompanyData>
-
-          <FormBox theme={{ settings }}>
-            <MascotBox theme={{ settings }}>
-              <Mascot newClass="mascot" />
-            </MascotBox>
-
-            <Formik
-              isInitialValid={false}
-              initialValues={{
-                username: '',
-                email: '',
-                phone: '',
-                description: '',
-                rodoGroup: [],
-              }}
-              onSubmit={(values, actions) => {
-                fetch('/', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                  body: encode({ 'form-name': 'contact', ...values, rodoGroup: values.rodoGroup.filter(e => e) }),
-                })
-                  .then(() => {
-                    this.openModal('Hej, dzięki za kontakt , niebawem dam ci znać co o tym myślę !');
-                    actions.resetForm();
-                  })
-                  .catch(() => {
-                    this.openModal('Upsss... Coś poszło nie tak spróbuj jeszcze raz wysłać wiadomość !');
-                  })
-                  .finally(() => actions.setSubmitting(false));
-              }}
-            >
-              {({ errors, touched, isValid, values, setFieldValue }) => (
-                <Form name="contact" data-netlify={1}>
-                  <Input
-                    type="text"
-                    content={{
-                      placeholder: 'jak Ci na imię ?',
-                      errors: errors.username && touched.username && errors.username,
-                    }}
-                    parameters={{
-                      name: 'username',
-                      required: true,
-                      validate: this.validateUsername,
-                      value: values.username,
-                    }}
-                  />
-
-                  <Input
-                    type="email"
-                    content={{
-                      placeholder: 'mail',
-                      errors: errors.email && touched.email && errors.email,
-                    }}
-                    parameters={{
-                      name: 'email',
-                      required: true,
-                      validate: this.validateEmail,
-                    }}
-                  />
-
-                  <Input
-                    type="text"
-                    content={{
-                      placeholder: 'telefon',
-                      errors: errors.phone && touched.phone && errors.phone,
-                    }}
-                    parameters={{
-                      name: 'phone',
-                      required: true,
-                      value: values.phone,
-                      validate: this.validateTel,
-                    }}
-                  />
-
-                  <TextArea
-                    content={{
-                      placeholder: 'opis pomysłu/problemu, potrzebujesz pierw NDA wyślij wzór na maila',
-                      errors: errors.description && touched.description && errors.description,
-                    }}
-                    parameters={{
-                      name: 'description',
-                      required: true,
-                      value: values.description,
-                      validate: this.validateDescription,
-                    }}
-                  />
-
-                  <CheckBox
-                    type="classic"
-                    id="rodoGroup-privacyPolicyAccepted-id"
-                    content={{
-                      description:
-                        "<p>potrzebuje Twoich danych do czasu udzielenia odpowiedzi . Masz prawo zrezygnować z przetwarzania Twoich danych lub żądać ich usunięcia w dowolnym momencie. Więcej informacji znajdziesz w <a href='../politics/'>polityce prywatności</a></p>",
-                      errors: errors.rodoGroup && touched.rodoGroup && errors.rodoGroup,
-                    }}
-                    parameters={{
-                      name: 'rodoGroup',
-                      required: true,
-                      validate: this.validateRodoGroup,
-                      onChange: event => {
-                        const value = event.target.checked ? 'privacyPolicyAccepted' : null;
-                        setFieldValue('rodoGroup.0', value);
-                      },
-                      checked: values.rodoGroup.includes('privacyPolicyAccepted'),
-                    }}
-                  />
-
-                  <Button
-                    type="sumbit"
-                    content={{ title: 'Wyślij' }}
-                    parameters={{
-                      button: true,
-                      disabled: !isValid,
-                      className: 'button',
-                    }}
-                  >
-                    Wyślij
+                <Point theme={{ settings }}>
+                  <Important theme={{ settings }}>TEL :</Important>
+                  <Button type="linkOut" to={`+48 ${content.phone}`}>
+                    {`+48 ${content.phone}`}
                   </Button>
-                </Form>
-              )}
-            </Formik>
-          </FormBox>
+                </Point>
+                <Point theme={{ settings }}>
+                  <Important theme={{ settings }}>MAIL :</Important>
+                  <Button type="linkOut" to={`mailo:${content.mail}`}>
+                    {`${content.mail}`}
+                  </Button>
+                </Point>
+              </List>
+            </CompanyData>
+
+            <FormBox theme={{ settings }}>
+              <MascotBox theme={{ settings }}>
+                <Mascot newClass="mascot" />
+              </MascotBox>
+
+              <Formik
+                isInitialValid={false}
+                initialValues={{
+                  username: '',
+                  email: '',
+                  phone: '',
+                  description: '',
+                  rodoGroup: [],
+                }}
+                onSubmit={(values, actions) => {
+                  fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: encode({ 'form-name': 'contact', ...values, rodoGroup: values.rodoGroup.filter(e => e) }),
+                  })
+                    .then(() => {
+                      this.openModal('Hej, dzięki za kontakt , niebawem dam ci znać co o tym myślę !');
+                      actions.resetForm();
+                    })
+                    .catch(() => {
+                      this.openModal('Upsss... Coś poszło nie tak spróbuj jeszcze raz wysłać wiadomość !');
+                    })
+                    .finally(() => actions.setSubmitting(false));
+                }}
+              >
+                {({ errors, touched, isValid, values, setFieldValue }) => (
+                  <Form name="contact" data-netlify={1}>
+                    <Input
+                      type="text"
+                      content={{
+                        placeholder: 'jak Ci na imię ?',
+                        errors: errors.username && touched.username && errors.username,
+                      }}
+                      parameters={{
+                        name: 'username',
+                        required: true,
+                        validate: this.validateUsername,
+                        value: values.username,
+                      }}
+                    />
+
+                    <Input
+                      type="email"
+                      content={{
+                        placeholder: 'mail',
+                        errors: errors.email && touched.email && errors.email,
+                      }}
+                      parameters={{
+                        name: 'email',
+                        required: true,
+                        validate: this.validateEmail,
+                      }}
+                    />
+
+                    <Input
+                      type="text"
+                      content={{
+                        placeholder: 'telefon',
+                        errors: errors.phone && touched.phone && errors.phone,
+                      }}
+                      parameters={{
+                        name: 'phone',
+                        required: true,
+                        value: values.phone,
+                        validate: this.validateTel,
+                      }}
+                    />
+
+                    <TextArea
+                      content={{
+                        placeholder: 'opis pomysłu/problemu, potrzebujesz pierw NDA wyślij wzór na maila',
+                        errors: errors.description && touched.description && errors.description,
+                      }}
+                      parameters={{
+                        name: 'description',
+                        required: true,
+                        value: values.description,
+                        validate: this.validateDescription,
+                      }}
+                    />
+
+                    <CheckBox
+                      type="classic"
+                      id="rodoGroup-privacyPolicyAccepted-id"
+                      content={{
+                        description:
+                          "<p>potrzebuje Twoich danych do czasu udzielenia odpowiedzi . Masz prawo zrezygnować z przetwarzania Twoich danych lub żądać ich usunięcia w dowolnym momencie. Więcej informacji znajdziesz w <a href='../politics/'>polityce prywatności</a></p>",
+                        errors: errors.rodoGroup && touched.rodoGroup && errors.rodoGroup,
+                      }}
+                      parameters={{
+                        name: 'rodoGroup',
+                        required: true,
+                        validate: this.validateRodoGroup,
+                        onChange: event => {
+                          const value = event.target.checked ? 'privacyPolicyAccepted' : null;
+                          setFieldValue('rodoGroup.0', value);
+                        },
+                        checked: values.rodoGroup.includes('privacyPolicyAccepted'),
+                      }}
+                    />
+
+                    <Button
+                      type="sumbit"
+                      content={{ title: 'Wyślij' }}
+                      parameters={{
+                        button: true,
+                        disabled: !isValid,
+                        className: 'button',
+                      }}
+                    >
+                      Wyślij
+                    </Button>
+                  </Form>
+                )}
+              </Formik>
+            </FormBox>
+          </Row>
         </Section>
       </>
     );

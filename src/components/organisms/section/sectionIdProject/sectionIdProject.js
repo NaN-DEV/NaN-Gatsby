@@ -1,31 +1,31 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// IMPORT STYLE
+// Import style
 import { Section, Title, Image } from './style/style';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../../../../layouts/settings/settings';
 
-// IMPORT COMPONENT
+// Import component
+import Row from '../../../atoms/row/row';
 import Button from '../../../atoms/button/button';
 
-// CREATE NEW COMPONENT
-
-// CREATE NEW COMPONENT
-
+// Create new component
 const SectionIdentificationProjectComponent = props => {
   const { content } = props;
 
   return (
     <>
       <Section theme={{ settings }}>
-        <Title theme={{ settings }}>{content.link}</Title>
-        <Button type="linkOut" content={{ title: 'live', to: `http://${content.link}` }} parameters={{ className: 'live', button: true }}>
-          Zobacz na żywo
-        </Button>
-        <Image theme={{ settings }} fluid={content.image.fluid} />
+        <Row parameters={{}}>
+          <Title theme={{ settings }}>{content.link}</Title>
+          <Button type="linkOut" content={{ title: 'live', to: `http://${content.link}` }} parameters={{ className: 'live', button: true }}>
+            Zobacz na żywo
+          </Button>
+          <Image theme={{ settings }} fluid={content.image.fluid} />
+        </Row>
       </Section>
     </>
   );

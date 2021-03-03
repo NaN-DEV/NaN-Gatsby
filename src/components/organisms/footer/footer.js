@@ -8,6 +8,7 @@ import settings from '../../../layouts/settings/settings';
 import { Footer, Copyright } from './style/style';
 
 // Import component
+import Row from '../../atoms/row/row';
 import Icon from '../../atoms/icon/icon';
 import List from '../../molecules/list/list';
 import Button from '../../atoms/button/button';
@@ -17,16 +18,18 @@ const footerComponent = () => {
   return (
     <>
       <Footer theme={{ settings }}>
-        <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ className: 'logo' }}>
-          <Icon type="logo" parameters={{ colorStyle: 'primary', size: 4 }} />
-        </Button>
-
-        <Copyright theme={{ settings }}>Copyright 2016-2020</Copyright>
-        <List type="level" parameters={{ className: 'listLink' }}>
-          <Button type="linkIn" content={{ to: '/sell', title: 'wyceń projekt' }} parameters={{}}>
-            wyceń projekt
+        <Row parameters={{ className: 'row' }}>
+          <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ className: 'logo' }}>
+            <Icon type="logo" parameters={{ colorStyle: 'primary', size: 4 }} />
           </Button>
-        </List>
+
+          <Copyright theme={{ settings }}>Copyright 2016-2020</Copyright>
+          <List type="level" parameters={{ className: 'listLink' }}>
+            <Button type="linkIn" content={{ to: '/sell', title: 'wyceń projekt' }} parameters={{}}>
+              wyceń projekt
+            </Button>
+          </List>
+        </Row>
       </Footer>
     </>
   );

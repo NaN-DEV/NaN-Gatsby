@@ -5,7 +5,7 @@ export const Section = styled.section`
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
+  padding: ${props => props.theme.settings.breakBig} 0;
 
   ${props => {
     switch (props.theme.theme) {

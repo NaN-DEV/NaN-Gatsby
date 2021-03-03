@@ -7,7 +7,7 @@ export const Section = styled.section`
   position: relative;
   flex-direction: row;
   justify-content: flex-start;
-  padding: ${props => props.theme.settings.breakBig} ${props => props.theme.settings.breakFat};
+  padding: ${props => props.theme.settings.breakBig} 0;
   background-color: ${props => (props.theme.theme ? props.theme.settings.colorBackgroundDark : props.theme.settings.colorBackgroundLight)};
 `;
 

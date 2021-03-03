@@ -8,7 +8,7 @@ export const Section = styled.section`
   flex-wrap: wrap;
   overflow: revert;
   position: relative;
-  padding: ${props => props.theme.settings.breakFat} ${props => props.theme.settings.breakFat} 0 ${props => props.theme.settings.breakFat};
+  padding-top: ${props => props.theme.settings.breakFat};
 
   .live {
     margin-right: auto;
@@ -46,6 +46,7 @@ export const Image = styled(BackgroundImage)`
   width: 100%;
   height: 30rem;
   display: block;
+  filter: grayscale(100%);
   background-position: top center !important;
   margin-top: ${props => props.theme.settings.breakFat};
 

@@ -9,7 +9,7 @@ export const Section = styled.section`
   position: relative;
   align-items: center;
   min-height: calc(100vh - 36rem);
-  padding: ${props => props.theme.settings.breakFat} ${props => props.theme.settings.breakBig};
+  padding: ${props => props.theme.settings.breakFat} 0;
 
   .mascot {
     width: 9rem;

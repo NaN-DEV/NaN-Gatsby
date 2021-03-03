@@ -1,18 +1,19 @@
-// IMPORT PLUGIN
+// Import plugin
 import React from 'react';
 
-// IMPORT SETTINGS STYLE
+// Import settings style
 import settings from '../../../layouts/settings/settings';
 
-// IMPORT STYLE
+// Import style
 import Header from './style/style';
 
-// IMPORT COMPONENT
+// Import component
 import Modal from '../modal/modal';
+import Row from '../../atoms/row/row';
 import Icon from '../../atoms/icon/icon';
 import Button from '../../atoms/button/button';
 
-// CREATE NEW COMPONENT
+// Create new component
 class HeaderComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -42,14 +43,16 @@ class HeaderComponent extends React.Component {
       <>
         {isModalOpen && <Modal type="menu" parameters={{ switchPower: this.clouseModal }} />}
         <Header theme={{ settings }}>
-          <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ className: 'logo', color: null }}>
-            <Icon type="logo" parameters={{ color: 'secondary', size: 4 }} />
-          </Button>
+          <Row parameters={{ className: 'row' }}>
+            <Button type="linkIn" content={{ to: '/', title: 'nan' }} parameters={{ className: 'logo', color: null }}>
+              <Icon type="logo" parameters={{ color: 'secondary', size: 4 }} />
+            </Button>
 
-          {/* ### Button modal open ### */}
-          <Button type="button" content={{ to: '/', title: 'open menu' }} parameters={{ className: 'open', color: null, onClick: this.openModal }}>
-            <Icon type="hamburger" parameters={{ color: 'secondary' }} />
-          </Button>
+            {/* ### Button modal open ### */}
+            <Button type="button" content={{ to: '/', title: 'open menu' }} parameters={{ className: 'open', color: null, onClick: this.openModal }}>
+              <Icon type="hamburger" parameters={{ color: 'secondary' }} />
+            </Button>
+          </Row>
         </Header>
       </>
     );

@@ -38,19 +38,22 @@ export const Modal = styled.div`
 
 export const Header = styled.div`
   width: 100%;
-  display: flex;
+  display: block;
   position: relative;
-  padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat};
+  padding: ${props => props.theme.settings.break} 0;
 `;
 
 export const Content = styled.div`
   flex: 100%;
-  display: flex;
+  display: block;
   max-width: 100%;
   position: relative;
-  align-items: center;
-  min-height: calc(100vh - 14rem);
-  padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat};
+  padding: ${props => props.theme.settings.break} 0;
+
+  .row {
+    align-items: center;
+    min-height: calc(100vh - 14rem);
+  }
 `;
 
 export const MainInfo = styled.p`

@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 export const Section = styled.section`
   width: 100%;
-  display: flex;
+  display: block;
   font-size: 3rem;
-  align-items: center;
   letter-spacing: 0.3rem;
-  min-height: calc(100vh - 14rem);
   background-color: ${props => props.theme.settings.colorBackgroundDark};
+
+  .row {
+    align-items: center;
+    min-height: calc(100vh - 14rem);
+  }
 
   @media (min-width: ${props => `${props.theme.breakpoint_tablet}px`}) {
     font-size: 6rem;

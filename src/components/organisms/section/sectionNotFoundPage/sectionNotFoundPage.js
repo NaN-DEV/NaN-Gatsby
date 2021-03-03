@@ -9,6 +9,7 @@ import { Section, BoxContent, Title } from './style/style';
 import settings from '../../../../layouts/settings/settings';
 
 // Import component
+import Row from '../../../atoms/row/row';
 import Mascot from '../../../atoms/mascot/mascot';
 
 // Create new component
@@ -17,12 +18,14 @@ const SectionSellComponent = () => {
   return (
     <>
       <Section theme={{ settings }}>
-        <BoxContent>
-          <Title theme={{ settings }}>
-            <Cycler duration={1000} strings={strings} />
-          </Title>
-        </BoxContent>
-        <Mascot newClass="mascot" theme={{ settings }} />
+        <Row parameters={{}}>
+          <BoxContent>
+            <Title theme={{ settings }}>
+              <Cycler duration={1000} strings={strings} />
+            </Title>
+          </BoxContent>
+          <Mascot newClass="mascot" theme={{ settings }} />
+        </Row>
       </Section>
     </>
   );

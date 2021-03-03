@@ -32,8 +32,7 @@ const settings = {
   breakpoint_desktop: 1280,
 
   // Settings maxwidth
-  max_width: '198rem',
-  max_width_half: '99rem',
+  max_width: '144rem',
 
   // Settings time animation
   animation: 'all 0.3s',

@@ -10,6 +10,7 @@ import { Section, Left, Right, Title, BoxOptions, Description, Tag } from './sty
 import settings from '../../../../layouts/settings/settings';
 
 // Import component
+import Row from '../../../atoms/row/row';
 import List from '../../../molecules/list/list';
 import Sticky from '../../../atoms/sticky/sticky';
 import ProgressBar from '../../../atoms/progressBar/progressBar';
@@ -21,43 +22,45 @@ const SectionFullTextComponent = props => {
   return (
     <>
       <Section theme={{ settings, theme: parameters.theme }}>
-        <Left theme={{ settings }}>
-          <Sticky id={`${parameters.id}-sticky`} offsetTop={60}>
-            <Title theme={{ settings }} id={`${parameters.id}-sticky`}>
-              {content.title}
-            </Title>
-          </Sticky>
-        </Left>
-        <Right theme={{ settings }}>
-          {content.description && <Description theme={{ settings }}>{content.description}</Description>}
+        <Row parameters={{}}>
+          <Left theme={{ settings }}>
+            <Sticky id={`${parameters.id}-sticky`} offsetTop={60}>
+              <Title theme={{ settings }} id={`${parameters.id}-sticky`}>
+                {content.title}
+              </Title>
+            </Sticky>
+          </Left>
+          <Right theme={{ settings }}>
+            {content.description && <Description theme={{ settings }}>{content.description}</Description>}
 
-          {content.tags && (
-            <List type="level" parameters={{ className: 'tags' }}>
-              {content.tags.map(tag => {
-                return <Tag theme={{ settings }}>#{tag.title}, </Tag>;
-              })}
-            </List>
-          )}
+            {content.tags && (
+              <List type="level" parameters={{ className: 'tags' }}>
+                {content.tags.map(tag => {
+                  return <Tag theme={{ settings }}>#{tag.title}, </Tag>;
+                })}
+              </List>
+            )}
 
-          {content.options && (
-            <BoxOptions theme={{ settings }}>
-              {content.options.map(percent => {
-                return (
-                  <ProgressBar
-                    type="ring"
-                    id={percent.id}
-                    content={{
-                      unit: percent.unit,
-                      value: percent.value,
-                      description: percent.description,
-                    }}
-                    parameters={{ id: percent.id, percent: percent.percent }}
-                  />
-                );
-              })}
-            </BoxOptions>
-          )}
-        </Right>
+            {content.options && (
+              <BoxOptions theme={{ settings }}>
+                {content.options.map(percent => {
+                  return (
+                    <ProgressBar
+                      type="ring"
+                      id={percent.id}
+                      content={{
+                        unit: percent.unit,
+                        value: percent.value,
+                        description: percent.description,
+                      }}
+                      parameters={{ id: percent.id, percent: percent.percent }}
+                    />
+                  );
+                })}
+              </BoxOptions>
+            )}
+          </Right>
+        </Row>
       </Section>
     </>
   );

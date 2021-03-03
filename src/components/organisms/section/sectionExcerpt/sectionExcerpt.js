@@ -8,6 +8,9 @@ import { Section, Title, Excerpt } from './style/style';
 // Import settings style
 import settings from '../../../../layouts/settings/settings';
 
+// Import component
+import Row from '../../../atoms/row/row';
+
 // Create new component
 const SectionFullExcerptComponent = props => {
   const { content } = props;
@@ -15,8 +18,10 @@ const SectionFullExcerptComponent = props => {
   return (
     <>
       <Section theme={{ settings }}>
-        <Title theme={{ settings }}>{content.title}</Title>
-        {content.excerpt && <Excerpt theme={{ settings }}>{content.excerpt}</Excerpt>}
+        <Row parameters={{}}>
+          <Title theme={{ settings }}>{content.title}</Title>
+          {content.excerpt && <Excerpt theme={{ settings }}>{content.excerpt}</Excerpt>}
+        </Row>
       </Section>
     </>
   );

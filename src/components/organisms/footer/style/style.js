@@ -2,12 +2,14 @@ import styled from 'styled-components';
 
 export const Footer = styled.footer`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
+  display: block;
+  padding: ${props => props.theme.settings.break} 0;
   background-color: ${props => props.theme.settings.colorBackgroundLight};
-  padding: ${props => props.theme.settings.break} ${props => props.theme.settings.breakFat};
+
+  .row {
+    align-items: center;
+    justify-content: flex-start;
+  }
 
   .listLink {
     width: auto;

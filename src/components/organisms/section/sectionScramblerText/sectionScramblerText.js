@@ -14,6 +14,9 @@ import { Section, Content, ContentStatic, ContentScrambler } from './style/style
 // Import settings style
 import settings from '../../../../layouts/settings/settings';
 
+// Import component
+import Row from '../../../atoms/row/row';
+
 // Create new component
 class SectionScramblerTextComponent extends React.Component {
   constructor(props) {
@@ -112,13 +115,15 @@ class SectionScramblerTextComponent extends React.Component {
     return (
       <>
         <Section theme={{ settings }}>
-          <Content theme={{ settings }}>
-            <ContentStatic theme={{ settings }}>Witaj, świecie !</ContentStatic>
-            <ContentStatic theme={{ settings }}>
-              jestem developerem{' '}
-              <ContentScrambler theme={{ settings }} dangerouslySetInnerHTML={{ __html: this.state.textScrambler }}></ContentScrambler>
-            </ContentStatic>
-          </Content>
+          <Row parameters={{ className: 'row' }}>
+            <Content theme={{ settings }}>
+              <ContentStatic theme={{ settings }}>Witaj, świecie !</ContentStatic>
+              <ContentStatic theme={{ settings }}>
+                jestem developerem{' '}
+                <ContentScrambler theme={{ settings }} dangerouslySetInnerHTML={{ __html: this.state.textScrambler }}></ContentScrambler>
+              </ContentStatic>
+            </Content>
+          </Row>
         </Section>
       </>
     );
