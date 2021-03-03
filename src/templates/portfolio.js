@@ -51,10 +51,8 @@ export const PortfolioPageQuery = graphql`
       id
       title
       excerpt
-      description
       seo {
         title
-        twitterCard
         description
         image {
           id
